@@ -124,5 +124,5 @@ plot(1,1)
 ```{r motionchartcode, results='asis'}
 library(googleVis)
 options(gvis.plot.tag='chart')
-plot(gvisMotionChart(Fruits, "Fruit", "Year", options=list(width=800, height=400)), tag="chart")
+plot(gvisMotionChart(Fruits, "Fruit", "Year", options=list(width=800, height=400)))
 ```
