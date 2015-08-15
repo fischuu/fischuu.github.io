@@ -11,18 +11,8 @@ mode        : selfcontained # {standalone, draft}
 license     : by-nc-sa
 github      :
   user      : fischuu
-  repo      : RAndGoogleVisualization
+  repo      : fischuu.github.io/presentations/RAndGoogleVisualization
 ---
-
-## Disclaimer
-
-1. I am an autodidact 
-2. What I present here works for me
-3. Read and follow the official [Google Chart API documentation](https://developers.google.com/chart/) and [Terms of Service](https://developers.google.com/readme/terms)
-4. Sometimes you have re-load this presentation for the charts and all slides to appear
-
----
-
 ## Agenda
 
 * Introduction and motivation
@@ -36,7 +26,7 @@ github      :
 library(googleVis)
 op <- options(gvis.plot.tag='chart')
 ```
-                  
+               
 --- 
 
 ## Hans Rosling: No more boring data
@@ -122,7 +112,5 @@ plot(1,1)
 ## Motion chart example
 
 ```{r motionchartcode, results='asis'}
-library(googleVis)
-options(gvis.plot.tag='chart')
 plot(gvisMotionChart(Fruits, "Fruit", "Year", options=list(width=800, height=400)))
 ```

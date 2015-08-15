@@ -11,18 +11,8 @@ mode        : selfcontained # {standalone, draft}
 license     : by-nc-sa
 github      :
   user      : fischuu
-  repo      : RAndGoogleVisualization
+  repo      : fischuu.github.io/presentations/RAndGoogleVisualization
 ---
-
-## Disclaimer
-
-1. I am an autodidact 
-2. What I present here works for me
-3. Read and follow the official [Google Chart API documentation](https://developers.google.com/chart/) and [Terms of Service](https://developers.google.com/readme/terms)
-4. Sometimes you have re-load this presentation for the charts and all slides to appear
-
----
-
 ## Agenda
 
 * Introduction and motivation
@@ -36,7 +26,7 @@ github      :
 library(googleVis)
 op <- options(gvis.plot.tag='chart')
 ```
-                  
+               
 --- 
 
 ## Hans Rosling: No more boring data
@@ -126,20 +116,18 @@ plot(1,1)
 
 
 ```r
-library(googleVis)
-options(gvis.plot.tag='chart')
 plot(gvisMotionChart(Fruits, "Fruit", "Year", options=list(width=800, height=400)))
 ```
 
 <!-- MotionChart generated in R 3.1.2 by googleVis 0.5.9 package -->
-<!-- Sat Aug 15 19:46:32 2015 -->
+<!-- Sat Aug 15 19:54:21 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID187c55a98458 () {
+function gvisDataMotionChartID187c1f141a42 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -237,15 +225,15 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID187c55a98458() {
-var data = gvisDataMotionChartID187c55a98458();
+function drawChartMotionChartID187c1f141a42() {
+var data = gvisDataMotionChartID187c1f141a42();
 var options = {};
 options["width"] =    800;
 options["height"] =    400;
 options["state"] = "";
 
     var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartID187c55a98458')
+    document.getElementById('MotionChartID187c1f141a42')
     );
     chart.draw(data,options);
     
@@ -269,9 +257,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartID187c55a98458);
+callbacks.push(drawChartMotionChartID187c1f141a42);
 })();
-function displayChartMotionChartID187c55a98458() {
+function displayChartMotionChartID187c1f141a42() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -295,10 +283,10 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID187c55a98458"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID187c1f141a42"></script>
  
 <!-- divChart -->
   
-<div id="MotionChartID187c55a98458" 
+<div id="MotionChartID187c1f141a42" 
   style="width: 800; height: 400;">
 </div>

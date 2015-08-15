@@ -36,7 +36,7 @@
     <h2>Tampere University, 19 August 2015</h2>
     <p>Daniel Fischer<br/>Natural Resources Institute Finland, Green Technology</p>
   </hgroup>
-    <a href="https://github.com/fischuu/RAndGoogleVisualization/zipball/gh-pages" class="example">
+    <a href="https://github.com/fischuu/fischuu.github.io/presentations/RAndGoogleVisualization/zipball/gh-pages" class="example">
      Download
     </a>
   <article></article>  
@@ -50,22 +50,6 @@
 
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
-  <hgroup>
-    <h2>Disclaimer</h2>
-  </hgroup>
-  <article data-timings="">
-    <ol>
-<li>I am an autodidact </li>
-<li>What I present here works for me</li>
-<li>Read and follow the official <a href="https://developers.google.com/chart/">Google Chart API documentation</a> and <a href="https://developers.google.com/readme/terms">Terms of Service</a></li>
-<li>Sometimes you have re-load this presentation for the charts and all slides to appear</li>
-</ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-2" style="background:;">
   <hgroup>
     <h2>Agenda</h2>
   </hgroup>
@@ -96,7 +80,7 @@ op &lt;- options(gvis.plot.tag=&#39;chart&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-2" style="background:;">
   <hgroup>
     <h2>Motivation for googleVis</h2>
   </hgroup>
@@ -113,7 +97,7 @@ op &lt;- options(gvis.plot.tag=&#39;chart&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+<slide class="" id="slide-3" style="background:;">
   <hgroup>
     <h2>Overview of googleVis</h2>
   </hgroup>
@@ -131,7 +115,7 @@ op &lt;- options(gvis.plot.tag=&#39;chart&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-5" style="background:;">
+<slide class="" id="slide-4" style="background:;">
   <hgroup>
     <h2>Introduction to Google Chart Tools</h2>
   </hgroup>
@@ -149,7 +133,7 @@ op &lt;- options(gvis.plot.tag=&#39;chart&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:;">
+<slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>Structure of Google Charts</h2>
   </hgroup>
@@ -168,7 +152,7 @@ op &lt;- options(gvis.plot.tag=&#39;chart&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-7" style="background:;">
+<slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>How hard can it be?</h2>
   </hgroup>
@@ -183,7 +167,7 @@ op &lt;- options(gvis.plot.tag=&#39;chart&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>Motion chart example</h2>
   </hgroup>
@@ -197,26 +181,24 @@ op &lt;- options(gvis.plot.tag=&#39;chart&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>Motion chart example</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">library(googleVis)
-options(gvis.plot.tag=&#39;chart&#39;)
-plot(gvisMotionChart(Fruits, &quot;Fruit&quot;, &quot;Year&quot;, options=list(width=800, height=400)))
+    <pre><code class="r">plot(gvisMotionChart(Fruits, &quot;Fruit&quot;, &quot;Year&quot;, options=list(width=800, height=400)))
 </code></pre>
 
 <!-- MotionChart generated in R 3.1.2 by googleVis 0.5.9 package -->
 
-<!-- Sat Aug 15 19:46:32 2015 -->
+<!-- Sat Aug 15 19:54:21 2015 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID187c55a98458 () {
+function gvisDataMotionChartID187c1f141a42 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -314,15 +296,15 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID187c55a98458() {
-var data = gvisDataMotionChartID187c55a98458();
+function drawChartMotionChartID187c1f141a42() {
+var data = gvisDataMotionChartID187c1f141a42();
 var options = {};
 options["width"] =    800;
 options["height"] =    400;
 options["state"] = "";
 
     var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartID187c55a98458')
+    document.getElementById('MotionChartID187c1f141a42')
     );
     chart.draw(data,options);
     
@@ -346,9 +328,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartID187c55a98458);
+callbacks.push(drawChartMotionChartID187c1f141a42);
 })();
-function displayChartMotionChartID187c55a98458() {
+function displayChartMotionChartID187c1f141a42() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -374,12 +356,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID187c55a98458"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID187c1f141a42"></script>
  
 
 <!-- divChart -->
 
-<div id="MotionChartID187c55a98458" 
+<div id="MotionChartID187c1f141a42" 
   style="width: 800; height: 400;">
 </div>
 
@@ -393,43 +375,43 @@ callbacks.shift()();
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Disclaimer'>
+        data-slide=1 title='Agenda'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Agenda'>
+        data-slide=2 title='Motivation for googleVis'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Motivation for googleVis'>
+        data-slide=3 title='Overview of googleVis'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Overview of googleVis'>
+        data-slide=4 title='Introduction to Google Chart Tools'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Introduction to Google Chart Tools'>
+        data-slide=5 title='Structure of Google Charts'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Structure of Google Charts'>
+        data-slide=6 title='How hard can it be?'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='How hard can it be?'>
+        data-slide=7 title='Motion chart example'>
          7
       </a>
     </li>
@@ -437,12 +419,6 @@ callbacks.shift()();
       <a href="#" target="_self" rel='tooltip' 
         data-slide=8 title='Motion chart example'>
          8
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Motion chart example'>
-         9
       </a>
     </li>
   </ul>
