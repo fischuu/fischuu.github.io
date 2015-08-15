@@ -1,6 +1,6 @@
 ---
 title       : R and Google Visualization
-subtitle    : 
+subtitle    : Tampere University, 19 August 2015
 author      : Daniel Fischer
 job         : Natural Resources Institute Finland, Green Technology
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -8,45 +8,121 @@ highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
+license     : by-nc-sa
+github      :
+  user      : fischuu
+  repo      : RAndGoogleVisualization
 ---
 
-## Read-And-Delete
+## Disclaimer
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
-
---- .class #id 
-
-## Slide 2
-
----
-
-## This is the next test!!!
-
-sdfs  lkdsjfldskj f
-
-s dlökjs ölkjsd öllkds j
-
-
-sdl sdök jfösldkj ösldj
-
----
-## A Simple Plot
-
- ```{r simple-plot, fig.height = 6, fig.align = 'center', message = F}
- require(ggplot2)
- qplot(wt, mpg, data = mtcars)
- ```
+1. I am an autodidact 
+2. What I present here works for me
+3. Read and follow the official [Google Chart API documentation](https://developers.google.com/chart/) and [Terms of Service](https://developers.google.com/readme/terms)
+4. Sometimes you have re-load this presentation for the charts and all slides to appear
 
 ---
 
-## MotionPlot
+## Agenda
 
- ```{r results = 'asis', commment = NA, message = F, echo = F}
- require(googleVis)
- M1 <- gvisMotionChart(Fruits, idvar="Fruit", timevar="Year")
- print(M1, tag = 'chart')
- ```
+* Introduction and motivation
+* Google Chart Tools
+* R package googleVis
+  * Concepts of googleVis
+  * Case studies
+
+```
+{r setOptions, message=FALSE}
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+```
+                  
+--- 
+
+## Hans Rosling: No more boring data
+
+<iframe width="420" height="315" src="http://www.youtube.com/embed/hVimVzgtD6w" frameborder="0" allowfullscreen></iframe>
+
+---
+
+## Motivation for googleVis
+
+* Inspired by Hans Rosling’s talks we wanted to use interactive data visualisation tools to foster the dialogue between data analysts and others
+
+* We wanted moving bubbles charts as well
+
+* The software behind Hans’ talk was bought by Google and integrated as motion charts into their Visualisation API
+
+* Ideally we wanted to use R, a language we knew
+
+* Hence, we had to create an interface between the Google Chart Tools and R
+
+--- 
+
+## Overview of googleVis
+
+* [googleVis](http://code.google.com/p/google-motion-charts-with-r/) is a package for [R](http://www.r-poject.org/) and provides an interface between R and the [Google Chart Tools](https://developers.google.com/chart/)
+
+* The functions of the package allow users to visualise data with the Google Chart Tools without uploading their data to Google
+
+* The output of googleVis functions is html code that contains the data and references to JavaScript functions hosted by Google
+
+* To view the output a browser with an internet connection is required, the actual chart is rendered in the browser; some charts require Flash
+
+* See also: **Using the Google Visualisation API with R**, 
+  [The R Journal, 3(2):40-44, December 2011](http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de~Castillo.pdf) and googleVis [package vignette](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf)
+
+---
+
+## Introduction to Google Chart Tools
+
+* Google Chart Tools provide a way to visualize data on web sites
+
+* The API makes it easy to create interactive charts
+
+* It uses JavaScript and DataTable / JSON as input
+
+* Output is either HTML5/SVG or Flash
+
+* Browser with internet connection required to display chart
+
+* Please read the Google [Terms of Service](https://developers.google.com/terms/) before you start
+
+---
+
+## Structure of Google Charts
+
+The chart code has five generic parts:
+
+1. References to Google’s AJAX and Visualisation API
+2. Data to visualise as a DataTable
+3. Instance call to create the chart
+4. Method call to draw the chart including options
+5. HTML &lt;div&gt; element to add the chart to the page
+
+---
+
+## How hard can it be?
+
+* Transform data into JSON object 
+* Wrap some HTML and JavaScript around it 
+* Thus, googleVis started life in August 2010
 
 
+----
+
+## Motion chart example
+
+```{r testchartcode, results='asis'}
+plot(1,1)
+```
+
+---
+
+## Motion chart example
+
+```{r motionchartcode, results='asis'}
+library(googleVis)
+options(gvis.plot.tag='chart')
+plot(gvisMotionChart(Fruits, "Fruit", "Year", options=list(width=600, height=400)), tag="chart")
+```
