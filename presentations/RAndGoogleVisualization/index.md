@@ -128,18 +128,18 @@ plot(1,1)
 ```r
 library(googleVis)
 options(gvis.plot.tag='chart')
-plot(gvisMotionChart(Fruits, "Fruit", "Year", options=list(width=600, height=400)), tag="chart")
+plot(gvisMotionChart(Fruits, "Fruit", "Year", options=list(width=800, height=400)), tag="chart")
 ```
 
 <!-- MotionChart generated in R 3.1.2 by googleVis 0.5.9 package -->
-<!-- Sat Aug 15 19:15:04 2015 -->
+<!-- Sat Aug 15 19:44:31 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID187c1e22fbd1 () {
+function gvisDataMotionChartID187c2d6f4bc4 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -237,15 +237,15 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID187c1e22fbd1() {
-var data = gvisDataMotionChartID187c1e22fbd1();
+function drawChartMotionChartID187c2d6f4bc4() {
+var data = gvisDataMotionChartID187c2d6f4bc4();
 var options = {};
-options["width"] =    600;
+options["width"] =    800;
 options["height"] =    400;
 options["state"] = "";
 
     var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartID187c1e22fbd1')
+    document.getElementById('MotionChartID187c2d6f4bc4')
     );
     chart.draw(data,options);
     
@@ -269,9 +269,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartID187c1e22fbd1);
+callbacks.push(drawChartMotionChartID187c2d6f4bc4);
 })();
-function displayChartMotionChartID187c1e22fbd1() {
+function displayChartMotionChartID187c2d6f4bc4() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -295,10 +295,10 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID187c1e22fbd1"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID187c2d6f4bc4"></script>
  
 <!-- divChart -->
   
-<div id="MotionChartID187c1e22fbd1" 
-  style="width: 600; height: 400;">
+<div id="MotionChartID187c2d6f4bc4" 
+  style="width: 800; height: 400;">
 </div>
