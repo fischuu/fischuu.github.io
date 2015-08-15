@@ -50,54 +50,30 @@
 
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
-  <hgroup>
-    <h2>Agenda</h2>
-  </hgroup>
   <article data-timings="">
-    <ul>
-<li>Introduction and motivation</li>
-<li>Google Chart Tools</li>
-<li>R package googleVis
-
-<ul>
-<li>Concepts of googleVis</li>
-<li>Case studies</li>
-</ul></li>
-</ul>
-
-<pre><code>{r setOptions, message=FALSE}
+    <pre><code>{r setOptions, message=FALSE}
 library(googleVis)
 op &lt;- options(gvis.plot.tag=&#39;chart&#39;)
 </code></pre>
 
 <hr>
 
-<h2>Hans Rosling: No more boring data</h2>
+<h2>Motivation for googleVis</h2>
 
-<iframe width="420" height="315" src="http://www.youtube.com/embed/hVimVzgtD6w" frameborder="0" allowfullscreen></iframe>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-2" style="background:;">
-  <hgroup>
-    <h2>Motivation for googleVis</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>Inspired by Hans Rosling’s talks we wanted to use interactive data visualisation tools to foster the dialogue between data analysts and others</p></li>
-<li><p>We wanted moving bubbles charts as well</p></li>
-<li><p>The software behind Hans’ talk was bought by Google and integrated as motion charts into their Visualisation API</p></li>
-<li><p>Ideally we wanted to use R, a language we knew</p></li>
-<li><p>Hence, we had to create an interface between the Google Chart Tools and R</p></li>
+<ul>
+<li><p>Due to R&#39;s age some of its basic functions are not up-to-date anymore</p></li>
+<li><p>However, as R is modular, users keep developing new packages that improve the basic functionality</p></li>
+<li><p>One very popular R-library is <a href="http://http://ggplot2.org/">ggplot</a>, that was presented earlier today</p></li>
+<li><p>Google has also a large library for programmers that includes different types of algorithms and graphical presentations</p></li>
+<li><p>These google libraries can be access by programmers via standardized interfaces, so-called API&#39;s</p></li>
+<li><p>Some R-users have created now R-libraries that make the graphic functions provided by google easily accessible via R</p></li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-2" style="background:;">
   <hgroup>
     <h2>Overview of googleVis</h2>
   </hgroup>
@@ -115,73 +91,7 @@ op &lt;- options(gvis.plot.tag=&#39;chart&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
-  <hgroup>
-    <h2>Introduction to Google Chart Tools</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>Google Chart Tools provide a way to visualize data on web sites</p></li>
-<li><p>The API makes it easy to create interactive charts</p></li>
-<li><p>It uses JavaScript and DataTable / JSON as input</p></li>
-<li><p>Output is either HTML5/SVG or Flash</p></li>
-<li><p>Browser with internet connection required to display chart</p></li>
-<li><p>Please read the Google <a href="https://developers.google.com/terms/">Terms of Service</a> before you start</p></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
-  <hgroup>
-    <h2>Structure of Google Charts</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>The chart code has five generic parts:</p>
-
-<ol>
-<li>References to Google’s AJAX and Visualisation API</li>
-<li>Data to visualise as a DataTable</li>
-<li>Instance call to create the chart</li>
-<li>Method call to draw the chart including options</li>
-<li>HTML &lt;div&gt; element to add the chart to the page</li>
-</ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-6" style="background:;">
-  <hgroup>
-    <h2>How hard can it be?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Transform data into JSON object </li>
-<li>Wrap some HTML and JavaScript around it </li>
-<li>Thus, googleVis started life in August 2010</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-7" style="background:;">
-  <hgroup>
-    <h2>Motion chart example</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">plot(1,1)
-</code></pre>
-
-<p><img src="assets/fig/testchartcode-1.png" alt="plot of chunk testchartcode"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-3" style="background:;">
   <hgroup>
     <h2>Motion chart example</h2>
   </hgroup>
@@ -375,50 +285,20 @@ callbacks.shift()();
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Agenda'>
+        data-slide=1 title=''>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Motivation for googleVis'>
+        data-slide=2 title='Overview of googleVis'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Overview of googleVis'>
+        data-slide=3 title='Motion chart example'>
          3
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Introduction to Google Chart Tools'>
-         4
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Structure of Google Charts'>
-         5
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='How hard can it be?'>
-         6
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Motion chart example'>
-         7
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Motion chart example'>
-         8
       </a>
     </li>
   </ul>

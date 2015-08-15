@@ -12,14 +12,8 @@ license     : by-nc-sa
 github      :
   user      : fischuu
   repo      : fischuu.github.io/presentations/RAndGoogleVisualization
----
-## Agenda
 
-* Introduction and motivation
-* Google Chart Tools
-* R package googleVis
-  * Concepts of googleVis
-  * Case studies
+---
 
 ```
 {r setOptions, message=FALSE}
@@ -27,25 +21,21 @@ library(googleVis)
 op <- options(gvis.plot.tag='chart')
 ```
                
---- 
-
-## Hans Rosling: No more boring data
-
-<iframe width="420" height="315" src="http://www.youtube.com/embed/hVimVzgtD6w" frameborder="0" allowfullscreen></iframe>
-
 ---
 
 ## Motivation for googleVis
 
-* Inspired by Hans Rosling’s talks we wanted to use interactive data visualisation tools to foster the dialogue between data analysts and others
+* Due to R's age some of its basic functions are not up-to-date anymore
 
-* We wanted moving bubbles charts as well
+* However, as R is modular, users keep developing new packages that improve the basic functionality
 
-* The software behind Hans’ talk was bought by Google and integrated as motion charts into their Visualisation API
+* One very popular R-library is [ggplot](http://http://ggplot2.org/), that was presented earlier today
 
-* Ideally we wanted to use R, a language we knew
+* Google has also a large library for programmers that includes different types of algorithms and graphical presentations
 
-* Hence, we had to create an interface between the Google Chart Tools and R
+* These google libraries can be access by programmers via standardized interfaces, so-called API's
+
+* Some R-users have created now R-libraries that make the graphic functions provided by google easily accessible via R
 
 --- 
 
@@ -61,51 +51,6 @@ op <- options(gvis.plot.tag='chart')
 
 * See also: **Using the Google Visualisation API with R**, 
   [The R Journal, 3(2):40-44, December 2011](http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de~Castillo.pdf) and googleVis [package vignette](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf)
-
----
-
-## Introduction to Google Chart Tools
-
-* Google Chart Tools provide a way to visualize data on web sites
-
-* The API makes it easy to create interactive charts
-
-* It uses JavaScript and DataTable / JSON as input
-
-* Output is either HTML5/SVG or Flash
-
-* Browser with internet connection required to display chart
-
-* Please read the Google [Terms of Service](https://developers.google.com/terms/) before you start
-
----
-
-## Structure of Google Charts
-
-The chart code has five generic parts:
-
-1. References to Google’s AJAX and Visualisation API
-2. Data to visualise as a DataTable
-3. Instance call to create the chart
-4. Method call to draw the chart including options
-5. HTML &lt;div&gt; element to add the chart to the page
-
----
-
-## How hard can it be?
-
-* Transform data into JSON object 
-* Wrap some HTML and JavaScript around it 
-* Thus, googleVis started life in August 2010
-
-
-----
-
-## Motion chart example
-
-```{r testchartcode, results='asis'}
-plot(1,1)
-```
 
 ---
 
