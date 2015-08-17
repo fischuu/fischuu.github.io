@@ -16,7 +16,7 @@ github      :
 ---
 
 ```
-{r setOptions, message=FALSE}
+{r setOptions, echo=FALSE}
 library(googleVis)
 op <- options(gvis.plot.tag='chart')
 ```
