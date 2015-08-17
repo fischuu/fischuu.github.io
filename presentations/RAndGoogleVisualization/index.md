@@ -12,15 +12,7 @@ license     : by-nc-sa
 github      :
   user      : fischuu
   repo      : fischuu.github.io/presentations/RAndGoogleVisualization
-
----
-
-```
-{r setOptions, echo=FALSE}
-library(googleVis)
-op <- options(gvis.plot.tag='chart')
-```
-               
+             
 ---
 
 ## Motivation for googleVis
@@ -36,6 +28,12 @@ op <- options(gvis.plot.tag='chart')
 * These google libraries can be access by programmers via standardized interfaces, so-called API's
 
 * Some R-users have created now R-libraries that make the graphic functions provided by google easily accessible via R
+
+```
+{r setOptions, echo=FALSE}
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+```
 
 --- 
 
