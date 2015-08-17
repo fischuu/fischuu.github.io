@@ -50,11 +50,20 @@ op <- options(gvis.plot.tag='chart')
   [The R Journal, 3(2):40-44, December 2011](http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de~Castillo.pdf) and googleVis [package vignette](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf)
 
 ---
+  
+## Motion chart example
+  
+```{r motionchartcodeWorldBank, results='asis'}
+library(googleVis)
+worldBankData <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/worldBankData.Rda")
+plot(gvisMotionChart(worldBankData, idvar="country.name", timevar="year", options=list(width=800, height=500)))
+```
+
+---
 
 ## Motion chart example
 
 ```{r motionchartcode, results='asis'}
 library(googleVis)
-worldBankData <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/worldBankData.Rda")
-plot(gvisMotionChart(worldBankData, idvar="country.name", timevar="year", options=list(width=800, height=500)))
+plot(gvisMotionChart(Fruits, idvar="Fruit", timevar="Year"))
 ```
