@@ -55,11 +55,11 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>Due to R&#39;s age some of its basic functions are not up-to-date anymore</p></li>
-<li><p>However, as R is modular, users keep developing new packages that improve the basic functionality</p></li>
-<li><p>One very popular R-library is <a href="http://http://ggplot2.org/">ggplot</a>, that was presented earlier today</p></li>
+<li><p>Due to R&#39;s age, some of its basic functions are not up-to-date anymore</p></li>
+<li><p>However, as R is modular, user keep developing new packages that improve the basic functionality</p></li>
+<li><p>One very popular R-library is <a href="http://ggplot2.org/">ggplot2</a>, that was presented earlier today</p></li>
 <li><p>Google has also a large library for programmers that includes different types of algorithms and graphical presentations</p></li>
-<li><p>These google libraries can be access by programmers via standardized interfaces, so-called API&#39;s</p></li>
+<li><p>Programmers can utilize these google libraries via standardized interfaces, so-called API&#39;s</p></li>
 <li><p>Some R-users have created now R-libraries that make the graphic functions provided by google easily accessible via R</p></li>
 </ul>
 
@@ -73,7 +73,7 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p><a href="http://code.google.com/p/google-motion-charts-with-r/">googleVis</a> is a package for <a href="http://www.r-poject.org/">R</a> and provides an interface between R and the <a href="https://developers.google.com/chart/">Google Chart Tools</a></p></li>
+<li><p><a href="http://code.google.com/p/google-motion-charts-with-r/">googleVis</a> is a package for <a href="http://www.r-project.org/">R</a> and provides an interface between R and the <a href="https://developers.google.com/chart/">Google Chart Tools</a></p></li>
 <li><p>The functions of the package allow users to visualise data with the Google Chart Tools without uploading their data to Google</p></li>
 <li><p>The output of googleVis functions is html code that contains the data and references to JavaScript functions hosted by Google</p></li>
 <li><p>To view the output a browser with an internet connection is required, the actual chart is rendered in the browser; some charts require Flash</p></li>
@@ -86,6 +86,9235 @@
 </slide>
 
 <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Usage of googleVis</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The googleVis package is very user friendly and easy to use</p></li>
+<li><p>The most difficult part is to get the data to R (what is, with some practice also an easy task)</p></li>
+<li><p>A typical workflow would like this:</p></li>
+</ul>
+
+<pre><code class="r">library(googleVis)
+myData &lt;- data.frame(time = c(&quot;JAN&quot;, &quot;FEB&quot;, &quot;MAR&quot;), 
+                 val1 = c(10, 13, 14), 
+                 val2 = c(23, 12, 32))
+Line &lt;- gvisLineChart(myData)
+plot(Line)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue dark" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Google Diagram Chart Tools</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Line chart example</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(gvisLineChart(myData))
+</code></pre>
+
+<!-- LineChart generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Mon Aug 17 12:24:29 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataLineChartID2400516d6b04 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "JAN",
+10,
+23 
+],
+[
+ "FEB",
+13,
+12 
+],
+[
+ "MAR",
+14,
+32 
+] 
+];
+data.addColumn('string','time');
+data.addColumn('number','val1');
+data.addColumn('number','val2');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartLineChartID2400516d6b04() {
+var data = gvisDataLineChartID2400516d6b04();
+var options = {};
+options["allowHtml"] = true;
+options["width"] =    950;
+options["height"] =    520;
+
+    var chart = new google.visualization.LineChart(
+    document.getElementById('LineChartID2400516d6b04')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "corechart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartLineChartID2400516d6b04);
+})();
+function displayChartLineChartID2400516d6b04() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID2400516d6b04"></script>
+ 
+
+<!-- divChart -->
+
+<div id="LineChartID2400516d6b04" 
+  style="width: 950; height: 520;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Column chart example</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(gvisColumnChart(myData))
+</code></pre>
+
+<!-- ColumnChart generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Mon Aug 17 12:27:19 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataColumnChartID240063f61a69 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "US",
+10,
+23 
+],
+[
+ "EUR",
+13,
+12 
+],
+[
+ "ASIA",
+14,
+32 
+] 
+];
+data.addColumn('string','time');
+data.addColumn('number','val1');
+data.addColumn('number','val2');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartColumnChartID240063f61a69() {
+var data = gvisDataColumnChartID240063f61a69();
+var options = {};
+options["allowHtml"] = true;
+options["width"] =    950;
+options["height"] =    520;
+
+    var chart = new google.visualization.ColumnChart(
+    document.getElementById('ColumnChartID240063f61a69')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "corechart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartColumnChartID240063f61a69);
+})();
+function displayChartColumnChartID240063f61a69() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartColumnChartID240063f61a69"></script>
+ 
+
+<!-- divChart -->
+
+<div id="ColumnChartID240063f61a69" 
+  style="width: 950; height: 520;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Candlestick chart example I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Having stock-market data like this, Candlestick charts help to visualize the dynamic of the corresponding stock</li>
+</ul>
+
+<pre><code class="r">print(OpenClose)
+</code></pre>
+
+<pre><code>  Weekday Low Open Close High
+1     Mon  20   28    38   45
+2    Tues  31   38    55   66
+3     Wed  50   55    77   80
+4   Thurs  50   77    66   77
+5     Fri  15   66    22   68
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Candlestick chart example II</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(gvisCandlestickChart(OpenClose))
+</code></pre>
+
+<!-- CandlestickChart generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Mon Aug 17 12:33:56 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataCandlestickChartID240049bb8b5d () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "Mon",
+20,
+28,
+38,
+45 
+],
+[
+ "Tues",
+31,
+38,
+55,
+66 
+],
+[
+ "Wed",
+50,
+55,
+77,
+80 
+],
+[
+ "Thurs",
+50,
+77,
+66,
+77 
+],
+[
+ "Fri",
+15,
+66,
+22,
+68 
+] 
+];
+data.addColumn('string','Weekday');
+data.addColumn('number','Low');
+data.addColumn('number','Open');
+data.addColumn('number','Close');
+data.addColumn('number','High');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartCandlestickChartID240049bb8b5d() {
+var data = gvisDataCandlestickChartID240049bb8b5d();
+var options = {};
+options["allowHtml"] = true;
+options["width"] =    950;
+options["height"] =    520;
+
+    var chart = new google.visualization.CandlestickChart(
+    document.getElementById('CandlestickChartID240049bb8b5d')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "corechart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartCandlestickChartID240049bb8b5d);
+})();
+function displayChartCandlestickChartID240049bb8b5d() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartCandlestickChartID240049bb8b5d"></script>
+ 
+
+<!-- divChart -->
+
+<div id="CandlestickChartID240049bb8b5d" 
+  style="width: 950; height: 520;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Gauge chart example I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Another very easy data set:</li>
+</ul>
+
+<pre><code class="r">print(CityPopularity)
+</code></pre>
+
+<pre><code>         City Popularity
+1    New York        200
+2      Boston        300
+3       Miami        400
+4     Chicago        500
+5 Los Angeles        600
+6     Houston        700
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Gauge chart example II</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(gvisGauge(CityPopularity, options=list(min=0, max=800, greenFrom=500,
+                               greenTo=800, yellowFrom=300, yellowTo=500,
+                               redFrom=0, redTo=300)))
+</code></pre>
+
+<!-- Gauge generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Mon Aug 17 12:43:01 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataGaugeID240011f433e9 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "New York",
+200 
+],
+[
+ "Boston",
+300 
+],
+[
+ "Miami",
+400 
+],
+[
+ "Chicago",
+500 
+],
+[
+ "Los Angeles",
+600 
+],
+[
+ "Houston",
+700 
+] 
+];
+data.addColumn('string','City');
+data.addColumn('number','Popularity');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartGaugeID240011f433e9() {
+var data = gvisDataGaugeID240011f433e9();
+var options = {};
+options["allowHtml"] = true;
+options["min"] =      0;
+options["max"] =    800;
+options["greenFrom"] =    500;
+options["greenTo"] =    800;
+options["yellowFrom"] =    300;
+options["yellowTo"] =    500;
+options["redFrom"] =      0;
+options["redTo"] =    300;
+options["width"] =    850;
+options["height"] =    420;
+
+    var chart = new google.visualization.Gauge(
+    document.getElementById('GaugeID240011f433e9')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "gauge";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartGaugeID240011f433e9);
+})();
+function displayChartGaugeID240011f433e9() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGaugeID240011f433e9"></script>
+ 
+
+<!-- divChart -->
+
+<div id="GaugeID240011f433e9" 
+  style="width: 850; height: 420;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue dark" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Google Geo Chart Tools</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Geo chart example I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Also plotting maps using googleVis is extremly easy</p></li>
+<li><p>The following data is enough to create an intensity map</p></li>
+</ul>
+
+<pre><code class="r">print(Exports)
+</code></pre>
+
+<pre><code>         Country Profit Online
+1        Germany      3   TRUE
+2         Brazil      4  FALSE
+3  United States      5   TRUE
+4         France      4   TRUE
+5        Hungary      3  FALSE
+6          India      2   TRUE
+7        Iceland      1  FALSE
+8         Norway      4   TRUE
+9          Spain      5   TRUE
+10        Turkey      1  FALSE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Geo chart example II</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(gvisGeoChart(Exports, locationvar=&quot;Country&quot;, 
+                 colorvar=&quot;Profit&quot;,
+                 options=list(projection=&quot;kavrayskiy-vii&quot;)))
+</code></pre>
+
+<!-- GeoChart generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Mon Aug 17 15:07:21 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataGeoChartID24004dd9ab6c () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "Germany",
+3 
+],
+[
+ "Brazil",
+4 
+],
+[
+ "United States",
+5 
+],
+[
+ "France",
+4 
+],
+[
+ "Hungary",
+3 
+],
+[
+ "India",
+2 
+],
+[
+ "Iceland",
+1 
+],
+[
+ "Norway",
+4 
+],
+[
+ "Spain",
+5 
+],
+[
+ "Turkey",
+1 
+] 
+];
+data.addColumn('string','Country');
+data.addColumn('number','Profit');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartGeoChartID24004dd9ab6c() {
+var data = gvisDataGeoChartID24004dd9ab6c();
+var options = {};
+options["width"] =    950;
+options["height"] =    400;
+options["projection"] = "kavrayskiy-vii";
+
+    var chart = new google.visualization.GeoChart(
+    document.getElementById('GeoChartID24004dd9ab6c')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "geochart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartGeoChartID24004dd9ab6c);
+})();
+function displayChartGeoChartID24004dd9ab6c() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID24004dd9ab6c"></script>
+ 
+
+<!-- divChart -->
+
+<div id="GeoChartID24004dd9ab6c" 
+  style="width: 950; height: 400;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Geo chart example III - Earthquakes in Oceania</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">data(quakes)
+head(quakes)
+</code></pre>
+
+<pre><code>     lat   long depth mag stations
+1 -20.42 181.62   562 4.8       41
+2 -20.62 181.03   650 4.2       15
+3 -26.00 184.10    42 5.4       43
+4 -17.97 181.66   626 4.1       19
+5 -20.42 181.96   649 4.0       11
+6 -19.68 184.31   195 4.0       12
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Geo chart example IV - Earthquakes in Oceania</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- GeoChart generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Mon Aug 17 15:38:48 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataGeoChartID2400a141851 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ -20.42,
+181.62,
+562,
+4.8 
+],
+[
+ -20.62,
+181.03,
+650,
+4.2 
+],
+[
+ -26,
+184.1,
+42,
+5.4 
+],
+[
+ -17.97,
+181.66,
+626,
+4.1 
+],
+[
+ -20.42,
+181.96,
+649,
+4 
+],
+[
+ -19.68,
+184.31,
+195,
+4 
+],
+[
+ -11.7,
+166.1,
+82,
+4.8 
+],
+[
+ -28.11,
+181.93,
+194,
+4.4 
+],
+[
+ -28.74,
+181.74,
+211,
+4.7 
+],
+[
+ -17.47,
+179.59,
+622,
+4.3 
+],
+[
+ -21.44,
+180.69,
+583,
+4.4 
+],
+[
+ -12.26,
+167,
+249,
+4.6 
+],
+[
+ -18.54,
+182.11,
+554,
+4.4 
+],
+[
+ -21,
+181.66,
+600,
+4.4 
+],
+[
+ -20.7,
+169.92,
+139,
+6.1 
+],
+[
+ -15.94,
+184.95,
+306,
+4.3 
+],
+[
+ -13.64,
+165.96,
+50,
+6 
+],
+[
+ -17.83,
+181.5,
+590,
+4.5 
+],
+[
+ -23.5,
+179.78,
+570,
+4.4 
+],
+[
+ -22.63,
+180.31,
+598,
+4.4 
+],
+[
+ -20.84,
+181.16,
+576,
+4.5 
+],
+[
+ -10.98,
+166.32,
+211,
+4.2 
+],
+[
+ -23.3,
+180.16,
+512,
+4.4 
+],
+[
+ -30.2,
+182,
+125,
+4.7 
+],
+[
+ -19.66,
+180.28,
+431,
+5.4 
+],
+[
+ -17.94,
+181.49,
+537,
+4 
+],
+[
+ -14.72,
+167.51,
+155,
+4.6 
+],
+[
+ -16.46,
+180.79,
+498,
+5.2 
+],
+[
+ -20.97,
+181.47,
+582,
+4.5 
+],
+[
+ -19.84,
+182.37,
+328,
+4.4 
+],
+[
+ -22.58,
+179.24,
+553,
+4.6 
+],
+[
+ -16.32,
+166.74,
+50,
+4.7 
+],
+[
+ -15.55,
+185.05,
+292,
+4.8 
+],
+[
+ -23.55,
+180.8,
+349,
+4 
+],
+[
+ -16.3,
+186,
+48,
+4.5 
+],
+[
+ -25.82,
+179.33,
+600,
+4.3 
+],
+[
+ -18.73,
+169.23,
+206,
+4.5 
+],
+[
+ -17.64,
+181.28,
+574,
+4.6 
+],
+[
+ -17.66,
+181.4,
+585,
+4.1 
+],
+[
+ -18.82,
+169.33,
+230,
+4.4 
+],
+[
+ -37.37,
+176.78,
+263,
+4.7 
+],
+[
+ -15.31,
+186.1,
+96,
+4.6 
+],
+[
+ -24.97,
+179.82,
+511,
+4.4 
+],
+[
+ -15.49,
+186.04,
+94,
+4.3 
+],
+[
+ -19.23,
+169.41,
+246,
+4.6 
+],
+[
+ -30.1,
+182.3,
+56,
+4.9 
+],
+[
+ -26.4,
+181.7,
+329,
+4.5 
+],
+[
+ -11.77,
+166.32,
+70,
+4.4 
+],
+[
+ -24.12,
+180.08,
+493,
+4.3 
+],
+[
+ -18.97,
+185.25,
+129,
+5.1 
+],
+[
+ -18.75,
+182.35,
+554,
+4.2 
+],
+[
+ -19.26,
+184.42,
+223,
+4 
+],
+[
+ -22.75,
+173.2,
+46,
+4.6 
+],
+[
+ -21.37,
+180.67,
+593,
+4.3 
+],
+[
+ -20.1,
+182.16,
+489,
+4.2 
+],
+[
+ -19.85,
+182.13,
+562,
+4.4 
+],
+[
+ -22.7,
+181,
+445,
+4.5 
+],
+[
+ -22.06,
+180.6,
+584,
+4 
+],
+[
+ -17.8,
+181.35,
+535,
+4.4 
+],
+[
+ -24.2,
+179.2,
+530,
+4.3 
+],
+[
+ -20.69,
+181.55,
+582,
+4.7 
+],
+[
+ -21.16,
+182.4,
+260,
+4.1 
+],
+[
+ -13.82,
+172.38,
+613,
+5 
+],
+[
+ -11.49,
+166.22,
+84,
+4.6 
+],
+[
+ -20.68,
+181.41,
+593,
+4.9 
+],
+[
+ -17.1,
+184.93,
+286,
+4.7 
+],
+[
+ -20.14,
+181.6,
+587,
+4.1 
+],
+[
+ -21.96,
+179.62,
+627,
+5 
+],
+[
+ -20.42,
+181.86,
+530,
+4.5 
+],
+[
+ -15.46,
+187.81,
+40,
+5.5 
+],
+[
+ -15.31,
+185.8,
+152,
+4 
+],
+[
+ -19.86,
+184.35,
+201,
+4.5 
+],
+[
+ -11.55,
+166.2,
+96,
+4.3 
+],
+[
+ -23.74,
+179.99,
+506,
+5.2 
+],
+[
+ -17.7,
+181.23,
+546,
+4.4 
+],
+[
+ -23.54,
+180.04,
+564,
+4.3 
+],
+[
+ -19.21,
+184.7,
+197,
+4.1 
+],
+[
+ -12.11,
+167.06,
+265,
+4.5 
+],
+[
+ -21.81,
+181.71,
+323,
+4.2 
+],
+[
+ -28.98,
+181.11,
+304,
+5.3 
+],
+[
+ -34.02,
+180.21,
+75,
+5.2 
+],
+[
+ -23.84,
+180.99,
+367,
+4.5 
+],
+[
+ -19.57,
+182.38,
+579,
+4.6 
+],
+[
+ -20.12,
+183.4,
+284,
+4.3 
+],
+[
+ -17.7,
+181.7,
+450,
+4 
+],
+[
+ -19.66,
+184.31,
+170,
+4.3 
+],
+[
+ -21.5,
+170.5,
+117,
+4.7 
+],
+[
+ -23.64,
+179.96,
+538,
+4.5 
+],
+[
+ -15.43,
+186.3,
+123,
+4.2 
+],
+[
+ -15.41,
+186.44,
+69,
+4.3 
+],
+[
+ -15.48,
+167.53,
+128,
+5.1 
+],
+[
+ -13.36,
+167.06,
+236,
+4.7 
+],
+[
+ -20.64,
+182.02,
+497,
+5.2 
+],
+[
+ -19.72,
+169.71,
+271,
+4.2 
+],
+[
+ -15.44,
+185.26,
+224,
+4.2 
+],
+[
+ -19.73,
+182.4,
+375,
+4 
+],
+[
+ -27.24,
+181.11,
+365,
+4.5 
+],
+[
+ -18.16,
+183.41,
+306,
+5.2 
+],
+[
+ -13.66,
+166.54,
+50,
+5.1 
+],
+[
+ -24.57,
+179.92,
+484,
+4.7 
+],
+[
+ -16.98,
+185.61,
+108,
+4.1 
+],
+[
+ -26.2,
+178.41,
+583,
+4.6 
+],
+[
+ -21.88,
+180.39,
+608,
+4.7 
+],
+[
+ -33,
+181.6,
+72,
+4.7 
+],
+[
+ -21.33,
+180.69,
+636,
+4.6 
+],
+[
+ -19.44,
+183.5,
+293,
+4.2 
+],
+[
+ -34.89,
+180.6,
+42,
+4.4 
+],
+[
+ -20.24,
+169.49,
+100,
+4.6 
+],
+[
+ -22.55,
+185.9,
+42,
+5.7 
+],
+[
+ -36.95,
+177.81,
+146,
+5 
+],
+[
+ -15.75,
+185.23,
+280,
+4.5 
+],
+[
+ -16.85,
+182.31,
+388,
+4.2 
+],
+[
+ -19.06,
+182.45,
+477,
+4 
+],
+[
+ -26.11,
+178.3,
+617,
+4.8 
+],
+[
+ -26.2,
+178.35,
+606,
+4.4 
+],
+[
+ -26.13,
+178.31,
+609,
+4.2 
+],
+[
+ -13.66,
+172.23,
+46,
+5.3 
+],
+[
+ -13.47,
+172.29,
+64,
+4.7 
+],
+[
+ -14.6,
+167.4,
+178,
+4.8 
+],
+[
+ -18.96,
+169.48,
+248,
+4.2 
+],
+[
+ -14.65,
+166.97,
+82,
+4.8 
+],
+[
+ -19.9,
+178.9,
+81,
+4.3 
+],
+[
+ -22.05,
+180.4,
+606,
+4.7 
+],
+[
+ -19.22,
+182.43,
+571,
+4.5 
+],
+[
+ -31.24,
+180.6,
+328,
+4.4 
+],
+[
+ -17.93,
+167.89,
+49,
+5.1 
+],
+[
+ -19.3,
+183.84,
+517,
+4.2 
+],
+[
+ -26.53,
+178.57,
+600,
+5 
+],
+[
+ -27.72,
+181.7,
+94,
+4.8 
+],
+[
+ -19.19,
+183.51,
+307,
+4.3 
+],
+[
+ -17.43,
+185.43,
+189,
+4.5 
+],
+[
+ -17.05,
+181.22,
+527,
+4.2 
+],
+[
+ -19.52,
+168.98,
+63,
+4.5 
+],
+[
+ -23.71,
+180.3,
+510,
+4.6 
+],
+[
+ -21.3,
+180.82,
+624,
+4.3 
+],
+[
+ -16.24,
+168.02,
+53,
+4.7 
+],
+[
+ -16.14,
+187.32,
+42,
+5.1 
+],
+[
+ -23.95,
+182.8,
+199,
+4.6 
+],
+[
+ -25.2,
+182.6,
+149,
+4.9 
+],
+[
+ -18.84,
+184.16,
+210,
+4.2 
+],
+[
+ -12.66,
+169.46,
+658,
+4.6 
+],
+[
+ -20.65,
+181.4,
+582,
+4 
+],
+[
+ -13.23,
+167.1,
+220,
+5 
+],
+[
+ -29.91,
+181.43,
+205,
+4.4 
+],
+[
+ -14.31,
+173.5,
+614,
+4.2 
+],
+[
+ -20.1,
+184.4,
+186,
+4.2 
+],
+[
+ -17.8,
+185.17,
+97,
+4.4 
+],
+[
+ -21.27,
+173.49,
+48,
+4.9 
+],
+[
+ -23.58,
+180.17,
+462,
+5.3 
+],
+[
+ -17.9,
+181.5,
+573,
+4 
+],
+[
+ -23.34,
+184.5,
+56,
+5.7 
+],
+[
+ -15.56,
+167.62,
+127,
+6.4 
+],
+[
+ -23.83,
+182.56,
+229,
+4.3 
+],
+[
+ -11.8,
+165.8,
+112,
+4.2 
+],
+[
+ -15.54,
+167.68,
+140,
+4.7 
+],
+[
+ -20.65,
+181.32,
+597,
+4.7 
+],
+[
+ -11.75,
+166.07,
+69,
+4.2 
+],
+[
+ -24.81,
+180,
+452,
+4.3 
+],
+[
+ -20.9,
+169.84,
+93,
+4.9 
+],
+[
+ -11.34,
+166.24,
+103,
+4.6 
+],
+[
+ -17.98,
+180.5,
+626,
+4.1 
+],
+[
+ -24.34,
+179.52,
+504,
+4.8 
+],
+[
+ -13.86,
+167.16,
+202,
+4.6 
+],
+[
+ -35.56,
+180.2,
+42,
+4.6 
+],
+[
+ -35.48,
+179.9,
+59,
+4.8 
+],
+[
+ -34.2,
+179.43,
+40,
+5 
+],
+[
+ -26,
+182.12,
+205,
+5.6 
+],
+[
+ -19.89,
+183.84,
+244,
+5.3 
+],
+[
+ -23.43,
+180,
+553,
+4.7 
+],
+[
+ -18.89,
+169.42,
+239,
+4.5 
+],
+[
+ -17.82,
+181.83,
+640,
+4.3 
+],
+[
+ -25.68,
+180.34,
+434,
+4.6 
+],
+[
+ -20.2,
+180.9,
+627,
+4.1 
+],
+[
+ -15.2,
+184.68,
+99,
+4.1 
+],
+[
+ -15.03,
+182.29,
+399,
+4.1 
+],
+[
+ -32.22,
+180.2,
+216,
+5.7 
+],
+[
+ -22.64,
+180.64,
+544,
+5 
+],
+[
+ -17.42,
+185.16,
+206,
+4.5 
+],
+[
+ -17.84,
+181.48,
+542,
+4.1 
+],
+[
+ -15.02,
+184.24,
+339,
+4.6 
+],
+[
+ -18.04,
+181.75,
+640,
+4.5 
+],
+[
+ -24.6,
+183.5,
+67,
+4.3 
+],
+[
+ -19.88,
+184.3,
+161,
+4.4 
+],
+[
+ -20.3,
+183,
+375,
+4.2 
+],
+[
+ -20.45,
+181.85,
+534,
+4.1 
+],
+[
+ -17.67,
+187.09,
+45,
+4.9 
+],
+[
+ -22.3,
+181.9,
+309,
+4.3 
+],
+[
+ -19.85,
+181.85,
+576,
+4.9 
+],
+[
+ -24.27,
+179.88,
+523,
+4.6 
+],
+[
+ -15.85,
+185.13,
+290,
+4.6 
+],
+[
+ -20.02,
+184.09,
+234,
+5.3 
+],
+[
+ -18.56,
+169.31,
+223,
+4.7 
+],
+[
+ -17.87,
+182,
+569,
+4.6 
+],
+[
+ -24.08,
+179.5,
+605,
+4.1 
+],
+[
+ -32.2,
+179.61,
+422,
+4.6 
+],
+[
+ -20.36,
+181.19,
+637,
+4.2 
+],
+[
+ -23.85,
+182.53,
+204,
+4.6 
+],
+[
+ -24,
+182.75,
+175,
+4.5 
+],
+[
+ -20.41,
+181.74,
+538,
+4.3 
+],
+[
+ -17.72,
+180.3,
+595,
+5.2 
+],
+[
+ -19.67,
+182.18,
+360,
+4.3 
+],
+[
+ -17.7,
+182.2,
+445,
+4 
+],
+[
+ -16.23,
+183.59,
+367,
+4.7 
+],
+[
+ -26.72,
+183.35,
+190,
+4.5 
+],
+[
+ -12.95,
+169.09,
+629,
+4.5 
+],
+[
+ -21.97,
+182.32,
+261,
+4.3 
+],
+[
+ -21.96,
+180.54,
+603,
+5.2 
+],
+[
+ -20.32,
+181.69,
+508,
+4.5 
+],
+[
+ -30.28,
+180.62,
+350,
+4.7 
+],
+[
+ -20.2,
+182.3,
+533,
+4.2 
+],
+[
+ -30.66,
+180.13,
+411,
+4.7 
+],
+[
+ -16.17,
+184.1,
+338,
+4.3 
+],
+[
+ -28.25,
+181.71,
+226,
+4.1 
+],
+[
+ -20.47,
+185.68,
+93,
+5.4 
+],
+[
+ -23.55,
+180.27,
+535,
+4.3 
+],
+[
+ -20.94,
+181.58,
+573,
+4.3 
+],
+[
+ -26.67,
+182.4,
+186,
+4.2 
+],
+[
+ -18.13,
+181.52,
+618,
+4.6 
+],
+[
+ -20.21,
+183.83,
+242,
+4.4 
+],
+[
+ -18.31,
+182.39,
+342,
+4.2 
+],
+[
+ -16.52,
+185.7,
+90,
+4.7 
+],
+[
+ -22.36,
+171.65,
+130,
+4.6 
+],
+[
+ -22.43,
+184.48,
+65,
+4.9 
+],
+[
+ -20.37,
+182.1,
+397,
+4.2 
+],
+[
+ -23.77,
+180.16,
+505,
+4.5 
+],
+[
+ -13.65,
+166.66,
+71,
+4.9 
+],
+[
+ -21.55,
+182.9,
+207,
+4.2 
+],
+[
+ -16.24,
+185.75,
+154,
+4.5 
+],
+[
+ -23.73,
+182.53,
+232,
+5 
+],
+[
+ -22.34,
+171.52,
+106,
+5 
+],
+[
+ -19.4,
+180.94,
+664,
+4.7 
+],
+[
+ -24.64,
+180.81,
+397,
+4.3 
+],
+[
+ -16,
+182.82,
+431,
+4.4 
+],
+[
+ -19.62,
+185.35,
+57,
+4.9 
+],
+[
+ -23.84,
+180.13,
+525,
+4.5 
+],
+[
+ -23.54,
+179.93,
+574,
+4 
+],
+[
+ -28.23,
+182.68,
+74,
+4.4 
+],
+[
+ -21.68,
+180.63,
+617,
+5 
+],
+[
+ -13.44,
+166.53,
+44,
+4.7 
+],
+[
+ -24.96,
+180.22,
+470,
+4.8 
+],
+[
+ -20.08,
+182.74,
+298,
+4.5 
+],
+[
+ -24.36,
+182.84,
+148,
+4.1 
+],
+[
+ -14.7,
+166,
+48,
+5.3 
+],
+[
+ -18.2,
+183.68,
+107,
+4.8 
+],
+[
+ -16.65,
+185.51,
+218,
+5 
+],
+[
+ -18.11,
+181.67,
+597,
+4.6 
+],
+[
+ -17.95,
+181.65,
+619,
+4.3 
+],
+[
+ -15.5,
+186.9,
+46,
+4.7 
+],
+[
+ -23.36,
+180.01,
+553,
+5.3 
+],
+[
+ -19.15,
+169.5,
+150,
+4.2 
+],
+[
+ -10.97,
+166.26,
+180,
+4.7 
+],
+[
+ -14.85,
+167.24,
+97,
+4.5 
+],
+[
+ -17.8,
+181.38,
+587,
+5.1 
+],
+[
+ -22.5,
+170.4,
+106,
+4.9 
+],
+[
+ -29.1,
+182.1,
+179,
+4.4 
+],
+[
+ -20.32,
+180.88,
+680,
+4.2 
+],
+[
+ -16.09,
+184.89,
+304,
+4.6 
+],
+[
+ -19.18,
+169.33,
+254,
+4.7 
+],
+[
+ -23.81,
+179.36,
+521,
+4.2 
+],
+[
+ -23.79,
+179.89,
+526,
+4.9 
+],
+[
+ -19.02,
+184.23,
+270,
+5.1 
+],
+[
+ -20.9,
+181.51,
+548,
+4.7 
+],
+[
+ -19.06,
+169.01,
+158,
+4.4 
+],
+[
+ -17.88,
+181.47,
+562,
+4.4 
+],
+[
+ -19.41,
+183.05,
+300,
+4.2 
+],
+[
+ -26.17,
+184.2,
+65,
+4.9 
+],
+[
+ -14.95,
+167.24,
+130,
+4.6 
+],
+[
+ -18.73,
+168.8,
+82,
+4.4 
+],
+[
+ -20.21,
+182.37,
+482,
+4.6 
+],
+[
+ -21.29,
+180.85,
+607,
+4.5 
+],
+[
+ -19.76,
+181.41,
+105,
+4.4 
+],
+[
+ -22.09,
+180.38,
+590,
+4.9 
+],
+[
+ -23.8,
+179.9,
+498,
+4.1 
+],
+[
+ -20.16,
+181.99,
+504,
+4.2 
+],
+[
+ -22.13,
+180.38,
+577,
+5.7 
+],
+[
+ -17.44,
+181.4,
+529,
+4.6 
+],
+[
+ -23.33,
+180.18,
+528,
+5 
+],
+[
+ -24.78,
+179.22,
+492,
+4.3 
+],
+[
+ -22,
+180.52,
+561,
+4.5 
+],
+[
+ -19.13,
+182.51,
+579,
+5.2 
+],
+[
+ -30.72,
+180.1,
+413,
+4.4 
+],
+[
+ -22.32,
+180.54,
+565,
+4.2 
+],
+[
+ -16.45,
+177.77,
+138,
+4.6 
+],
+[
+ -17.7,
+185,
+383,
+4 
+],
+[
+ -17.95,
+184.68,
+260,
+4.4 
+],
+[
+ -24.4,
+179.85,
+522,
+4.7 
+],
+[
+ -19.3,
+180.6,
+671,
+4.2 
+],
+[
+ -21.13,
+185.32,
+123,
+4.7 
+],
+[
+ -18.07,
+181.57,
+572,
+4.5 
+],
+[
+ -20.6,
+182.28,
+529,
+5 
+],
+[
+ -18.48,
+181.49,
+641,
+5 
+],
+[
+ -13.34,
+166.2,
+67,
+4.8 
+],
+[
+ -20.92,
+181.5,
+546,
+4.6 
+],
+[
+ -25.31,
+179.69,
+507,
+4.6 
+],
+[
+ -15.24,
+186.21,
+158,
+5 
+],
+[
+ -16.4,
+185.86,
+148,
+5 
+],
+[
+ -24.57,
+178.4,
+562,
+5.6 
+],
+[
+ -17.94,
+181.51,
+601,
+4 
+],
+[
+ -30.64,
+181.2,
+175,
+4 
+],
+[
+ -18.64,
+169.32,
+260,
+4.6 
+],
+[
+ -13.09,
+169.28,
+654,
+4.4 
+],
+[
+ -19.68,
+184.14,
+242,
+4.8 
+],
+[
+ -16.44,
+185.74,
+126,
+4.7 
+],
+[
+ -21.09,
+181.38,
+555,
+4.6 
+],
+[
+ -14.99,
+171.39,
+637,
+4.3 
+],
+[
+ -23.3,
+179.7,
+500,
+4.7 
+],
+[
+ -17.68,
+181.36,
+515,
+4.1 
+],
+[
+ -22,
+180.53,
+583,
+4.9 
+],
+[
+ -21.38,
+181.39,
+501,
+4.6 
+],
+[
+ -32.62,
+181.5,
+55,
+4.8 
+],
+[
+ -13.05,
+169.58,
+644,
+4.9 
+],
+[
+ -12.93,
+169.63,
+641,
+5.1 
+],
+[
+ -18.6,
+181.91,
+442,
+5.4 
+],
+[
+ -21.34,
+181.41,
+464,
+4.5 
+],
+[
+ -21.48,
+183.78,
+200,
+4.9 
+],
+[
+ -17.4,
+181.02,
+479,
+4.4 
+],
+[
+ -17.32,
+181.03,
+497,
+4.1 
+],
+[
+ -18.77,
+169.24,
+218,
+5.3 
+],
+[
+ -26.16,
+179.5,
+492,
+4.5 
+],
+[
+ -12.59,
+167.1,
+325,
+4.9 
+],
+[
+ -14.82,
+167.32,
+123,
+4.8 
+],
+[
+ -21.79,
+183.48,
+210,
+5.2 
+],
+[
+ -19.83,
+182.04,
+575,
+4.4 
+],
+[
+ -29.5,
+182.31,
+129,
+4.4 
+],
+[
+ -12.49,
+166.36,
+74,
+4.9 
+],
+[
+ -26.1,
+182.3,
+49,
+4.4 
+],
+[
+ -21.04,
+181.2,
+483,
+4.2 
+],
+[
+ -10.78,
+165.77,
+93,
+4.6 
+],
+[
+ -20.76,
+185.77,
+118,
+4.6 
+],
+[
+ -11.41,
+166.24,
+83,
+5.3 
+],
+[
+ -19.1,
+183.87,
+61,
+5.3 
+],
+[
+ -23.91,
+180,
+534,
+4.5 
+],
+[
+ -27.33,
+182.6,
+42,
+4.4 
+],
+[
+ -12.25,
+166.6,
+219,
+5 
+],
+[
+ -23.49,
+179.07,
+544,
+5.1 
+],
+[
+ -27.18,
+182.18,
+56,
+4.5 
+],
+[
+ -25.8,
+182.1,
+68,
+4.5 
+],
+[
+ -27.19,
+182.18,
+69,
+5.4 
+],
+[
+ -27.27,
+182.38,
+45,
+4.5 
+],
+[
+ -27.1,
+182.18,
+43,
+4.7 
+],
+[
+ -27.22,
+182.28,
+65,
+4.2 
+],
+[
+ -27.38,
+181.7,
+80,
+4.8 
+],
+[
+ -27.27,
+182.5,
+51,
+4.5 
+],
+[
+ -27.54,
+182.5,
+68,
+4.3 
+],
+[
+ -27.2,
+182.39,
+69,
+4.3 
+],
+[
+ -27.71,
+182.47,
+103,
+4.3 
+],
+[
+ -27.6,
+182.4,
+61,
+4.6 
+],
+[
+ -27.38,
+182.39,
+69,
+4.5 
+],
+[
+ -21.54,
+185.48,
+51,
+5 
+],
+[
+ -27.21,
+182.43,
+55,
+4.6 
+],
+[
+ -28.96,
+182.61,
+54,
+4.6 
+],
+[
+ -12.01,
+166.29,
+59,
+4.9 
+],
+[
+ -17.46,
+181.32,
+573,
+4.1 
+],
+[
+ -30.17,
+182.02,
+56,
+5.5 
+],
+[
+ -27.27,
+182.36,
+65,
+4.7 
+],
+[
+ -17.79,
+181.32,
+587,
+5 
+],
+[
+ -22.19,
+171.4,
+150,
+5.1 
+],
+[
+ -17.1,
+182.68,
+403,
+5.5 
+],
+[
+ -27.18,
+182.53,
+60,
+4.6 
+],
+[
+ -11.64,
+166.47,
+130,
+4.7 
+],
+[
+ -17.98,
+181.58,
+590,
+4.2 
+],
+[
+ -16.9,
+185.72,
+135,
+4 
+],
+[
+ -21.98,
+179.6,
+583,
+5.4 
+],
+[
+ -32.14,
+179.9,
+406,
+4.3 
+],
+[
+ -18.8,
+169.21,
+221,
+4.4 
+],
+[
+ -26.78,
+183.61,
+40,
+4.6 
+],
+[
+ -20.43,
+182.37,
+502,
+5.1 
+],
+[
+ -18.3,
+183.2,
+103,
+4.5 
+],
+[
+ -15.83,
+182.51,
+423,
+4.2 
+],
+[
+ -23.44,
+182.93,
+158,
+4.1 
+],
+[
+ -23.73,
+179.99,
+527,
+5.1 
+],
+[
+ -19.89,
+184.08,
+219,
+5.4 
+],
+[
+ -17.59,
+181.09,
+536,
+5.1 
+],
+[
+ -19.77,
+181.4,
+630,
+5.1 
+],
+[
+ -20.31,
+184.06,
+249,
+4.4 
+],
+[
+ -15.33,
+186.75,
+48,
+5.7 
+],
+[
+ -18.2,
+181.6,
+553,
+4.4 
+],
+[
+ -15.36,
+186.66,
+112,
+5.1 
+],
+[
+ -15.29,
+186.42,
+153,
+4.6 
+],
+[
+ -15.36,
+186.71,
+130,
+5.5 
+],
+[
+ -16.24,
+167.95,
+188,
+5.1 
+],
+[
+ -13.47,
+167.14,
+226,
+4.4 
+],
+[
+ -25.5,
+182.82,
+124,
+5 
+],
+[
+ -14.32,
+167.33,
+204,
+5 
+],
+[
+ -20.04,
+182.01,
+605,
+5.1 
+],
+[
+ -28.83,
+181.66,
+221,
+5.1 
+],
+[
+ -17.82,
+181.49,
+573,
+4.2 
+],
+[
+ -27.23,
+180.98,
+401,
+4.5 
+],
+[
+ -10.72,
+165.99,
+195,
+4 
+],
+[
+ -27,
+183.88,
+56,
+4.9 
+],
+[
+ -20.36,
+186.16,
+102,
+4.3 
+],
+[
+ -27.17,
+183.68,
+44,
+4.8 
+],
+[
+ -20.94,
+181.26,
+556,
+4.4 
+],
+[
+ -17.46,
+181.9,
+417,
+4.2 
+],
+[
+ -21.04,
+181.2,
+591,
+4.9 
+],
+[
+ -23.7,
+179.6,
+646,
+4.2 
+],
+[
+ -17.72,
+181.42,
+565,
+5.3 
+],
+[
+ -15.87,
+188.13,
+52,
+5 
+],
+[
+ -17.84,
+181.3,
+535,
+5.7 
+],
+[
+ -13.45,
+170.3,
+641,
+5.3 
+],
+[
+ -30.8,
+182.16,
+41,
+4.7 
+],
+[
+ -11.63,
+166.14,
+109,
+4.6 
+],
+[
+ -30.4,
+181.4,
+40,
+4.3 
+],
+[
+ -26.18,
+178.59,
+548,
+5.4 
+],
+[
+ -15.7,
+184.5,
+118,
+4.4 
+],
+[
+ -17.95,
+181.5,
+593,
+4.3 
+],
+[
+ -20.51,
+182.3,
+492,
+4.3 
+],
+[
+ -15.36,
+167.51,
+123,
+4.7 
+],
+[
+ -23.61,
+180.23,
+475,
+4.4 
+],
+[
+ -33.2,
+181.6,
+153,
+4.2 
+],
+[
+ -17.68,
+186.8,
+112,
+4.5 
+],
+[
+ -22.24,
+184.56,
+99,
+4.8 
+],
+[
+ -20.07,
+169.14,
+66,
+4.8 
+],
+[
+ -25.04,
+180.1,
+481,
+4.3 
+],
+[
+ -21.5,
+185.2,
+139,
+4.4 
+],
+[
+ -14.28,
+167.26,
+211,
+5.1 
+],
+[
+ -14.43,
+167.26,
+151,
+4.4 
+],
+[
+ -32.7,
+181.7,
+211,
+4.4 
+],
+[
+ -34.1,
+181.8,
+246,
+4.3 
+],
+[
+ -19.7,
+186.2,
+47,
+4.8 
+],
+[
+ -24.19,
+180.38,
+484,
+4.3 
+],
+[
+ -26.6,
+182.77,
+119,
+4.5 
+],
+[
+ -17.04,
+186.8,
+70,
+4.1 
+],
+[
+ -22.1,
+179.71,
+579,
+5.1 
+],
+[
+ -32.6,
+180.9,
+57,
+4.7 
+],
+[
+ -33,
+182.4,
+176,
+4.6 
+],
+[
+ -20.58,
+181.24,
+602,
+4.7 
+],
+[
+ -20.61,
+182.6,
+488,
+4.6 
+],
+[
+ -19.47,
+169.15,
+149,
+4.4 
+],
+[
+ -17.47,
+180.96,
+546,
+4.2 
+],
+[
+ -18.4,
+183.4,
+343,
+4.1 
+],
+[
+ -23.33,
+180.26,
+530,
+4.7 
+],
+[
+ -18.55,
+182.23,
+563,
+4 
+],
+[
+ -26.16,
+178.47,
+537,
+4.8 
+],
+[
+ -21.8,
+183.2,
+325,
+4.4 
+],
+[
+ -27.63,
+182.93,
+80,
+4.3 
+],
+[
+ -18.89,
+169.48,
+259,
+4.4 
+],
+[
+ -20.3,
+182.3,
+476,
+4.5 
+],
+[
+ -20.56,
+182.04,
+499,
+4.5 
+],
+[
+ -16.1,
+185.32,
+257,
+4.7 
+],
+[
+ -12.66,
+166.37,
+165,
+4.3 
+],
+[
+ -21.05,
+184.68,
+136,
+4.7 
+],
+[
+ -17.97,
+168.52,
+146,
+4.8 
+],
+[
+ -19.83,
+182.54,
+524,
+4.6 
+],
+[
+ -22.55,
+183.81,
+82,
+5.1 
+],
+[
+ -22.28,
+183.52,
+90,
+4.7 
+],
+[
+ -15.72,
+185.64,
+138,
+4.3 
+],
+[
+ -20.85,
+181.59,
+499,
+5.1 
+],
+[
+ -21.11,
+181.5,
+538,
+5.5 
+],
+[
+ -25.31,
+180.15,
+467,
+4.5 
+],
+[
+ -26.46,
+182.5,
+184,
+4.3 
+],
+[
+ -24.09,
+179.68,
+538,
+4.3 
+],
+[
+ -16.96,
+167.7,
+45,
+4.7 
+],
+[
+ -23.19,
+182.8,
+237,
+4.3 
+],
+[
+ -20.81,
+184.7,
+162,
+4.3 
+],
+[
+ -15.03,
+167.32,
+136,
+4.6 
+],
+[
+ -18.06,
+181.59,
+604,
+4.5 
+],
+[
+ -19,
+185.6,
+107,
+4.5 
+],
+[
+ -23.53,
+179.99,
+538,
+5.4 
+],
+[
+ -18.18,
+180.63,
+639,
+4.6 
+],
+[
+ -15.66,
+186.8,
+45,
+4.4 
+],
+[
+ -18,
+180.62,
+636,
+5 
+],
+[
+ -18.08,
+180.7,
+628,
+5.2 
+],
+[
+ -18.05,
+180.86,
+632,
+4.4 
+],
+[
+ -29.9,
+181.16,
+215,
+5.1 
+],
+[
+ -20.9,
+181.9,
+556,
+4.4 
+],
+[
+ -15.61,
+167.5,
+135,
+4.4 
+],
+[
+ -16.03,
+185.43,
+297,
+4.8 
+],
+[
+ -17.68,
+181.11,
+568,
+4.4 
+],
+[
+ -31.94,
+180.57,
+168,
+4.7 
+],
+[
+ -19.14,
+184.36,
+269,
+4.7 
+],
+[
+ -18,
+185.48,
+143,
+4.4 
+],
+[
+ -16.95,
+185.94,
+95,
+4.3 
+],
+[
+ -10.79,
+166.06,
+142,
+5 
+],
+[
+ -20.83,
+185.9,
+104,
+4.5 
+],
+[
+ -32.9,
+181.6,
+169,
+4.6 
+],
+[
+ -37.93,
+177.47,
+65,
+5.4 
+],
+[
+ -29.09,
+183.2,
+54,
+4.6 
+],
+[
+ -23.56,
+180.23,
+474,
+4.5 
+],
+[
+ -19.6,
+185.2,
+125,
+4.4 
+],
+[
+ -21.39,
+180.68,
+617,
+4.5 
+],
+[
+ -14.85,
+184.87,
+294,
+4.1 
+],
+[
+ -22.7,
+183.3,
+180,
+4 
+],
+[
+ -32.42,
+181.21,
+47,
+4.9 
+],
+[
+ -17.9,
+181.3,
+593,
+4.1 
+],
+[
+ -23.58,
+183.4,
+94,
+5.2 
+],
+[
+ -34.4,
+180.5,
+201,
+4.4 
+],
+[
+ -17.61,
+181.2,
+537,
+4.1 
+],
+[
+ -21.07,
+181.13,
+594,
+4.9 
+],
+[
+ -13.84,
+170.62,
+638,
+4.6 
+],
+[
+ -30.24,
+181.63,
+80,
+4.5 
+],
+[
+ -18.49,
+169.04,
+211,
+4.8 
+],
+[
+ -23.45,
+180.23,
+520,
+4.2 
+],
+[
+ -16.04,
+183.54,
+384,
+4.2 
+],
+[
+ -17.14,
+185.31,
+223,
+4.1 
+],
+[
+ -22.54,
+172.91,
+54,
+5.5 
+],
+[
+ -15.9,
+185.3,
+57,
+4.4 
+],
+[
+ -30.04,
+181.2,
+49,
+4.8 
+],
+[
+ -24.03,
+180.22,
+508,
+4.2 
+],
+[
+ -18.89,
+184.46,
+242,
+4.8 
+],
+[
+ -16.51,
+187.1,
+62,
+4.9 
+],
+[
+ -20.1,
+186.3,
+63,
+4.6 
+],
+[
+ -21.06,
+183.81,
+203,
+4.5 
+],
+[
+ -13.07,
+166.87,
+132,
+4.4 
+],
+[
+ -23.46,
+180.09,
+543,
+4.6 
+],
+[
+ -19.41,
+182.3,
+589,
+4.2 
+],
+[
+ -11.81,
+165.98,
+51,
+4.7 
+],
+[
+ -11.76,
+165.96,
+45,
+4.4 
+],
+[
+ -12.08,
+165.76,
+63,
+4.5 
+],
+[
+ -25.59,
+180.02,
+485,
+4.9 
+],
+[
+ -26.54,
+183.63,
+66,
+4.7 
+],
+[
+ -20.9,
+184.28,
+58,
+5.5 
+],
+[
+ -16.99,
+187,
+70,
+4.7 
+],
+[
+ -23.46,
+180.17,
+541,
+4.6 
+],
+[
+ -17.81,
+181.82,
+598,
+4.1 
+],
+[
+ -15.17,
+187.2,
+50,
+4.7 
+],
+[
+ -11.67,
+166.02,
+102,
+4.6 
+],
+[
+ -20.75,
+184.52,
+144,
+4.3 
+],
+[
+ -19.5,
+186.9,
+58,
+4.4 
+],
+[
+ -26.18,
+179.79,
+460,
+4.7 
+],
+[
+ -20.66,
+185.77,
+69,
+4.3 
+],
+[
+ -19.22,
+182.54,
+570,
+4.1 
+],
+[
+ -24.68,
+183.33,
+70,
+4.7 
+],
+[
+ -15.43,
+167.38,
+137,
+4.5 
+],
+[
+ -32.45,
+181.15,
+41,
+5.5 
+],
+[
+ -21.31,
+180.84,
+586,
+4.5 
+],
+[
+ -15.44,
+167.18,
+140,
+4.6 
+],
+[
+ -13.26,
+167.01,
+213,
+5.1 
+],
+[
+ -15.26,
+183.13,
+393,
+4.4 
+],
+[
+ -33.57,
+180.8,
+51,
+4.7 
+],
+[
+ -15.77,
+167.01,
+64,
+5.5 
+],
+[
+ -15.79,
+166.83,
+45,
+4.6 
+],
+[
+ -21,
+183.2,
+296,
+4 
+],
+[
+ -16.28,
+166.94,
+50,
+4.6 
+],
+[
+ -23.28,
+184.6,
+44,
+4.8 
+],
+[
+ -16.1,
+167.25,
+68,
+4.7 
+],
+[
+ -17.7,
+181.31,
+549,
+4.7 
+],
+[
+ -15.96,
+166.69,
+150,
+4.2 
+],
+[
+ -15.95,
+167.34,
+47,
+5.4 
+],
+[
+ -17.56,
+181.59,
+543,
+4.6 
+],
+[
+ -15.9,
+167.42,
+40,
+5.5 
+],
+[
+ -15.29,
+166.9,
+100,
+4.2 
+],
+[
+ -15.86,
+166.85,
+85,
+4.5 
+],
+[
+ -16.2,
+166.8,
+98,
+4.5 
+],
+[
+ -15.71,
+166.91,
+58,
+4.8 
+],
+[
+ -16.45,
+167.54,
+125,
+4.6 
+],
+[
+ -11.54,
+166.18,
+89,
+5.4 
+],
+[
+ -19.61,
+181.91,
+590,
+4.6 
+],
+[
+ -15.61,
+187.15,
+49,
+5 
+],
+[
+ -21.16,
+181.41,
+543,
+4.3 
+],
+[
+ -20.65,
+182.22,
+506,
+4.3 
+],
+[
+ -20.33,
+168.71,
+40,
+4.8 
+],
+[
+ -15.08,
+166.62,
+42,
+4.7 
+],
+[
+ -23.28,
+184.61,
+76,
+4.7 
+],
+[
+ -23.44,
+184.6,
+63,
+4.8 
+],
+[
+ -23.12,
+184.42,
+104,
+4.2 
+],
+[
+ -23.65,
+184.46,
+93,
+4.2 
+],
+[
+ -22.91,
+183.95,
+64,
+5.9 
+],
+[
+ -22.06,
+180.47,
+587,
+4.6 
+],
+[
+ -13.56,
+166.49,
+83,
+4.5 
+],
+[
+ -17.99,
+181.57,
+579,
+4.9 
+],
+[
+ -23.92,
+184.47,
+40,
+4.7 
+],
+[
+ -30.69,
+182.1,
+62,
+4.9 
+],
+[
+ -21.92,
+182.8,
+273,
+5.3 
+],
+[
+ -25.04,
+180.97,
+393,
+4.2 
+],
+[
+ -19.92,
+183.91,
+264,
+4.2 
+],
+[
+ -27.75,
+182.26,
+174,
+4.5 
+],
+[
+ -17.71,
+181.18,
+574,
+5.2 
+],
+[
+ -19.6,
+183.84,
+309,
+4.5 
+],
+[
+ -34.68,
+179.82,
+75,
+5.6 
+],
+[
+ -14.46,
+167.26,
+195,
+5.2 
+],
+[
+ -18.85,
+187.55,
+44,
+4.8 
+],
+[
+ -17.02,
+182.41,
+420,
+4.5 
+],
+[
+ -20.41,
+186.51,
+63,
+5 
+],
+[
+ -18.18,
+182.04,
+609,
+4.4 
+],
+[
+ -16.49,
+187.8,
+40,
+4.5 
+],
+[
+ -17.74,
+181.31,
+575,
+4.6 
+],
+[
+ -20.49,
+181.69,
+559,
+4.5 
+],
+[
+ -18.51,
+182.64,
+405,
+5.2 
+],
+[
+ -27.28,
+183.4,
+70,
+5.1 
+],
+[
+ -15.9,
+167.16,
+41,
+4.8 
+],
+[
+ -20.57,
+181.33,
+605,
+4.3 
+],
+[
+ -11.25,
+166.36,
+130,
+5.1 
+],
+[
+ -20.04,
+181.87,
+577,
+4.7 
+],
+[
+ -20.89,
+181.25,
+599,
+4.6 
+],
+[
+ -16.62,
+186.74,
+82,
+4.8 
+],
+[
+ -20.09,
+168.75,
+50,
+4.6 
+],
+[
+ -24.96,
+179.87,
+480,
+4.4 
+],
+[
+ -20.95,
+181.42,
+559,
+4.6 
+],
+[
+ -23.31,
+179.27,
+566,
+5.1 
+],
+[
+ -20.95,
+181.06,
+611,
+4.3 
+],
+[
+ -21.58,
+181.9,
+409,
+4.4 
+],
+[
+ -13.62,
+167.15,
+209,
+4.7 
+],
+[
+ -12.72,
+166.28,
+70,
+4.8 
+],
+[
+ -21.79,
+185,
+74,
+4.1 
+],
+[
+ -20.48,
+169.76,
+134,
+4.6 
+],
+[
+ -12.84,
+166.78,
+150,
+4.9 
+],
+[
+ -17.02,
+182.93,
+406,
+4 
+],
+[
+ -23.89,
+182.39,
+243,
+4.7 
+],
+[
+ -23.07,
+184.03,
+89,
+4.7 
+],
+[
+ -27.98,
+181.96,
+53,
+5.2 
+],
+[
+ -28.1,
+182.25,
+68,
+4.6 
+],
+[
+ -21.24,
+180.81,
+605,
+4.6 
+],
+[
+ -21.24,
+180.86,
+615,
+4.9 
+],
+[
+ -19.89,
+174.46,
+546,
+5.7 
+],
+[
+ -32.82,
+179.8,
+176,
+4.7 
+],
+[
+ -22,
+185.5,
+52,
+4.4 
+],
+[
+ -21.57,
+185.62,
+66,
+4.9 
+],
+[
+ -24.5,
+180.92,
+377,
+4.8 
+],
+[
+ -33.03,
+180.2,
+186,
+4.6 
+],
+[
+ -30.09,
+182.4,
+51,
+4.4 
+],
+[
+ -22.75,
+170.99,
+67,
+4.8 
+],
+[
+ -17.99,
+168.98,
+234,
+4.7 
+],
+[
+ -19.6,
+181.87,
+597,
+4.2 
+],
+[
+ -15.65,
+186.26,
+64,
+5.1 
+],
+[
+ -17.78,
+181.53,
+511,
+4.8 
+],
+[
+ -22.04,
+184.91,
+47,
+4.9 
+],
+[
+ -20.06,
+168.69,
+49,
+5.1 
+],
+[
+ -18.07,
+181.54,
+546,
+4.3 
+],
+[
+ -12.85,
+165.67,
+75,
+4.4 
+],
+[
+ -33.29,
+181.3,
+60,
+4.7 
+],
+[
+ -34.63,
+179.1,
+278,
+4.7 
+],
+[
+ -24.18,
+179.02,
+550,
+5.3 
+],
+[
+ -23.78,
+180.31,
+518,
+5.1 
+],
+[
+ -22.37,
+171.5,
+116,
+4.9 
+],
+[
+ -23.97,
+179.91,
+518,
+4.5 
+],
+[
+ -34.12,
+181.75,
+75,
+4.7 
+],
+[
+ -25.25,
+179.86,
+491,
+4.2 
+],
+[
+ -22.87,
+172.65,
+56,
+5.1 
+],
+[
+ -18.48,
+182.37,
+376,
+4.8 
+],
+[
+ -21.46,
+181.02,
+584,
+4.2 
+],
+[
+ -28.56,
+183.47,
+48,
+4.8 
+],
+[
+ -28.56,
+183.59,
+53,
+4.4 
+],
+[
+ -21.3,
+180.92,
+617,
+4.5 
+],
+[
+ -20.08,
+183.22,
+294,
+4.3 
+],
+[
+ -18.82,
+182.21,
+417,
+5.6 
+],
+[
+ -19.51,
+183.97,
+280,
+4 
+],
+[
+ -12.05,
+167.39,
+332,
+5 
+],
+[
+ -17.4,
+186.54,
+85,
+4.2 
+],
+[
+ -23.93,
+180.18,
+525,
+4.6 
+],
+[
+ -21.23,
+181.09,
+613,
+4.6 
+],
+[
+ -16.23,
+167.91,
+182,
+4.5 
+],
+[
+ -28.15,
+183.4,
+57,
+5 
+],
+[
+ -20.81,
+185.01,
+79,
+4.7 
+],
+[
+ -20.72,
+181.41,
+595,
+4.6 
+],
+[
+ -23.29,
+184,
+164,
+4.8 
+],
+[
+ -38.46,
+176.03,
+148,
+4.6 
+],
+[
+ -15.48,
+186.73,
+82,
+4.4 
+],
+[
+ -37.03,
+177.52,
+153,
+5.6 
+],
+[
+ -20.48,
+181.38,
+556,
+4.2 
+],
+[
+ -18.12,
+181.88,
+649,
+5.4 
+],
+[
+ -18.17,
+181.98,
+651,
+4.8 
+],
+[
+ -11.4,
+166.07,
+93,
+5.6 
+],
+[
+ -23.1,
+180.12,
+533,
+4.4 
+],
+[
+ -14.28,
+170.34,
+642,
+4.7 
+],
+[
+ -22.87,
+171.72,
+47,
+4.6 
+],
+[
+ -17.59,
+180.98,
+548,
+5.1 
+],
+[
+ -27.6,
+182.1,
+154,
+4.6 
+],
+[
+ -17.94,
+180.6,
+627,
+4.5 
+],
+[
+ -17.88,
+180.58,
+622,
+4.2 
+],
+[
+ -30.01,
+180.8,
+286,
+4.8 
+],
+[
+ -19.19,
+182.3,
+390,
+4.9 
+],
+[
+ -18.14,
+180.87,
+624,
+5.5 
+],
+[
+ -23.46,
+180.11,
+539,
+5 
+],
+[
+ -18.44,
+181.04,
+624,
+4.2 
+],
+[
+ -18.21,
+180.87,
+631,
+5.2 
+],
+[
+ -18.26,
+180.98,
+631,
+4.8 
+],
+[
+ -15.85,
+184.83,
+299,
+4.4 
+],
+[
+ -23.82,
+180.09,
+498,
+4.8 
+],
+[
+ -18.6,
+184.28,
+255,
+4.4 
+],
+[
+ -17.8,
+181.32,
+539,
+4.1 
+],
+[
+ -10.78,
+166.1,
+195,
+4.9 
+],
+[
+ -18.12,
+181.71,
+594,
+4.6 
+],
+[
+ -19.34,
+182.62,
+573,
+4.5 
+],
+[
+ -15.34,
+167.1,
+128,
+5.3 
+],
+[
+ -24.97,
+182.85,
+137,
+4.8 
+],
+[
+ -15.97,
+186.08,
+143,
+4.6 
+],
+[
+ -23.47,
+180.24,
+511,
+4.8 
+],
+[
+ -23.11,
+179.15,
+564,
+4.7 
+],
+[
+ -20.54,
+181.66,
+559,
+4.9 
+],
+[
+ -18.92,
+169.37,
+248,
+5.3 
+],
+[
+ -20.16,
+184.27,
+210,
+4.4 
+],
+[
+ -25.48,
+180.94,
+390,
+4.6 
+],
+[
+ -18.19,
+181.74,
+616,
+4.3 
+],
+[
+ -15.35,
+186.4,
+98,
+4.4 
+],
+[
+ -18.69,
+169.1,
+218,
+4.2 
+],
+[
+ -18.89,
+181.24,
+655,
+4.1 
+],
+[
+ -17.61,
+183.32,
+356,
+4.2 
+],
+[
+ -20.93,
+181.54,
+564,
+5 
+],
+[
+ -17.6,
+181.5,
+548,
+4.1 
+],
+[
+ -17.96,
+181.4,
+655,
+4.3 
+],
+[
+ -18.8,
+182.41,
+385,
+5.2 
+],
+[
+ -20.61,
+182.44,
+518,
+4.2 
+],
+[
+ -20.74,
+181.53,
+598,
+4.5 
+],
+[
+ -25.23,
+179.86,
+476,
+4.4 
+],
+[
+ -23.9,
+179.9,
+579,
+4.4 
+],
+[
+ -18.07,
+181.58,
+603,
+5 
+],
+[
+ -15.43,
+185.19,
+249,
+4 
+],
+[
+ -14.3,
+167.32,
+208,
+4.8 
+],
+[
+ -18.04,
+181.57,
+587,
+5 
+],
+[
+ -13.9,
+167.18,
+221,
+4.2 
+],
+[
+ -17.64,
+177.01,
+545,
+5.2 
+],
+[
+ -17.98,
+181.51,
+586,
+5.2 
+],
+[
+ -25,
+180,
+488,
+4.5 
+],
+[
+ -19.45,
+184.48,
+246,
+4.3 
+],
+[
+ -16.11,
+187.48,
+61,
+4.5 
+],
+[
+ -23.73,
+179.98,
+524,
+4.6 
+],
+[
+ -17.74,
+186.78,
+104,
+5.1 
+],
+[
+ -21.56,
+183.23,
+271,
+4.4 
+],
+[
+ -20.97,
+181.72,
+487,
+4.3 
+],
+[
+ -15.45,
+186.73,
+83,
+4.7 
+],
+[
+ -15.93,
+167.91,
+183,
+5.6 
+],
+[
+ -21.47,
+185.86,
+55,
+4.9 
+],
+[
+ -21.44,
+170.45,
+166,
+5.1 
+],
+[
+ -22.16,
+180.49,
+586,
+4.6 
+],
+[
+ -13.36,
+172.76,
+618,
+4.4 
+],
+[
+ -21.22,
+181.51,
+524,
+4.8 
+],
+[
+ -26.1,
+182.5,
+133,
+4.2 
+],
+[
+ -18.35,
+185.27,
+201,
+4.7 
+],
+[
+ -17.2,
+182.9,
+383,
+4.1 
+],
+[
+ -22.42,
+171.4,
+86,
+4.7 
+],
+[
+ -17.91,
+181.48,
+555,
+4 
+],
+[
+ -26.53,
+178.3,
+605,
+4.9 
+],
+[
+ -26.5,
+178.29,
+609,
+5 
+],
+[
+ -16.31,
+168.08,
+204,
+4.5 
+],
+[
+ -18.76,
+169.71,
+287,
+4.4 
+],
+[
+ -17.1,
+182.8,
+390,
+4 
+],
+[
+ -19.28,
+182.78,
+348,
+4.5 
+],
+[
+ -23.5,
+180,
+550,
+4.7 
+],
+[
+ -21.26,
+181.69,
+487,
+4.4 
+],
+[
+ -17.97,
+181.48,
+578,
+4.7 
+],
+[
+ -26.02,
+181.2,
+361,
+4.7 
+],
+[
+ -30.3,
+180.8,
+275,
+4 
+],
+[
+ -24.89,
+179.67,
+498,
+4.2 
+],
+[
+ -14.57,
+167.24,
+162,
+4.5 
+],
+[
+ -15.4,
+186.87,
+78,
+4.7 
+],
+[
+ -22.06,
+183.95,
+134,
+4.5 
+],
+[
+ -25.14,
+178.42,
+554,
+4.1 
+],
+[
+ -20.3,
+181.4,
+608,
+4.6 
+],
+[
+ -25.28,
+181.17,
+367,
+4.3 
+],
+[
+ -20.63,
+181.61,
+599,
+4.6 
+],
+[
+ -19.02,
+186.83,
+45,
+5.2 
+],
+[
+ -22.1,
+185.3,
+50,
+4.6 
+],
+[
+ -38.59,
+175.7,
+162,
+4.7 
+],
+[
+ -19.3,
+183,
+302,
+5 
+],
+[
+ -31.03,
+181.59,
+57,
+5.2 
+],
+[
+ -30.51,
+181.3,
+203,
+4.4 
+],
+[
+ -22.55,
+183.34,
+66,
+4.6 
+],
+[
+ -22.14,
+180.64,
+591,
+4.5 
+],
+[
+ -25.6,
+180.3,
+440,
+4 
+],
+[
+ -18.04,
+181.84,
+611,
+4.2 
+],
+[
+ -21.29,
+185.77,
+57,
+5.3 
+],
+[
+ -21.08,
+180.85,
+627,
+5.9 
+],
+[
+ -20.64,
+169.66,
+89,
+4.9 
+],
+[
+ -24.41,
+180.03,
+500,
+4.5 
+],
+[
+ -12.16,
+167.03,
+264,
+4.4 
+],
+[
+ -17.1,
+185.9,
+127,
+5.4 
+],
+[
+ -21.13,
+185.6,
+85,
+5.3 
+],
+[
+ -12.34,
+167.43,
+50,
+5.1 
+],
+[
+ -16.43,
+186.73,
+75,
+4.1 
+],
+[
+ -20.7,
+184.3,
+182,
+4.3 
+],
+[
+ -21.18,
+180.92,
+619,
+4.5 
+],
+[
+ -17.78,
+185.33,
+223,
+4.1 
+],
+[
+ -21.57,
+183.86,
+156,
+5.1 
+],
+[
+ -13.7,
+166.75,
+46,
+5.3 
+],
+[
+ -12.27,
+167.41,
+50,
+4.5 
+],
+[
+ -19.1,
+184.52,
+230,
+4.1 
+],
+[
+ -19.85,
+184.51,
+184,
+4.4 
+],
+[
+ -11.37,
+166.55,
+188,
+4.7 
+],
+[
+ -20.7,
+186.3,
+80,
+4 
+],
+[
+ -20.24,
+185.1,
+86,
+5.1 
+],
+[
+ -16.4,
+182.73,
+391,
+4 
+],
+[
+ -19.6,
+184.53,
+199,
+4.3 
+],
+[
+ -21.63,
+180.77,
+592,
+4.3 
+],
+[
+ -21.6,
+180.5,
+595,
+4 
+],
+[
+ -21.77,
+181,
+618,
+4.1 
+],
+[
+ -21.8,
+183.6,
+213,
+4.4 
+],
+[
+ -21.05,
+180.9,
+616,
+4.3 
+],
+[
+ -10.8,
+165.8,
+175,
+4.2 
+],
+[
+ -17.9,
+181.5,
+589,
+4 
+],
+[
+ -22.26,
+171.44,
+83,
+4.5 
+],
+[
+ -22.33,
+171.46,
+119,
+4.7 
+],
+[
+ -24.04,
+184.85,
+70,
+5 
+],
+[
+ -20.4,
+186.1,
+74,
+4.3 
+],
+[
+ -15,
+184.62,
+40,
+5.1 
+],
+[
+ -27.87,
+183.4,
+87,
+4.7 
+],
+[
+ -14.12,
+166.64,
+63,
+5.3 
+],
+[
+ -23.61,
+180.27,
+537,
+5 
+],
+[
+ -21.56,
+185.5,
+47,
+4.5 
+],
+[
+ -21.19,
+181.58,
+490,
+5 
+],
+[
+ -18.07,
+181.65,
+593,
+4.1 
+],
+[
+ -26,
+178.43,
+644,
+4.9 
+],
+[
+ -20.21,
+181.9,
+576,
+4.1 
+],
+[
+ -28,
+182,
+199,
+4 
+],
+[
+ -20.74,
+180.7,
+589,
+4.4 
+],
+[
+ -31.8,
+180.6,
+178,
+4.5 
+],
+[
+ -18.91,
+169.46,
+248,
+4.4 
+],
+[
+ -20.45,
+182.1,
+500,
+4.5 
+],
+[
+ -22.9,
+183.8,
+71,
+4.3 
+],
+[
+ -18.11,
+181.63,
+568,
+4.3 
+],
+[
+ -23.8,
+184.7,
+42,
+5 
+],
+[
+ -23.42,
+180.21,
+510,
+4.5 
+],
+[
+ -23.2,
+184.8,
+97,
+4.5 
+],
+[
+ -12.93,
+169.52,
+663,
+4.4 
+],
+[
+ -21.14,
+181.06,
+625,
+4.5 
+],
+[
+ -19.13,
+184.97,
+210,
+4.1 
+],
+[
+ -21.08,
+181.3,
+557,
+4.9 
+],
+[
+ -20.07,
+181.75,
+582,
+4.7 
+],
+[
+ -20.9,
+182.02,
+402,
+4.3 
+],
+[
+ -25.04,
+179.84,
+474,
+4.6 
+],
+[
+ -21.85,
+180.89,
+577,
+4.6 
+],
+[
+ -19.34,
+186.59,
+56,
+5.2 
+],
+[
+ -15.83,
+167.1,
+43,
+4.5 
+],
+[
+ -23.73,
+183,
+118,
+4.3 
+],
+[
+ -18.1,
+181.72,
+544,
+4.6 
+],
+[
+ -22.12,
+180.49,
+532,
+4 
+],
+[
+ -15.39,
+185.1,
+237,
+4.5 
+],
+[
+ -16.21,
+186.52,
+111,
+4.8 
+],
+[
+ -21.75,
+180.67,
+595,
+4.6 
+],
+[
+ -22.1,
+180.4,
+603,
+4.1 
+],
+[
+ -24.97,
+179.54,
+505,
+4.9 
+],
+[
+ -19.36,
+186.36,
+100,
+4.7 
+],
+[
+ -22.14,
+179.62,
+587,
+4.1 
+],
+[
+ -21.48,
+182.44,
+364,
+4.3 
+],
+[
+ -18.54,
+168.93,
+100,
+4.4 
+],
+[
+ -21.62,
+182.4,
+350,
+4 
+],
+[
+ -13.4,
+166.9,
+228,
+4.8 
+],
+[
+ -15.5,
+185.3,
+93,
+4.4 
+],
+[
+ -15.67,
+185.23,
+66,
+4.4 
+],
+[
+ -21.78,
+183.11,
+225,
+4.6 
+],
+[
+ -30.63,
+180.9,
+334,
+4.2 
+],
+[
+ -15.7,
+185.1,
+70,
+4.1 
+],
+[
+ -19.2,
+184.37,
+220,
+4.2 
+],
+[
+ -19.7,
+182.44,
+397,
+4 
+],
+[
+ -19.4,
+182.29,
+326,
+4.1 
+],
+[
+ -15.85,
+185.9,
+121,
+4.1 
+],
+[
+ -17.38,
+168.63,
+209,
+4.7 
+],
+[
+ -24.33,
+179.97,
+510,
+4.8 
+],
+[
+ -20.89,
+185.26,
+54,
+5.1 
+],
+[
+ -18.97,
+169.44,
+242,
+5 
+],
+[
+ -17.99,
+181.62,
+574,
+4.8 
+],
+[
+ -15.8,
+185.25,
+82,
+4.4 
+],
+[
+ -25.42,
+182.65,
+102,
+5 
+],
+[
+ -21.6,
+169.9,
+43,
+5.2 
+],
+[
+ -26.06,
+180.05,
+432,
+4.2 
+],
+[
+ -17.56,
+181.23,
+580,
+4.1 
+],
+[
+ -25.63,
+180.26,
+464,
+4.8 
+],
+[
+ -25.46,
+179.98,
+479,
+4.5 
+],
+[
+ -22.23,
+180.48,
+581,
+5 
+],
+[
+ -21.55,
+181.39,
+513,
+5.1 
+],
+[
+ -15.18,
+185.93,
+77,
+4.1 
+],
+[
+ -13.79,
+166.56,
+68,
+4.7 
+],
+[
+ -15.18,
+167.23,
+71,
+5.2 
+],
+[
+ -18.78,
+186.72,
+68,
+4.8 
+],
+[
+ -17.9,
+181.41,
+586,
+4.5 
+],
+[
+ -18.5,
+185.4,
+243,
+4 
+],
+[
+ -14.82,
+171.17,
+658,
+4.7 
+],
+[
+ -15.65,
+185.17,
+315,
+4.1 
+],
+[
+ -30.01,
+181.15,
+210,
+4.3 
+],
+[
+ -13.16,
+167.24,
+278,
+4.3 
+],
+[
+ -21.03,
+180.78,
+638,
+4 
+],
+[
+ -21.4,
+180.78,
+615,
+4.7 
+],
+[
+ -17.93,
+181.89,
+567,
+4.1 
+],
+[
+ -20.87,
+181.7,
+560,
+4.2 
+],
+[
+ -12.01,
+166.66,
+99,
+4.8 
+],
+[
+ -19.1,
+169.63,
+266,
+4.8 
+],
+[
+ -22.85,
+181.37,
+397,
+4.2 
+],
+[
+ -17.08,
+185.96,
+180,
+4.2 
+],
+[
+ -21.14,
+174.21,
+40,
+5.7 
+],
+[
+ -12.23,
+167.02,
+242,
+6 
+],
+[
+ -20.91,
+181.57,
+530,
+4.2 
+],
+[
+ -11.38,
+167.05,
+133,
+4.5 
+],
+[
+ -11.02,
+167.01,
+62,
+4.9 
+],
+[
+ -22.09,
+180.58,
+580,
+4.4 
+],
+[
+ -17.8,
+181.2,
+530,
+4 
+],
+[
+ -18.94,
+182.43,
+566,
+4.3 
+],
+[
+ -18.85,
+182.2,
+501,
+4.2 
+],
+[
+ -21.91,
+181.28,
+548,
+4.5 
+],
+[
+ -22.03,
+179.77,
+587,
+4.8 
+],
+[
+ -18.1,
+181.63,
+592,
+4.4 
+],
+[
+ -18.4,
+184.84,
+221,
+4.2 
+],
+[
+ -21.2,
+181.4,
+560,
+4.2 
+],
+[
+ -12,
+166.2,
+94,
+5 
+],
+[
+ -11.7,
+166.3,
+139,
+4.2 
+],
+[
+ -26.72,
+182.69,
+162,
+5.2 
+],
+[
+ -24.39,
+178.98,
+562,
+4.5 
+],
+[
+ -19.64,
+169.5,
+204,
+4.6 
+],
+[
+ -21.35,
+170.04,
+56,
+5 
+],
+[
+ -22.82,
+184.52,
+49,
+5 
+],
+[
+ -38.28,
+177.1,
+100,
+5.4 
+],
+[
+ -12.57,
+167.11,
+231,
+4.8 
+],
+[
+ -22.24,
+180.28,
+601,
+4.2 
+],
+[
+ -13.8,
+166.53,
+42,
+5.5 
+],
+[
+ -21.07,
+183.78,
+180,
+4.3 
+],
+[
+ -17.74,
+181.25,
+559,
+4.1 
+],
+[
+ -23.87,
+180.15,
+524,
+4.4 
+],
+[
+ -21.29,
+185.8,
+69,
+4.9 
+],
+[
+ -22.2,
+180.58,
+594,
+4.5 
+],
+[
+ -15.24,
+185.11,
+262,
+4.9 
+],
+[
+ -17.82,
+181.27,
+538,
+4 
+],
+[
+ -32.14,
+180,
+331,
+4.5 
+],
+[
+ -19.3,
+185.86,
+48,
+5 
+],
+[
+ -33.09,
+180.94,
+47,
+4.9 
+],
+[
+ -20.18,
+181.62,
+558,
+4.5 
+],
+[
+ -17.46,
+181.42,
+524,
+4.2 
+],
+[
+ -17.44,
+181.33,
+545,
+4.2 
+],
+[
+ -24.71,
+179.85,
+477,
+4.2 
+],
+[
+ -21.53,
+170.52,
+129,
+5.2 
+],
+[
+ -19.17,
+169.53,
+268,
+4.3 
+],
+[
+ -28.05,
+182.39,
+117,
+5.1 
+],
+[
+ -23.39,
+179.97,
+541,
+4.6 
+],
+[
+ -22.33,
+171.51,
+112,
+4.6 
+],
+[
+ -15.28,
+185.98,
+162,
+4.4 
+],
+[
+ -20.27,
+181.51,
+609,
+4.4 
+],
+[
+ -10.96,
+165.97,
+76,
+4.9 
+],
+[
+ -21.52,
+169.75,
+61,
+5.1 
+],
+[
+ -19.57,
+184.47,
+202,
+4.2 
+],
+[
+ -23.08,
+183.45,
+90,
+4.7 
+],
+[
+ -25.06,
+182.8,
+133,
+4 
+],
+[
+ -17.85,
+181.44,
+589,
+5.6 
+],
+[
+ -15.99,
+167.95,
+190,
+5.3 
+],
+[
+ -20.56,
+184.41,
+138,
+5 
+],
+[
+ -17.98,
+181.61,
+598,
+4.3 
+],
+[
+ -18.4,
+181.77,
+600,
+4.1 
+],
+[
+ -27.64,
+182.22,
+162,
+5.1 
+],
+[
+ -20.99,
+181.02,
+626,
+4.5 
+],
+[
+ -14.86,
+167.32,
+137,
+4.9 
+],
+[
+ -29.33,
+182.72,
+57,
+5.4 
+],
+[
+ -25.81,
+182.54,
+201,
+4.7 
+],
+[
+ -14.1,
+166.01,
+69,
+4.8 
+],
+[
+ -17.63,
+185.13,
+219,
+4.5 
+],
+[
+ -23.47,
+180.21,
+553,
+4.2 
+],
+[
+ -23.92,
+180.21,
+524,
+4.6 
+],
+[
+ -20.88,
+185.18,
+51,
+4.6 
+],
+[
+ -20.25,
+184.75,
+107,
+5.6 
+],
+[
+ -19.33,
+186.16,
+44,
+5.4 
+],
+[
+ -18.14,
+181.71,
+574,
+4 
+],
+[
+ -22.41,
+183.99,
+128,
+5.2 
+],
+[
+ -20.77,
+181.16,
+568,
+4.2 
+],
+[
+ -17.95,
+181.73,
+583,
+4.7 
+],
+[
+ -20.83,
+181.01,
+622,
+4.3 
+],
+[
+ -27.84,
+182.1,
+193,
+4.8 
+],
+[
+ -19.94,
+182.39,
+544,
+4.6 
+],
+[
+ -23.6,
+183.99,
+118,
+5.4 
+],
+[
+ -23.7,
+184.13,
+51,
+4.8 
+],
+[
+ -30.39,
+182.4,
+63,
+4.6 
+],
+[
+ -18.98,
+182.32,
+442,
+4.2 
+],
+[
+ -27.89,
+182.92,
+87,
+5.5 
+],
+[
+ -23.5,
+184.9,
+61,
+4.7 
+],
+[
+ -23.73,
+184.49,
+60,
+4.7 
+],
+[
+ -17.93,
+181.62,
+561,
+4.5 
+],
+[
+ -35.94,
+178.52,
+138,
+5.5 
+],
+[
+ -18.68,
+184.5,
+174,
+4.5 
+],
+[
+ -23.47,
+179.95,
+543,
+4.1 
+],
+[
+ -23.49,
+180.06,
+530,
+4 
+],
+[
+ -23.85,
+180.26,
+497,
+4.3 
+],
+[
+ -27.08,
+183.44,
+63,
+4.7 
+],
+[
+ -20.88,
+184.95,
+82,
+4.9 
+],
+[
+ -20.97,
+181.2,
+605,
+4.5 
+],
+[
+ -21.71,
+183.58,
+234,
+4.7 
+],
+[
+ -23.9,
+184.6,
+41,
+4.5 
+],
+[
+ -15.78,
+167.44,
+40,
+4.8 
+],
+[
+ -12.57,
+166.72,
+137,
+4.3 
+],
+[
+ -19.69,
+184.23,
+223,
+4.1 
+],
+[
+ -22.04,
+183.95,
+109,
+5.4 
+],
+[
+ -17.99,
+181.59,
+595,
+4.1 
+],
+[
+ -23.5,
+180.13,
+512,
+4.8 
+],
+[
+ -21.4,
+180.74,
+613,
+4.2 
+],
+[
+ -15.86,
+166.98,
+60,
+4.8 
+],
+[
+ -23.95,
+184.64,
+43,
+5.4 
+],
+[
+ -25.79,
+182.38,
+172,
+4.4 
+],
+[
+ -23.75,
+184.5,
+54,
+5.2 
+],
+[
+ -24.1,
+184.5,
+68,
+4.7 
+],
+[
+ -18.56,
+169.05,
+217,
+4.9 
+],
+[
+ -23.3,
+184.68,
+102,
+4.9 
+],
+[
+ -17.03,
+185.74,
+178,
+4.2 
+],
+[
+ -20.77,
+183.71,
+251,
+4.4 
+],
+[
+ -28.1,
+183.5,
+42,
+4.4 
+],
+[
+ -18.83,
+182.26,
+575,
+4.3 
+],
+[
+ -23,
+170.7,
+43,
+4.9 
+],
+[
+ -20.82,
+181.67,
+577,
+5 
+],
+[
+ -22.95,
+170.56,
+42,
+4.7 
+],
+[
+ -28.22,
+183.6,
+75,
+4.9 
+],
+[
+ -27.99,
+183.5,
+71,
+4.3 
+],
+[
+ -15.54,
+187.15,
+60,
+4.5 
+],
+[
+ -12.37,
+166.93,
+291,
+4.2 
+],
+[
+ -22.33,
+171.66,
+125,
+5.2 
+],
+[
+ -22.7,
+170.3,
+69,
+4.8 
+],
+[
+ -17.86,
+181.3,
+614,
+4 
+],
+[
+ -16,
+184.53,
+108,
+4.7 
+],
+[
+ -20.73,
+181.42,
+575,
+4.3 
+],
+[
+ -15.45,
+181.42,
+409,
+4.3 
+],
+[
+ -20.05,
+183.86,
+243,
+4.9 
+],
+[
+ -17.95,
+181.37,
+642,
+4 
+],
+[
+ -17.7,
+188.1,
+45,
+4.2 
+],
+[
+ -25.93,
+179.54,
+470,
+4.4 
+],
+[
+ -12.28,
+167.06,
+248,
+4.7 
+],
+[
+ -20.13,
+184.2,
+244,
+4.5 
+],
+[
+ -17.4,
+187.8,
+40,
+4.5 
+],
+[
+ -21.59,
+170.56,
+165,
+6 
+] 
+];
+data.addColumn('number','Latitude');
+data.addColumn('number','Longitude');
+data.addColumn('number','depth');
+data.addColumn('number','mag');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartGeoChartID2400a141851() {
+var data = gvisDataGeoChartID2400a141851();
+var options = {};
+options["width"] =    950;
+options["height"] =    500;
+options["displayMode"] = "Markers";
+options["region"] = "009";
+options["colorAxis"] = {colors:['red', 'grey']};
+options["backgroundColor"] = "lightblue";
+
+    var chart = new google.visualization.GeoChart(
+    document.getElementById('GeoChartID2400a141851')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "geochart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartGeoChartID2400a141851);
+})();
+function displayChartGeoChartID2400a141851() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID2400a141851"></script>
+ 
+
+<!-- divChart -->
+
+<div id="GeoChartID2400a141851" 
+  style="width: 950; height: 500;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Geo chart example V - Finland</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">head(myData)
+</code></pre>
+
+<pre><code>  state.name Something
+1       FI-1       410
+2       FI-2       663
+3       FI-3       554
+4       FI-4       478
+5       FI-5       273
+6       FI-6       249
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Geo chart example VI - Finland</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- GeoChart generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Mon Aug 17 16:10:05 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataGeoChartID24005005f0b () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "FI-1",
+695 
+],
+[
+ "FI-2",
+585 
+],
+[
+ "FI-3",
+301 
+],
+[
+ "FI-4",
+795 
+],
+[
+ "FI-5",
+106 
+],
+[
+ "FI-6",
+229 
+],
+[
+ "FI-7",
+652 
+],
+[
+ "FI-8",
+55 
+],
+[
+ "FI-9",
+497 
+],
+[
+ "FI-10",
+46 
+],
+[
+ "FI-11",
+290 
+],
+[
+ "FI-12",
+958 
+],
+[
+ "FI-13",
+357 
+],
+[
+ "FI-14",
+36 
+],
+[
+ "FI-15",
+970 
+],
+[
+ "FI-16",
+582 
+],
+[
+ "FI-17",
+851 
+],
+[
+ "FI-18",
+94 
+],
+[
+ "FI-19",
+429 
+] 
+];
+data.addColumn('string','state.name');
+data.addColumn('number','Something');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartGeoChartID24005005f0b() {
+var data = gvisDataGeoChartID24005005f0b();
+var options = {};
+options["width"] =    900;
+options["height"] =    450;
+options["region"] = "FI";
+options["displayMode"] = "regions";
+options["resolution"] = "provinces";
+
+    var chart = new google.visualization.GeoChart(
+    document.getElementById('GeoChartID24005005f0b')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "geochart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartGeoChartID24005005f0b);
+})();
+function displayChartGeoChartID24005005f0b() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID24005005f0b"></script>
+ 
+
+<!-- divChart -->
+
+<div id="GeoChartID24005005f0b" 
+  style="width: 900; height: 450;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Geo chart example VII - My Running</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">head(myRunning)
+</code></pre>
+
+<pre><code>       Lat     Long                 LatLong
+1 61.49698 23.89753 61.49698053:23.89753466
+2 61.49700 23.89753 61.49699595:23.89753257
+3 61.49700 23.89769 61.49700215:23.89769048
+4 61.49700 23.89771 61.49699989:23.89771278
+5 61.49707 23.89778 61.49706879:23.89778143
+6 61.49714 23.89781 61.49713878:23.89781395
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Geo chart example VI - My Running</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(gvisMap(myRunning, &quot;LatLong&quot; , 
+             options=list(mapType=&#39;terrain&#39;, useMapTypeControl=TRUE)))
+</code></pre>
+
+<!-- Map generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Mon Aug 17 17:10:50 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataMapID240045d6f00d () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ 61.49698053,
+23.89753466,
+"23.89753466" 
+],
+[
+ 61.49699595,
+23.89753257,
+"23.89753257" 
+],
+[
+ 61.49700215,
+23.89769048,
+"23.89769048" 
+],
+[
+ 61.49699989,
+23.89771278,
+"23.89771278" 
+],
+[
+ 61.49706879,
+23.89778143,
+"23.89778143" 
+],
+[
+ 61.49713878,
+23.89781395,
+"23.89781395" 
+],
+[
+ 61.4971651,
+23.89781965,
+"23.89781965" 
+],
+[
+ 61.49718706,
+23.89782895,
+"23.89782895" 
+],
+[
+ 61.49737204,
+23.89783558,
+"23.89783558" 
+],
+[
+ 61.4977002,
+23.89772259,
+"23.89772259" 
+],
+[
+ 61.49777932,
+23.8978049,
+"23.8978049" 
+],
+[
+ 61.49789784,
+23.89805845,
+"23.89805845" 
+],
+[
+ 61.49796104,
+23.89822064,
+"23.89822064" 
+],
+[
+ 61.49800312,
+23.89841795,
+"23.89841795" 
+],
+[
+ 61.49800329,
+23.89868919,
+"23.89868919" 
+],
+[
+ 61.49798367,
+23.89905514,
+"23.89905514" 
+],
+[
+ 61.49797898,
+23.89941498,
+"23.89941498" 
+],
+[
+ 61.49795869,
+23.89975394,
+"23.89975394" 
+],
+[
+ 61.49795886,
+23.90004454,
+"23.90004454" 
+],
+[
+ 61.49794579,
+23.90035132,
+"23.90035132" 
+],
+[
+ 61.49792508,
+23.90070747,
+"23.90070747" 
+],
+[
+ 61.49791008,
+23.90094954,
+"23.90094954" 
+],
+[
+ 61.49789667,
+23.90136285,
+"23.90136285" 
+],
+[
+ 61.49788854,
+23.90170726,
+"23.90170726" 
+],
+[
+ 61.49786633,
+23.90196576,
+"23.90196576" 
+],
+[
+ 61.49782919,
+23.90231964,
+"23.90231964" 
+],
+[
+ 61.49779064,
+23.90256096,
+"23.90256096" 
+],
+[
+ 61.49774412,
+23.90283932,
+"23.90283932" 
+],
+[
+ 61.49771545,
+23.90307284,
+"23.90307284" 
+],
+[
+ 61.49767974,
+23.90335615,
+"23.90335615" 
+],
+[
+ 61.49764278,
+23.90364273,
+"23.90364273" 
+],
+[
+ 61.49758218,
+23.90396199,
+"23.90396199" 
+],
+[
+ 61.49752434,
+23.90427388,
+"23.90427388" 
+],
+[
+ 61.49749056,
+23.90448963,
+"23.90448963" 
+],
+[
+ 61.4974417,
+23.90477126,
+"23.90477126" 
+],
+[
+ 61.49740934,
+23.90506295,
+"23.90506295" 
+],
+[
+ 61.49738185,
+23.90531165,
+"23.90531165" 
+],
+[
+ 61.49735738,
+23.90556729,
+"23.90556729" 
+],
+[
+ 61.49733659,
+23.9058185,
+"23.9058185" 
+],
+[
+ 61.49730759,
+23.90606937,
+"23.90606937" 
+],
+[
+ 61.49728864,
+23.90636316,
+"23.90636316" 
+],
+[
+ 61.49726224,
+23.90669868,
+"23.90669868" 
+],
+[
+ 61.49724229,
+23.90697948,
+"23.90697948" 
+],
+[
+ 61.49722285,
+23.90727787,
+"23.90727787" 
+],
+[
+ 61.49720734,
+23.90757258,
+"23.90757258" 
+],
+[
+ 61.49717147,
+23.90785505,
+"23.90785505" 
+],
+[
+ 61.49709997,
+23.90811497,
+"23.90811497" 
+],
+[
+ 61.49701674,
+23.90822377,
+"23.90822377" 
+],
+[
+ 61.49690375,
+23.90830097,
+"23.90830097" 
+],
+[
+ 61.49679713,
+23.90838822,
+"23.90838822" 
+],
+[
+ 61.49668196,
+23.90848956,
+"23.90848956" 
+],
+[
+ 61.49656596,
+23.90859668,
+"23.90859668" 
+],
+[
+ 61.49635415,
+23.90871068,
+"23.90871068" 
+],
+[
+ 61.49625197,
+23.90880128,
+"23.90880128" 
+],
+[
+ 61.49616698,
+23.90898786,
+"23.90898786" 
+],
+[
+ 61.49602977,
+23.90910085,
+"23.90910085" 
+],
+[
+ 61.49586498,
+23.90914276,
+"23.90914276" 
+],
+[
+ 61.4957245,
+23.90917805,
+"23.90917805" 
+],
+[
+ 61.49558435,
+23.90921166,
+"23.90921166" 
+],
+[
+ 61.49544798,
+23.90925843,
+"23.90925843" 
+],
+[
+ 61.49530096,
+23.90928978,
+"23.90928978" 
+],
+[
+ 61.49518018,
+23.90930856,
+"23.90930856" 
+],
+[
+ 61.49502276,
+23.90934812,
+"23.90934812" 
+],
+[
+ 61.49490148,
+23.90932716,
+"23.90932716" 
+],
+[
+ 61.49475555,
+23.90929447,
+"23.90929447" 
+],
+[
+ 61.49466176,
+23.90928349,
+"23.90928349" 
+],
+[
+ 61.49455606,
+23.90925382,
+"23.90925382" 
+],
+[
+ 61.49443109,
+23.90922004,
+"23.90922004" 
+],
+[
+ 61.49431776,
+23.90920345,
+"23.90920345" 
+],
+[
+ 61.49418449,
+23.90917369,
+"23.90917369" 
+],
+[
+ 61.49402658,
+23.90913438,
+"23.90913438" 
+],
+[
+ 61.49387319,
+23.90905358,
+"23.90905358" 
+],
+[
+ 61.49374545,
+23.90898108,
+"23.90898108" 
+],
+[
+ 61.49358795,
+23.90891327,
+"23.90891327" 
+],
+[
+ 61.49347798,
+23.90885359,
+"23.90885359" 
+],
+[
+ 61.49335066,
+23.90878368,
+"23.90878368" 
+],
+[
+ 61.49326206,
+23.90884403,
+"23.90884403" 
+],
+[
+ 61.49324069,
+23.90914586,
+"23.90914586" 
+],
+[
+ 61.49325234,
+23.90942758,
+"23.90942758" 
+],
+[
+ 61.49325167,
+23.90970837,
+"23.90970837" 
+],
+[
+ 61.49326189,
+23.90997794,
+"23.90997794" 
+],
+[
+ 61.4932707,
+23.91035018,
+"23.91035018" 
+],
+[
+ 61.49326164,
+23.91068168,
+"23.91068168" 
+],
+[
+ 61.49319744,
+23.91088217,
+"23.91088217" 
+],
+[
+ 61.49314036,
+23.91114612,
+"23.91114612" 
+],
+[
+ 61.49313516,
+23.91133932,
+"23.91133932" 
+],
+[
+ 61.49315352,
+23.91157938,
+"23.91157938" 
+],
+[
+ 61.49316844,
+23.91188054,
+"23.91188054" 
+],
+[
+ 61.49317925,
+23.91210677,
+"23.91210677" 
+],
+[
+ 61.49320029,
+23.91238036,
+"23.91238036" 
+],
+[
+ 61.49320305,
+23.91242227,
+"23.91242227" 
+],
+[
+ 61.49321915,
+23.91256107,
+"23.91256107" 
+],
+[
+ 61.49323532,
+23.91264849,
+"23.91264849" 
+],
+[
+ 61.49328427,
+23.9130002,
+"23.9130002" 
+],
+[
+ 61.49333029,
+23.91328082,
+"23.91328082" 
+],
+[
+ 61.49339542,
+23.91363555,
+"23.91363555" 
+],
+[
+ 61.49344588,
+23.91393252,
+"23.91393252" 
+],
+[
+ 61.49341746,
+23.91416227,
+"23.91416227" 
+],
+[
+ 61.49333876,
+23.91429587,
+"23.91429587" 
+],
+[
+ 61.49326156,
+23.91445027,
+"23.91445027" 
+],
+[
+ 61.49323876,
+23.91461455,
+"23.91461455" 
+],
+[
+ 61.49317816,
+23.91479024,
+"23.91479024" 
+],
+[
+ 61.49316508,
+23.91482594,
+"23.91482594" 
+],
+[
+ 61.49311035,
+23.91494824,
+"23.91494824" 
+],
+[
+ 61.49301806,
+23.91511177,
+"23.91511177" 
+],
+[
+ 61.49291974,
+23.91531914,
+"23.91531914" 
+],
+[
+ 61.49290248,
+23.91535459,
+"23.91535459" 
+],
+[
+ 61.49282344,
+23.91568517,
+"23.91568517" 
+],
+[
+ 61.49279913,
+23.9159083,
+"23.9159083" 
+],
+[
+ 61.4927734,
+23.91605943,
+"23.91605943" 
+],
+[
+ 61.49274297,
+23.91630803,
+"23.91630803" 
+],
+[
+ 61.49270299,
+23.91653258,
+"23.91653258" 
+],
+[
+ 61.49266686,
+23.9168138,
+"23.9168138" 
+],
+[
+ 61.49261087,
+23.91701505,
+"23.91701505" 
+],
+[
+ 61.49256905,
+23.91723256,
+"23.91723256" 
+],
+[
+ 61.49257064,
+23.91726877,
+"23.91726877" 
+],
+[
+ 61.49262428,
+23.91749583,
+"23.91749583" 
+],
+[
+ 61.49264239,
+23.9175188,
+"23.9175188" 
+],
+[
+ 61.49275286,
+23.91768736,
+"23.91768736" 
+],
+[
+ 61.49277013,
+23.91774394,
+"23.91774394" 
+],
+[
+ 61.49282947,
+23.91788844,
+"23.91788844" 
+],
+[
+ 61.49291287,
+23.91798802,
+"23.91798802" 
+],
+[
+ 61.49302938,
+23.91809522,
+"23.91809522" 
+],
+[
+ 61.49313834,
+23.91818156,
+"23.91818156" 
+],
+[
+ 61.49322744,
+23.91828407,
+"23.91828407" 
+],
+[
+ 61.49328779,
+23.91827887,
+"23.91827887" 
+],
+[
+ 61.49339776,
+23.91822715,
+"23.91822715" 
+],
+[
+ 61.49347396,
+23.91821953,
+"23.91821953" 
+],
+[
+ 61.49360128,
+23.91841147,
+"23.91841147" 
+],
+[
+ 61.49370446,
+23.91852387,
+"23.91852387" 
+],
+[
+ 61.49382398,
+23.91864088,
+"23.91864088" 
+],
+[
+ 61.49391367,
+23.91875044,
+"23.91875044" 
+],
+[
+ 61.49401057,
+23.91886803,
+"23.91886803" 
+],
+[
+ 61.49410956,
+23.91899602,
+"23.91899602" 
+],
+[
+ 61.49422355,
+23.91909569,
+"23.91909569" 
+],
+[
+ 61.49438557,
+23.91925519,
+"23.91925519" 
+],
+[
+ 61.49452396,
+23.91935293,
+"23.91935293" 
+],
+[
+ 61.49466595,
+23.91940204,
+"23.91940204" 
+],
+[
+ 61.49477122,
+23.91944328,
+"23.91944328" 
+],
+[
+ 61.49491422,
+23.91955158,
+"23.91955158" 
+],
+[
+ 61.49505646,
+23.91965585,
+"23.91965585" 
+],
+[
+ 61.49520725,
+23.91982676,
+"23.91982676" 
+],
+[
+ 61.49533968,
+23.91994662,
+"23.91994662" 
+],
+[
+ 61.49547958,
+23.92005357,
+"23.92005357" 
+],
+[
+ 61.49549785,
+23.92006782,
+"23.92006782" 
+],
+[
+ 61.49561369,
+23.92013152,
+"23.92013152" 
+],
+[
+ 61.49572634,
+23.92020076,
+"23.92020076" 
+],
+[
+ 61.49585618,
+23.92030905,
+"23.92030905" 
+],
+[
+ 61.49598274,
+23.92042388,
+"23.92042388" 
+],
+[
+ 61.49611644,
+23.92055288,
+"23.92055288" 
+],
+[
+ 61.49619246,
+23.92064324,
+"23.92064324" 
+],
+[
+ 61.49625834,
+23.92073292,
+"23.92073292" 
+],
+[
+ 61.49631626,
+23.92085689,
+"23.92085689" 
+],
+[
+ 61.49648993,
+23.92101657,
+"23.92101657" 
+],
+[
+ 61.49663117,
+23.92115738,
+"23.92115738" 
+],
+[
+ 61.49671717,
+23.92122963,
+"23.92122963" 
+],
+[
+ 61.49685346,
+23.92134128,
+"23.92134128" 
+],
+[
+ 61.49698053,
+23.9214417,
+"23.9214417" 
+],
+[
+ 61.4970796,
+23.92152778,
+"23.92152778" 
+],
+[
+ 61.4971853,
+23.92157547,
+"23.92157547" 
+],
+[
+ 61.49720315,
+23.92158402,
+"23.92158402" 
+],
+[
+ 61.49731337,
+23.92160716,
+"23.92160716" 
+],
+[
+ 61.49736794,
+23.92163523,
+"23.92163523" 
+],
+[
+ 61.49750683,
+23.92166248,
+"23.92166248" 
+],
+[
+ 61.49763725,
+23.92165787,
+"23.92165787" 
+],
+[
+ 61.49765728,
+23.92166499,
+"23.92166499" 
+],
+[
+ 61.49778133,
+23.92168477,
+"23.92168477" 
+],
+[
+ 61.49780732,
+23.92169592,
+"23.92169592" 
+],
+[
+ 61.49793975,
+23.92173967,
+"23.92173967" 
+],
+[
+ 61.49804612,
+23.92171386,
+"23.92171386" 
+],
+[
+ 61.49814125,
+23.92170556,
+"23.92170556" 
+],
+[
+ 61.49816355,
+23.92170665,
+"23.92170665" 
+],
+[
+ 61.49825198,
+23.92172107,
+"23.92172107" 
+],
+[
+ 61.4983358,
+23.92171662,
+"23.92171662" 
+],
+[
+ 61.49847636,
+23.9217266,
+"23.9217266" 
+],
+[
+ 61.49860485,
+23.92181863,
+"23.92181863" 
+],
+[
+ 61.49873394,
+23.92191217,
+"23.92191217" 
+],
+[
+ 61.49885128,
+23.92196439,
+"23.92196439" 
+],
+[
+ 61.49897366,
+23.92202533,
+"23.92202533" 
+],
+[
+ 61.49899126,
+23.92204444,
+"23.92204444" 
+],
+[
+ 61.49910844,
+23.92199482,
+"23.92199482" 
+],
+[
+ 61.49913778,
+23.92201359,
+"23.92201359" 
+],
+[
+ 61.49927658,
+23.92212415,
+"23.92212415" 
+],
+[
+ 61.4994319,
+23.92221954,
+"23.92221954" 
+],
+[
+ 61.49953458,
+23.92231819,
+"23.92231819" 
+],
+[
+ 61.49964019,
+23.92242607,
+"23.92242607" 
+],
+[
+ 61.49977296,
+23.92256806,
+"23.92256806" 
+],
+[
+ 61.49985812,
+23.92267023,
+"23.92267023" 
+],
+[
+ 61.49994613,
+23.92277425,
+"23.92277425" 
+],
+[
+ 61.50001679,
+23.92287006,
+"23.92287006" 
+],
+[
+ 61.50009516,
+23.92300735,
+"23.92300735" 
+],
+[
+ 61.50017856,
+23.92314943,
+"23.92314943" 
+],
+[
+ 61.50026137,
+23.92325629,
+"23.92325629" 
+],
+[
+ 61.5003612,
+23.92337247,
+"23.92337247" 
+],
+[
+ 61.50044745,
+23.92350339,
+"23.92350339" 
+],
+[
+ 61.50054912,
+23.9236018,
+"23.9236018" 
+],
+[
+ 61.50067493,
+23.92369257,
+"23.92369257" 
+],
+[
+ 61.50081038,
+23.92376457,
+"23.92376457" 
+],
+[
+ 61.50091432,
+23.92380749,
+"23.92380749" 
+],
+[
+ 61.50106997,
+23.92386893,
+"23.92386893" 
+],
+[
+ 61.50119017,
+23.92391394,
+"23.92391394" 
+],
+[
+ 61.50136468,
+23.92393389,
+"23.92393389" 
+],
+[
+ 61.50146082,
+23.92399994,
+"23.92399994" 
+],
+[
+ 61.5015262,
+23.92403665,
+"23.92403665" 
+],
+[
+ 61.50157775,
+23.9240991,
+"23.9240991" 
+],
+[
+ 61.50168269,
+23.92426288,
+"23.92426288" 
+],
+[
+ 61.50180406,
+23.92443404,
+"23.92443404" 
+],
+[
+ 61.50193599,
+23.92458332,
+"23.92458332" 
+],
+[
+ 61.50211117,
+23.92470812,
+"23.92470812" 
+],
+[
+ 61.50225442,
+23.92488557,
+"23.92488557" 
+],
+[
+ 61.50235542,
+23.92506159,
+"23.92506159" 
+],
+[
+ 61.50242977,
+23.92525555,
+"23.92525555" 
+],
+[
+ 61.50251007,
+23.92534113,
+"23.92534113" 
+],
+[
+ 61.50264024,
+23.9254314,
+"23.9254314" 
+],
+[
+ 61.50279539,
+23.92560289,
+"23.92560289" 
+],
+[
+ 61.50293059,
+23.92577564,
+"23.92577564" 
+],
+[
+ 61.50304047,
+23.92599382,
+"23.92599382" 
+],
+[
+ 61.50311725,
+23.92618326,
+"23.92618326" 
+],
+[
+ 61.50321222,
+23.92626238,
+"23.92626238" 
+],
+[
+ 61.50330794,
+23.92627797,
+"23.92627797" 
+],
+[
+ 61.50332806,
+23.92627655,
+"23.92627655" 
+],
+[
+ 61.50342898,
+23.92625945,
+"23.92625945" 
+],
+[
+ 61.50359184,
+23.92624989,
+"23.92624989" 
+],
+[
+ 61.50361757,
+23.92626858,
+"23.92626858" 
+],
+[
+ 61.5037578,
+23.92638425,
+"23.92638425" 
+],
+[
+ 61.50382795,
+23.92648584,
+"23.92648584" 
+],
+[
+ 61.50397925,
+23.92667125,
+"23.92667125" 
+],
+[
+ 61.50409106,
+23.92684643,
+"23.92684643" 
+],
+[
+ 61.50416734,
+23.92709219,
+"23.92709219" 
+],
+[
+ 61.50418527,
+23.92732018,
+"23.92732018" 
+],
+[
+ 61.50420673,
+23.92748916,
+"23.92748916" 
+],
+[
+ 61.50421109,
+23.92752319,
+"23.92752319" 
+],
+[
+ 61.50427722,
+23.92771144,
+"23.92771144" 
+],
+[
+ 61.50431477,
+23.92785058,
+"23.92785058" 
+],
+[
+ 61.50439155,
+23.92805276,
+"23.92805276" 
+],
+[
+ 61.50450152,
+23.92825685,
+"23.92825685" 
+],
+[
+ 61.50458023,
+23.92845525,
+"23.92845525" 
+],
+[
+ 61.50465575,
+23.92863194,
+"23.92863194" 
+],
+[
+ 61.50475533,
+23.92878994,
+"23.92878994" 
+],
+[
+ 61.50481853,
+23.92889036,
+"23.92889036" 
+],
+[
+ 61.50486555,
+23.92899287,
+"23.92899287" 
+],
+[
+ 61.50493219,
+23.92913964,
+"23.92913964" 
+],
+[
+ 61.50501232,
+23.92923729,
+"23.92923729" 
+],
+[
+ 61.50513369,
+23.929303,
+"23.929303" 
+],
+[
+ 61.50526838,
+23.92932404,
+"23.92932404" 
+],
+[
+ 61.5054004,
+23.92930727,
+"23.92930727" 
+],
+[
+ 61.50551775,
+23.92922237,
+"23.92922237" 
+],
+[
+ 61.50553375,
+23.92919186,
+"23.92919186" 
+],
+[
+ 61.50566678,
+23.92901793,
+"23.92901793" 
+],
+[
+ 61.50575973,
+23.92882758,
+"23.92882758" 
+],
+[
+ 61.50576996,
+23.92880453,
+"23.92880453" 
+],
+[
+ 61.50581765,
+23.92870403,
+"23.92870403" 
+],
+[
+ 61.5058744,
+23.92855114,
+"23.92855114" 
+],
+[
+ 61.50595008,
+23.92832885,
+"23.92832885" 
+],
+[
+ 61.50598378,
+23.92827638,
+"23.92827638" 
+],
+[
+ 61.50609182,
+23.9281489,
+"23.9281489" 
+],
+[
+ 61.5061857,
+23.92808435,
+"23.92808435" 
+],
+[
+ 61.50628125,
+23.92805267,
+"23.92805267" 
+],
+[
+ 61.50629869,
+23.92804018,
+"23.92804018" 
+],
+[
+ 61.506395,
+23.92800624,
+"23.92800624" 
+],
+[
+ 61.50641394,
+23.92798914,
+"23.92798914" 
+],
+[
+ 61.50641369,
+23.92800506,
+"23.92800506" 
+],
+[
+ 61.5064815,
+23.92793918,
+"23.92793918" 
+],
+[
+ 61.50652005,
+23.92789216,
+"23.92789216" 
+],
+[
+ 61.50658384,
+23.92774187,
+"23.92774187" 
+],
+[
+ 61.5067058,
+23.92762603,
+"23.92762603" 
+],
+[
+ 61.50677243,
+23.92763324,
+"23.92763324" 
+],
+[
+ 61.50694937,
+23.92758605,
+"23.92758605" 
+],
+[
+ 61.50709027,
+23.92764514,
+"23.92764514" 
+],
+[
+ 61.50721206,
+23.92775662,
+"23.92775662" 
+],
+[
+ 61.50728406,
+23.92777523,
+"23.92777523" 
+],
+[
+ 61.507373,
+23.92779174,
+"23.92779174" 
+],
+[
+ 61.50740468,
+23.92779568,
+"23.92779568" 
+],
+[
+ 61.50753275,
+23.92777506,
+"23.92777506" 
+],
+[
+ 61.50762437,
+23.92771488,
+"23.92771488" 
+],
+[
+ 61.50770433,
+23.92765176,
+"23.92765176" 
+],
+[
+ 61.50782998,
+23.92763919,
+"23.92763919" 
+],
+[
+ 61.50796627,
+23.92769795,
+"23.92769795" 
+],
+[
+ 61.50807288,
+23.92771077,
+"23.92771077" 
+],
+[
+ 61.50813432,
+23.92765587,
+"23.92765587" 
+],
+[
+ 61.50827472,
+23.92748639,
+"23.92748639" 
+],
+[
+ 61.50838536,
+23.927404,
+"23.927404" 
+],
+[
+ 61.50841294,
+23.92738312,
+"23.92738312" 
+],
+[
+ 61.50852626,
+23.92722244,
+"23.92722244" 
+],
+[
+ 61.50865459,
+23.92711784,
+"23.92711784" 
+],
+[
+ 61.50878945,
+23.92702027,
+"23.92702027" 
+],
+[
+ 61.50890085,
+23.92688775,
+"23.92688775" 
+],
+[
+ 61.50896514,
+23.92672892,
+"23.92672892" 
+],
+[
+ 61.50900872,
+23.92645625,
+"23.92645625" 
+],
+[
+ 61.50903462,
+23.92625987,
+"23.92625987" 
+],
+[
+ 61.50906849,
+23.92600422,
+"23.92600422" 
+],
+[
+ 61.50909338,
+23.92580599,
+"23.92580599" 
+],
+[
+ 61.50913454,
+23.92565293,
+"23.92565293" 
+],
+[
+ 61.50918525,
+23.92539267,
+"23.92539267" 
+],
+[
+ 61.50922783,
+23.92523719,
+"23.92523719" 
+],
+[
+ 61.50926773,
+23.92508447,
+"23.92508447" 
+],
+[
+ 61.5093321,
+23.92484726,
+"23.92484726" 
+],
+[
+ 61.50934744,
+23.92477945,
+"23.92477945" 
+],
+[
+ 61.50938876,
+23.92461668,
+"23.92461668" 
+],
+[
+ 61.50942178,
+23.92442917,
+"23.92442917" 
+],
+[
+ 61.50943712,
+23.92427889,
+"23.92427889" 
+],
+[
+ 61.50943763,
+23.92415224,
+"23.92415224" 
+],
+[
+ 61.50943209,
+23.92392869,
+"23.92392869" 
+],
+[
+ 61.50942774,
+23.92372769,
+"23.92372769" 
+],
+[
+ 61.50941977,
+23.92368964,
+"23.92368964" 
+],
+[
+ 61.50942598,
+23.92342502,
+"23.92342502" 
+],
+[
+ 61.50944668,
+23.92312638,
+"23.92312638" 
+],
+[
+ 61.50947166,
+23.92294365,
+"23.92294365" 
+],
+[
+ 61.50944752,
+23.92270803,
+"23.92270803" 
+],
+[
+ 61.50944626,
+23.92261432,
+"23.92261432" 
+],
+[
+ 61.50946026,
+23.92237217,
+"23.92237217" 
+],
+[
+ 61.50945246,
+23.92208006,
+"23.92208006" 
+],
+[
+ 61.509415,
+23.92184059,
+"23.92184059" 
+],
+[
+ 61.50933612,
+23.92160716,
+"23.92160716" 
+],
+[
+ 61.50930796,
+23.92139895,
+"23.92139895" 
+],
+[
+ 61.50932648,
+23.92130717,
+"23.92130717" 
+],
+[
+ 61.50935406,
+23.92098824,
+"23.92098824" 
+],
+[
+ 61.50937367,
+23.92083862,
+"23.92083862" 
+],
+[
+ 61.50944534,
+23.92057107,
+"23.92057107" 
+],
+[
+ 61.50951969,
+23.92033394,
+"23.92033394" 
+],
+[
+ 61.50958322,
+23.92011417,
+"23.92011417" 
+],
+[
+ 61.50969017,
+23.9199006,
+"23.9199006" 
+],
+[
+ 61.50978263,
+23.91977923,
+"23.91977923" 
+],
+[
+ 61.50984876,
+23.91960539,
+"23.91960539" 
+],
+[
+ 61.5099071,
+23.9194634,
+"23.9194634" 
+],
+[
+ 61.50996418,
+23.91929685,
+"23.91929685" 
+],
+[
+ 61.50999527,
+23.91912326,
+"23.91912326" 
+],
+[
+ 61.51000382,
+23.918919,
+"23.918919" 
+],
+[
+ 61.51003073,
+23.91874666,
+"23.91874666" 
+],
+[
+ 61.51006568,
+23.91859914,
+"23.91859914" 
+],
+[
+ 61.51013559,
+23.91834869,
+"23.91834869" 
+],
+[
+ 61.51020315,
+23.91817904,
+"23.91817904" 
+],
+[
+ 61.51026542,
+23.91802356,
+"23.91802356" 
+],
+[
+ 61.51033348,
+23.91780462,
+"23.91780462" 
+],
+[
+ 61.51036416,
+23.91761754,
+"23.91761754" 
+],
+[
+ 61.51039115,
+23.91737413,
+"23.91737413" 
+],
+[
+ 61.5104018,
+23.91729374,
+"23.91729374" 
+],
+[
+ 61.51041487,
+23.91707917,
+"23.91707917" 
+],
+[
+ 61.51041185,
+23.91704162,
+"23.91704162" 
+],
+[
+ 61.51040724,
+23.91689594,
+"23.91689594" 
+],
+[
+ 61.51038654,
+23.91662386,
+"23.91662386" 
+],
+[
+ 61.51045645,
+23.91644524,
+"23.91644524" 
+],
+[
+ 61.51049534,
+23.91640459,
+"23.91640459" 
+],
+[
+ 61.51062828,
+23.91614819,
+"23.91614819" 
+],
+[
+ 61.51071603,
+23.91605247,
+"23.91605247" 
+],
+[
+ 61.51081285,
+23.91600167,
+"23.91600167" 
+],
+[
+ 61.51086029,
+23.91597292,
+"23.91597292" 
+],
+[
+ 61.51099205,
+23.91588986,
+"23.91588986" 
+],
+[
+ 61.51107076,
+23.91581534,
+"23.91581534" 
+],
+[
+ 61.51114326,
+23.91573178,
+"23.91573178" 
+],
+[
+ 61.51122733,
+23.91563153,
+"23.91563153" 
+],
+[
+ 61.51131324,
+23.91554008,
+"23.91554008" 
+],
+[
+ 61.51132942,
+23.91552617,
+"23.91552617" 
+],
+[
+ 61.51141332,
+23.91535467,
+"23.91535467" 
+],
+[
+ 61.51143009,
+23.91532576,
+"23.91532576" 
+],
+[
+ 61.5115471,
+23.91521813,
+"23.91521813" 
+],
+[
+ 61.51165372,
+23.91515879,
+"23.91515879" 
+],
+[
+ 61.51177517,
+23.91501093,
+"23.91501093" 
+],
+[
+ 61.51186503,
+23.91488923,
+"23.91488923" 
+],
+[
+ 61.51194599,
+23.91473374,
+"23.91473374" 
+],
+[
+ 61.51202747,
+23.91457357,
+"23.91457357" 
+],
+[
+ 61.51209385,
+23.91444549,
+"23.91444549" 
+],
+[
+ 61.51214708,
+23.91437852,
+"23.91437852" 
+],
+[
+ 61.51223936,
+23.91427173,
+"23.91427173" 
+],
+[
+ 61.51226727,
+23.91424072,
+"23.91424072" 
+],
+[
+ 61.51232502,
+23.91416386,
+"23.91416386" 
+],
+[
+ 61.51236526,
+23.9139751,
+"23.9139751" 
+],
+[
+ 61.51237364,
+23.91392732,
+"23.91392732" 
+],
+[
+ 61.51242158,
+23.91363873,
+"23.91363873" 
+],
+[
+ 61.51242133,
+23.91343463,
+"23.91343463" 
+],
+[
+ 61.51242435,
+23.91330857,
+"23.91330857" 
+],
+[
+ 61.51242753,
+23.91316532,
+"23.91316532" 
+],
+[
+ 61.51238278,
+23.9130142,
+"23.9130142" 
+],
+[
+ 61.51232519,
+23.9128852,
+"23.9128852" 
+],
+[
+ 61.51227406,
+23.91281328,
+"23.91281328" 
+],
+[
+ 61.51220089,
+23.91270197,
+"23.91270197" 
+],
+[
+ 61.51218446,
+23.91267674,
+"23.91267674" 
+],
+[
+ 61.51209762,
+23.91257725,
+"23.91257725" 
+],
+[
+ 61.512047,
+23.91249678,
+"23.91249678" 
+],
+[
+ 61.51194214,
+23.9123584,
+"23.9123584" 
+],
+[
+ 61.51185958,
+23.91224432,
+"23.91224432" 
+],
+[
+ 61.51175908,
+23.91213602,
+"23.91213602" 
+],
+[
+ 61.51167107,
+23.91208012,
+"23.91208012" 
+],
+[
+ 61.51161583,
+23.91196537,
+"23.91196537" 
+],
+[
+ 61.51152304,
+23.91178524,
+"23.91178524" 
+],
+[
+ 61.51148533,
+23.91175255,
+"23.91175255" 
+],
+[
+ 61.51144484,
+23.91168307,
+"23.91168307" 
+],
+[
+ 61.5113741,
+23.91157536,
+"23.91157536" 
+],
+[
+ 61.51131266,
+23.91151258,
+"23.91151258" 
+],
+[
+ 61.51114896,
+23.91138526,
+"23.91138526" 
+],
+[
+ 61.51103698,
+23.91126137,
+"23.91126137" 
+],
+[
+ 61.51094126,
+23.9111618,
+"23.9111618" 
+],
+[
+ 61.5108504,
+23.91105459,
+"23.91105459" 
+],
+[
+ 61.51075786,
+23.91088737,
+"23.91088737" 
+],
+[
+ 61.51065443,
+23.9107593,
+"23.9107593" 
+],
+[
+ 61.51057522,
+23.91063499,
+"23.91063499" 
+],
+[
+ 61.51049039,
+23.91050574,
+"23.91050574" 
+],
+[
+ 61.51047757,
+23.9104863,
+"23.9104863" 
+],
+[
+ 61.51039794,
+23.91039334,
+"23.91039334" 
+],
+[
+ 61.51027959,
+23.91036635,
+"23.91036635" 
+] 
+];
+data.addColumn('number','Latitude');
+data.addColumn('number','Longitude');
+data.addColumn('string','Long');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartMapID240045d6f00d() {
+var data = gvisDataMapID240045d6f00d();
+var options = {};
+options["showTip"] = true;
+options["mapType"] = "terrain";
+options["useMapTypeControl"] = true;
+options["width"] =    950;
+options["height"] =    450;
+
+    var chart = new google.visualization.Map(
+    document.getElementById('MapID240045d6f00d')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "map";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartMapID240045d6f00d);
+})();
+function displayChartMapID240045d6f00d() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID240045d6f00d"></script>
+ 
+
+<!-- divChart -->
+
+<div id="MapID240045d6f00d" 
+  style="width: 950; height: 450;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>Motion chart example</h2>
   </hgroup>
@@ -100940,195 +110169,6 @@ callbacks.shift()();
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
-  <hgroup>
-    <h2>Motion chart example</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">library(googleVis)
-plot(gvisMotionChart(Fruits, idvar=&quot;Fruit&quot;, timevar=&quot;Year&quot;))
-</code></pre>
-
-<!-- MotionChart generated in R 3.2.1 by googleVis 0.5.9 package -->
-
-<!-- Mon Aug 17 09:54:12 2015 -->
-
-<!-- jsHeader -->
-
-<script type="text/javascript">
- 
-// jsData 
-function gvisDataMotionChartID2400190de02e () {
-var data = new google.visualization.DataTable();
-var datajson =
-[
- [
- "Apples",
-2008,
-"West",
-98,
-78,
-20,
-"2008-12-31" 
-],
-[
- "Apples",
-2009,
-"West",
-111,
-79,
-32,
-"2009-12-31" 
-],
-[
- "Apples",
-2010,
-"West",
-89,
-76,
-13,
-"2010-12-31" 
-],
-[
- "Oranges",
-2008,
-"East",
-96,
-81,
-15,
-"2008-12-31" 
-],
-[
- "Bananas",
-2008,
-"East",
-85,
-76,
-9,
-"2008-12-31" 
-],
-[
- "Oranges",
-2009,
-"East",
-93,
-80,
-13,
-"2009-12-31" 
-],
-[
- "Bananas",
-2009,
-"East",
-94,
-78,
-16,
-"2009-12-31" 
-],
-[
- "Oranges",
-2010,
-"East",
-98,
-91,
-7,
-"2010-12-31" 
-],
-[
- "Bananas",
-2010,
-"East",
-81,
-71,
-10,
-"2010-12-31" 
-] 
-];
-data.addColumn('string','Fruit');
-data.addColumn('number','Year');
-data.addColumn('string','Location');
-data.addColumn('number','Sales');
-data.addColumn('number','Expenses');
-data.addColumn('number','Profit');
-data.addColumn('string','Date');
-data.addRows(datajson);
-return(data);
-}
- 
-// jsDrawChart
-function drawChartMotionChartID2400190de02e() {
-var data = gvisDataMotionChartID2400190de02e();
-var options = {};
-options["width"] =    600;
-options["height"] =    500;
-options["state"] = "";
-
-    var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartID2400190de02e')
-    );
-    chart.draw(data,options);
-    
-
-}
-  
- 
-// jsDisplayChart
-(function() {
-var pkgs = window.__gvisPackages = window.__gvisPackages || [];
-var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
-var chartid = "motionchart";
-  
-// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
-var i, newPackage = true;
-for (i = 0; newPackage && i < pkgs.length; i++) {
-if (pkgs[i] === chartid)
-newPackage = false;
-}
-if (newPackage)
-  pkgs.push(chartid);
-  
-// Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartID2400190de02e);
-})();
-function displayChartMotionChartID2400190de02e() {
-  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
-  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
-  window.clearTimeout(window.__gvisLoad);
-  // The timeout is set to 100 because otherwise the container div we are
-  // targeting might not be part of the document yet
-  window.__gvisLoad = setTimeout(function() {
-  var pkgCount = pkgs.length;
-  google.load("visualization", "1", { packages:pkgs, callback: function() {
-  if (pkgCount != pkgs.length) {
-  // Race condition where another setTimeout call snuck in after us; if
-  // that call added a package, we must not shift its callback
-  return;
-}
-while (callbacks.length > 0)
-callbacks.shift()();
-} });
-}, 100);
-}
- 
-// jsFooter
-</script>
- 
-
-<!-- jsChart -->  
-
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID2400190de02e"></script>
- 
-
-<!-- divChart -->
-
-<div id="MotionChartID2400190de02e" 
-  style="width: 600; height: 500;">
-</div>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
     <slide class="backdrop"></slide>
   </slides>
   <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
@@ -101147,14 +110187,110 @@ callbacks.shift()();
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Motion chart example'>
+        data-slide=3 title='Usage of googleVis'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Motion chart example'>
+        data-slide=4 title='Google Diagram Chart Tools'>
          4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Line chart example'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Column chart example'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Candlestick chart example I'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Candlestick chart example II'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Gauge chart example I'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Gauge chart example II'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Google Geo Chart Tools'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Geo chart example I'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Geo chart example II'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Geo chart example III - Earthquakes in Oceania'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Geo chart example IV - Earthquakes in Oceania'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Geo chart example V - Finland'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Geo chart example VI - Finland'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Geo chart example VII - My Running'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Geo chart example VI - My Running'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Motion chart example'>
+         20
       </a>
     </li>
   </ul>

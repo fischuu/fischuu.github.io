@@ -17,15 +17,15 @@ github      :
 
 ## Motivation for googleVis
 
-* Due to R's age some of its basic functions are not up-to-date anymore
+* Due to R's age, some of its basic functions are not up-to-date anymore
 
-* However, as R is modular, users keep developing new packages that improve the basic functionality
+* However, as R is modular, user keep developing new packages that improve the basic functionality
 
-* One very popular R-library is [ggplot](http://http://ggplot2.org/), that was presented earlier today
+* One very popular R-library is [ggplot2](http://ggplot2.org/), that was presented earlier today
 
 * Google has also a large library for programmers that includes different types of algorithms and graphical presentations
 
-* These google libraries can be access by programmers via standardized interfaces, so-called API's
+* Programmers can utilize these google libraries via standardized interfaces, so-called API's
 
 * Some R-users have created now R-libraries that make the graphic functions provided by google easily accessible via R
 
@@ -38,7 +38,7 @@ op <- options(gvis.plot.tag='chart')
 
 ## Overview of googleVis
 
-* [googleVis](http://code.google.com/p/google-motion-charts-with-r/) is a package for [R](http://www.r-poject.org/) and provides an interface between R and the [Google Chart Tools](https://developers.google.com/chart/)
+* [googleVis](http://code.google.com/p/google-motion-charts-with-r/) is a package for [R](http://www.r-project.org/) and provides an interface between R and the [Google Chart Tools](https://developers.google.com/chart/)
 
 * The functions of the package allow users to visualise data with the Google Chart Tools without uploading their data to Google
 
@@ -50,20 +50,250 @@ op <- options(gvis.plot.tag='chart')
   [The R Journal, 3(2):40-44, December 2011](http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de~Castillo.pdf) and googleVis [package vignette](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf)
 
 ---
+
+## Usage of googleVis
+
+* The googleVis package is very user friendly and easy to use
+
+* The most difficult part is to get the data to R (what is, with some practice also an easy task)
+
+* A typical workflow would like this:
+
+```{r workflow, eval=FALSE}
+library(googleVis)
+myData <- data.frame(time = c("JAN", "FEB", "MAR"), 
+                 val1 = c(10, 13, 14), 
+                 val2 = c(23, 12, 32))
+Line <- gvisLineChart(myData)
+plot(Line)
+
+```
+
+--- .segue .dark
+
+## Google Diagram Chart Tools
+
+---
+
+## Line chart example
   
+```{r linechart, eval=FALSE}
+plot(gvisLineChart(myData))
+```
+
+```{r linechart.intern, results='asis', echo=FALSE}
+library(googleVis)
+myData <- data.frame(time = c("JAN", "FEB", "MAR"), 
+                 val1 = c(10, 13, 14), 
+                 val2 = c(23, 12, 32))
+plot(gvisLineChart(myData, options=list(width=950, height=520)))
+```
+
+---
+
+## Column chart example
+  
+```{r columnchart, eval=FALSE}
+plot(gvisColumnChart(myData))
+```
+
+```{r columnchart.intern, results='asis', echo=FALSE}
+library(googleVis)
+myData <- data.frame(time = c("US", "EUR", "ASIA"), 
+                 val1 = c(10, 13, 14), 
+                 val2 = c(23, 12, 32))
+plot(gvisColumnChart(myData, options=list(width=950, height=520)))
+```
+
+---
+
+## Candlestick chart example I
+
+* Having stock-market data like this, Candlestick charts help to visualize the dynamic of the corresponding stock
+
+```{r Exports data Candle, comment=NA}
+print(OpenClose)
+```
+
+---
+
+## Candlestick chart example II
+  
+```{r candlestickchart, eval=FALSE}
+plot(gvisCandlestickChart(OpenClose))
+```
+
+```{r candlestickchart.intern, results='asis', echo=FALSE}
+library(googleVis)
+plot(gvisCandlestickChart(OpenClose, options=list(width=950, height=520)))
+```
+
+---
+
+
+## Gauge chart example I
+
+* Another very easy data set:
+
+```{r Exports data Gauge, comment=NA}
+print(CityPopularity)
+```
+
+---
+
+## Gauge chart example II
+  
+```{r gaugechart, eval=FALSE}
+plot(gvisGauge(CityPopularity, options=list(min=0, max=800, greenFrom=500,
+                               greenTo=800, yellowFrom=300, yellowTo=500,
+                               redFrom=0, redTo=300)))
+```
+
+```{r gaugechart.intern, results='asis', echo=FALSE}
+library(googleVis)
+plot(gvisGauge(CityPopularity, options=list(min=0, max=800, greenFrom=500,
+                               greenTo=800, yellowFrom=300, yellowTo=500,
+                               redFrom=0, redTo=300, width=850, height=420)))
+
+```
+
+--- .segue .dark
+
+## Google Geo Chart Tools
+
+---
+
+## Geo chart example I
+
+* Also plotting maps using googleVis is extremly easy
+
+* The following data is enough to create an intensity map
+
+```{r Exports data, comment=NA}
+print(Exports)
+```
+
+---
+
+## Geo chart example II
+
+```{r intensitychart, eval=FALSE}
+plot(gvisGeoChart(Exports, locationvar="Country", 
+                 colorvar="Profit",
+                 options=list(projection="kavrayskiy-vii")))
+```
+
+```{r intensitychart.intern, results='asis', echo=FALSE}
+library(googleVis)
+plot(gvisGeoChart(Exports, locationvar="Country", 
+                 colorvar="Profit",
+                 options=list(projection="kavrayskiy-vii", width=950, height=400)))
+
+```
+
+---
+
+## Geo chart example III - Earthquakes in Oceania
+
+```{r intensitychart2.intern, comment=NA}
+data(quakes)
+head(quakes)
+```
+
+---
+
+## Geo chart example IV - Earthquakes in Oceania
+
+```{r intensitychart3.intern, results='asis', echo=FALSE}
+library(googleVis)
+require(stats)
+data(quakes)
+quakes$latlong<-paste(quakes$lat, quakes$long, sep=":")
+ 
+plot(gvisGeoChart(quakes, "latlong", "depth", "mag",
+                   options=list(displayMode="Markers", region="009",
+                   colorAxis="{colors:['red', 'grey']}",
+                   backgroundColor="lightblue", width=950, height=500)))
+```
+
+---
+
+## Geo chart example V - Finland
+
+```{r finland.data, results='asis', echo=FALSE}
+set.seed(54235)
+myData <- data.frame(state.name=c(paste("FI-",1:19,sep="")), Something=sample(1:1000,19))
+```
+
+```{r finland.data2, comment=NA}
+head(myData)
+```
+
+
+---
+
+## Geo chart example VI - Finland
+
+```{r finland, results='asis', echo=FALSE}
+library(googleVis)
+myData <- data.frame(state.name=c(paste("FI-",1:19,sep="")), Something=sample(1:1000,19))
+GeoStates <- gvisGeoChart(myData, "state.name", "Something",
+                          options=list(region="FI", 
+                                       displayMode="regions", 
+                                       resolution="provinces",
+                                       width=900, height=450))
+plot(GeoStates)
+
+```
+
+---
+
+## Geo chart example VII - My Running
+
+```{r myRunning.data5, results='asis', echo=FALSE}
+myRunning <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/runningData.Rda")
+```
+
+```{r myRunning.data6, comment=NA}
+head(myRunning)
+```
+
+
+---
+
+## Geo chart example VI - My Running
+
+```{r myRunning.data7, echo=TRUE, eval=FALSE}
+plot(gvisMap(myRunning, "LatLong" , 
+             options=list(mapType='terrain', useMapTypeControl=TRUE)))
+
+```
+
+
+```{r myRunning, results='asis', echo=FALSE}
+library(googleVis)
+myRunning <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/runningData.Rda", nrows =400)
+#myRunning <- Andrew
+#RunningMap <- gvisMap(myRunning, "LatLong" , 
+#                     options=list(showTip=FALSE, 
+#                                  showLine=TRUE, 
+#                                  enableScrollWheel=TRUE,
+#                                  mapType='terrain', 
+#                                  useMapTypeControl=TRUE,
+#                                  width=950, height=450))
+RunningMap <- gvisMap(myRunning, "LatLong" , 
+                     options=list(mapType='terrain', useMapTypeControl=TRUE, width=950, height=450))
+
+plot(RunningMap)
+
+```
+
+---
+
 ## Motion chart example
   
 ```{r motionchartcodeWorldBank, results='asis', echo=FALSE}
 library(googleVis)
 worldBankData <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/worldBankData.Rda")
 plot(gvisMotionChart(worldBankData, idvar="country.name", timevar="year", options=list(width=950, height=520)))
-```
-
----
-
-## Motion chart example
-
-```{r motionchartcode, results='asis'}
-library(googleVis)
-plot(gvisMotionChart(Fruits, idvar="Fruit", timevar="Year"))
 ```
