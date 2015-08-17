@@ -51,14 +51,14 @@ github      :
 ## Motion chart example
   
 <!-- MotionChart generated in R 3.2.1 by googleVis 0.5.9 package -->
-<!-- Mon Aug 17 10:00:03 2015 -->
+<!-- Mon Aug 17 10:04:42 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID2400107fdfd9 () {
+function gvisDataMotionChartID24002a698cd2 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -100826,15 +100826,15 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID2400107fdfd9() {
-var data = gvisDataMotionChartID2400107fdfd9();
+function drawChartMotionChartID24002a698cd2() {
+var data = gvisDataMotionChartID24002a698cd2();
 var options = {};
-options["width"] =    800;
-options["height"] =    400;
+options["width"] =    950;
+options["height"] =    520;
 options["state"] = "";
 
     var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartID2400107fdfd9')
+    document.getElementById('MotionChartID24002a698cd2')
     );
     chart.draw(data,options);
     
@@ -100858,9 +100858,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartID2400107fdfd9);
+callbacks.push(drawChartMotionChartID24002a698cd2);
 })();
-function displayChartMotionChartID2400107fdfd9() {
+function displayChartMotionChartID24002a698cd2() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -100884,12 +100884,12 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID2400107fdfd9"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID24002a698cd2"></script>
  
 <!-- divChart -->
   
-<div id="MotionChartID2400107fdfd9" 
-  style="width: 800; height: 400;">
+<div id="MotionChartID24002a698cd2" 
+  style="width: 950; height: 520;">
 </div>
 
 ---

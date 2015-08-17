@@ -56,7 +56,7 @@ op <- options(gvis.plot.tag='chart')
 ```{r motionchartcodeWorldBank, results='asis', echo=FALSE}
 library(googleVis)
 worldBankData <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/worldBankData.Rda")
-plot(gvisMotionChart(worldBankData, idvar="country.name", timevar="year", options=list(width=800, height=400)))
+plot(gvisMotionChart(worldBankData, idvar="country.name", timevar="year", options=list(width=950, height=520)))
 ```
 
 ---
