@@ -29,11 +29,7 @@ github      :
 
 * Some R-users have created now R-libraries that make the graphic functions provided by google easily accessible via R
 
-```
-{r setOptions, echo=FALSE}
-library(googleVis)
-op <- options(gvis.plot.tag='chart')
-```
+
 
 --- 
 
