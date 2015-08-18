@@ -11426,6 +11426,10 @@ callbacks.shift()();
   style="width: 950; height: 450;">
 </div>
 
+--- .segue .dark
+
+## Google Flash based Charts
+
 ---
 
 ## Motion chart example

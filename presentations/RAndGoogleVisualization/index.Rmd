@@ -350,6 +350,10 @@ sk1 <- gvisSankey(dat, from="From", to="To", weight="Weight", options=list(page=
 plot(sk1)
 ```
 
+--- .segue .dark
+
+## Google Flash based Charts
+
 ---
 
 ## Motion chart example
