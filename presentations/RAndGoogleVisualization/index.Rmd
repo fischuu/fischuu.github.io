@@ -272,7 +272,7 @@ head(myRunning)
 
 ---
 
-## Geo chart example VI - My Running
+## Geo chart example VIII - My Running
 
 ```{r myRunning.data7, echo=TRUE, eval=FALSE}
 plot(gvisMap(myRunning, "LatLong" , 

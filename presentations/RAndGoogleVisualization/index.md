@@ -7103,7 +7103,7 @@ head(myRunning)
 
 ---
 
-## Geo chart example VI - My Running
+## Geo chart example VIII - My Running
 
 
 ```r
