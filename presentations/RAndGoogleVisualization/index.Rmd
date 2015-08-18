@@ -1,12 +1,12 @@
 ---
-title       : R and Google Visualization
+title       : R and Google Visualization with Slidify
 subtitle    : Tampere University, 19 August 2015
 author      : Daniel Fischer
 job         : Natural Resources Institute Finland, Green Technology
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : []            # {mathjax, quiz, bootstrap}
+widgets     : [mathjax, bootstrap, quiz]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 license     : by-nc-sa
 github      :
@@ -25,9 +25,9 @@ github      :
 
 * Google has also a large library for programmers that includes different types of algorithms and graphical presentations
 
-* Programmers can utilize these google libraries via standardized interfaces, so-called API's
+* Programmers can utilize the google libraries via standardized interfaces, so-called API's
 
-* Some R-users have created now R-libraries that make the graphic functions provided by google easily accessible via R
+* Some R-users have created now R-libraries that make the graphic functions provided by Google easily accessible via R
 
 ```{r setOptions, echo=FALSE}
 library(googleVis)
@@ -57,7 +57,7 @@ op <- options(gvis.plot.tag='chart')
 
 * The most difficult part is to get the data to R (what is, with some practice also an easy task)
 
-* A typical workflow would like this:
+* A typical workflow would look like this:
 
 ```{r workflow, eval=FALSE}
 library(googleVis)
@@ -193,7 +193,48 @@ plot(gvisGeoChart(Exports, locationvar="Country",
 
 ---
 
-## Geo chart example III - Earthquakes in Oceania
+
+## Geo chart example III - Finland
+
+```{r finland.data, results='asis', echo=FALSE}
+set.seed(54235)
+myData <- data.frame(state.name=c(paste("FI-",1:19,sep="")), Something=sample(1:1000,19))
+```
+
+```{r finland.data2, comment=NA}
+head(myData)
+```
+
+* Countries can be encoded according to the [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) Norm 
+
+* The districts in Finland are encoded according to the [ISO 3166-2:FI](https://en.wikipedia.org/wiki/ISO_3166-2:FI) Norm
+
+---
+
+## Geo chart example IV - Finland
+
+```{r finlandint, eval=FALSE}
+plot(gvisGeoChart(myData, "state.name", "Something",
+     options=list(region="FI", displayMode="regions", 
+     resolution="provinces")))
+
+
+
+```{r finland, results='asis', echo=FALSE}
+library(googleVis)
+myData <- data.frame(state.name=c(paste("FI-",1:19,sep="")), Something=sample(1:1000,19))
+GeoStates <- gvisGeoChart(myData, "state.name", "Something",
+                          options=list(region="FI", 
+                                       displayMode="regions", 
+                                       resolution="provinces",
+                                       width=900, height=400))
+plot(GeoStates)
+
+```
+
+---
+
+## Geo chart example V - Earthquakes in Oceania
 
 ```{r intensitychart2.intern, comment=NA}
 data(quakes)
@@ -202,7 +243,7 @@ head(quakes)
 
 ---
 
-## Geo chart example IV - Earthquakes in Oceania
+## Geo chart example VI - Earthquakes in Oceania
 
 ```{r intensitychart3.intern, results='asis', echo=FALSE}
 library(googleVis)
@@ -214,36 +255,6 @@ plot(gvisGeoChart(quakes, "latlong", "depth", "mag",
                    options=list(displayMode="Markers", region="009",
                    colorAxis="{colors:['red', 'grey']}",
                    backgroundColor="lightblue", width=950, height=500)))
-```
-
----
-
-## Geo chart example V - Finland
-
-```{r finland.data, results='asis', echo=FALSE}
-set.seed(54235)
-myData <- data.frame(state.name=c(paste("FI-",1:19,sep="")), Something=sample(1:1000,19))
-```
-
-```{r finland.data2, comment=NA}
-head(myData)
-```
-
-
----
-
-## Geo chart example VI - Finland
-
-```{r finland, results='asis', echo=FALSE}
-library(googleVis)
-myData <- data.frame(state.name=c(paste("FI-",1:19,sep="")), Something=sample(1:1000,19))
-GeoStates <- gvisGeoChart(myData, "state.name", "Something",
-                          options=list(region="FI", 
-                                       displayMode="regions", 
-                                       resolution="provinces",
-                                       width=900, height=450))
-plot(GeoStates)
-
 ```
 
 ---
@@ -270,22 +281,73 @@ plot(gvisMap(myRunning, "LatLong" ,
 ```
 
 
-```{r myRunning, results='asis', echo=FALSE}
+```{r myRunningMap, results='asis', echo=FALSE}
 library(googleVis)
 myRunning <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/runningData.Rda", nrows =400)
-#myRunning <- Andrew
-#RunningMap <- gvisMap(myRunning, "LatLong" , 
-#                     options=list(showTip=FALSE, 
-#                                  showLine=TRUE, 
-#                                  enableScrollWheel=TRUE,
-#                                  mapType='terrain', 
-#                                  useMapTypeControl=TRUE,
-#                                  width=950, height=450))
-RunningMap <- gvisMap(myRunning, "LatLong" , 
-                     options=list(mapType='terrain', useMapTypeControl=TRUE, width=950, height=450))
+plot(gvisMap(myRunning, "LatLong" , 
+            options=list(mapType='terrain', useMapTypeControl=TRUE,
+                         width=950, height=450)))
+```
 
-plot(RunningMap)
+---
 
+## Or exported as fixed map
+
+![](assets/fig/RunningMapZoomed.png)
+
+--- .segue .dark
+
+## Google Organisatorial Charts
+
+---
+
+## Google tables 
+
+```{r myRunning.int.data7, echo=TRUE, eval=FALSE}
+plot(gvisTable(Population, formats=list(Population="#,###",
+                           '% of World Population'='#.#%'),
+                           options=list(page='enable')))
+
+```
+
+```{r tables, results='asis', echo=FALSE}
+library(googleVis)
+PopTable <- gvisTable(Population, 
+                      formats=list(Population="#,###",
+                                  '% of World Population'='#.#%'),
+                      options=list(page='enable', width=950, height=400))
+plot(PopTable)
+
+```
+
+---
+
+## Sankey plot - Example I
+
+
+```{r Sankey data load, comment=NA, echo=FALSE}
+dat <-  read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/sankeyData.Rda")
+```
+
+```{r Sankey data, comment=NA}
+dat[1:10,]
+```
+
+---
+
+## Sankey plot - Example II
+
+```{r sankey.int, echo=TRUE, eval=FALSE}
+plot(gvisSankey(dat, from="From", to="To", weight="Weight"))
+
+```
+
+```{r Sankey, results='asis', echo=FALSE}
+library(googleVis)
+dat <-  read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/sankeyData.Rda")
+
+sk1 <- gvisSankey(dat, from="From", to="To", weight="Weight", options=list(page='enable', width=950, height=450))
+plot(sk1)
 ```
 
 ---
@@ -297,3 +359,109 @@ library(googleVis)
 worldBankData <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/worldBankData.Rda")
 plot(gvisMotionChart(worldBankData, idvar="country.name", timevar="year", options=list(width=950, height=520)))
 ```
+
+----
+
+## How I created these slides
+
+```{r slidify, eval=FALSE}
+library(slidify)
+author("RAndGoogleVisualization")
+## Edit the file index.Rmd and then
+slidify("index.Rmd")
+```
+
+* The slides have been created entirely using R
+
+* The ready presentation is then hosted on Github, a free online repository for programming projects
+
+* You can find the slides in my [repository](https://github.com/fischuu/fischuu.github.io/tree/master/presentations/RAndGoogleVisualization)
+
+---
+
+## Slidify: Embedding YouTube videos
+
+<iframe width="420" height="315" src="http://www.youtube.com/embed/hVimVzgtD6w" frameborder="0" allowfullscreen></iframe>
+
+---
+
+## Slidify: Formulas via MathJax
+
+\[ |\zeta - z - h| \geq \frac{1}{2} |\zeta - z|\] 
+
+\[ \sum_{n=1}^k \frac{1}{n} ≻ \int_1^{k+1} \frac{1}{x} dx = \ln(k+1) \]
+
+\[ f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h} \]
+
+\[ \begin{bmatrix} 1 & 2\\ 3 & 4\\ \end{bmatrix} \begin{bmatrix} 0 & 1\\ 0 & 0\\ \end{bmatrix}= \begin{bmatrix} 0 & 1\\ 0 & 3\\ \end{bmatrix}  \]
+
+--- &submitcompare2 rows:5
+
+## Slidify: Interactive slides
+
+The solid curve represents the distribution of heights of all males in the US. The dotted curve represents the distribution of heights reported by males on OkCupid, an online dating website.
+
+<img class=center
+  src=./assets/fig/MaleHeightDistribution.png width=400px>
+
+
+*** =question
+
+What is happening here?
+
+*** .hint 
+This is a hint
+
+*** .explanation
+
+It is easier to interpret things if we overlay a fitted normal distribution for the heights reported by males on OkCupid. Looking at the graph carefully, we can observe two things.
+
+<img class=center
+  src=./assets/fig/MaleHeightDistribution.png width=400px>
+
+1. Males on OkCupid probably tend to inflate their heights!
+2. You can also see a more subtle vanity at work: starting at roughly 5' 8", the top of the dotted curve tilts even further rightward. This means that guys as they get closer to six feet round up a bit more than usual, stretching for that coveted psychological benchmark.
+
+---  &radio2
+
+## Radio (Two Column)
+
+What dimension is normal distributed?
+
+1. X
+2. _Y_
+
+*** =image
+
+```{r quiz1, results='asis', echo=FALSE}
+
+plot(runif(100), rnorm(100))
+
+```
+
+*** .hint
+
+Check the axis labels.
+
+
+*** .explanation
+
+Data in y direction are normal distributed.
+
+---
+
+## Conclusion
+
+* googleVis is a very powerful package that creates appealing, interactive Graphics without big efforts
+
+* The output is html based
+
+* In combination with [slidify](http://slidify.org) a different class of presentations and assignments can be created
+
+* Code and slides are written in plain text, no OS compatability problems will occur
+
+* Slidify provides much more than just embedding th googleVis output
+
+--- .segue .dark
+
+## Thank you!
