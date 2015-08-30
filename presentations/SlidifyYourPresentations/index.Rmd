@@ -1,14 +1,18 @@
 ---
 title       : Slidify your Presentations
-subtitle    : Using HTML5 and Markup to present your results
+subtitle    : Using HTML5 and Markdown to present your results
 author      : Daniel Fischer
-job         : Natural Resources Institute Finland (Luke)
+job         : Natural Resources Institute Finland, Green Technology
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : []            # {mathjax, quiz, bootstrap}
+widgets     : [mathjax, bootstrap, quiz]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
-knit        : slidify::knit2slides
+license     : by-nc-sa
+github      :
+  user      : fischuu
+  repo      : fischuu.github.io/presentations/RAndGoogleVisualization
+  
 ---
 
 ## Read-And-Delete
