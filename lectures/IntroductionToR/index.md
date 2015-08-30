@@ -150,5 +150,34 @@ github      :
 
 5. Store all results
 
+--- .segue .dark
 
+## Import Data to R
+
+---
+
+## Example data
+
+* In case you do not have your own data, you can download some example data from [here] (https://raw.githubusercontent.com/fischuu/fischuu.github.io/master/lectures/IntroductionToR/data/titanic3.csv)
+
+"Data obtained from [http://biostat.mc.vanderbilt.edu/DataSets] (http://biostat.mc.vanderbilt.edu/DataSets)".
+
+---
+
+### Titanic passenger information variables:
+
+1. pclass  		
+2. survived
+3. name
+4. sex			
+5. age
+6. sibsp	Number of Siblings/Spouses Aboard		
+7. parch	Number of Parents/Children Aboard		
+8. ticket	Ticket Number		
+9. fare	Passenger Fare	British Pound (\243)	
+10. cabin			
+11. embarked			
+12. boat			
+13. body	Body Identification Number		
+14. home.dest	Home/Destination
 
