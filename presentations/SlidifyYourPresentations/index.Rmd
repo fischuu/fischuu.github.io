@@ -1,8 +1,8 @@
 ---
-title       : 
-subtitle    : 
-author      : 
-job         : 
+title       : Slidify your Presentations
+subtitle    : Using HTML5 and Markup to present your results
+author      : Daniel Fischer
+job         : Natural Resources Institute Finland (Luke)
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
