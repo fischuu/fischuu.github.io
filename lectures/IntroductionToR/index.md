@@ -166,17 +166,17 @@ github      :
 
 ### Titanic passenger information variables:
 
-1. pclass  		
-2. survived
-3. name
-4. sex			
-5. age
-6. sibsp	Number of Siblings/Spouses Aboard		
-7. parch	Number of Parents/Children Aboard		
-8. ticket	Ticket Number		
-9. fare	Passenger Fare	British Pound (\243)	
-10. cabin			
-11. embarked			
+1. pclass (Passenger class)
+2. survived (yes=1, no=0)
+3. name 
+4. sex (female/male)		
+5. age 
+6. sibsp	(Number of Siblings/Spouses Aboard)
+7. parch	(Number of Parents/Children Aboard)
+8. ticket	(Ticket Number)		
+9. fare	(Passenger Fare	British Pound)
+10. cabin	(Cabin number)		
+11. embarked	(S, Q, C=)
 12. boat			
 13. body	Body Identification Number		
 14. home.dest	Home/Destination
