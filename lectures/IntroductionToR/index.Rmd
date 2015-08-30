@@ -162,16 +162,19 @@ github      :
 
 "Data obtained from [http://biostat.mc.vanderbilt.edu/DataSets] (http://biostat.mc.vanderbilt.edu/DataSets)".
 
----
-
-### Titanic passenger information variables:
+## Titanic passenger information variables:
 
 1. pclass (Passenger class)
 2. survived (yes=1, no=0)
 3. name 
-4. sex (female/male)		
+4. sex (female/male)  	
 5. age 
 6. sibsp	(Number of Siblings/Spouses Aboard)
+
+---
+
+## Titanic passenger information variables (continued):
+
 7. parch	(Number of Parents/Children Aboard)
 8. ticket	(Ticket Number)		
 9. fare	(Passenger Fare	British Pound)
