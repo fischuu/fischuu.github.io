@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Introduction to R</title>
   <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Introduction to R">
+  <meta name="author" content="Daniel Fischer">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -13,7 +13,9 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
@@ -32,36 +34,202 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1></h1>
+    <h1>Introduction to R</h1>
     <h2></h2>
-    <p><br/></p>
+    <p>Daniel Fischer<br/>Natural Resources Institute Finland, Green Technology</p>
   </hgroup>
+    <a href="https://github.com/fischuu/fischuu.github.io/presentations/RAndGoogleVisualization/zipball/gh-pages" class="example">
+     Download
+    </a>
   <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-nc-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png'>
+    </a>
+  </footer>
 </slide>
     
 
     <!-- SLIDES -->
-    <slide class="" id="slide-1" style="background:;">
+    <slide class="segue dark" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Overview</h2>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
+<li>Introduction</li>
 </ol>
+
+<p>2.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>History of R</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li><p>R was started by Ross Ihaka and Robert Gentleman (the ”R &amp; R’s” of the University of Auckland) in 1992.</p></li>
+<li><p>R is an environment and language for data manipulation, calculation and graphical display.</p></li>
+<li><p>R is published under GNU licence. This means it is an open source program and is distributed for free.</p></li>
+<li><p>R can be seen as an implementation or dialect of the S language. S was developed by Becker and Chambers 1984.</p></li>
+<li><p>The origin of the name is not known anymore (although there are obvious possibilities...).</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Why to use R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>It is <em>easy</em>. Compared to real programming languages, R has a simplified syntax that can be used without big learning efforts.</p></li>
+<li><p>It is <em>open source</em>. This means you can alter or check every piece of code (or hope at least that someone else does it...).</p></li>
+<li><p>It is <em>friendly</em>. Usually the mailing lists (”Rhelp”) or online discussion forums (e.g. &#39;StackOverflow&#39;) are fast, friendly and helpful.</p></li>
+<li><p>It is an <em>universal tool</em>. Usually there is a function in R for everything, or if there isn’t, soon there will be.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Why not to use R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>It is <em>difficult</em>. Compared to graphical-interface based tools like Excel a console might be shocking and repellent.</p></li>
+<li><p>It is <em>open source</em>. This means, you have to trust the functions are correct - but noone gives you a warranty for this. Use it on own risk!</p></li>
+<li><p>It is <em>hostile</em>. Mailing lists (”Rhelp”) or online discussion forums (e.g. &#39;StackOverflow&#39;) don’t like reocurring questions or questions showing no own efforts to solve a problem.</p></li>
+<li><p>It is <em>static</em>. These days the figures are too static compared to other, competing languages like Matlab. You hardly can interact with created figures.</p></li>
+<li><p>It is <em>slow</em>. Compared to real programming languages, R is slow (the price for being easy...), but C,C++ and other languages can be included into R programs to boost the speed.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Where to get R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>R is pre-compiled available for every common operating system, like Windows, Linux and Mac , and also for 32 and 64bit.</p></li>
+<li><p>It can be downloaded from the CRAN (”Comprehensive R Archive Network”) webpage: <a href="http://cran.r-project.org">http://cran.r-project.org</a>.</p></li>
+<li><p>Usually there are 2-3 major updates per year.</p></li>
+<li><p>Linux user that use the apt package system, can include the CRAN server into it and receive those updates then automatically.</p></li>
+<li><p>On CRAN are also thousands of additional extensions (”packages”) available.</p></li>
+<li><p>The <a href="https://www.bioconductor.org/">Bioconductor</a> projects offers on top of that also hundreds of packages specialized for genomic data analysis.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>How does R look like?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/RStudio.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>How to use a console?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The symbol that &#39;waits&#39; for the input is usually the &gt; sign.</p></li>
+<li><p>One usually types the command there and sends it to the interpreter by pressing the Return key.</p></li>
+<li><p>If a command line starts with + instead of &gt; the interpreter expects further input.</p></li>
+<li><p>Common reason for this are still open parantheses or quotations.</p></li>
+<li><p>A history of the last commands is accesible using the arrow keys ↑↓.</p></li>
+<li><p>The console is case-sensitive.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>How to start?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/RStudio-highlighted.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>How to start?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/RStudio2.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>The script window</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Using the console is alright for simple commands, but as soon as you apply a sequence of commands it gets messy</p></li>
+<li><p>For larger projects (e.g. analysing datasets) it is much more convenient to write and run a <em>script</em>.</p></li>
+<li><p>This has the advantage that the commands can easily be stored, changed and distributed.</p></li>
+<li><p>It is much easier to keep the overview over the project.</p></li>
+<li><p>It is easier to prepare the script and run it then as whole.</p></li>
+<li><p>Copy+Paste for similar tasks</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>A typical workflow in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><p>Open the data with a (good...) text editor or Excel and inspect its properties:</p>
+
+<p>a. Is the first line a <em>header-line</em>?</p>
+
+<p>b. What is the separator between the columns?</p></li>
+<li><p>Import the data to R</p></li>
+<li><p>Apply some data transformation and calculate desired statistics</p></li>
+<li><p>Visualize the results</p></li>
+<li><p>Store all results</p></li>
+</ol>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -72,14 +240,74 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='Introduction'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='Overview'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='History of R'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Why to use R?'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Why not to use R?'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Where to get R?'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='How does R look like?'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='How to use a console?'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='How to start?'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='How to start?'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='The script window'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='A typical workflow in R'>
+         12
       </a>
     </li>
   </ul>
@@ -91,6 +319,32 @@
   <![endif]-->
 </body>
   <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
   
   <!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
