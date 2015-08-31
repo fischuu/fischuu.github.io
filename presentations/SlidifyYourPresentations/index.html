@@ -253,8 +253,61 @@
 </slide>
 
 <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Cloning to RStudio IV</h2>
+  </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>In the dialog we choose </li>
+</ul>
+
+<ol>
+<li><p>Version Control</p></li>
+<li><p>Git</p></li>
+<li><p>And then we provide the URL (as SSH) of the repository, the name and location on HDD</p></li>
+</ol>
+
+<ul>
+<li><p>Then, we click on <em>&#39;Create Project&#39;</em></p></li>
+<li><p>RStudio clones into the repository creates the folder/file structure on the HDD</p></li>
+<li><p>Now we can create an own folder structure (e.g. <em>presentations</em>, <em>lectures</em>, etc.)</p></li>
+<li><p>After those steps, we have succesful connected RStudio with GitHub pages and we can control the repository entirely with RStudio.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Cloning to RStudio V</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/RStudio3.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Starting a new presentation</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>To create a new presentation, we run</li>
+</ul>
+
+<pre><code class="r">library(&quot;slidify&quot;)
+setwd(&quot;/home/ejo138/Projects/fischuu.github.io/presentations/&quot;)
+author(&quot;MyFirstPresentation&quot;, use_git = FALSE)
+</code></pre>
+
+<ul>
+<li>The part <code>use_git = FALSE</code> might be irritating, but it is needed, as <em>slidify</em> would create otherwise a new git structure within 
+the existing one (what is possible but would lead to far for now.)</li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -337,8 +390,20 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title=''>
+        data-slide=13 title='Cloning to RStudio IV'>
          13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Cloning to RStudio V'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Starting a new presentation'>
+         15
       </a>
     </li>
   </ul>

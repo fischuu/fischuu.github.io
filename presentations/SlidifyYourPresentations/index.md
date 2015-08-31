@@ -153,3 +153,44 @@ git@github.com:fischuu/fischuu.github.io.git
 ![](assets/img/RStudio2.png)
 
 --- 
+
+## Cloning to RStudio IV
+
+* In the dialog we choose 
+
+  1. Version Control
+  
+  2. Git
+  
+  3. And then we provide the URL (as SSH) of the repository, the name and location on HDD
+  
+* Then, we click on _'Create Project'_
+
+* RStudio clones into the repository creates the folder/file structure on the HDD
+
+* Now we can create an own folder structure (e.g. _presentations_, _lectures_, etc.)
+
+* After those steps, we have succesful connected RStudio with GitHub pages and we can control the repository entirely with RStudio.
+
+---
+
+## Cloning to RStudio V
+
+![](assets/img/RStudio3.png)
+
+--- 
+
+## Starting a new presentation
+
+* To create a new presentation, we run
+
+
+```r
+library("slidify")
+setwd("/home/ejo138/Projects/fischuu.github.io/presentations/")
+author("MyFirstPresentation", use_git = FALSE)
+```
+
+* The part `use_git = FALSE` might be irritating, but it is needed, as _slidify_ would create otherwise a new git structure within 
+   the existing one (what is possible but would lead to far for now.)
+
