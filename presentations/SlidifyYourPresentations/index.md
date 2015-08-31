@@ -94,9 +94,62 @@ _username_.github.io
 
 [http://username.github.io](http://username.github.io)
 
-* To make things work properly, you should create a file
+* To make things work proper, you should create a file
 
 index.html
 
 in the uppest level of the repository. 
 
+* Starting from there, you can have several subpages that can be stored in subfolders of your repository.
+  
+* It is advisable to name the entry page of ech subproject also index.html
+
+---
+
+## Setting up space for presentations on _GitHub pages_
+
+* I recommend to use Linux, as this comes with practical all developer software installed. 
+
+* If your IT doesn't allow Linux, you could e.g. install it on a VirtualBox parallel to Windows so that you can literally switch between OS as you switch between Tools.
+
+* Connect your computer to GitHub by providing an SSH keypair (create it in RStudio and add it to the profile at GitHub), this makes life easier.
+
+* A step-by-step tutorial for this is provided by GitHub [here] (https://help.github.com/articles/generating-ssh-keys/).
+
+---
+
+## Setting up the GitHub repository
+
+![](assets/img/GitHub1.png)
+
+---
+
+## Cloning to RStudio I
+
+* It is important to tick the box
+
+_Initialize this repository with a README_
+
+* Having an initial README file in the repository enables us to clone it without any further problems.
+
+* From the repository we get then its address (either HTTPS, SSH or Subversion)
+
+* For RStudio we should copy the SSH address, e.g. in my case:
+
+git@github.com:fischuu/fischuu.github.io.git
+
+* We start RStudio and create a new project.
+
+---
+
+## Cloning to RStudio II
+
+![](assets/img/RStudio1.png)
+
+--- 
+
+## Cloning to RStudio III
+
+![](assets/img/RStudio2.png)
+
+--- 
