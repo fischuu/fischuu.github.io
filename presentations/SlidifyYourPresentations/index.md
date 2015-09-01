@@ -1,18 +1,21 @@
 ---
-title       : Slidify your Presentations
-subtitle    : Using HTML5 and Markdown to present R results
-author      : Daniel Fischer
-job         : Natural Resources Institute Finland, Green Technology
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
-widgets     : [mathjax, bootstrap, quiz]            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
-license     : by-nc-sa
-github      :
-  user      : fischuu
-  repo      : fischuu.github.io/presentations/RAndGoogleVisualization
-
+title: "Slidify your Presentations"
+author: "Daniel Fischer"
+github:
+  repo: fischuu.github.io/presentations/RAndGoogleVisualization
+  user: fischuu
+output: pdf_document
+hitheme: tomorrow
+job: Natural Resources Institute Finland, Green Technology
+license: by-nc-sa
+mode: selfcontained
+highlighter: highlight.js
+subtitle: Using HTML5 and Markdown to present R results
+framework: io2012
+widgets:
+- mathjax
+- bootstrap
+- quiz
 ---
 
 ## Disclaimer
@@ -193,4 +196,10 @@ author("MyFirstPresentation", use_git = FALSE)
 
 * The part `use_git = FALSE` might be irritating, but it is needed, as _slidify_ would create otherwise a new git structure within 
    the existing one (what is possible but would lead to far for now.)
+
+* Slidify then creates all required files and you are ready to go.
+
+* To create slides with Slidify no HTML knowledge is required, as everything is done via R [Markdown](https://en.wikipedia.org/wiki/Markdown).
+
+* Markdown is a lightweight markup language with plain text formatting that can be transformed into HTML (or other languages).
 
