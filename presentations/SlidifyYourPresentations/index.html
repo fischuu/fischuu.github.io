@@ -315,6 +315,96 @@ the existing one (what is possible but would lead to far for now.)</p></li>
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Output of <code>author()</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The function <code>author()</code> creates several files and folders in the working directory.</p></li>
+<li><p>The main folder is called as defined in the <code>author()</code> call.</p></li>
+<li><p>Within that folder, two more folders called <code>assets</code> and <code>libraries</code> are created.</p></li>
+<li><p>The main document is called <code>index.Rmd</code></p></li>
+<li><p><code>index.Rmd</code> contains two main code chunks. The header written in YAML defines the meta-information of the document.</p></li>
+<li><p>The body contains the slides and uses the R Markdown language.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>This is where we start (YAML header of index.Rmd)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">---
+title: &quot;null&quot;
+author: &quot;null&quot;
+highlighter: highlight.js
+output: pdf_document
+job: null
+knit: slidify::knit2slides
+mode: selfcontained
+hitheme: tomorrow
+subtitle: null
+framework: io2012
+widgets: []
+---
+
+## Read-And-Delete
+
+1. Edit YAML front matter
+...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>This is where we start (body of index.Rmd)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">...
+hitheme: tomorrow
+subtitle: null
+framework: io2012
+widgets: []
+---
+
+## Read-And-Delete
+
+1. Edit YAML front matter
+2. Write using R Markdown
+3. Use an empty line followed by three dashes to separate slides!
+--- .class #id 
+
+## Slide 2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Markdown basics</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>R markdown is a very simple markup language that makes creating slides extremely fast and easy.</p></li>
+<li><p>A reference overview can be found <a href="http://rmarkdown.rstudio.com/authoring_basics.html">here</a></p></li>
+<li><p>For example the <a href="https://github.com/fischuu/fischuu.github.io/raw/master/presentations/SlidifyYourPresentations/index.Rmd"><code>index.Rmd</code></a> of this presentation.</p></li>
+<li><p>Besides the markup part, R Markdown also accepts, evaluate and renders code chunks.</p></li>
+<li><p>Code chunks are indicated like this</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
     <slide class="backdrop"></slide>
   </slides>
   <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
@@ -407,6 +497,30 @@ the existing one (what is possible but would lead to far for now.)</p></li>
       <a href="#" target="_self" rel='tooltip' 
         data-slide=15 title='Starting a new presentation'>
          15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Output of <code>author()</code>'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='This is where we start (YAML header of index.Rmd)'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='This is where we start (body of index.Rmd)'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Markdown basics'>
+         19
       </a>
     </li>
   </ul>

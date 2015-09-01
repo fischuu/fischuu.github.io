@@ -203,3 +203,84 @@ author("MyFirstPresentation", use_git = FALSE)
 
 * Markdown is a lightweight markup language with plain text formatting that can be transformed into HTML (or other languages).
 
+---
+
+## Output of `author()`
+
+* The function `author()` creates several files and folders in the working directory.
+
+* The main folder is called as defined in the `author()` call.
+
+* Within that folder, two more folders called `assets` and `libraries` are created.
+
+* The main document is called `index.Rmd`
+
+* `index.Rmd` contains two main code chunks. The header written in YAML defines the meta-information of the document.
+
+* The body contains the slides and uses the R Markdown language.
+
+---
+
+## This is where we start (YAML header of index.Rmd)
+
+
+```r
+---
+title: "null"
+author: "null"
+highlighter: highlight.js
+output: pdf_document
+job: null
+knit: slidify::knit2slides
+mode: selfcontained
+hitheme: tomorrow
+subtitle: null
+framework: io2012
+widgets: []
+---
+
+## Read-And-Delete
+
+1. Edit YAML front matter
+...
+```
+
+---
+
+## This is where we start (body of index.Rmd)
+
+
+```r
+...
+hitheme: tomorrow
+subtitle: null
+framework: io2012
+widgets: []
+---
+
+## Read-And-Delete
+
+1. Edit YAML front matter
+2. Write using R Markdown
+3. Use an empty line followed by three dashes to separate slides!
+--- .class #id 
+
+## Slide 2
+```
+
+---
+
+## Markdown basics
+
+* R markdown is a very simple markup language that makes creating slides extremely fast and easy.
+
+* A reference overview can be found [here](http://rmarkdown.rstudio.com/authoring_basics.html)
+
+* For example the [`index.Rmd`](https://github.com/fischuu/fischuu.github.io/raw/master/presentations/SlidifyYourPresentations/index.Rmd) of this presentation.
+
+* Besides the markup part, R Markdown also accepts, evaluate and renders code chunks.
+
+* Code chunks are indicated like this
+
+
+
