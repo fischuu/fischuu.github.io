@@ -281,8 +281,33 @@ widgets: []
 
 * Code chunks are indicated like this
 
-    ```{r echo = F, comment = NA, results = 'asis', eval=FALSE}
-    x = paste(readLines('slide1.md'), collapse = '\n')
-    cat(paste(x, collapse = '\n'))
+
+    ```
+    "Write your code here"
     ```
 
+* After the first     ``` one can add {r, options=values} for syntax highlighting and further tuning parameters
+        
+
+---
+
+## And then
+
+* Slides are separated with ---
+
+* For mathematical formulas you can use just normal LaTeX code.
+
+* In that case yo uhave to add the _mathjax_ widget still to the JAML header.
+
+* MathJax has become the gold standard for mathematics on the web, as the quality is close to what you expect from LaTeX.
+
+* After the slides are ready they have to be 'slidified'.
+
+* For that, just type
+```{r eval=FALSE}
+slidify('index.Rmd')
+```
+
+* ` slidify() ` creates then the ` *.md` and ` *.html` files on the HDD
+
+* Eventually we can publish the slides by pushing the project to GitHub page (` Commit` and ` Push` )

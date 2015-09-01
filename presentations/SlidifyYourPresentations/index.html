@@ -398,7 +398,37 @@ widgets: []
 <li><p>A reference overview can be found <a href="http://rmarkdown.rstudio.com/authoring_basics.html">here</a></p></li>
 <li><p>For example the <a href="https://github.com/fischuu/fischuu.github.io/raw/master/presentations/SlidifyYourPresentations/index.Rmd"><code>index.Rmd</code></a> of this presentation.</p></li>
 <li><p>Besides the markup part, R Markdown also accepts, evaluate and renders code chunks.</p></li>
-<li><p>Code chunks are indicated like this</p></li>
+<li><p>Code chunks are indicated like this</p>
+
+<pre><code>&quot;Write your code here&quot;
+</code></pre></li>
+<li><p>After the first     ``` one can add {r, options=values} for syntax highlighting and further tuning parameters</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>And then</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Slides are separated with ---</p></li>
+<li><p>For mathematical formulas you can use just normal LaTeX code.</p></li>
+<li><p>In that case yo uhave to add the <em>mathjax</em> widget still to the JAML header.</p></li>
+<li><p>MathJax has become the gold standard for mathematics on the web, as the quality is close to what you expect from LaTeX.</p></li>
+<li><p>After the slides are ready they have to be &#39;slidified&#39;.</p></li>
+<li><p>For that, just type</p></li>
+</ul>
+
+<pre><code class="r">slidify(&#39;index.Rmd&#39;)
+</code></pre>
+
+<ul>
+<li><p><code>slidify()</code> creates then the <code>*.md</code> and <code>*.html</code> files on the HDD</p></li>
+<li><p>Eventually we can publish the slides by pushing the project to GitHub page (<code>Commit</code> and <code>Push</code> )</p></li>
 </ul>
 
   </article>
@@ -521,6 +551,12 @@ widgets: []
       <a href="#" target="_self" rel='tooltip' 
         data-slide=19 title='Markdown basics'>
          19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='And then'>
+         20
       </a>
     </li>
   </ul>
