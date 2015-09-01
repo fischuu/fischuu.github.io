@@ -330,3 +330,461 @@ slidify('index.Rmd')
 * In combination with [pandoc] (http://pandoc.org) you have then an extremely powerful tool that can prepare LaTex, pdf and docx documents just with one click.
 
 * Pandoc functions are also included in the [knitR] (http://yihui.name/knitr/) package.
+
+   
+---
+
+## Motivation for googleVis
+
+* Due to R's age, some of its basic functions are not up-to-date anymore
+
+* However, as R is modular, user keep developing new packages that improve the basic functionality
+
+* One very popular R-library is [ggplot2](http://ggplot2.org/), that was presented earlier today
+
+* Google has also a large library for programmers that includes different types of algorithms and graphical presentations
+
+* Programmers can utilize the google libraries via standardized interfaces, so-called API's
+
+* Some R-users have created now R-libraries that make the graphic functions provided by Google easily accessible via R
+
+```{r setOptions, echo=FALSE}
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+```
+
+--- 
+
+## Overview of googleVis
+
+* [googleVis](http://code.google.com/p/google-motion-charts-with-r/) is a package for [R](http://www.r-project.org/) and provides an interface between R and the [Google Chart Tools](https://developers.google.com/chart/)
+
+* The functions of the package allow users to visualise data with the Google Chart Tools without uploading their data to Google
+
+* The output of googleVis functions is html code that contains the data and references to JavaScript functions hosted by Google
+
+* To view the output a browser with an internet connection is required, the actual chart is rendered in the browser; some charts require Flash
+
+* See also: **Using the Google Visualisation API with R**, 
+  [The R Journal, 3(2):40-44, December 2011](http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de~Castillo.pdf) and googleVis [package vignette](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf)
+
+---
+
+## Usage of googleVis
+
+* The googleVis package is very user friendly and easy to use
+
+* The most difficult part is to get the data to R (what is, with some practice also an easy task)
+
+* A typical workflow would look like this:
+
+```{r workflow, eval=FALSE}
+library(googleVis)
+myData <- data.frame(time = c("JAN", "FEB", "MAR"), 
+                 val1 = c(10, 13, 14), 
+                 val2 = c(23, 12, 32))
+Line <- gvisLineChart(myData)
+plot(Line)
+
+```
+
+--- .segue .dark
+
+## Google Diagram Chart Tools
+
+---
+
+## Line chart example
+  
+```{r linechart, eval=FALSE}
+plot(gvisLineChart(myData))
+```
+
+```{r linechart.intern, results='asis', echo=FALSE}
+library(googleVis)
+myData <- data.frame(time = c("JAN", "FEB", "MAR"), 
+                 val1 = c(10, 13, 14), 
+                 val2 = c(23, 12, 32))
+plot(gvisLineChart(myData, options=list(width=950, height=520)))
+```
+
+---
+
+## Column chart example
+  
+```{r columnchart, eval=FALSE}
+plot(gvisColumnChart(myData))
+```
+
+```{r columnchart.intern, results='asis', echo=FALSE}
+library(googleVis)
+myData <- data.frame(time = c("US", "EUR", "ASIA"), 
+                 val1 = c(10, 13, 14), 
+                 val2 = c(23, 12, 32))
+plot(gvisColumnChart(myData, options=list(width=950, height=520)))
+```
+
+---
+
+## Candlestick chart example I
+
+* Having stock-market data like this, Candlestick charts help to visualize the dynamic of the corresponding stock
+
+```{r Exports data Candle, comment=NA}
+print(OpenClose)
+```
+
+---
+
+## Candlestick chart example II
+  
+```{r candlestickchart, eval=FALSE}
+plot(gvisCandlestickChart(OpenClose))
+```
+
+```{r candlestickchart.intern, results='asis', echo=FALSE}
+library(googleVis)
+plot(gvisCandlestickChart(OpenClose, options=list(width=950, height=520)))
+```
+
+---
+
+
+## Gauge chart example I
+
+* Another very easy data set:
+
+```{r Exports data Gauge, comment=NA}
+print(CityPopularity)
+```
+
+---
+
+## Gauge chart example II
+  
+```{r gaugechart, eval=FALSE}
+plot(gvisGauge(CityPopularity, options=list(min=0, max=800, greenFrom=500,
+                               greenTo=800, yellowFrom=300, yellowTo=500,
+                               redFrom=0, redTo=300)))
+```
+
+```{r gaugechart.intern, results='asis', echo=FALSE}
+library(googleVis)
+plot(gvisGauge(CityPopularity, options=list(min=0, max=800, greenFrom=500,
+                               greenTo=800, yellowFrom=300, yellowTo=500,
+                               redFrom=0, redTo=300, width=850, height=420)))
+
+```
+
+--- .segue .dark
+
+## Google Geo Chart Tools
+
+---
+
+## Geo chart example I
+
+* Also plotting maps using googleVis is extremly easy
+
+* The following data is enough to create an intensity map
+
+```{r Exports data, comment=NA}
+print(Exports)
+```
+
+---
+
+## Geo chart example II
+
+```{r intensitychart, eval=FALSE}
+plot(gvisGeoChart(Exports, locationvar="Country", 
+                 colorvar="Profit",
+                 options=list(projection="kavrayskiy-vii")))
+```
+
+```{r intensitychart.intern, results='asis', echo=FALSE}
+library(googleVis)
+plot(gvisGeoChart(Exports, locationvar="Country", 
+                 colorvar="Profit",
+                 options=list(projection="kavrayskiy-vii", width=950, height=400)))
+
+```
+
+---
+
+
+## Geo chart example III - Finland
+
+```{r finland.data, results='asis', echo=FALSE}
+set.seed(54235)
+myData <- data.frame(state.name=c(paste("FI-",1:19,sep="")), Something=sample(1:1000,19))
+```
+
+```{r finland.data2, comment=NA}
+head(myData)
+```
+
+* Countries can be encoded according to the [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) Norm 
+
+* The districts in Finland are encoded according to the [ISO 3166-2:FI](https://en.wikipedia.org/wiki/ISO_3166-2:FI) Norm
+
+---
+
+## Geo chart example IV - Finland
+
+```{r finlandint, eval=FALSE}
+plot(gvisGeoChart(myData, "state.name", "Something",
+     options=list(region="FI", displayMode="regions", 
+     resolution="provinces")))
+
+
+
+```{r finland, results='asis', echo=FALSE}
+library(googleVis)
+myData <- data.frame(state.name=c(paste("FI-",1:19,sep="")), Something=sample(1:1000,19))
+GeoStates <- gvisGeoChart(myData, "state.name", "Something",
+                          options=list(region="FI", 
+                                       displayMode="regions", 
+                                       resolution="provinces",
+                                       width=900, height=400))
+plot(GeoStates)
+
+```
+
+---
+
+## Geo chart example V - Earthquakes in Oceania
+
+```{r intensitychart2.intern, comment=NA}
+data(quakes)
+head(quakes)
+```
+
+---
+
+## Geo chart example VI - Earthquakes in Oceania
+
+```{r intensitychart3.intern, results='asis', echo=FALSE}
+library(googleVis)
+require(stats)
+data(quakes)
+quakes$latlong<-paste(quakes$lat, quakes$long, sep=":")
+ 
+plot(gvisGeoChart(quakes, "latlong", "depth", "mag",
+                   options=list(displayMode="Markers", region="009",
+                   colorAxis="{colors:['red', 'grey']}",
+                   backgroundColor="lightblue", width=950, height=500)))
+```
+
+---
+
+## Geo chart example VII - My Running
+
+```{r myRunning.data5, results='asis', echo=FALSE}
+myRunning <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/runningData.Rda")
+```
+
+```{r myRunning.data6, comment=NA}
+head(myRunning)
+```
+
+
+---
+
+## Geo chart example VIII - My Running
+
+```{r myRunning.data7, echo=TRUE, eval=FALSE}
+plot(gvisMap(myRunning, "LatLong" , 
+             options=list(mapType='terrain', useMapTypeControl=TRUE)))
+
+```
+
+
+```{r myRunningMap, results='asis', echo=FALSE}
+library(googleVis)
+myRunning <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/runningData.Rda", nrows =400)
+plot(gvisMap(myRunning, "LatLong" , 
+            options=list(mapType='terrain', useMapTypeControl=TRUE,
+                         width=950, height=450)))
+```
+
+---
+
+## Or exported as fixed map
+
+![](assets/fig/RunningMapZoomed.png)
+
+--- .segue .dark
+
+## Google Organisatorial Charts
+
+---
+
+## Google tables 
+
+```{r myRunning.int.data7, echo=TRUE, eval=FALSE}
+plot(gvisTable(Population, formats=list(Population="#,###",
+                           '% of World Population'='#.#%'),
+                           options=list(page='enable')))
+
+```
+
+```{r tables, results='asis', echo=FALSE}
+library(googleVis)
+PopTable <- gvisTable(Population, 
+                      formats=list(Population="#,###",
+                                  '% of World Population'='#.#%'),
+                      options=list(page='enable', width=950, height=400))
+plot(PopTable)
+
+```
+
+---
+
+## Sankey plot - Example I
+
+
+```{r Sankey data load, comment=NA, echo=FALSE}
+dat <-  read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/sankeyData.Rda")
+```
+
+```{r Sankey data, comment=NA}
+dat[1:10,]
+```
+
+---
+
+## Sankey plot - Example II
+
+```{r sankey.int, echo=TRUE, eval=FALSE}
+plot(gvisSankey(dat, from="From", to="To", weight="Weight"))
+
+```
+
+```{r Sankey, results='asis', echo=FALSE}
+library(googleVis)
+dat <-  read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/sankeyData.Rda")
+
+sk1 <- gvisSankey(dat, from="From", to="To", weight="Weight", options=list(page='enable', width=950, height=450))
+plot(sk1)
+```
+
+--- .segue .dark
+
+## Google Flash based Charts
+
+---
+
+## Motion chart example
+  
+```{r motionchartcodeWorldBank, results='asis', echo=FALSE}
+library(googleVis)
+worldBankData <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/worldBankData.Rda")
+plot(gvisMotionChart(worldBankData, idvar="country.name", timevar="year", options=list(width=950, height=520)))
+```
+
+----
+
+## How I created these slides
+
+```{r slidify, eval=FALSE}
+library(slidify)
+author("RAndGoogleVisualization")
+## Edit the file index.Rmd and then
+slidify("index.Rmd")
+```
+
+* The slides have been created entirely using R
+
+* The ready presentation is then hosted on Github, a free online repository for programming projects
+
+* You can find the slides in my [repository](https://github.com/fischuu/fischuu.github.io/tree/master/presentations/RAndGoogleVisualization)
+
+---
+
+## Slidify: Embedding YouTube videos
+
+<iframe width="420" height="315" src="http://www.youtube.com/embed/hVimVzgtD6w" frameborder="0" allowfullscreen></iframe>
+
+---
+
+## Slidify: Formulas via MathJax
+
+\[ |\zeta - z - h| \geq \frac{1}{2} |\zeta - z|\] 
+
+\[ \sum_{n=1}^k \frac{1}{n} ≻ \int_1^{k+1} \frac{1}{x} dx = \ln(k+1) \]
+
+\[ f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h} \]
+
+\[ \begin{bmatrix} 1 & 2\\ 3 & 4\\ \end{bmatrix} \begin{bmatrix} 0 & 1\\ 0 & 0\\ \end{bmatrix}= \begin{bmatrix} 0 & 1\\ 0 & 3\\ \end{bmatrix}  \]
+
+--- &submitcompare2 rows:5
+
+## Slidify: Interactive slides
+
+The solid curve represents the distribution of heights of all males in the US. The dotted curve represents the distribution of heights reported by males on OkCupid, an online dating website.
+
+<img class=center
+  src=./assets/fig/MaleHeightDistribution.png width=400px>
+
+
+*** =question
+
+What is happening here?
+
+*** .hint 
+This is a hint
+
+*** .explanation
+
+It is easier to interpret things if we overlay a fitted normal distribution for the heights reported by males on OkCupid. Looking at the graph carefully, we can observe two things.
+
+<img class=center
+  src=./assets/fig/MaleHeightDistribution.png width=400px>
+
+1. Males on OkCupid probably tend to inflate their heights!
+2. You can also see a more subtle vanity at work: starting at roughly 5' 8", the top of the dotted curve tilts even further rightward. This means that guys as they get closer to six feet round up a bit more than usual, stretching for that coveted psychological benchmark.
+
+---  &radio2
+
+## Radio (Two Column)
+
+What dimension is normal distributed?
+
+1. X
+2. _Y_
+
+*** =image
+
+```{r quiz1, results='asis', echo=FALSE}
+
+plot(runif(100), rnorm(100))
+
+```
+
+*** .hint
+
+Check the axis labels.
+
+
+*** .explanation
+
+Data in y direction are normal distributed.
+
+---
+
+## Conclusion
+
+* googleVis is a very powerful package that creates appealing, interactive Graphics without big efforts
+
+* The output is html based
+
+* In combination with [slidify](http://slidify.org) a different class of presentations and assignments can be created
+
+* Code and slides are written in plain text, no OS compatability problems will occur
+
+* Slidify provides much more than just embedding th googleVis output
+
+--- .segue .dark
+
+## Thank you!
