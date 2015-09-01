@@ -282,9 +282,9 @@ widgets: []
 * Code chunks are indicated like this
 
 
-    ```
-    "Write your code here"
-    ```
+        ```
+        "Write your code here"
+        ```
 
 * After the first     ``` one can add {r, options=values} for syntax highlighting and further tuning parameters
         
@@ -310,4 +310,23 @@ slidify('index.Rmd')
 
 * ` slidify() ` creates then the ` *.md` and ` *.html` files on the HDD
 
-* Eventually we can publish the slides by pushing the project to GitHub page (` Commit` and ` Push` )
+* Eventually we can publish the slides by pushing the project to GitHub page
+
+
+---
+
+## Presenting in HTML using Slidify and R Markdown
+
+* Instead of static content in pdf, you get all features you know from webpages.
+
+* You can include interactive graphics, webcontents and even create easily interactive tests that write user feedback straigt into a database.
+
+* Also, even if this is a matter of taste, different ways of slides are possible, like e.g. in [this](http://ramnathv.github.io/slidifyExamples/examples/impressjs) example.
+
+* Publishing slides of GitHub brings all modern web features with it. (Issue report system, own Wiki-page, distributed working).
+
+* We focused here on presentations with Slidify, but you can also create reports using R Markdown.
+
+* In combination with [pandoc] (http://pandoc.org) you have then an extremely powerful tool that can prepare LaTex, pdf and docx documents just with one click.
+
+* Pandoc functions are also included in the [knitR] (http://yihui.name/knitr/) package.
