@@ -331,29 +331,18 @@ slidify('index.Rmd')
 
 * Pandoc functions are also included in the [knitR] (http://yihui.name/knitr/) package.
 
-   
+
+--- .segue .dark
+
+## googleVis
+
 ---
 
-## Motivation for googleVis
-
-* Due to R's age, some of its basic functions are not up-to-date anymore
-
-* However, as R is modular, user keep developing new packages that improve the basic functionality
-
-* One very popular R-library is [ggplot2](http://ggplot2.org/), that was presented earlier today
-
-* Google has also a large library for programmers that includes different types of algorithms and graphical presentations
-
-* Programmers can utilize the google libraries via standardized interfaces, so-called API's
-
-* Some R-users have created now R-libraries that make the graphic functions provided by Google easily accessible via R
 
 ```{r setOptions, echo=FALSE}
-library(googleVis)
+suppressPackageStartupMessages(library(googleVis))
 op <- options(gvis.plot.tag='chart')
 ```
-
---- 
 
 ## Overview of googleVis
 
@@ -425,30 +414,6 @@ plot(gvisColumnChart(myData, options=list(width=950, height=520)))
 ```
 
 ---
-
-## Candlestick chart example I
-
-* Having stock-market data like this, Candlestick charts help to visualize the dynamic of the corresponding stock
-
-```{r Exports data Candle, comment=NA}
-print(OpenClose)
-```
-
----
-
-## Candlestick chart example II
-  
-```{r candlestickchart, eval=FALSE}
-plot(gvisCandlestickChart(OpenClose))
-```
-
-```{r candlestickchart.intern, results='asis', echo=FALSE}
-library(googleVis)
-plot(gvisCandlestickChart(OpenClose, options=list(width=950, height=520)))
-```
-
----
-
 
 ## Gauge chart example I
 
@@ -553,32 +518,7 @@ plot(GeoStates)
 
 ---
 
-## Geo chart example V - Earthquakes in Oceania
-
-```{r intensitychart2.intern, comment=NA}
-data(quakes)
-head(quakes)
-```
-
----
-
-## Geo chart example VI - Earthquakes in Oceania
-
-```{r intensitychart3.intern, results='asis', echo=FALSE}
-library(googleVis)
-require(stats)
-data(quakes)
-quakes$latlong<-paste(quakes$lat, quakes$long, sep=":")
- 
-plot(gvisGeoChart(quakes, "latlong", "depth", "mag",
-                   options=list(displayMode="Markers", region="009",
-                   colorAxis="{colors:['red', 'grey']}",
-                   backgroundColor="lightblue", width=950, height=500)))
-```
-
----
-
-## Geo chart example VII - My Running
+## Geo chart example V - My Running
 
 ```{r myRunning.data5, results='asis', echo=FALSE}
 myRunning <- read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/runningData.Rda")
@@ -591,7 +531,7 @@ head(myRunning)
 
 ---
 
-## Geo chart example VIII - My Running
+## Geo chart example VI - My Running
 
 ```{r myRunning.data7, echo=TRUE, eval=FALSE}
 plot(gvisMap(myRunning, "LatLong" , 
@@ -607,16 +547,6 @@ plot(gvisMap(myRunning, "LatLong" ,
             options=list(mapType='terrain', useMapTypeControl=TRUE,
                          width=950, height=450)))
 ```
-
----
-
-## Or exported as fixed map
-
-![](assets/fig/RunningMapZoomed.png)
-
---- .segue .dark
-
-## Google Organisatorial Charts
 
 ---
 
@@ -639,36 +569,6 @@ plot(PopTable)
 
 ```
 
----
-
-## Sankey plot - Example I
-
-
-```{r Sankey data load, comment=NA, echo=FALSE}
-dat <-  read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/sankeyData.Rda")
-```
-
-```{r Sankey data, comment=NA}
-dat[1:10,]
-```
-
----
-
-## Sankey plot - Example II
-
-```{r sankey.int, echo=TRUE, eval=FALSE}
-plot(gvisSankey(dat, from="From", to="To", weight="Weight"))
-
-```
-
-```{r Sankey, results='asis', echo=FALSE}
-library(googleVis)
-dat <-  read.table("/home//ejo138/git//fischuu.github.io//presentations//RAndGoogleVisualization/sankeyData.Rda")
-
-sk1 <- gvisSankey(dat, from="From", to="To", weight="Weight", options=list(page='enable', width=950, height=450))
-plot(sk1)
-```
-
 --- .segue .dark
 
 ## Google Flash based Charts
@@ -684,23 +584,6 @@ plot(gvisMotionChart(worldBankData, idvar="country.name", timevar="year", option
 ```
 
 ----
-
-## How I created these slides
-
-```{r slidify, eval=FALSE}
-library(slidify)
-author("RAndGoogleVisualization")
-## Edit the file index.Rmd and then
-slidify("index.Rmd")
-```
-
-* The slides have been created entirely using R
-
-* The ready presentation is then hosted on Github, a free online repository for programming projects
-
-* You can find the slides in my [repository](https://github.com/fischuu/fischuu.github.io/tree/master/presentations/RAndGoogleVisualization)
-
----
 
 ## Slidify: Embedding YouTube videos
 
