@@ -44,7 +44,7 @@ We make use of the following Tools/ R-packages
 
 2. GitHub
 
-3. Slidify (including Markdown)
+3. Slidify (including knitR and RMarkdown)
 
 4. googleVis
 
@@ -52,7 +52,7 @@ We make use of the following Tools/ R-packages
 
 ## RStudio
 
-* Supposedly all of you have heard about RStudio.
+* Supposedly all of you have heard about (and probably use) RStudio.
 
 * First version (v0.92) of RStudio was published in February 2011.
 
@@ -64,15 +64,15 @@ We make use of the following Tools/ R-packages
 
 * RStudio also powers 'Shiny', a web application framework for R.
 
-* One not so common, but very useful feature is the project feature.
+* One not so commonly used, but very useful feature is the project feature.
 
 ---
 
 ## GitHub
 
-* Supposedly most of you also have heard about GitHub (or at least git)
+* Supposedly most of you also have heard about [GitHub](https://github.com/) (or at least git)
 
-* git is a revision control system, initially developed 2005 by Linus Torvalds for the Linux kernel.
+* [git](https://git-scm.com/) is a revision control system, initially developed 2005 by Linus Torvalds for the Linux kernel.
 
 * GitHub is a filehosting service (founded 2008) that is based on the git technology. 
 
