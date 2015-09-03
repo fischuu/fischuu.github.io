@@ -215,6 +215,24 @@
 
 <slide class="" id="slide-12" style="background:;">
   <hgroup>
+    <h2>Where to get help?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>For each function in R exists a help file, that can be accessed with <code>?</code>
+This means, in order to get the help for the function foo type <code>?foo</code> into the console.</p></li>
+<li><p>If you forgot a function name but have a wild guess how it was, the <code>apropos()</code> command is usefull.
+In order to check for all commands that contain the word ’test’ type <code>apropos(&quot;test&quot;)</code>.</p></li>
+<li><p>Of course Google is always a good place to search </p></li>
+<li><p>A very helpful online ressource is also <a href="http://www.stackoverflow.com">http://www.stackoverflow.com</a></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
     <h2>A typical workflow in R</h2>
   </hgroup>
   <article data-timings="">
@@ -234,7 +252,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue dark" id="slide-13" style="background:;">
+<slide class="segue dark" id="slide-14" style="background:;">
   <hgroup>
     <h2>Import Data to R</h2>
   </hgroup>
@@ -244,47 +262,362 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
-    <h2>Example data</h2>
+    <h2>Working directory I</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>In case you do not have your own data, you can download some example data from <a href="https://raw.githubusercontent.com/fischuu/fischuu.github.io/master/lectures/IntroductionToR/data/titanic3.csv">here</a></li>
+<li><p>The term ’working directory’ refers in R to the place on the hard drive, where R looks for files, stores Figures etc.</p></li>
+<li><p>All paths and filenames that are given relative to this specific location.</p></li>
+<li><p>Of course it is possible to check and change this location. </p></li>
+<li><p>A typical workflow of a project is that in the beginning the working directory is set to the project folder on the hard drive.</p></li>
+<li><p>The command to check the working directory is <code>getwd()</code> and the one for setting it is <code>setwd()</code>.</p></li>
 </ul>
 
-<p>&quot;Data obtained from <a href="http://biostat.mc.vanderbilt.edu/DataSets">http://biostat.mc.vanderbilt.edu/DataSets</a>&quot;.</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<h2>Titanic passenger information variables:</h2>
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Working directory II</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>An example how the working directory is extracted and set using windows:</li>
+</ul>
+
+<pre><code class="r">getwd()
+&gt; [1] &quot;C:/Program Files/R/R-3.0.2&quot;
+setwd(&quot;C:/temp/&quot;)
+getwd()
+&gt; [1] &quot;C:/temp&quot;
+</code></pre>
+
+<ul>
+<li>The file system is a bit different in Linux, a typical path looks there like
+/home/ejo123/myProjects.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Import ASCII files I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Datasets that are imported to R are typically given in ASCII format. .</p></li>
+<li><p>Other formats are possible, but I&#39;d recommend to stay with ASCII/text files.</p></li>
+</ul>
+
+<p>ASCII is a plain text format and common file extensions are .txt or .csv. Before reading
+files into R it is advisable to open them first with a text editor in order to
+check the properties of the files. One should focus especially on the
+following things:</p>
 
 <ol>
-<li>pclass (Passenger class)</li>
-<li>survived (yes=1, no=0)</li>
-<li>name </li>
-<li>sex (female/male)<br></li>
-<li>age </li>
-<li>sibsp    (Number of Siblings/Spouses Aboard)</li>
+<li><p>What is the column separator (Whitespace, comma, tab, etc.)?</p></li>
+<li><p>Is the first line a data line or does it contain the variable names?</p></li>
+<li><p>Are real numbers given with comma or point (e.g. is it 5,25 or 5.25)?</p></li>
+<li><p>How is missing data encoded (e.g. NA, dot, whitespace)?</p></li>
 </ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:;">
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Import ASCII files II</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In order to read an ASCII file to R, we perform the following steps:</p>
+
+<ol>
+<li><p>Set the working directory to the path where the data is located.</p></li>
+<li><p>Check for above mentioned properties</p></li>
+<li><p>Read the data and assign it to an object. The command is</p></li>
+</ol>
+
+<pre><code class="r">myData &lt;- read.table(file=&quot;theData.txt&quot;, header=FALSE, sep=&quot;\t&quot;)
+</code></pre>
+
+<p>In this case the first line contained already data (If the first line are the
+variable names, the option is <code>header=TRUE</code>) and the columns are
+separated with TAB (\t is the so-called escape-seqence for TAB, other
+separators are usually given as they are.)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Import ASCII files III</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Overview of important import options in <code>read.table()</code>:</p>
+
+<ul>
+<li><p><code>sep</code> What is the column separator? Typical values are: <code>&quot;,&quot;</code>, <code>&quot;;&quot;</code>, <code>&quot; &quot;</code>, <code>&quot;\t&quot;</code></p></li>
+<li><p><code>header</code> Logical, contains the first row variable names or not? Possible values:<code>TRUE</code>, <code>FALSE</code></p></li>
+<li><p><code>na.string</code> How are missing values encoded? Typical values: <code>NA</code>, <code>&quot;.&quot;</code></p></li>
+<li><p><code>dec</code> What is used as decimal symbol?</p></li>
+<li><p><code>as.is</code> Logical, shall R try to predict the ’right’ data format?</p></li>
+<li><p><code>colclasses</code> Vector of predefined column classes.</p></li>
+<li><p><code>stringsAsFactors</code> Logical, handle strings as factors?</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Import other files to R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Other file formats can also be imported to R, but it usually requires more
+efforts.</p>
+
+<p>There are functions that read, e.g. Excel tables, but it is not very
+advisable to use them, as those data formats are usually proprietary and
+hence developers cannot provide full functionality. The easiest way to
+import an excel sheet to R is it to open it with Excel, save it as ASCII file
+and procede as above mentioned.</p>
+
+<p>Another way to import data is to connect directly to a MySQL database,
+but this is above the scope of the course and will be discussed in an
+advanced course.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Example data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>You can download example data from here:
+<a href="https://raw.githubusercontent.com/fischuu/fischuu.github.io/master/lectures/IntroductionToR/data/titanic3.csv">Titanic-data</a>
+<a href="https://raw.githubusercontent.com/fischuu/fischuu.github.io/master/lectures/IntroductionToR/data/stressEcho.csv">stressEcho</a></p></li>
+<li><p>Just Right-click, choose &#39;Save as&#39; and store them on your HDD.</p></li>
+<li><p>These datasets we will use throughout the whole course to learn the different methods.</p></li>
+</ul>
+
+<p>&quot;Data obtained from <a href="http://biostat.mc.vanderbilt.edu/DataSets">http://biostat.mc.vanderbilt.edu/DataSets</a>&quot;.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Titanic passenger information variables:</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>pclass (Passenger class)</li>
+<li>survived (yes=1, no=0)</li>
+<li>name </li>
+<li>sex (female/male)<br></li>
+<li>age </li>
+<li>sibsp    (Number of Siblings/Spouses Aboard)</li>
+<li>parch    (Number of Parents/Children Aboard)</li>
+<li>ticket   (Ticket Number)<br></li>
+<li>fare (Passenger Fare British Pound)</li>
+<li>cabin   (Cabin number)<br></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>Titanic passenger information variables (continued):</h2>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>parch    (Number of Parents/Children Aboard)</li>
-<li>ticket   (Ticket Number)<br></li>
-<li>fare (Passenger Fare British Pound)</li>
-<li>cabin   (Cabin number)<br></li>
 <li>embarked    (S, Q, C=)</li>
 <li>boat<br></li>
 <li>body    Body Identification Number<br></li>
 <li>home.dest   Home/Destination</li>
 </ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Stress echo data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>bhr  Basal heart rate    (bpm) integer</li>
+<li>basebp   Basal blood pressure    mmHg integer</li>
+<li>basedp   Basal Double Product bhr TIMES basebp    bpm TIMES mmHg integer</li>
+<li>pkhr Peak heart rate mmHg    integer</li>
+<li>sbp  Systolic blood pressure mmHg integer</li>
+<li>dp   Double product pkhrTIMESsbp bpm TIMES mmHg integer</li>
+<li>dose Dose of dobutamine given    mg  integer</li>
+<li>maxhr    Maximum heart rate  bpm integer</li>
+<li>pctMphr  Percent maximum predicted heart rate achieved   %   integer</li>
+<li>mbp Maximum blood pressure  mmHg integer</li>
+<li>dpmaxdo Double product on max dobutamine dose   bpm TIMES mmHg integer</li>
+<li>dobdose Dobutamine dose at max double product   mg  integer</li>
+<li>age Age years   integer</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Stress echo data (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>gender 2 integer</li>
+<li>baseEF  Baseline cardiac ejection fraction  %   integer</li>
+<li>dobEF   Ejection fraction on dobutamine %   integer</li>
+<li>chestpain   Chest pain      integer</li>
+<li>restwma Resting wall motion abnormality on echocardiogram       integer</li>
+<li>posSE   Positive stress echocardiogram      integer</li>
+<li>newMI   New myocardial infarction       integer</li>
+<li>newPTCA Recent angioplasty      integer</li>
+<li>newCABG Recent bypass surgery   integer</li>
+<li>death           integer</li>
+<li>hxofHT  History of hypertension     integer</li>
+<li>hxofDM  History of diabetes     integer</li>
+<li>hxofCig History of smoking      3 integer</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Stress echo data (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>hxofMI  History of myocardial infarction        integer</li>
+<li>hxofPTCA    History of angioplasty      integer</li>
+<li>hxofCABG    History of coronary artery bypass surgery       integer</li>
+<li>any.event   Death, newMI, newPTCA, or newCABG       integer</li>
+<li>ecg Baseline electrocardiogram diagnosis        3 integer</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Hands-on: Import the Example data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><p>After having downloaded the titanic data, import it to R and name it <code>titanic</code></p></li>
+<li><p>After having downloaded the stress echo data, import it to R and name it <code>stress</code></p></li>
+</ol>
+
+<p>(If you have your own data, )</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Hint</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><p>Open the file in a text editor (NOT Word)</p></li>
+<li><p>Check the first line, is a header present or not?</p></li>
+<li><p>How are the different cells separated?</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Solution: Import the Titanic data</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">setwd(&quot;/home/ejo138/Projects/lectures/IntroductionToR&quot;)
+titanic &lt;- read.table(&quot;titanic3.csv&quot;, sep=&quot;,&quot;, header=TRUE)
+stress &lt;- read.table(&quot;stressEcho.csv&quot;, sep=&quot;,&quot;, header=TRUE)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>The R workspace I</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>As already mentioned now several times, everything is considered to be an
+object in R. These objects are living in the so-called workspace. The
+workspace in R is comparable with a desk. The content of this
+workspace/desk can be shown with the command</p>
+
+<pre><code class="r">ls()
+</code></pre>
+
+<pre><code>[1] &quot;stress&quot;  &quot;titanic&quot;
+</code></pre>
+
+<p>The <code>ls()</code> command shows all active R objects, unneeded objects can be
+removed via <code>rm()</code> command. Assuming we have an object foo we can
+remove it be typing</p>
+
+<pre><code class="r">rm(foo)
+</code></pre>
+
+<p>and all objects of a workspace can removed by</p>
+
+<pre><code class="r">rm(list=ls())
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>The R workspace II</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>One can store the entire workspace and restore it later on. For that are the
+commands <code>save.image()</code> and the <code>load()</code>command available.
+If one want to save a workspace the command is</p>
+
+<pre><code class="r">save.image(file=&quot;myRsession.RData&quot;)
+</code></pre>
+
+<p>and one can load it via</p>
+
+<pre><code class="r">load(file=&quot;myRsession.RData&quot;)
+</code></pre>
+
+<p>This is especially then usful when one works on different projects where the calculations
+take a while and cannot be easily repeated.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -362,26 +695,122 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='A typical workflow in R'>
+        data-slide=12 title='Where to get help?'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Import Data to R'>
+        data-slide=13 title='A typical workflow in R'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Example data'>
+        data-slide=14 title='Import Data to R'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Titanic passenger information variables (continued):'>
+        data-slide=15 title='Working directory I'>
          15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Working directory II'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Import ASCII files I'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Import ASCII files II'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Import ASCII files III'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Import other files to R'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Example data'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Titanic passenger information variables:'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Titanic passenger information variables (continued):'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Stress echo data'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Stress echo data (continued)'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Stress echo data (continued)'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Hands-on: Import the Example data'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Hint'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Solution: Import the Titanic data'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='The R workspace I'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='The R workspace II'>
+         31
       </a>
     </li>
   </ul>
