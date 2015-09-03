@@ -19,6 +19,7 @@ github      :
 
 ```{r, echo=FALSE}
 setwd("/home/ejo138/Projects/fischuu.github.io/lectures/IntroductionToR")
+rm(list=ls())
 ```
 
 ---
@@ -732,4 +733,433 @@ testMat
  testMat[,2]
 ```
 
+---
+## Different data types in a vector
+So far we introduced vectors and matrices but used numbers in it. Well,
+what about text?! In categorical data text objects are commonly used,
+different sequences might be non-numerical coded, gene names, etc.
+Text (or better ’strings’) are identified with quotations:
+```{r comment=NA}
+ myString <- "Peter Pan"
+ myString
+```
+ 
+But what happens now, when we combine strings and numbers?!
+Remember, I said earlier, in matrices and vectors are only same object
+types allowed.
 
+```{r comment=NA}
+myNewString <- c(myString,"Robin Hood",123)
+myNewString
+```
+
+---
+
+## Data structure: data.frame I
+
+One data structure that overcomes the limitation that all elements have to
+be of the same class is the data.frame:
+
+```{r comment=NA}
+ myDF <- data.frame(height = c(190, 187, 178),
+                    name = c("Peter", "Paul", "Kati"))
+ myDF
+```
+
+---
+## Data structure: data.frame II
+
+data.frame are practically vectors of same length that are organized in a matrix similar shape.
+
+```{r comment=NA}
+ myDF[,1]
+ myDF[,2]
+```
+
+---
+
+## Data structure: factor I
+
+Here we saw already the next type of data structure / type: the factor
+type. It is especially used for categorical data or status information like
+male / female, placebo / drug. etc.
+Possible values are called here levels. All levels from such a data
+structure can then be shown via
+
+```{r comment=NA}
+ levels(myDF[,2])
+```
+
+One has to be very careful with factors, as they might behave not in such
+a way as one would always assume! In the beginning it might be a good
+advise to use factors only in those situation, where you really know what
+you are doing. Later on we will see examples of situations, where the use
+of factors might lead to undesired results. For now we don’t go into the
+details.
+But - how can we avoid that R uses factors here?!
+
+---
+
+## Data structure: factor II
+
+By default R interprets strings as factors. This behaviour can be changed
+using the additional option stringsAsFactors:
+
+```{r comment=NA}
+ myDF <- data.frame(height = c(190, 187, 178),
+                   name = c("Peter", "Paul", "Kati"),
+                   stringsAsFactors=FALSE)
+ myDF
+```
+
+---
+
+## Data structure: factor II
+
+```{r comment=NA} 
+ myDF[,1]
+ myDF[,2]
+```
+
+---
+
+## Our data example
+
+* Lets come back to our data example.
+
+* Earlier we imported the two datsets `titanic` and `stressEcho`.
+
+* Back then we said we have to check, if they have been properly imported, we can do this now!
+
+```{r, comment=NA}
+ stress[1:6,1:12]
+```
+
+---
+
+## Our data example
+```{r, comment=NA}
+ str(stress)
+```
+
+--- 
+## Naming of element
+* We just saw, list items can have names that can be accessed with the $ sign.
+
+* Names were assigned in the definition of the list by using the `=` symbol.
+
+* We did the same already earlier, when we had the data.frame. It works there the same way:
+
+* Lets check the first 25 elements of the column named `bhr` in the data.frame `stress`:
+
+```{r, comment=NA}
+ stress$bhr[1:25]
+```
+
+---
+## Getting the column names of a data.frame
+
+* There are commands to set and get the column names of a matrix or data.frame.
+
+* This is called `colnames()`:
+
+```{r, comment=NA}
+ colnames(stress)
+```
+
+---
+## Summary break
+
+* It is again time to review some things that happened here!
+
+1. We saw that R might change the data type by itself!
+2. These changes are not visible on the first view.
+3. We don’t have to panic! The previously introduced concepts will soon be intuitively to use.
+
+* What can we do already?!
+1. We can write values into variables (using <-).
+2. We can access values from variables (using [,]).
+3. We know that there are different data types (numerical and strings).
+4. We can give names to columns and list items.
+
+---
+## Hands-On: Titanic data
+
+1. Check if you imported the dataset `titanic` properly
+2. Print the column with the names of the passengers
+
+---
+## Hints: Titanic data
+
+1. Use `str()` and the square brackets `[]`
+2. Use the `$` sign, once you know how the column is called.
+
+---
+## Solutions: Titanic data
+
+1. Check if you imported the dataset `titanic` properly
+
+```{r comment=NA}
+str(titanic) 
+```
+
+---
+
+## Solutions: Titanic data II
+
+2. Check if you imported the dataset `titanic` properly
+
+```{r comment=NA}
+titanic$name
+```
+
+---
+
+## data structure: list I
+
+* So far we had all kind of data structures that are more or less known from mathematics.
+
+* But what if we want to combine elements that do not have same dimensions?
+
+* A list fulfills such a purpose, and it ’sits on top’ of the previous introduced structures.
+
+* Think of a list as a necklace: pearls are sequentially, but can be completely different. Some necklaces have even big constructions
+  hanging in between. All this is also possible by using lists.
+
+* In order to read/write into a list, we need double square brackets `[[ ]]`
+
+---
+
+## Data structure: list II
+
+An example of an list:
+
+```{r comment=NA}
+ rooms <- c("F001","F002","F003")
+ building <- c("Datum","Alimentum")
+ someData <- matrix(c(1,2,3,4),ncol=2)
+ myList <- list(rooms, building, someData)
+```
+
+---
+
+## Data structure : list III
+
+```{r, comment=NA}
+ myList
+```
+
+---
+
+## Data structure : list IV
+Accessing the second element of the list `myList`:
+```{r, comment=NA}
+ myList[[2]]
+```
+
+Printing the vector `building`:
+```{r, comment=NA}
+ building
+```
+
+---
+
+## Named elements in the list
+
+* Now we combine the elements not only by putting them into a `list()` command.
+
+* At the same time we will give them names:
+
+```{r comment=NA}
+ rooms <- c("F001","F002","F003")
+ building <- c("Datum","Alimentum")
+ someData <- matrix(c(1,2,3,4),ncol=2)
+ myList2 <- list(TheRooms=rooms, build=building, data=someData)
+```
+
+---
+
+## Data structure : list III
+
+```{r, comment=NA}
+ myList2
+```
+
+---
+
+## Data structure : list IV
+Accessing the second element of the list `myList`:
+```{r, comment=NA}
+ myList2[[2]]
+```
+
+Printing the column called `build`:
+```{r, comment=NA}
+myList2$build
+```
+
+---
+
+## Data structure: list V
+
+* It is very important to understand the concept of a list in R, as it is a commonly used structure.
+
+* Many functions report back the results in form of lists.
+
+* A typical example is a statistical test that reports then e.g. back:
+
+  1. Value of the test statistic ($statistic)
+  2. P-value ($p.value)
+  3. Confidence intervall ($conf.int)
+  4.  . . . .
+  
+---
+
+## R as pocket calculator
+
+It is easy to use R as a basic pocket calculator
+```{r comment=NA}
+1+2*3
+2*5^2 - 11
+sqrt(9)
+cos(2*pi)
+```
+
+---
+
+## R as pocket calculator II
+
+Table 1: Basic arithmetic functions in R
+
+Command       |  Explanation
+--------------|---------------------------
+`^` or `**`   |  Power
+`*`, `/`      |  Multiplication, Divisin
+`+`, `-`      |  Addition, Subtraction
+`%/%`         |  Integer Division
+`%%`          |  Modulo Division
+
+---
+
+## R as pocket calculator II
+
+Table 2: Basic functions in R
+
+Command            |  Explanation
+-------------------|---------------------------
+`max()`, `min()`   |  Maximum, minimum
+`abs()`            |  Absolute value
+`sqrt()`           |  Square root
+`round()`,`floor()`,  `ceiling()`  |  Rounding
+`sum()`, `prod()`  |  sum, product
+`log()`            | Logarithm
+`exp()`            | Exponential function
+`sin()`, `cos()`   | Trigonometric functions
+
+---
+
+## Perform basic calculations
+
+* Now after we know what basic data types and structures are available, what can we do with them!?
+
+* We saw already that R can be used as simple pocket calculator, so what happens when you do the same with the other data structures?
+ (Remember, a single value is considered to be a vector of length 1!)
+
+```{r comment=NA}
+ x <- c(1,2,3,4,5,6,7,8,9,10)
+ x*2
+```
+
+* R works vector-based. This means, the 2 is internally repeated so many times, that the length of the vectors match, like this:
+```{r comment=NA}
+x <- c(1,2,3,4,5,6,7,8,9,10)
+x*c(2,2,2,2,2,2,2,2,2,2)
+```
+
+---
+
+## Perform basic calculations II
+
+Table 2: Basic functions in R
+
+Command            |  Explanation
+-------------------|---------------------------
+`mean()`, `median()` |  Mean, median
+`sd()`, `var()`    |  Standard deviation, variance
+`min()`, `max()`   |  Extreme values
+`range()`          |  Both extreme values
+`sort()`           |  Sort a vector
+
+---
+
+## Handling missing data
+
+* R denotes missing data usually with `NA`.
+
+* Missing data is a pain for most calculations, as it is not clear how to handle it!
+
+* Most function provide options to define how to handle missing data:
+
+```{r comment=NA}
+x <- c(4,3,2,NA,78)
+mean(x)
+mean(x, na.rm=TRUE)
+```
+
+---
+
+## Hands-On Pocket Calculator
+
+Calculate:
+
+1. Square root of 15
+2. Absolute value of -5 multiplied by 4
+3. 4 to the power of 5
+4. 21 modulo 5
+5. Integer division of 21 by 5
+6. Rounded product of 4 and 5.16
+
+---
+
+## Solutions: Pocket Calculator 1-3
+
+1. Square root of 15
+```{r comment=NA}
+ sqrt(15)
+```
+2. Absolute value of -5 multiplied by 4
+
+```{r comment=NA}
+ abs(-5)*4
+```
+3. 4 to the power of 5
+```{r comment=NA}
+ 4^5
+```
+
+---
+
+## Solutions: Pocket Calculator 4-6
+
+4. 21 modulo 5
+```{r comment=NA}
+ 21%%5
+```
+5. Integer division of 21 by 5
+
+```{r comment=NA}
+ 21%/%5
+```
+6. Rounded product of 4 and 5.16
+```{r comment=NA} 
+ round(4*5.16)
+```
+
+---
+
+## Hands-On: Example data
+
+1. Calculate the mean age of the Titanic passengers
+2. How many passengers survived the Titanic tragedy?
+3. What is the smallest/largest basic heart rate in the stress data?
+4. What is the Standard deviation of the Age in the stress data?
