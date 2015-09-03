@@ -212,7 +212,7 @@ author("MyFirstPresentation", use_git = FALSE)
 
 * To create slides with Slidify no HTML knowledge is required, as everything is done via R [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
-* Markdown is a lightweight markup language with plain text formatting that can be transformed into HTML (or other languages).
+* Markdown is a lightweight markup language with plain text formatting that can be transformed into HTML (or other languages), using e.g. [pandoc](http://pandoc.org/)
 
 ---
 
@@ -283,7 +283,7 @@ widgets: []
 
 ## Markdown basics
 
-* R markdown is a very simple markup language that makes creating slides extremely fast and easy.
+* R markdown is a very simple markup language that makes creating slides (and all other documents) extremely fast and easy.
 
 * A reference overview can be found [here](http://rmarkdown.rstudio.com/authoring_basics.html)
 
@@ -309,9 +309,9 @@ widgets: []
 
 * For mathematical formulas you can use just normal LaTeX code.
 
-* In that case yo uhave to add the _mathjax_ widget still to the JAML header.
+* In that case you have to add the _mathjax_ widget still to the JAML header.
 
-* MathJax has become the gold standard for mathematics on the web, as the quality is close to what you expect from LaTeX.
+* [MathJax](https://www.mathjax.org/) became the gold standard for mathematics on the web, as the quality is close to what you receive from LaTeX.
 
 * After the slides are ready they have to be 'slidified'.
 
@@ -331,7 +331,7 @@ slidify('index.Rmd')
 
 * Instead of static content in pdf, you get all features you know from webpages.
 
-* You can include interactive graphics, webcontents and even create easily interactive tests that write user feedback straigt into a database.
+* You can include interactive graphics, webcontents and even create easily interactive tests that writes user feedback straight into a database.
 
 * Also, even if this is a matter of taste, different ways of slides are possible, like e.g. in [this](http://ramnathv.github.io/slidifyExamples/examples/impressjs) example.
 
@@ -375,7 +375,7 @@ op <- options(gvis.plot.tag='chart')
 
 * The googleVis package is very user friendly and easy to use
 
-* The most difficult part is to get the data to R (what is, with some practice also an easy task)
+* The most difficult part is to get the data to R...
 
 * A typical workflow would look like this:
 
