@@ -623,6 +623,479 @@ take a while and cannot be easily repeated.</p>
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>How to continue</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>After importing the data to R, the first step is to check if the data was imported properly!</p></li>
+<li><p>It is a common source of error to import the data wrongly without noticing it in the first place!</p></li>
+<li><p>But how to check if the data was imported properly? For that some background of R&#39;s data types and data structures is needed.</p></li>
+<li><p>Each (data) object in a programming language is of a certain type and is handled different.</p></li>
+<li><p>R knows basically 5 different data types:</p></li>
+</ul>
+
+<ol>
+<li>The empty set. Example: <code>NULL</code>. Name: NULL.</li>
+<li>Logical values. Example: <code>TRUE</code>. Name: logical.</li>
+<li>Real values. Example: <code>3.13</code> or <code>4</code>. Name: numeric.</li>
+<li>Complex values. Example: <code>5.22+1i</code>. Name: complex.</li>
+<li>Letters and strings. Example: <code>&quot;Hei hei&quot;</code>. Name: character.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>Standard data formats I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>In R everything is an object.</p></li>
+<li><p>Although R isn&#39;t a classical object orientated programming language, we use this term here.</p></li>
+<li><p>Values can be stored in variables.</p></li>
+<li><p>Variables can be of very different type and have very different properties, depending on the purpose for what we need them!</p></li>
+<li><p>Also functions return objects (also here are different types possible).</p></li>
+<li><p><strong>Question</strong>: What for do I need these variables and how do I use them?!</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>Standard data formats II</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The standard data objects for numbers (numeric) and strings (character) are</p>
+
+<ol>
+<li><code>vector</code></li>
+<li><code>matrix</code> or <code>data.frame</code></li>
+<li><code>list</code></li>
+<li><code>array</code></li>
+<li><code>factor</code></li>
+<li><code>(function)</code></li>
+</ol>
+
+<ul>
+<li><p>Each data structure has it’s own properties and we are going through them soon.</p></li>
+<li><p>The main idea of a data structure is to store the previous result and make it later accessible!</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>data structure: Vector</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The vector structure is similar to vectors known from mathematics.</p></li>
+<li><p>You can compare vectors with houses along a street.</p></li>
+<li><p>There is clearly defined how many houses there are (= length of the vector).</p></li>
+<li><p>Each house has it’s clear position that can be addressed.</p></li>
+<li><p>The only difference is, at each postion only one element is allowed and all elements have to be the same type. (This is then the difference to a real street, hopefully!)</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>Data structure: Vector II</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>A vector in R is a sequence of elements that have all the same mode. </p></li>
+<li><p>The easiest way to create a vector is using the <code>c()</code> function. </p></li>
+<li><p>The function is used as follows:</p></li>
+</ul>
+
+<pre><code class="r">vectorname &lt;- c(value1, value2, ...)
+</code></pre>
+
+<ul>
+<li>A single number is also treated like a vector but can be easier assigned to an object:</li>
+</ul>
+
+<pre><code class="r">vectorname &lt;- value1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>Data structures: Vector III</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Let’s assign some values:</li>
+</ul>
+
+<pre><code class="r"> peter.height &lt;- 190
+ paul.height &lt;- 188
+ kati.height &lt;- 179
+</code></pre>
+
+<ul>
+<li><p>These are now special type of vectors, because they have just length 1! </p></li>
+<li><p>Let’s combine now these special vectors:</p></li>
+</ul>
+
+<pre><code class="r">all.height &lt;- c(peter.height, paul.height, kati.height)
+heights &lt;- c(190, 188, 179)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Data structures: Vector IV</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Just by typing the name of an object (here the vector) into the console, R displays its content.</li>
+</ul>
+
+<pre><code class="r">all.height
+</code></pre>
+
+<pre><code>[1] 190 188 179
+</code></pre>
+
+<pre><code class="r">heights
+</code></pre>
+
+<pre><code>[1] 190 188 179
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>Data structure: Vector V</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>As mentioned in the street example, each position in a vector can be
+addressed:</li>
+</ul>
+
+<pre><code class="r"> heights[1]
+</code></pre>
+
+<pre><code>[1] 190
+</code></pre>
+
+<pre><code class="r"> all.height[3]
+</code></pre>
+
+<pre><code>[1] 179
+</code></pre>
+
+<p>We can also see the length of a vector:</p>
+
+<pre><code class="r">length(heights)
+</code></pre>
+
+<pre><code>[1] 3
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h1>Data structure: matrix I</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The matrix structure is also similar to matrices known from mathematics.</p></li>
+<li><p>You can compare them with a chessboard.</p></li>
+<li><p>There is clear defined how many fields there are (= &#39;product of the edges&#39;).</p></li>
+<li><p>Each cell has it’s clear position that can be addressed.</p></li>
+<li><p>The only difference is also here all elements have to be the same type and it can be rectangular, with arbitrary sizes.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>Data structure: matrix II</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Matrices are filled using vectors:</li>
+</ul>
+
+<pre><code class="r"> myMatrix &lt;- matrix(c(1,2,3,4,5,6), ncol=3)
+ myMatrix
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+</code></pre>
+
+<pre><code class="r"> myMatrix2 &lt;- matrix(c(1,2,3,4,5,6), ncol=3, byrow=TRUE)
+ myMatrix2
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>Data structure: matrix III</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>And also here, we can get the certain dimensions</li>
+</ul>
+
+<pre><code class="r"> nrow(myMatrix)
+</code></pre>
+
+<pre><code>[1] 2
+</code></pre>
+
+<pre><code class="r"> ncol(myMatrix)
+</code></pre>
+
+<pre><code>[1] 3
+</code></pre>
+
+<pre><code class="r"> length(myMatrix)
+</code></pre>
+
+<pre><code>[1] 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Data structure: matrix IV</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>In order to access specific elements in a matrix, we have to give 2 positions, or the column/row number of interest</li>
+</ul>
+
+<pre><code class="r"> myMatrix[1,3]
+</code></pre>
+
+<pre><code>[1] 5
+</code></pre>
+
+<pre><code class="r"> myMatrix[2,]
+</code></pre>
+
+<pre><code>[1] 2 4 6
+</code></pre>
+
+<pre><code class="r"> myMatrix[,1]
+</code></pre>
+
+<pre><code>[1] 1 2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Data structure: matrix V</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We can also change certain entries in the matrix</p>
+
+<pre><code class="r"> myMatrix[1,3] &lt;- 100
+ myMatrix
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    3  100
+[2,]    2    4    6
+</code></pre>
+
+<pre><code class="r"> myMatrix[1,] &lt;- c(5,9,2)
+ myMatrix
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    5    9    2
+[2,]    2    4    6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-45" style="background:;">
+  <hgroup>
+    <h2>Data structure: matrix VI</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We can also change certain entries in the matrix</p>
+
+<pre><code class="r"> myMatrix[,2] &lt;- c(7,3)
+ myMatrix
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    5    7    2
+[2,]    2    3    6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-46" style="background:;">
+  <hgroup>
+    <h2>Interruption</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>It is already time to review some things that happened here!</p>
+
+<ol>
+<li>We saw that basically everything happened by using functions. The general syntax was:</li>
+</ol>
+
+<pre><code class="r">Functionname(Argument)
+</code></pre>
+
+<ol>
+<li><p>We saw also that all functions return objects, e.g. the command to
+get the number of rows of matrix <code>nrow()</code> gives a vector of length 1
+with the result.</p></li>
+<li><p>As a special command we had the <code>matrix()</code> command. Maybe you
+have noticed that it took 2 arguments as input! These arguments
+have been separated by comma and we will see this more frequent in
+the future!</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-47" style="background:;">
+  <hgroup>
+    <h2>Hands-On: Assigning values</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Assign values 4, 6 and 12 to the object <code>test</code></li>
+<li>Change the second element of <code>test</code> then to 14</li>
+<li>Create a matrix testMat that looks like this:</li>
+</ol>
+
+<pre><code class="r">testMat
+</code></pre>
+
+<pre><code>     [,1] [,2]
+[1,]    5    3
+[2,]    6   12
+</code></pre>
+
+<ol>
+<li>Display the second column of the matrix testMat</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-48" style="background:;">
+  <hgroup>
+    <h2>Hands-On: Solutions 1&amp;2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Assign values 4, 6 and 12 to the object <code>test</code></li>
+</ol>
+
+<pre><code class="r"> test &lt;- c(4,6,12)
+ test
+</code></pre>
+
+<pre><code>[1]  4  6 12
+</code></pre>
+
+<ol>
+<li>Change the second element of <code>test</code> then to 14</li>
+</ol>
+
+<pre><code class="r"> test[2] &lt;- 14
+ test
+</code></pre>
+
+<pre><code>[1]  4 14 12
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-49" style="background:;">
+  <hgroup>
+    <h2>Hands-On: Solutions 3&amp;4</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Create a matrix testMat that looks like this:</li>
+</ol>
+
+<pre><code class="r"> testMat &lt;- matrix(c(5,3,6,12),ncol=2)
+ testMat
+</code></pre>
+
+<pre><code>     [,1] [,2]
+[1,]    5    6
+[2,]    3   12
+</code></pre>
+
+<ol>
+<li>Display the second column of the matrix testMat</li>
+</ol>
+
+<pre><code class="r"> testMat[,2]
+</code></pre>
+
+<pre><code>[1]  6 12
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
     <slide class="backdrop"></slide>
   </slides>
   <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
@@ -811,6 +1284,114 @@ take a while and cannot be easily repeated.</p>
       <a href="#" target="_self" rel='tooltip' 
         data-slide=31 title='The R workspace II'>
          31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='How to continue'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Standard data formats I'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Standard data formats II'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='data structure: Vector'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Data structure: Vector II'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Data structures: Vector III'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Data structures: Vector IV'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Data structure: Vector V'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Data structure: matrix I'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Data structure: matrix II'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Data structure: matrix III'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Data structure: matrix IV'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Data structure: matrix V'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Data structure: matrix VI'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='Interruption'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Hands-On: Assigning values'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Hands-On: Solutions 1&amp;2'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Hands-On: Solutions 3&amp;4'>
+         49
       </a>
     </li>
   </ul>

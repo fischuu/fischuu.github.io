@@ -457,4 +457,423 @@ load(file="myRsession.RData")
 This is especially then usful when one works on different projects where the calculations
 take a while and cannot be easily repeated.
 
+---
+
+## How to continue
+
+* After importing the data to R, the first step is to check if the data was imported properly!
+
+* It is a common source of error to import the data wrongly without noticing it in the first place!
+
+* But how to check if the data was imported properly? For that some background of R's data types and data structures is needed.
+
+* Each (data) object in a programming language is of a certain type and is handled different.
+
+* R knows basically 5 different data types:
+
+1. The empty set. Example: `NULL`. Name: NULL.
+2. Logical values. Example: `TRUE`. Name: logical.
+3. Real values. Example: `3.13` or `4`. Name: numeric.
+4. Complex values. Example: `5.22+1i`. Name: complex.
+5. Letters and strings. Example: `"Hei hei"`. Name: character.
+
+---
+
+## Standard data formats I
+
+* In R everything is an object.
+
+* Although R isn't a classical object orientated programming language, we use this term here.
+
+* Values can be stored in variables.
+
+* Variables can be of very different type and have very different properties, depending on the purpose for what we need them!
+
+* Also functions return objects (also here are different types possible).
+
+* __Question__: What for do I need these variables and how do I use them?!
+
+---
+
+## Standard data formats II
+
+The standard data objects for numbers (numeric) and strings (character) are
+
+1. `vector`
+2. `matrix` or `data.frame`
+3. `list`
+4. `array`
+5. `factor`
+6. `(function)`
+
+* Each data structure has it’s own properties and we are going through them soon.
+
+* The main idea of a data structure is to store the previous result and make it later accessible!
+
+---
+
+## data structure: Vector
+
+* The vector structure is similar to vectors known from mathematics.
+
+* You can compare vectors with houses along a street.
+
+* There is clearly defined how many houses there are (= length of the vector).
+
+* Each house has it’s clear position that can be addressed.
+
+* The only difference is, at each postion only one element is allowed and all elements have to be the same type. (This is then the difference to a real street, hopefully!)
+
+---
+
+## Data structure: Vector II
+
+* A vector in R is a sequence of elements that have all the same mode. 
+
+* The easiest way to create a vector is using the `c()` function. 
+
+* The function is used as follows:
+
+
+```r
+vectorname <- c(value1, value2, ...)
+```
+
+* A single number is also treated like a vector but can be easier assigned to an object:
+
+```r
+vectorname <- value1
+```
+
+---
+
+## Data structures: Vector III
+
+* Let’s assign some values:
+
+```r
+ peter.height <- 190
+ paul.height <- 188
+ kati.height <- 179
+```
+
+* These are now special type of vectors, because they have just length 1! 
+
+* Let’s combine now these special vectors:
+
+
+```r
+all.height <- c(peter.height, paul.height, kati.height)
+heights <- c(190, 188, 179)
+```
+
+---
+
+## Data structures: Vector IV
+
+* Just by typing the name of an object (here the vector) into the console, R displays its content.
+
+
+```r
+all.height
+```
+
+```
+[1] 190 188 179
+```
+
+```r
+heights
+```
+
+```
+[1] 190 188 179
+```
+
+---
+
+## Data structure: Vector V
+
+* As mentioned in the street example, each position in a vector can be
+addressed:
+
+```r
+ heights[1]
+```
+
+```
+[1] 190
+```
+
+```r
+ all.height[3]
+```
+
+```
+[1] 179
+```
+
+We can also see the length of a vector:
+
+
+```r
+length(heights)
+```
+
+```
+[1] 3
+```
+
+---
+
+# Data structure: matrix I
+
+* The matrix structure is also similar to matrices known from mathematics.
+
+* You can compare them with a chessboard.
+
+* There is clear defined how many fields there are (= 'product of the edges').
+
+* Each cell has it’s clear position that can be addressed.
+
+* The only difference is also here all elements have to be the same type and it can be rectangular, with arbitrary sizes.
+
+---
+
+## Data structure: matrix II
+
+* Matrices are filled using vectors:
+
+
+```r
+ myMatrix <- matrix(c(1,2,3,4,5,6), ncol=3)
+ myMatrix
+```
+
+```
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+```
+
+```r
+ myMatrix2 <- matrix(c(1,2,3,4,5,6), ncol=3, byrow=TRUE)
+ myMatrix2
+```
+
+```
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+```
+
+---
+
+## Data structure: matrix III
+
+* And also here, we can get the certain dimensions
+
+
+```r
+ nrow(myMatrix)
+```
+
+```
+[1] 2
+```
+
+```r
+ ncol(myMatrix)
+```
+
+```
+[1] 3
+```
+
+```r
+ length(myMatrix)
+```
+
+```
+[1] 6
+```
+
+---
+
+## Data structure: matrix IV
+
+* In order to access specific elements in a matrix, we have to give 2 positions, or the column/row number of interest
+
+
+```r
+ myMatrix[1,3]
+```
+
+```
+[1] 5
+```
+
+```r
+ myMatrix[2,]
+```
+
+```
+[1] 2 4 6
+```
+
+```r
+ myMatrix[,1]
+```
+
+```
+[1] 1 2
+```
+
+---
+
+## Data structure: matrix V
+
+We can also change certain entries in the matrix
+
+
+```r
+ myMatrix[1,3] <- 100
+ myMatrix
+```
+
+```
+     [,1] [,2] [,3]
+[1,]    1    3  100
+[2,]    2    4    6
+```
+
+```r
+ myMatrix[1,] <- c(5,9,2)
+ myMatrix
+```
+
+```
+     [,1] [,2] [,3]
+[1,]    5    9    2
+[2,]    2    4    6
+```
+
+---
+
+## Data structure: matrix VI
+
+We can also change certain entries in the matrix
+
+
+```r
+ myMatrix[,2] <- c(7,3)
+ myMatrix
+```
+
+```
+     [,1] [,2] [,3]
+[1,]    5    7    2
+[2,]    2    3    6
+```
+
+---
+
+## Interruption
+
+It is already time to review some things that happened here!
+
+1. We saw that basically everything happened by using functions. The general syntax was:
+
+
+```r
+Functionname(Argument)
+```
+
+2. We saw also that all functions return objects, e.g. the command to
+get the number of rows of matrix `nrow()` gives a vector of length 1
+with the result.
+
+3. As a special command we had the `matrix()` command. Maybe you
+have noticed that it took 2 arguments as input! These arguments
+have been separated by comma and we will see this more frequent in
+the future!
+
+---
+
+## Hands-On: Assigning values
+
+1. Assign values 4, 6 and 12 to the object `test`
+2. Change the second element of `test` then to 14
+3. Create a matrix testMat that looks like this:
+
+
+
+```r
+testMat
+```
+
+```
+     [,1] [,2]
+[1,]    5    3
+[2,]    6   12
+```
+
+4. Display the second column of the matrix testMat
+
+---
+
+## Hands-On: Solutions 1&2
+
+1. Assign values 4, 6 and 12 to the object `test`
+
+
+```r
+ test <- c(4,6,12)
+ test
+```
+
+```
+[1]  4  6 12
+```
+
+2. Change the second element of `test` then to 14
+
+
+```r
+ test[2] <- 14
+ test
+```
+
+```
+[1]  4 14 12
+```
+
+---
+## Hands-On: Solutions 3&4
+
+3. Create a matrix testMat that looks like this:
+
+
+```r
+ testMat <- matrix(c(5,3,6,12),ncol=2)
+ testMat
+```
+
+```
+     [,1] [,2]
+[1,]    5    6
+[2,]    3   12
+```
+
+4. Display the second column of the matrix testMat
+
+
+```r
+ testMat[,2]
+```
+
+```
+[1]  6 12
+```
+
 
