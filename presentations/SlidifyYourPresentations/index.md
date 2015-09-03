@@ -28,7 +28,11 @@ I do not have any affiliation with any of the presented tools!
 
 1. Required Tools
 
-2. ...
+2. RStudio and GitHub
+
+3. Start Slidify
+
+4. googleVis
 
 --- .segue .dark
 
@@ -47,6 +51,10 @@ We make use of the following Tools/ R-packages
 3. Slidify (including knitR and RMarkdown)
 
 4. googleVis
+
+--- .segue .dark
+
+## RStudio and GitHub
 
 ---
 
@@ -97,7 +105,7 @@ _username_.github.io
 
 [http://username.github.io](http://username.github.io)
 
-* To make things work proper, you should create a file
+* To make things work proper, it is advisable to create a file
 
 index.html
 
@@ -105,7 +113,7 @@ in the uppest level of the repository.
 
 * Starting from there, you can have several subpages that can be stored in subfolders of your repository.
   
-* It is advisable to name the entry page of ech subproject also index.html
+* It is advisable to name the entry page of each subproject also index.html
 
 ---
 
@@ -173,13 +181,17 @@ git@github.com:fischuu/fischuu.github.io.git
 
 * Now we can create an own folder structure (e.g. _presentations_, _lectures_, etc.)
 
-* After those steps, we have succesful connected RStudio with GitHub pages and we can control the repository entirely with RStudio.
+* After those steps, we have successful connected RStudio with GitHub pages and we can control the repository entirely with RStudio.
 
 ---
 
 ## Cloning to RStudio V
 
 ![](assets/img/RStudio3.png)
+
+--- .segue .dark
+
+## Start slidify
 
 --- 
 
@@ -195,7 +207,7 @@ author("MyFirstPresentation", use_git = FALSE)
 ```
 
 * The part `use_git = FALSE` might be irritating, but it is needed, as _slidify_ would create otherwise a new git structure within 
-   the existing one (what is possible but would lead to far for now.)
+   the existing one (what is possible but would lead too far for now.)
 
 * Slidify then creates all required files and you are ready to go.
 
