@@ -3342,4 +3342,88 @@ summary(stress$bhr)
   42.00   64.00   74.00   75.29   84.00  210.00 
 ```
 
+---
 
+## The `boxplot()` command I
+
+The boxplot is more or less a graphical representation of the 5 point summary (only the whiskers are not neccessary part of the 5 points summary)
+
+In a boxplot the thick inter line represents the _median_.
+
+The boundaries of the box represent the upper and lower quartile / 25% quantile. Consequently, the box represents the 'inner 50% of the data'.
+
+The whiskers mark those two values that differ at most 1.5 times the inner quartile range (IQR) from the median.
+
+All values that are further away are marked individually with circles
+
+---
+
+## The `boxplot()`command II
+
+
+```r
+boxplot(stress$bhr)
+```
+
+![plot of chunk unnamed-chunk-85](assets/fig/unnamed-chunk-85-1.png) 
+
+---
+
+## The `plot()` command I
+
+* The `plot()` command is rather an universal function in R.
+
+* Depending on the input, the output can be entirely different.
+
+* The reason for this is that many objects in R are associated with their own `print()`, `summary()` or `plot()`
+
+* We saw already, a numerical vector has a 5-points table as output of a `summary()`, but also this can be different for other objects.
+
+* The most basic usage of `plot()` is it to either feed one or two vectors in it.
+
+* In these situations, the `plot()`function creates by default a scatterplot.
+
+---  &twocol w1:50% w2:50%
+
+## The `plot()` command II
+
+
+```r
+plot(stress$bhr)
+```
+
+*** =left
+
+![plot of chunk unnamed-chunk-87](assets/fig/unnamed-chunk-87-1.png) 
+
+
+***=right
+
+Here, only one vector is provided. 
+
+Its values are considered to be the values on a y-axis.
+
+The x-axis values are automatically added and the index number is used.
+
+
+---  &twocol w1:50% w2:50%
+
+## The `plot()` command II
+
+
+```r
+plot(stress$maxhr,stress$bhr)
+```
+
+*** =left
+
+![plot of chunk unnamed-chunk-89](assets/fig/unnamed-chunk-89-1.png) 
+
+
+***=right
+
+Now two vectors are provided.
+
+They need to be of the same length, as pairs $(x_i,y_i)$ are formed.
+
+The first vector represents the x-axis values, the second one the y-axis.

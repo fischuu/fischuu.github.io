@@ -3906,6 +3906,105 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-104" style="background:;">
+  <hgroup>
+    <h2>The <code>boxplot()</code> command I</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The boxplot is more or less a graphical representation of the 5 point summary (only the whiskers are not neccessary part of the 5 points summary)</p>
+
+<p>In a boxplot the thick inter line represents the <em>median</em>.</p>
+
+<p>The boundaries of the box represent the upper and lower quartile / 25% quantile. Consequently, the box represents the &#39;inner 50% of the data&#39;.</p>
+
+<p>The whiskers mark those two values that differ at most 1.5 times the inner quartile range (IQR) from the median.</p>
+
+<p>All values that are further away are marked individually with circles</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-105" style="background:;">
+  <hgroup>
+    <h2>The <code>boxplot()</code>command II</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">boxplot(stress$bhr)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-85-1.png" alt="plot of chunk unnamed-chunk-85"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-106" style="background:;">
+  <hgroup>
+    <h2>The <code>plot()</code> command I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The <code>plot()</code> command is rather an universal function in R.</p></li>
+<li><p>Depending on the input, the output can be entirely different.</p></li>
+<li><p>The reason for this is that many objects in R are associated with their own <code>print()</code>, <code>summary()</code> or <code>plot()</code></p></li>
+<li><p>We saw already, a numerical vector has a 5-points table as output of a <code>summary()</code>, but also this can be different for other objects.</p></li>
+<li><p>The most basic usage of <code>plot()</code> is it to either feed one or two vectors in it.</p></li>
+<li><p>In these situations, the <code>plot()</code>function creates by default a scatterplot.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-107" style="background:;">
+  <hgroup>
+    <h2>The <code>plot()</code> command II</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(stress$bhr)
+</code></pre>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-87-1.png" alt="plot of chunk unnamed-chunk-87"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Here, only one vector is provided. </p>
+
+<p>Its values are considered to be the values on a y-axis.</p>
+
+<p>The x-axis values are automatically added and the index number is used.</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-108" style="background:;">
+  <hgroup>
+    <h2>The <code>plot()</code> command II</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(stress$maxhr,stress$bhr)
+</code></pre>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-89-1.png" alt="plot of chunk unnamed-chunk-89"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Now two vectors are provided.</p>
+
+<p>They need to be of the same length, as pairs \((x_i,y_i)\) are formed.</p>
+
+<p>The first vector represents the x-axis values, the second one the y-axis.</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
     <slide class="backdrop"></slide>
   </slides>
   <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
@@ -4526,6 +4625,36 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
       <a href="#" target="_self" rel='tooltip' 
         data-slide=103 title='<code>summary()</code> command'>
          103
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=104 title='The <code>boxplot()</code> command I'>
+         104
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=105 title='The <code>boxplot()</code>command II'>
+         105
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=106 title='The <code>plot()</code> command I'>
+         106
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=107 title='The <code>plot()</code> command II'>
+         107
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=108 title='The <code>plot()</code> command II'>
+         108
       </a>
     </li>
   </ul>
