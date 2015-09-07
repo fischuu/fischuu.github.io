@@ -3121,7 +3121,7 @@ x*c(2,2,2,2,2,2,2,2,2,2)
     <h2>Perform basic calculations II</h2>
   </hgroup>
   <article data-timings="">
-    <p>Table 2: Basic functions in R</p>
+    <p>Table 3: Basic functions in R</p>
 
 <table><thead>
 <tr>
@@ -3283,10 +3283,625 @@ mean(x)
 
 <slide class="" id="slide-81" style="background:;">
   <hgroup>
-    <h2>Perform basic calculations</h2>
+    <h2>Hands-On: Example data</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ol>
+<li>Calculate the mean age of the Titanic passengers</li>
+<li>How many passengers survived the Titanic tragedy?</li>
+<li>What is the smallest/largest basic heart rate in the stress data?</li>
+<li>What is the Standard deviation of the Age in the stress data?</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-82" style="background:;">
+  <hgroup>
+    <h2>Hints: Example data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Use the <code>mean()</code> function. Columns you can access with <code>$</code> or with <code>[]</code>.</li>
+<li>People how survived are encoded as 1. A sum over the corresponding column gives the total amount.</li>
+<li>You could use either <code>min()</code>/<code>max()</code> or <code>range()</code> on the column <code>bhr</code>.</li>
+<li>The required function is called <code>sd()</code>.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-83" style="background:;">
+  <hgroup>
+    <h2>Solutions: Example data I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Calculate the mean age of the Titanic passengers</li>
+</ol>
+
+<pre><code class="r">mean(titanic$age, na.rm=TRUE)
+</code></pre>
+
+<pre><code>[1] 29.88114
+</code></pre>
+
+<ol>
+<li>How many passengers survived the Titanic tragedy?</li>
+</ol>
+
+<pre><code class="r">sum(titanic$survived)
+</code></pre>
+
+<pre><code>[1] 500
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-84" style="background:;">
+  <hgroup>
+    <h2>Solutions: Example data II</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>What is the smallest/largest basic heart rate in the stress data?</li>
+</ol>
+
+<pre><code class="r">range(stress$bhr)
+</code></pre>
+
+<pre><code>[1]  42 210
+</code></pre>
+
+<ol>
+<li>What is the Standard deviation of the Age in the stress data?</li>
+</ol>
+
+<pre><code class="r">sd(stress$age)
+</code></pre>
+
+<pre><code>[1] 12.04941
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-85" style="background:;">
+  <hgroup>
+    <h2>Sequences and repetitions I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Often we are interested in sequences and repeated values - and writting them by hand is laborious.</p></li>
+<li><p>The commands <code>rep()</code>, <code>seq()</code> and <code>:</code> make the life easier:</p></li>
+</ul>
+
+<pre><code class="r">x &lt;- seq(from=1, to=10, by=1)
+x
+</code></pre>
+
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+
+<pre><code class="r">1:10
+</code></pre>
+
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-86" style="background:;">
+  <hgroup>
+    <h2>Sequences and repetitions II</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Especially the rep command is very powerful:</p>
+
+<p>To simply repeat a single value, the <code>times</code> argument can be used</p>
+
+<pre><code class="r">rep(2, times=10)
+</code></pre>
+
+<pre><code> [1] 2 2 2 2 2 2 2 2 2 2
+</code></pre>
+
+<p>The same option can also repeat whole vectors</p>
+
+<pre><code class="r">rep(c(1,2), times=3)
+</code></pre>
+
+<pre><code>[1] 1 2 1 2 1 2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-87" style="background:;">
+  <hgroup>
+    <h2>Sequences and repetitions III</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Further, single elements of a vector can be repeated with the <code>each</code> option</p>
+
+<pre><code class="r">rep(c(1,2), each=3)
+</code></pre>
+
+<pre><code>[1] 1 1 1 2 2 2
+</code></pre>
+
+<p>And finally, elements of a vector can be repeated individually</p>
+
+<pre><code class="r">rep(c(1,2), times=c(3,4))
+</code></pre>
+
+<pre><code>[1] 1 1 1 2 2 2 2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-88" style="background:;">
+  <hgroup>
+    <h2>Recycling of vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The internal repetition to make vectors fit for arithmetic operations is called in R ’recycling’.</p>
+
+<pre><code class="r">x &lt;- 1:10
+x*c(1,2)
+</code></pre>
+
+<pre><code> [1]  1  4  3  8  5 12  7 16  9 20
+</code></pre>
+
+<pre><code class="r">x*c(1,2,3)
+</code></pre>
+
+<pre><code>Warning in x * c(1, 2, 3): longer object length is not a multiple of
+shorter object length
+</code></pre>
+
+<pre><code> [1]  1  4  9  4 10 18  7 16 27 10
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-89" style="background:;">
+  <hgroup>
+    <h2>Logical operators in I</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Table 5: Logical Operators in R</p>
+
+<table><thead>
+<tr>
+<th>Command</th>
+<th>Explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>==</code></td>
+<td>equals</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>unequal</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>smaller</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>smaller or equal</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>larger</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>larger or equal</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>NOT</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>AND</td>
+</tr>
+<tr>
+<td>\</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TRUE</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>FALSE</code></td>
+<td>false</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-90" style="background:;">
+  <hgroup>
+    <h2>Logical operators in R - example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Print the first 20 elements of the <code>basebp</code> column:</p>
+
+<pre><code class="r">stress$basebp[1:20]
+</code></pre>
+
+<pre><code> [1] 103 139 139 118 103 100 120 161 143 105 134 112 120 110 176 122 169
+[18] 127 133 183
+</code></pre>
+
+<p>Now check, which of those is larger than 150:</p>
+
+<pre><code class="r">stress$basebp[1:20]&gt;150
+</code></pre>
+
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+[12] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-91" style="background:;">
+  <hgroup>
+    <h2>Combine logic operators</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>One can combine logical operations, e.g. basebp larger than 150 and male:</p>
+
+<pre><code class="r">(stress$basebp[1:40]&gt;150) &amp; (stress$gender[1:40]==&quot;male&quot;) 
+</code></pre>
+
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[23] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+</code></pre>
+
+<p>One can even use the logical output to access rows/columns of a data.frame:</p>
+
+<pre><code class="r">stress[(stress$basebp&gt;190) &amp; (stress$gender==&quot;male&quot;), c(1:7,15,16)]
+</code></pre>
+
+<pre><code>      X bhr basebp basedp pkhr sbp    dp gender baseEF
+60   60  61    192  11712  139 182 25298   male     50
+407 407  77    203  15631  102 219 22338   male     66
+409 409  54    194  10476   80 250 20000   male     52
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-92" style="background:;">
+  <hgroup>
+    <h2>Hands on: Sequences, Recycling and Logic</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Create a vector with elements <code>2,4,6,8,...,100</code> and calculate the mean of it.</li>
+<li>Get from that vector all elements that are larger than 80.</li>
+<li>Extract every 10th row from the <code>titanic</code> data set</li>
+<li>How many individuals in the <code>stress</code> data are older than 70?</li>
+<li>Count the female / male survivors on Titanic</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-93" style="background:;">
+  <hgroup>
+    <h2>Hints: Sequences, Recycling and Logic</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Use the <code>seq()</code>command with <code>from</code>, <code>to</code> and <code>by</code> options</li>
+<li>Use the logic operator with the square brackets <code>[]</code> to access the right elements.</li>
+<li>Create first the required sequence with <code>seq()</code> and then plug it into the square brackets <code>[]</code></li>
+<li>Use the logic operator on the <code>age</code> column and then make use of thefact that <code>TRUE</code>counts as 1 and <code>FALSE</code>counts as 0.</li>
+<li>Use the logic operator on the <code>sex</code> column and plug this into the <code>survivor</code> column - then proceed as in the earlier Hands on exercise</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-94" style="background:;">
+  <hgroup>
+    <h2>Solutions: Sequences, Recycling and Logic I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Create a vector with elements <code>2,4,6,8,...,100</code> and calculate the mean of it.</li>
+</ol>
+
+<pre><code class="r"> x &lt;- seq(from=2, to=100, by=2)
+ x
+</code></pre>
+
+<pre><code> [1]   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34
+[18]  36  38  40  42  44  46  48  50  52  54  56  58  60  62  64  66  68
+[35]  70  72  74  76  78  80  82  84  86  88  90  92  94  96  98 100
+</code></pre>
+
+<ol>
+<li>Get from that vector all elements that are larger than 80.</li>
+</ol>
+
+<pre><code class="r">x[x&gt;80]
+</code></pre>
+
+<pre><code> [1]  82  84  86  88  90  92  94  96  98 100
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-95" style="background:;">
+  <hgroup>
+    <h2>Solutions: Sequences, Recycling and Logic II</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Extract every 10th row from the <code>titanic</code> data set (output truncated)</li>
+</ol>
+
+<pre><code class="r">titanic[seq(10,1300,10),]
+</code></pre>
+
+<pre><code>    pclass survived    sex age sibsp parch     ticket     fare       cabin
+10       1        0   male  71     0     0   PC 17609  49.5042            
+20       1        0   male  36     0     0      13050  75.2417          C6
+30       1        1   male  28     0     0     110564  26.5500         C52
+40       1        0   male  48     0     0   PC 17591  50.4958         B10
+50       1        1   male  36     0     1   PC 17755 512.3292 B51 B53 B55
+60       1        1 female  NA     0     0      17770  27.7208            
+70       1        1 female  NA     0     1     113505  55.0000         E33
+80       1        1 female  55     2     0      11770  25.7000        C101
+90       1        0   male  31     1     0 F.C. 12750  52.0000         B71
+100      1        1 female  48     1     0      11755  39.6000         A16
+110      1        1   male  36     0     0   PC 17474  26.3875         E25
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-96" style="background:;">
+  <hgroup>
+    <h2>Solutions: Sequences, Recycling and Logic III</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>How many individuals in the <code>stress</code> data are older than 70?</li>
+</ol>
+
+<pre><code class="r">sum(stress$age&gt;70)
+</code></pre>
+
+<pre><code>[1] 236
+</code></pre>
+
+<ol>
+<li>Count the female / male survivors on Titanic</li>
+</ol>
+
+<pre><code class="r">sum(titanic$survived[titanic$sex==&quot;female&quot;])
+</code></pre>
+
+<pre><code>[1] 339
+</code></pre>
+
+<pre><code class="r">sum(titanic$survived[titanic$sex==&quot;male&quot;])
+</code></pre>
+
+<pre><code>[1] 161
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-97" style="background:;">
+  <hgroup>
+    <h2>Packages on Cran I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>R comes with a lot of basic functionality, but there are plenty of applications that cannot be covered from the core system.</li>
+<li>In order to extend the functionality of R there is a package system where user can provide their own functions for other users.</li>
+<li>The quality differs a lot between different packages, there are very rudimental packages and very sophisticated available.</li>
+<li>Currently there are about 5000 packages available and there is an overview here:</li>
+</ul>
+
+<p><a href="http://cran.r-project.org/web/packages/available_packages_by_name.html">Available packages</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-98" style="background:;">
+  <hgroup>
+    <h2>Packages on Cran II</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>In order to use packages they first have to be installed. </li>
+<li>In most R editors there is a graphical menu to do that, otherwise there is a command <code>install.library()</code> available.</li>
+<li>Once a package is installed the functionality can be loaded with the <code>library</code> command.</li>
+<li><p>Many packages contain besides functions also dataset that can be used to test the functions of it.</p></li>
+<li><p>To install and load a package (e.g. <code>MASS</code>) one can type</p></li>
+</ul>
+
+<pre><code class="r">install.packages(&quot;MASS&quot;)
+library(&quot;MASS&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-99" style="background:;">
+  <hgroup>
+    <h2>Some useful R packages</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Table 6: Useful R packages</p>
+
+<table><thead>
+<tr>
+<th>Command</th>
+<th>Explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>foreign</code></td>
+<td>Functions that help to import SAS or SPSS datasets</td>
+</tr>
+<tr>
+<td><code>dplyr</code></td>
+<td>Helpful functions for data manipulation</td>
+</tr>
+<tr>
+<td><code>ggplot2</code></td>
+<td>Famous package for easier graphics</td>
+</tr>
+<tr>
+<td><code>googleVis</code></td>
+<td>Use Google Chart tools to visualize data</td>
+</tr>
+<tr>
+<td><code>lme4</code></td>
+<td>Linear mixed-effects models</td>
+</tr>
+<tr>
+<td><code>survival</code></td>
+<td>Tools for survival analysis</td>
+</tr>
+<tr>
+<td><code>randomForest</code></td>
+<td>Random forest method for machine learning</td>
+</tr>
+<tr>
+<td><code>data.table</code></td>
+<td>An alternative way to organize large data set</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-100" style="background:;">
+  <hgroup>
+    <h2>Hands on: Packages</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Install the package <code>foreign</code></li>
+<li>Install the package <code>randomForest</code></li>
+<li>Load both packages into the workspace</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-101" style="background:;">
+  <hgroup>
+    <h2>Solutions</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Install the package <code>foreign</code></li>
+</ol>
+
+<pre><code class="r">install.packages(&quot;foreign&quot;)
+</code></pre>
+
+<ol>
+<li>Install the package <code>randomForest</code></li>
+</ol>
+
+<pre><code class="r">install.packages(&quot;randomForest&quot;)
+</code></pre>
+
+<ol>
+<li>Load both packages into the workspace</li>
+</ol>
+
+<pre><code class="r">library(&quot;foreign&quot;)
+library(&quot;randomForest&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-102" style="background:;">
+  <hgroup>
+    <h2>Explorative data analysis</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>After importing a dataset and verifying that everything went fine with the import, one usually starts
+to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
+
+<p>This usually involves to calculate some key location statistics (mean, median, quantiles) as well as first, basic visualizations.</p>
+
+<p>Common visualizations are &#39;Scatterplots&#39; and &#39;Boxplots&#39;</p>
+
+<p>The commands we will use for the first EDA steps are <code>summary()</code>, <code>boxplot()</code>, and <code>plot()</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-103" style="background:;">
+  <hgroup>
+    <h2><code>summary()</code> command</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The easiest way to get a first impression of the data is to use the <code>summary()</code>command. </p>
+
+<p>It gives us the 5 point (plus mean) summary of a vector. </p>
+
+<p>We apply the function onto the <code>stress$bhr</code> data:</p>
+
+<pre><code class="r">summary(stress$bhr)
+</code></pre>
+
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  42.00   64.00   74.00   75.29   84.00  210.00 
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -3777,8 +4392,140 @@ mean(x)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=81 title='Perform basic calculations'>
+        data-slide=81 title='Hands-On: Example data'>
          81
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=82 title='Hints: Example data'>
+         82
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=83 title='Solutions: Example data I'>
+         83
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=84 title='Solutions: Example data II'>
+         84
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=85 title='Sequences and repetitions I'>
+         85
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=86 title='Sequences and repetitions II'>
+         86
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=87 title='Sequences and repetitions III'>
+         87
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=88 title='Recycling of vectors'>
+         88
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=89 title='Logical operators in I'>
+         89
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=90 title='Logical operators in R - example'>
+         90
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=91 title='Combine logic operators'>
+         91
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=92 title='Hands on: Sequences, Recycling and Logic'>
+         92
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=93 title='Hints: Sequences, Recycling and Logic'>
+         93
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=94 title='Solutions: Sequences, Recycling and Logic I'>
+         94
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=95 title='Solutions: Sequences, Recycling and Logic II'>
+         95
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=96 title='Solutions: Sequences, Recycling and Logic III'>
+         96
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=97 title='Packages on Cran I'>
+         97
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=98 title='Packages on Cran II'>
+         98
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=99 title='Some useful R packages'>
+         99
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=100 title='Hands on: Packages'>
+         100
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=101 title='Solutions'>
+         101
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=102 title='Explorative data analysis'>
+         102
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=103 title='<code>summary()</code> command'>
+         103
       </a>
     </li>
   </ul>

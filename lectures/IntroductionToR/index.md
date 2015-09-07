@@ -2763,7 +2763,7 @@ x*c(2,2,2,2,2,2,2,2,2,2)
 
 ## Perform basic calculations II
 
-Table 2: Basic functions in R
+Table 3: Basic functions in R
 
 Command            |  Explanation
 -------------------|---------------------------
@@ -2882,4 +2882,464 @@ Calculate:
 
 ---
 
-## Perform basic calculations
+## Hands-On: Example data
+
+1. Calculate the mean age of the Titanic passengers
+2. How many passengers survived the Titanic tragedy?
+3. What is the smallest/largest basic heart rate in the stress data?
+4. What is the Standard deviation of the Age in the stress data?
+
+---
+
+## Hints: Example data
+
+1. Use the `mean()` function. Columns you can access with `$` or with `[]`.
+2. People how survived are encoded as 1. A sum over the corresponding column gives the total amount.
+3. You could use either `min()`/`max()` or `range()` on the column `bhr`.
+4. The required function is called `sd()`.
+
+---
+
+## Solutions: Example data I
+
+1. Calculate the mean age of the Titanic passengers
+
+```r
+mean(titanic$age, na.rm=TRUE)
+```
+
+```
+[1] 29.88114
+```
+
+2. How many passengers survived the Titanic tragedy?
+
+```r
+sum(titanic$survived)
+```
+
+```
+[1] 500
+```
+
+---
+
+## Solutions: Example data II
+
+3. What is the smallest/largest basic heart rate in the stress data?
+
+```r
+range(stress$bhr)
+```
+
+```
+[1]  42 210
+```
+
+4. What is the Standard deviation of the Age in the stress data?
+
+```r
+sd(stress$age)
+```
+
+```
+[1] 12.04941
+```
+
+---
+
+## Sequences and repetitions I
+
+* Often we are interested in sequences and repeated values - and writting them by hand is laborious.
+
+* The commands `rep()`, `seq()` and `:` make the life easier:
+
+
+```r
+x <- seq(from=1, to=10, by=1)
+x
+```
+
+```
+ [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+```r
+1:10
+```
+
+```
+ [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+---
+
+## Sequences and repetitions II
+
+Especially the rep command is very powerful:
+
+To simply repeat a single value, the `times` argument can be used
+
+
+```r
+rep(2, times=10)
+```
+
+```
+ [1] 2 2 2 2 2 2 2 2 2 2
+```
+
+The same option can also repeat whole vectors
+
+
+```r
+rep(c(1,2), times=3)
+```
+
+```
+[1] 1 2 1 2 1 2
+```
+
+---
+
+## Sequences and repetitions III
+Further, single elements of a vector can be repeated with the `each` option
+
+```r
+rep(c(1,2), each=3)
+```
+
+```
+[1] 1 1 1 2 2 2
+```
+
+And finally, elements of a vector can be repeated individually
+
+
+```r
+rep(c(1,2), times=c(3,4))
+```
+
+```
+[1] 1 1 1 2 2 2 2
+```
+
+---
+
+## Recycling of vectors
+
+The internal repetition to make vectors fit for arithmetic operations is called in R ’recycling’.
+
+
+```r
+x <- 1:10
+x*c(1,2)
+```
+
+```
+ [1]  1  4  3  8  5 12  7 16  9 20
+```
+
+```r
+x*c(1,2,3)
+```
+
+```
+Warning in x * c(1, 2, 3): longer object length is not a multiple of
+shorter object length
+```
+
+```
+ [1]  1  4  9  4 10 18  7 16 27 10
+```
+
+---
+
+## Logical operators in I 
+
+Table 5: Logical Operators in R
+
+Command       |  Explanation
+--------------|---------------------------
+`==`          |  equals
+`!=`          |  unequal
+`<`           |  smaller
+`<=`          |  smaller or equal
+`>`           |  larger
+`>=`          |  larger or equal
+`!`           |  NOT
+`&`           |  AND
+\|            |  OR
+`TRUE`        |  true 
+`FALSE`       |  false
+
+---
+
+## Logical operators in R - example
+
+Print the first 20 elements of the `basebp` column:
+
+
+```r
+stress$basebp[1:20]
+```
+
+```
+ [1] 103 139 139 118 103 100 120 161 143 105 134 112 120 110 176 122 169
+[18] 127 133 183
+```
+Now check, which of those is larger than 150:
+
+```r
+stress$basebp[1:20]>150
+```
+
+```
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+[12] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE
+```
+
+---
+
+## Combine logic operators
+
+One can combine logical operations, e.g. basebp larger than 150 and male:
+
+```r
+(stress$basebp[1:40]>150) & (stress$gender[1:40]=="male") 
+```
+
+```
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[23] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+```
+
+One can even use the logical output to access rows/columns of a data.frame:
+
+```r
+stress[(stress$basebp>190) & (stress$gender=="male"), c(1:7,15,16)]
+```
+
+```
+      X bhr basebp basedp pkhr sbp    dp gender baseEF
+60   60  61    192  11712  139 182 25298   male     50
+407 407  77    203  15631  102 219 22338   male     66
+409 409  54    194  10476   80 250 20000   male     52
+```
+
+---
+
+## Hands on: Sequences, Recycling and Logic
+
+1. Create a vector with elements `2,4,6,8,...,100` and calculate the mean of it.
+2. Get from that vector all elements that are larger than 80.
+3. Extract every 10th row from the `titanic` data set
+4. How many individuals in the `stress` data are older than 70?
+5. Count the female / male survivors on Titanic
+
+---
+
+## Hints: Sequences, Recycling and Logic
+
+1. Use the `seq()`command with `from`, `to` and `by` options
+2. Use the logic operator with the square brackets `[]` to access the right elements.
+3. Create first the required sequence with `seq()` and then plug it into the square brackets `[]`
+4. Use the logic operator on the `age` column and then make use of thefact that `TRUE`counts as 1 and `FALSE`counts as 0.
+5. Use the logic operator on the `sex` column and plug this into the `survivor` column - then proceed as in the earlier Hands on exercise
+
+---
+
+## Solutions: Sequences, Recycling and Logic I
+
+1. Create a vector with elements `2,4,6,8,...,100` and calculate the mean of it.
+
+```r
+ x <- seq(from=2, to=100, by=2)
+ x
+```
+
+```
+ [1]   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34
+[18]  36  38  40  42  44  46  48  50  52  54  56  58  60  62  64  66  68
+[35]  70  72  74  76  78  80  82  84  86  88  90  92  94  96  98 100
+```
+
+2. Get from that vector all elements that are larger than 80.
+
+```r
+x[x>80]
+```
+
+```
+ [1]  82  84  86  88  90  92  94  96  98 100
+```
+
+---
+
+## Solutions: Sequences, Recycling and Logic II
+
+3. Extract every 10th row from the `titanic` data set (output truncated)
+
+```r
+titanic[seq(10,1300,10),]
+```
+
+```
+    pclass survived    sex age sibsp parch     ticket     fare       cabin
+10       1        0   male  71     0     0   PC 17609  49.5042            
+20       1        0   male  36     0     0      13050  75.2417          C6
+30       1        1   male  28     0     0     110564  26.5500         C52
+40       1        0   male  48     0     0   PC 17591  50.4958         B10
+50       1        1   male  36     0     1   PC 17755 512.3292 B51 B53 B55
+60       1        1 female  NA     0     0      17770  27.7208            
+70       1        1 female  NA     0     1     113505  55.0000         E33
+80       1        1 female  55     2     0      11770  25.7000        C101
+90       1        0   male  31     1     0 F.C. 12750  52.0000         B71
+100      1        1 female  48     1     0      11755  39.6000         A16
+110      1        1   male  36     0     0   PC 17474  26.3875         E25
+```
+
+---
+
+## Solutions: Sequences, Recycling and Logic III
+
+4. How many individuals in the `stress` data are older than 70?
+
+```r
+sum(stress$age>70)
+```
+
+```
+[1] 236
+```
+
+5. Count the female / male survivors on Titanic
+
+```r
+sum(titanic$survived[titanic$sex=="female"])
+```
+
+```
+[1] 339
+```
+
+```r
+sum(titanic$survived[titanic$sex=="male"])
+```
+
+```
+[1] 161
+```
+
+---
+
+## Packages on Cran I
+
+* R comes with a lot of basic functionality, but there are plenty of applications that cannot be covered from the core system.
+* In order to extend the functionality of R there is a package system where user can provide their own functions for other users.
+* The quality differs a lot between different packages, there are very rudimental packages and very sophisticated available.
+* Currently there are about 5000 packages available and there is an overview here:
+
+[Available packages](http://cran.r-project.org/web/packages/available_packages_by_name.html)
+
+---
+
+## Packages on Cran II
+
+* In order to use packages they first have to be installed. 
+* In most R editors there is a graphical menu to do that, otherwise there is a command `install.library()` available.
+* Once a package is installed the functionality can be loaded with the `library` command.
+* Many packages contain besides functions also dataset that can be used to test the functions of it.
+
+* To install and load a package (e.g. `MASS`) one can type
+
+
+```r
+install.packages("MASS")
+library("MASS")
+```
+
+---
+
+## Some useful R packages 
+
+Table 6: Useful R packages
+
+Command       |  Explanation
+--------------|---------------------------
+`foreign`          |  Functions that help to import SAS or SPSS datasets
+`dplyr`          |  Helpful functions for data manipulation
+`ggplot2`           |  Famous package for easier graphics
+`googleVis`          |  Use Google Chart tools to visualize data
+`lme4`           |  Linear mixed-effects models
+`survival`          |  Tools for survival analysis
+`randomForest`           | Random forest method for machine learning
+`data.table`           |  An alternative way to organize large data set
+
+---
+
+## Hands on: Packages
+
+1. Install the package `foreign`
+2. Install the package `randomForest`
+3. Load both packages into the workspace
+
+---
+
+## Solutions
+
+1. Install the package `foreign`
+
+```r
+install.packages("foreign")
+```
+
+2. Install the package `randomForest`
+
+```r
+install.packages("randomForest")
+```
+
+3. Load both packages into the workspace
+
+```r
+library("foreign")
+library("randomForest")
+```
+
+---
+  
+## Explorative data analysis
+
+After importing a dataset and verifying that everything went fine with the import, one usually starts
+to explore the dataset in order to get 'a feeling' for it.
+
+This usually involves to calculate some key location statistics (mean, median, quantiles) as well as first, basic visualizations.
+
+Common visualizations are 'Scatterplots' and 'Boxplots'
+
+The commands we will use for the first EDA steps are `summary()`, `boxplot()`, and `plot()`
+
+---
+
+## `summary()` command
+
+The easiest way to get a first impression of the data is to use the `summary()`command. 
+
+It gives us the 5 point (plus mean) summary of a vector. 
+
+We apply the function onto the `stress$bhr` data:
+
+
+```r
+summary(stress$bhr)
+```
+
+```
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  42.00   64.00   74.00   75.29   84.00  210.00 
+```
+
+
