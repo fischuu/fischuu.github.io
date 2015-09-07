@@ -3427,3 +3427,356 @@ Now two vectors are provided.
 They need to be of the same length, as pairs $(x_i,y_i)$ are formed.
 
 The first vector represents the x-axis values, the second one the y-axis.
+
+---
+
+## Hands-On
+
+1. Prepare the 5 Point summary for the fares in the `titanic` data
+
+2. Create the boxplot of the age of the Titanic passangers
+
+3. Plot the ticket price versus the age of the passanger.
+
+---
+
+## Solutions:
+
+
+---
+
+## Statistical models in R
+
+Summary statistics give only a glimpse at the data and often an analysis of
+inference and or modeling is the actual goal. R provides a lot of statistical
+tests as well as a lot of modeling functions. Before we can, however, use
+them we have to learn something about R’s formulae definitions to be able
+to define models in R. A basic formula in R has the form
+
+```r
+y ~ x1 + x2 + x3
+```
+where the part left of the tilde is the dependent variable and the right part
+defines the independent variables.
+
+---
+
+## Statistical models in R
+
+The intercept in a model formula is represented by a 1. By default R
+assumes that an intercept is present, therefore mentioning the intercept or
+not makes no difference. If however the intercept should be removed a -1
+is needed in the formula.
+These two models are equivalent, both have an intercept:
+
+```r
+y ~ x1 + x2 
+```
+and
+
+```r
+y ~ x1 + x2 + 1
+```
+the same model without intercept must be defined as:
+
+```r
+y ~ x1 + x2 - 1
+```
+
+---
+
+## Interaction and nested design
+
+Often in statistical models interactions between variables are suspected or
+variables are nested. This can be formulated also using R formulae.
+Several special operators are available for this. To name a few:
+* `:` Used for interactions like `x1:x2`
+* `*` Main effects plus interactions, like `x1*x2 = x1 + x2 + x1:x2`
+* `^` Factor crossing up to a certain degree, like
+`(x1+x2+x3)^2 = x1+x2+x3 + x1:x2 + x1:x3 + x2:x3`
+* `-` Removing terms, like
+`(x1+x2+x3)^2 - x2:x3 = x1+x2+x3 + x1:x2 + x1:x3`
+
+
+
+---
+
+## Variable transformation in formulae
+
+Common practice is to use tranformations of variables in statistical models.
+This can be done in R directly in the model formula. For example:
+
+```r
+log(y) ~x1 + x2 + sin(x3)
+```
+However, due to the definition of interactions, the special function I is of
+interest here. This function interprets the operators used inside it as
+expressions in their original meaning. For example:
+
+```r
+y ~ I(x1-1) 
+```
+subtracts from x1 one unit before it enters the model
+and not the intercept. This is therefore different from `y ~ x1-1`
+
+```r
+y ~ I(x1^2) 
+```
+squares variable x1 and has nothing to do with factor crossing.
+
+---
+
+## Functions for tests and modelling
+
+Now we should have all tools to do statistical tests and model data using
+R together.
+The following slides will introduce some functions for common tests and
+introduce regression model functions in R and how to work with them.
+This will basically be a list of functions. For tests the function for t-tests is
+considered in more detail and for regression models the function for linear
+regression models.
+
+---
+
+## Tests for numeric data in R
+
+Table 6: Tests for location and scatter in R
+
+Command       |  Explanation
+--------------|---------------------------
+`t.test()`          |  One and two sample t-test
+`cor.test()`          |  Correlation test
+`var.test()`           |  F-test to compare two variances
+`bartlett.test()`          |  Bartlett's test for k variances
+`wilcox.test()`           |  One and two sample Wilcoxon test
+`kruskal.test()`          |  Kruskal-Wallis test
+`friedman.test()`           |  Friedman's test
+`ks.test()`           |  Kolmogorov Smirnov test
+
+---
+
+## Tests for non-numeric data in R
+
+Table 6: Some other tests in R
+
+Command       |  Explanation
+--------------|---------------------------
+`binom.test()`          |  Binomial test
+`prop.test()`          |  Test to compare proportions
+`prop.trend.test()`           |  Chi-square test for trend in proportions
+`fisher.test()`          |  Fisher's exact test for 2-dimensional contingency tables
+`chisq.test()`           |  Chi-square test for contingency tables
+
+
+---
+
+## Student's t-test in R I
+
+Student’s t test is used to test in normal populations a hypothesis about
+the location or to compare the location of two normal populations. In the
+latter case one must furthermore decide if the two populations have the
+same variance or not and if the test is based on paired or independent
+observations.
+All these cases are considered in the function `t.test`. For the one sample
+case only a numeric vector has to be submitted and by default the
+hypothetical location is the origin. For the two sample case one can submit
+either two numeric vectors or a formula where the independent variable is
+a factor with two levels. In the two sample case the default setting
+assumes that the samples are independent and have different variances.
+
+---
+
+## Student's t-test - examples
+
+We want to test the following
+
+__$H_0$__: The mean age of the stress data is equal to 65
+
+_vs._
+
+__$H_1$__: Not equal to 65
+
+This means, we perform a _one-sample t-test_.
+
+(Just for our interest, we calculate also the mean-age)
+
+```r
+mean(stress$age)
+```
+
+```
+[1] 67.34409
+```
+
+---
+
+## Student's t-test - examples
+
+
+```r
+t.test(stress$age, mu=65)
+```
+
+```
+
+	One Sample t-test
+
+data:  stress$age
+t = 4.5954, df = 557, p-value = 5.347e-06
+alternative hypothesis: true mean is not equal to 65
+95 percent confidence interval:
+ 66.34215 68.34603
+sample estimates:
+mean of x 
+ 67.34409 
+```
+
+---
+
+## Student's t-test - examples
+
+
+```r
+t.test(stress$age, mu=67)
+```
+
+```
+
+	One Sample t-test
+
+data:  stress$age
+t = 0.67456, df = 557, p-value = 0.5002
+alternative hypothesis: true mean is not equal to 67
+95 percent confidence interval:
+ 66.34215 68.34603
+sample estimates:
+mean of x 
+ 67.34409 
+```
+
+---
+
+##  Wilcox test - examples
+
+
+```r
+wilcox.test(stress$age, mu=65)
+```
+
+```
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  stress$age
+V = 93401, p-value = 3.272e-08
+alternative hypothesis: true location is not equal to 65
+```
+
+---
+
+## Wilcox test - examples
+
+
+```r
+wilcox.test(stress$age, mu=67)
+```
+
+```
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  stress$age
+V = 77140, p-value = 0.06536
+alternative hypothesis: true location is not equal to 67
+```
+
+---
+
+## Two-sided t-test
+
+Now, after we tested the one-sided hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
+the formulae notation:
+
+
+```r
+t.test(age~gender, data=stress)
+```
+
+```
+
+	Welch Two Sample t-test
+
+data:  age by gender
+t = -0.82379, df = 486.01, p-value = 0.4105
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.878105  1.177674
+sample estimates:
+mean in group female   mean in group male 
+            67.00888             67.85909 
+```
+
+---
+
+## Two-sided Wilcoxon test
+
+Now, after we tested the one-sided hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
+the formulae notation:
+
+
+```r
+wilcox.test(age~gender, data=stress)
+```
+
+```
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  age by gender
+W = 35705, p-value = 0.428
+alternative hypothesis: true location shift is not equal to 0
+```
+
+---
+
+## Student's t test examples
+
+The formulae notation might not be intuitive at the first sight. Luckily all
+functions accept also a more ’natural’ approach, although this would
+require more coding:
+
+
+```r
+age.male <- stress$age[stress$gender=="male"]
+age.female <- stress$age[stress$gender=="female"]
+t.test(age.female, age.male)
+```
+
+```
+
+	Welch Two Sample t-test
+
+data:  age.female and age.male
+t = -0.82379, df = 486.01, p-value = 0.4105
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.878105  1.177674
+sample estimates:
+mean of x mean of y 
+ 67.00888  67.85909 
+```
+
+---
+
+## Hands-On : Tests 
+
+1. Apply above functions for Titanic data... Fares differ between class 1 and 3
+
+--- 
+
+## What to do still:
+
+* Linear regression
+* Contingency Tables
+* Export plots
+* Data export

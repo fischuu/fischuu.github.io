@@ -4005,6 +4005,488 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-109" style="background:;">
+  <hgroup>
+    <h2>Hands-On</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><p>Prepare the 5 Point summary for the fares in the <code>titanic</code> data</p></li>
+<li><p>Create the boxplot of the age of the Titanic passangers</p></li>
+<li><p>Plot the ticket price versus the age of the passanger.</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-110" style="background:;">
+  <hgroup>
+    <h2>Solutions:</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-111" style="background:;">
+  <hgroup>
+    <h2>Statistical models in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Summary statistics give only a glimpse at the data and often an analysis of
+inference and or modeling is the actual goal. R provides a lot of statistical
+tests as well as a lot of modeling functions. Before we can, however, use
+them we have to learn something about R’s formulae definitions to be able
+to define models in R. A basic formula in R has the form</p>
+
+<pre><code class="r">y ~ x1 + x2 + x3
+</code></pre>
+
+<p>where the part left of the tilde is the dependent variable and the right part
+defines the independent variables.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-112" style="background:;">
+  <hgroup>
+    <h2>Statistical models in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The intercept in a model formula is represented by a 1. By default R
+assumes that an intercept is present, therefore mentioning the intercept or
+not makes no difference. If however the intercept should be removed a -1
+is needed in the formula.
+These two models are equivalent, both have an intercept:</p>
+
+<pre><code class="r">y ~ x1 + x2 
+</code></pre>
+
+<p>and</p>
+
+<pre><code class="r">y ~ x1 + x2 + 1
+</code></pre>
+
+<p>the same model without intercept must be defined as:</p>
+
+<pre><code class="r">y ~ x1 + x2 - 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-113" style="background:;">
+  <hgroup>
+    <h2>Interaction and nested design</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Often in statistical models interactions between variables are suspected or
+variables are nested. This can be formulated also using R formulae.
+Several special operators are available for this. To name a few:</p>
+
+<ul>
+<li><code>:</code> Used for interactions like <code>x1:x2</code></li>
+<li><code>*</code> Main effects plus interactions, like <code>x1*x2 = x1 + x2 + x1:x2</code></li>
+<li><code>^</code> Factor crossing up to a certain degree, like
+<code>(x1+x2+x3)^2 = x1+x2+x3 + x1:x2 + x1:x3 + x2:x3</code></li>
+<li><code>-</code> Removing terms, like
+<code>(x1+x2+x3)^2 - x2:x3 = x1+x2+x3 + x1:x2 + x1:x3</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-114" style="background:;">
+  <hgroup>
+    <h2>Variable transformation in formulae</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Common practice is to use tranformations of variables in statistical models.
+This can be done in R directly in the model formula. For example:</p>
+
+<pre><code class="r">log(y) ~x1 + x2 + sin(x3)
+</code></pre>
+
+<p>However, due to the definition of interactions, the special function I is of
+interest here. This function interprets the operators used inside it as
+expressions in their original meaning. For example:</p>
+
+<pre><code class="r">y ~ I(x1-1) 
+</code></pre>
+
+<p>subtracts from x1 one unit before it enters the model
+and not the intercept. This is therefore different from <code>y ~ x1-1</code></p>
+
+<pre><code class="r">y ~ I(x1^2) 
+</code></pre>
+
+<p>squares variable x1 and has nothing to do with factor crossing.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-115" style="background:;">
+  <hgroup>
+    <h2>Functions for tests and modelling</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Now we should have all tools to do statistical tests and model data using
+R together.
+The following slides will introduce some functions for common tests and
+introduce regression model functions in R and how to work with them.
+This will basically be a list of functions. For tests the function for t-tests is
+considered in more detail and for regression models the function for linear
+regression models.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-116" style="background:;">
+  <hgroup>
+    <h2>Tests for numeric data in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Table 6: Tests for location and scatter in R</p>
+
+<table><thead>
+<tr>
+<th>Command</th>
+<th>Explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>t.test()</code></td>
+<td>One and two sample t-test</td>
+</tr>
+<tr>
+<td><code>cor.test()</code></td>
+<td>Correlation test</td>
+</tr>
+<tr>
+<td><code>var.test()</code></td>
+<td>F-test to compare two variances</td>
+</tr>
+<tr>
+<td><code>bartlett.test()</code></td>
+<td>Bartlett&#39;s test for k variances</td>
+</tr>
+<tr>
+<td><code>wilcox.test()</code></td>
+<td>One and two sample Wilcoxon test</td>
+</tr>
+<tr>
+<td><code>kruskal.test()</code></td>
+<td>Kruskal-Wallis test</td>
+</tr>
+<tr>
+<td><code>friedman.test()</code></td>
+<td>Friedman&#39;s test</td>
+</tr>
+<tr>
+<td><code>ks.test()</code></td>
+<td>Kolmogorov Smirnov test</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-117" style="background:;">
+  <hgroup>
+    <h2>Tests for non-numeric data in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Table 6: Some other tests in R</p>
+
+<table><thead>
+<tr>
+<th>Command</th>
+<th>Explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>binom.test()</code></td>
+<td>Binomial test</td>
+</tr>
+<tr>
+<td><code>prop.test()</code></td>
+<td>Test to compare proportions</td>
+</tr>
+<tr>
+<td><code>prop.trend.test()</code></td>
+<td>Chi-square test for trend in proportions</td>
+</tr>
+<tr>
+<td><code>fisher.test()</code></td>
+<td>Fisher&#39;s exact test for 2-dimensional contingency tables</td>
+</tr>
+<tr>
+<td><code>chisq.test()</code></td>
+<td>Chi-square test for contingency tables</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-118" style="background:;">
+  <hgroup>
+    <h2>Student&#39;s t-test in R I</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Student’s t test is used to test in normal populations a hypothesis about
+the location or to compare the location of two normal populations. In the
+latter case one must furthermore decide if the two populations have the
+same variance or not and if the test is based on paired or independent
+observations.
+All these cases are considered in the function <code>t.test</code>. For the one sample
+case only a numeric vector has to be submitted and by default the
+hypothetical location is the origin. For the two sample case one can submit
+either two numeric vectors or a formula where the independent variable is
+a factor with two levels. In the two sample case the default setting
+assumes that the samples are independent and have different variances.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-119" style="background:;">
+  <hgroup>
+    <h2>Student&#39;s t-test - examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We want to test the following</p>
+
+<p><strong>\(H_0\)</strong>: The mean age of the stress data is equal to 65</p>
+
+<p><em>vs.</em></p>
+
+<p><strong>\(H_1\)</strong>: Not equal to 65</p>
+
+<p>This means, we perform a <em>one-sample t-test</em>.</p>
+
+<p>(Just for our interest, we calculate also the mean-age)</p>
+
+<pre><code class="r">mean(stress$age)
+</code></pre>
+
+<pre><code>[1] 67.34409
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-120" style="background:;">
+  <hgroup>
+    <h2>Student&#39;s t-test - examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">t.test(stress$age, mu=65)
+</code></pre>
+
+<pre><code>
+    One Sample t-test
+
+data:  stress$age
+t = 4.5954, df = 557, p-value = 5.347e-06
+alternative hypothesis: true mean is not equal to 65
+95 percent confidence interval:
+ 66.34215 68.34603
+sample estimates:
+mean of x 
+ 67.34409 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-121" style="background:;">
+  <hgroup>
+    <h2>Student&#39;s t-test - examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">t.test(stress$age, mu=67)
+</code></pre>
+
+<pre><code>
+    One Sample t-test
+
+data:  stress$age
+t = 0.67456, df = 557, p-value = 0.5002
+alternative hypothesis: true mean is not equal to 67
+95 percent confidence interval:
+ 66.34215 68.34603
+sample estimates:
+mean of x 
+ 67.34409 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-122" style="background:;">
+  <hgroup>
+    <h2>Wilcox test - examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">wilcox.test(stress$age, mu=65)
+</code></pre>
+
+<pre><code>
+    Wilcoxon signed rank test with continuity correction
+
+data:  stress$age
+V = 93401, p-value = 3.272e-08
+alternative hypothesis: true location is not equal to 65
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-123" style="background:;">
+  <hgroup>
+    <h2>Wilcox test - examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">wilcox.test(stress$age, mu=67)
+</code></pre>
+
+<pre><code>
+    Wilcoxon signed rank test with continuity correction
+
+data:  stress$age
+V = 77140, p-value = 0.06536
+alternative hypothesis: true location is not equal to 67
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-124" style="background:;">
+  <hgroup>
+    <h2>Two-sided t-test</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Now, after we tested the one-sided hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
+the formulae notation:</p>
+
+<pre><code class="r">t.test(age~gender, data=stress)
+</code></pre>
+
+<pre><code>
+    Welch Two Sample t-test
+
+data:  age by gender
+t = -0.82379, df = 486.01, p-value = 0.4105
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.878105  1.177674
+sample estimates:
+mean in group female   mean in group male 
+            67.00888             67.85909 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-125" style="background:;">
+  <hgroup>
+    <h2>Two-sided Wilcoxon test</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Now, after we tested the one-sided hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
+the formulae notation:</p>
+
+<pre><code class="r">wilcox.test(age~gender, data=stress)
+</code></pre>
+
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  age by gender
+W = 35705, p-value = 0.428
+alternative hypothesis: true location shift is not equal to 0
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-126" style="background:;">
+  <hgroup>
+    <h2>Student&#39;s t test examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The formulae notation might not be intuitive at the first sight. Luckily all
+functions accept also a more ’natural’ approach, although this would
+require more coding:</p>
+
+<pre><code class="r">age.male &lt;- stress$age[stress$gender==&quot;male&quot;]
+age.female &lt;- stress$age[stress$gender==&quot;female&quot;]
+t.test(age.female, age.male)
+</code></pre>
+
+<pre><code>
+    Welch Two Sample t-test
+
+data:  age.female and age.male
+t = -0.82379, df = 486.01, p-value = 0.4105
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.878105  1.177674
+sample estimates:
+mean of x mean of y 
+ 67.00888  67.85909 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-127" style="background:;">
+  <hgroup>
+    <h2>Hands-On : Tests</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Apply above functions for Titanic data... Fares differ between class 1 and 3</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-128" style="background:;">
+  <hgroup>
+    <h2>What to do still:</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Linear regression</li>
+<li>Contingency Tables</li>
+<li>Export plots</li>
+<li>Data export</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
     <slide class="backdrop"></slide>
   </slides>
   <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
@@ -4655,6 +5137,126 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
       <a href="#" target="_self" rel='tooltip' 
         data-slide=108 title='The <code>plot()</code> command II'>
          108
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=109 title='Hands-On'>
+         109
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=110 title='Solutions:'>
+         110
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=111 title='Statistical models in R'>
+         111
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=112 title='Statistical models in R'>
+         112
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=113 title='Interaction and nested design'>
+         113
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=114 title='Variable transformation in formulae'>
+         114
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=115 title='Functions for tests and modelling'>
+         115
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=116 title='Tests for numeric data in R'>
+         116
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=117 title='Tests for non-numeric data in R'>
+         117
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=118 title='Student&#39;s t-test in R I'>
+         118
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=119 title='Student&#39;s t-test - examples'>
+         119
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=120 title='Student&#39;s t-test - examples'>
+         120
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=121 title='Student&#39;s t-test - examples'>
+         121
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=122 title='Wilcox test - examples'>
+         122
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=123 title='Wilcox test - examples'>
+         123
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=124 title='Two-sided t-test'>
+         124
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=125 title='Two-sided Wilcoxon test'>
+         125
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=126 title='Student&#39;s t test examples'>
+         126
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=127 title='Hands-On : Tests'>
+         127
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=128 title='What to do still:'>
+         128
       </a>
     </li>
   </ul>
