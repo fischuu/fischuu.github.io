@@ -3577,12 +3577,16 @@ the location or to compare the location of two normal populations. In the
 latter case one must furthermore decide if the two populations have the
 same variance or not and if the test is based on paired or independent
 observations.
+
 All these cases are considered in the function `t.test`. For the one sample
 case only a numeric vector has to be submitted and by default the
 hypothetical location is the origin. For the two sample case one can submit
 either two numeric vectors or a formula where the independent variable is
 a factor with two levels. In the two sample case the default setting
 assumes that the samples are independent and have different variances.
+
+The alternative of a test usually can be picked via the `alternative` option
+in the function call.
 
 ---
 
@@ -3720,7 +3724,7 @@ mean in group female   mean in group male
 
 ## Two-sided Wilcoxon test
 
-Now, after we tested the one-sided hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
+Now, after we tested the one-sample hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
 the formulae notation:
 
 
@@ -3770,13 +3774,423 @@ mean of x mean of y
 
 ## Hands-On : Tests 
 
-1. Apply above functions for Titanic data... Fares differ between class 1 and 3
+1. Test if the ticket prices differed between class 1 and 3 passangers on Titanic.
+2. Test if the average age on Titanic was larger than 30 (check the help file of t.test in order to choose the right alternative!).
 
 --- 
 
-## What to do still:
+## Solutions: Tests
 
-* Linear regression
-* Contingency Tables
-* Export plots
-* Data export
+Test if the ticket prices differed between class 1 and 3 passangers on Titanic.
+
+```r
+class1 <- titanic$fare[titanic$pclass=="1"]
+class3 <- titanic$fare[titanic$pclass=="3"]
+t.test(class1,class3)
+```
+
+```
+
+	Welch Two Sample t-test
+
+data:  class1 and class3
+t = 16.501, df = 328.01, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 65.35951 83.05270
+sample estimates:
+mean of x mean of y 
+ 87.50899  13.30289 
+```
+
+--- 
+
+## Solutions: Tests
+
+Test if the average age on Titanic was larger than 30
+
+```r
+t.test(class1,class3)
+```
+
+```
+
+	Welch Two Sample t-test
+
+data:  class1 and class3
+t = 16.501, df = 328.01, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 65.35951 83.05270
+sample estimates:
+mean of x mean of y 
+ 87.50899  13.30289 
+```
+
+---
+
+## Linear regression
+
+Almost all regression functions are called using a formula notation:
+
+```r
+foo.reg <- foo(model formula)
+```
+This object is then usually quite complex and printing it returns only
+minimal output. A lot of generic functions have however methods for the
+different regression models.
+
+Table 10: Linear regression functions and packages
+
+Function   | Meaning
+---------------|----------------
+`lm()`  | Linear regression
+`aov()`   | ANOVA models in R
+`glm()`  | Generalized linear models like logistic regression
+`nls()`  | Nonlinear regression
+nlme  | Package: Linear and non-linear mixed effect models
+survival | Package: Parametric and nonparametric survival models
+
+---
+
+## Linear Regression: Generic functions
+
+
+
+Table 11: Generic functions of linear regression
+
+Function  | Meaning
+----------|----------------
+summary  | Most important output
+anova  | ANOVA table
+fitted  | Fitted values for the model
+predict  | Can be used to predict new observations
+resid  | Residuals
+plot  | Diagnostic plots
+coef  | Estimated parameters
+
+---  &twocol w1:50% w2:50%
+
+## Example: Relation of age and survial on Titanic
+
+
+```r
+boxplot(age~survived, data=titanic)
+```
+
+*** =left
+
+![plot of chunk unnamed-chunk-109](assets/fig/unnamed-chunk-109-1.png) 
+
+*** =right
+First have a look at the function call, boxplots can use also the formula notation, to plot grouped boxplot next to each other!
+
+Looking at the boxplots, the age distribution in the group of survivors (`1`) appears to be similar compared to the non-survivors (`0`)
+
+Shall we stop here?
+
+---
+
+## Linear regression/Cross-tabulation
+
+Instead of checking the age distribution within the two groups survived/non-survived, we could e.g also calculate for each age the ratio
+of survival. The easiest way to get it is the crosstabulation. The command `table()`helps us here.
+
+The `table()` command provides a frequency table of a single variable or a crosstable in case two variables are given, e.g.:
+
+
+```r
+table(stress$hxofCig)
+```
+
+```
+
+     heavy   moderate non-smoker 
+       122        138        298 
+```
+
+---
+
+## Crosstabulation age
+
+First 10 lines of the cross-tabulation age versus survived
+
+```r
+ageSurvTab <- table(titanic$age,titanic$survived)
+ageSurvTab[1:10,]
+```
+
+```
+      
+       0 1
+  0.17 0 1
+  0.33 1 0
+  0.42 0 1
+  0.67 0 1
+  0.75 1 2
+  0.83 0 3
+  0.92 0 2
+  1    3 7
+  2    8 4
+  3    2 5
+```
+
+---
+
+## Linear Regression on survival rate
+
+It is important to see that the output is again a `matrix`. The column names are the classes of the one variable (`survived`) and the rownames are
+the possible classes of the other one (`Age`).
+
+If one goes e.g. to row labeled `3` it means that `2` persons with age 3 haven't survived, but `5` have.
+
+Having this information we can now calculate the survival rate in each age group:
+
+It is just for each age the number of survivors (second column), divided by the amount of people at that age (=rowsum in the age-group)
+
+
+```r
+survRatio <- ageSurvTab[,2]/(ageSurvTab[,1]+ ageSurvTab[,2])
+survRatio[1:7]
+```
+
+```
+     0.17      0.33      0.42      0.67      0.75      0.83      0.92 
+1.0000000 0.0000000 1.0000000 1.0000000 0.6666667 1.0000000 1.0000000 
+```
+
+--- &twocol w1:50% w2:50%
+
+## Visualization of the survival rate in age:
+
+```r
+plot(survRatio)
+```
+
+*** =left
+![plot of chunk unnamed-chunk-114](assets/fig/unnamed-chunk-114-1.png) 
+
+*** =right
+Just a basic plot of the age groups. 
+
+Please notice that, instead of the real age groups, there is just the index plotted! This means now, that we actually do not
+plot the correct image, but we assume that each value represents one year- and this is not the case!
+
+In truth, we want to plot the names of the table (equals the age group) versus the survival rate.
+
+--- &twocol w1:50% w2:50%
+
+## Visualization of the survival rate in age:
+
+```r
+plot(names(survRatio), survRatio)
+```
+
+*** =left
+![plot of chunk unnamed-chunk-116](assets/fig/unnamed-chunk-116-1.png) 
+
+*** =right
+
+Here are now some things happening that we do not know, yet! For the sake of completeness: What happens here is 
+that the names, which are internally a `character` are casted to be `numerical`. This is a common source of error 
+that data seems to be alright, but in truth it isn't.
+
+The `plot` function is, however, clever enough to fix that, but there are many occasions, where functions are dumb
+with respect to the class and where the user has to take care of this alone.
+
+---
+
+## Apply a linear regression
+
+We assume now that all assumptions of a linear regression are fulfilled.
+
+To fit a linear model we need to _cast_ the data still:
+
+
+```r
+class(names(survRatio))
+```
+
+```
+[1] "character"
+```
+
+```r
+survRatio[1:7]
+```
+
+```
+     0.17      0.33      0.42      0.67      0.75      0.83      0.92 
+1.0000000 0.0000000 1.0000000 1.0000000 0.6666667 1.0000000 1.0000000 
+```
+
+```r
+names(survRatio)[1:7]
+```
+
+```
+[1] "0.17" "0.33" "0.42" "0.67" "0.75" "0.83" "0.92"
+```
+
+---
+
+## Casting 
+
+The values are displayed in quotation marks, this means that, although the values look like numbers, they are internally handled as words. This means, you
+cannot calculate with them:
+
+
+```r
+"1"+ "4"
+```
+
+```
+Error in "1" + "4": non-numeric argument to binary operator
+```
+
+We can use the `as.*()` command family to cast between data types:
+
+
+```r
+"4"
+```
+
+```
+[1] "4"
+```
+
+```r
+as.numeric("4")
+```
+
+```
+[1] 4
+```
+
+---
+
+## Casting `names(survRatio)`
+
+
+```r
+ageGroup <- as.numeric(names(survRatio))
+class(ageGroup)
+```
+
+```
+[1] "numeric"
+```
+
+```r
+names(survRatio)[1:7]
+```
+
+```
+[1] "0.17" "0.33" "0.42" "0.67" "0.75" "0.83" "0.92"
+```
+
+```r
+ageGroup[1:7]
+```
+
+```
+[1] 0.17 0.33 0.42 0.67 0.75 0.83 0.92
+```
+
+Now we have numerical data and can fit a linear model (remember, if you have already numerical data, you do not have to do the casting!)
+
+---
+
+## Apply a linear model
+
+
+```r
+titanicLM <- lm(survRatio~ageGroup)
+titanicLM
+```
+
+```
+
+Call:
+lm(formula = survRatio ~ ageGroup)
+
+Coefficients:
+(Intercept)     ageGroup  
+   0.503063    -0.003841  
+```
+
+--- &twocol w1:50% w2:50%
+
+## Visualize the linear model 
+
+*** =left
+![plot of chunk unnamed-chunk-122](assets/fig/unnamed-chunk-122-1.png) 
+
+*** =right 
+
+First just plot the data as you know it already and then add a line with the `abline()`command:
+
+
+```r
+plot(survRatio~ageGroup)
+titanicLM <- lm(survRatio~ageGroup)
+abline(titanicLM)
+```
+
+--- &twocol w1:50% w2:50%
+
+## Non-linear fitting 
+
+*** =left
+![plot of chunk unnamed-chunk-124](assets/fig/unnamed-chunk-124-1.png) 
+*** =right
+
+Without going into too many details, we want to see how easy one could switch from a linear regression to a non-linear LOESS.
+
+
+```r
+plot(survRatio~ageGroup)
+loessCurv <- loess(survRatio~ageGroup)
+lines(predict(loessCurv), col="red", lwd=2)
+abline(titanicLM)
+```
+
+The option `col=` defines the color of a line/plot and `lwd=` the line width.
+
+For comparison reasons we also added here the linear model result via `abline()`
+
+---
+
+## Hands on: Run some own linear regression on the stress data
+
+---
+
+## Solutions:
+
+---
+
+## Export figures
+
+Exporting figures in R is extremely easy. All one needs to specify is the graphic type (e.g. `png`, `jpeg`, `pdf` or `eps`).
+
+When a plot command is executed, R opens a graphical device (like a canvas) and uses this device then to plot the requested things onto.
+
+The default device is the screen. If one wants to store a figure on the HDD, all one has to do is to define a non-standard graphical device and
+its dimensions, then plot into that device and eventually close the device so that it will be finalized. 
+
+The following commands can be used to export figures.
+
+---
+
+## Export figures
+
+Here a table with commands:
+
+---
+
+## Export data
+
+And then still how to save dataframes/workspaces.
+
+
+

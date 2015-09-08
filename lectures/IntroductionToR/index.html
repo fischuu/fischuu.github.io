@@ -4247,13 +4247,17 @@ regression models.</p>
 the location or to compare the location of two normal populations. In the
 latter case one must furthermore decide if the two populations have the
 same variance or not and if the test is based on paired or independent
-observations.
-All these cases are considered in the function <code>t.test</code>. For the one sample
+observations.</p>
+
+<p>All these cases are considered in the function <code>t.test</code>. For the one sample
 case only a numeric vector has to be submitted and by default the
 hypothetical location is the origin. For the two sample case one can submit
 either two numeric vectors or a formula where the independent variable is
 a factor with two levels. In the two sample case the default setting
 assumes that the samples are independent and have different variances.</p>
+
+<p>The alternative of a test usually can be picked via the <code>alternative</code> option
+in the function call.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -4409,7 +4413,7 @@ mean in group female   mean in group male
     <h2>Two-sided Wilcoxon test</h2>
   </hgroup>
   <article data-timings="">
-    <p>Now, after we tested the one-sided hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
+    <p>Now, after we tested the one-sample hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
 the formulae notation:</p>
 
 <pre><code class="r">wilcox.test(age~gender, data=stress)
@@ -4464,7 +4468,8 @@ mean of x mean of y
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Apply above functions for Titanic data... Fares differ between class 1 and 3</li>
+<li>Test if the ticket prices differed between class 1 and 3 passangers on Titanic.</li>
+<li>Test if the average age on Titanic was larger than 30 (check the help file of t.test in order to choose the right alternative!).</li>
 </ol>
 
   </article>
@@ -4473,15 +4478,532 @@ mean of x mean of y
 
 <slide class="" id="slide-128" style="background:;">
   <hgroup>
-    <h2>What to do still:</h2>
+    <h2>Solutions: Tests</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Linear regression</li>
-<li>Contingency Tables</li>
-<li>Export plots</li>
-<li>Data export</li>
-</ul>
+    <p>Test if the ticket prices differed between class 1 and 3 passangers on Titanic.</p>
+
+<pre><code class="r">class1 &lt;- titanic$fare[titanic$pclass==&quot;1&quot;]
+class3 &lt;- titanic$fare[titanic$pclass==&quot;3&quot;]
+t.test(class1,class3)
+</code></pre>
+
+<pre><code>
+    Welch Two Sample t-test
+
+data:  class1 and class3
+t = 16.501, df = 328.01, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 65.35951 83.05270
+sample estimates:
+mean of x mean of y 
+ 87.50899  13.30289 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-129" style="background:;">
+  <hgroup>
+    <h2>Solutions: Tests</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Test if the average age on Titanic was larger than 30</p>
+
+<pre><code class="r">t.test(class1,class3)
+</code></pre>
+
+<pre><code>
+    Welch Two Sample t-test
+
+data:  class1 and class3
+t = 16.501, df = 328.01, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 65.35951 83.05270
+sample estimates:
+mean of x mean of y 
+ 87.50899  13.30289 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-130" style="background:;">
+  <hgroup>
+    <h2>Linear regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Almost all regression functions are called using a formula notation:</p>
+
+<pre><code class="r">foo.reg &lt;- foo(model formula)
+</code></pre>
+
+<p>This object is then usually quite complex and printing it returns only
+minimal output. A lot of generic functions have however methods for the
+different regression models.</p>
+
+<p>Table 10: Linear regression functions and packages</p>
+
+<table><thead>
+<tr>
+<th>Function</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>lm()</code></td>
+<td>Linear regression</td>
+</tr>
+<tr>
+<td><code>aov()</code></td>
+<td>ANOVA models in R</td>
+</tr>
+<tr>
+<td><code>glm()</code></td>
+<td>Generalized linear models like logistic regression</td>
+</tr>
+<tr>
+<td><code>nls()</code></td>
+<td>Nonlinear regression</td>
+</tr>
+<tr>
+<td>nlme</td>
+<td>Package: Linear and non-linear mixed effect models</td>
+</tr>
+<tr>
+<td>survival</td>
+<td>Package: Parametric and nonparametric survival models</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-131" style="background:;">
+  <hgroup>
+    <h2>Linear Regression: Generic functions</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Table 11: Generic functions of linear regression</p>
+
+<table><thead>
+<tr>
+<th>Function</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>summary</td>
+<td>Most important output</td>
+</tr>
+<tr>
+<td>anova</td>
+<td>ANOVA table</td>
+</tr>
+<tr>
+<td>fitted</td>
+<td>Fitted values for the model</td>
+</tr>
+<tr>
+<td>predict</td>
+<td>Can be used to predict new observations</td>
+</tr>
+<tr>
+<td>resid</td>
+<td>Residuals</td>
+</tr>
+<tr>
+<td>plot</td>
+<td>Diagnostic plots</td>
+</tr>
+<tr>
+<td>coef</td>
+<td>Estimated parameters</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-132" style="background:;">
+  <hgroup>
+    <h2>Example: Relation of age and survial on Titanic</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">boxplot(age~survived, data=titanic)
+</code></pre>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-109-1.png" alt="plot of chunk unnamed-chunk-109"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>First have a look at the function call, boxplots can use also the formula notation, to plot grouped boxplot next to each other!</p>
+
+<p>Looking at the boxplots, the age distribution in the group of survivors (<code>1</code>) appears to be similar compared to the non-survivors (<code>0</code>)</p>
+
+<p>Shall we stop here?</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-133" style="background:;">
+  <hgroup>
+    <h2>Linear regression/Cross-tabulation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Instead of checking the age distribution within the two groups survived/non-survived, we could e.g also calculate for each age the ratio
+of survival. The easiest way to get it is the crosstabulation. The command <code>table()</code>helps us here.</p>
+
+<p>The <code>table()</code> command provides a frequency table of a single variable or a crosstable in case two variables are given, e.g.:</p>
+
+<pre><code class="r">table(stress$hxofCig)
+</code></pre>
+
+<pre><code>
+     heavy   moderate non-smoker 
+       122        138        298 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-134" style="background:;">
+  <hgroup>
+    <h2>Crosstabulation age</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>First 10 lines of the cross-tabulation age versus survived</p>
+
+<pre><code class="r">ageSurvTab &lt;- table(titanic$age,titanic$survived)
+ageSurvTab[1:10,]
+</code></pre>
+
+<pre><code>
+       0 1
+  0.17 0 1
+  0.33 1 0
+  0.42 0 1
+  0.67 0 1
+  0.75 1 2
+  0.83 0 3
+  0.92 0 2
+  1    3 7
+  2    8 4
+  3    2 5
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-135" style="background:;">
+  <hgroup>
+    <h2>Linear Regression on survival rate</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>It is important to see that the output is again a <code>matrix</code>. The column names are the classes of the one variable (<code>survived</code>) and the rownames are
+the possible classes of the other one (<code>Age</code>).</p>
+
+<p>If one goes e.g. to row labeled <code>3</code> it means that <code>2</code> persons with age 3 haven&#39;t survived, but <code>5</code> have.</p>
+
+<p>Having this information we can now calculate the survival rate in each age group:</p>
+
+<p>It is just for each age the number of survivors (second column), divided by the amount of people at that age (=rowsum in the age-group)</p>
+
+<pre><code class="r">survRatio &lt;- ageSurvTab[,2]/(ageSurvTab[,1]+ ageSurvTab[,2])
+survRatio[1:7]
+</code></pre>
+
+<pre><code>     0.17      0.33      0.42      0.67      0.75      0.83      0.92 
+1.0000000 0.0000000 1.0000000 1.0000000 0.6666667 1.0000000 1.0000000 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-136" style="background:;">
+  <hgroup>
+    <h2>Visualization of the survival rate in age:</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(survRatio)
+</code></pre>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-114-1.png" alt="plot of chunk unnamed-chunk-114"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Just a basic plot of the age groups. </p>
+
+<p>Please notice that, instead of the real age groups, there is just the index plotted! This means now, that we actually do not
+plot the correct image, but we assume that each value represents one year- and this is not the case!</p>
+
+<p>In truth, we want to plot the names of the table (equals the age group) versus the survival rate.</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-137" style="background:;">
+  <hgroup>
+    <h2>Visualization of the survival rate in age:</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(names(survRatio), survRatio)
+</code></pre>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-116-1.png" alt="plot of chunk unnamed-chunk-116"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Here are now some things happening that we do not know, yet! For the sake of completeness: What happens here is 
+that the names, which are internally a <code>character</code> are casted to be <code>numerical</code>. This is a common source of error 
+that data seems to be alright, but in truth it isn&#39;t.</p>
+
+<p>The <code>plot</code> function is, however, clever enough to fix that, but there are many occasions, where functions are dumb
+with respect to the class and where the user has to take care of this alone.</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-138" style="background:;">
+  <hgroup>
+    <h2>Apply a linear regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We assume now that all assumptions of a linear regression are fulfilled.</p>
+
+<p>To fit a linear model we need to <em>cast</em> the data still:</p>
+
+<pre><code class="r">class(names(survRatio))
+</code></pre>
+
+<pre><code>[1] &quot;character&quot;
+</code></pre>
+
+<pre><code class="r">survRatio[1:7]
+</code></pre>
+
+<pre><code>     0.17      0.33      0.42      0.67      0.75      0.83      0.92 
+1.0000000 0.0000000 1.0000000 1.0000000 0.6666667 1.0000000 1.0000000 
+</code></pre>
+
+<pre><code class="r">names(survRatio)[1:7]
+</code></pre>
+
+<pre><code>[1] &quot;0.17&quot; &quot;0.33&quot; &quot;0.42&quot; &quot;0.67&quot; &quot;0.75&quot; &quot;0.83&quot; &quot;0.92&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-139" style="background:;">
+  <hgroup>
+    <h2>Casting</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The values are displayed in quotation marks, this means that, although the values look like numbers, they are internally handled as words. This means, you
+cannot calculate with them:</p>
+
+<pre><code class="r">&quot;1&quot;+ &quot;4&quot;
+</code></pre>
+
+<pre><code>Error in &quot;1&quot; + &quot;4&quot;: non-numeric argument to binary operator
+</code></pre>
+
+<p>We can use the <code>as.*()</code> command family to cast between data types:</p>
+
+<pre><code class="r">&quot;4&quot;
+</code></pre>
+
+<pre><code>[1] &quot;4&quot;
+</code></pre>
+
+<pre><code class="r">as.numeric(&quot;4&quot;)
+</code></pre>
+
+<pre><code>[1] 4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-140" style="background:;">
+  <hgroup>
+    <h2>Casting <code>names(survRatio)</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">ageGroup &lt;- as.numeric(names(survRatio))
+class(ageGroup)
+</code></pre>
+
+<pre><code>[1] &quot;numeric&quot;
+</code></pre>
+
+<pre><code class="r">names(survRatio)[1:7]
+</code></pre>
+
+<pre><code>[1] &quot;0.17&quot; &quot;0.33&quot; &quot;0.42&quot; &quot;0.67&quot; &quot;0.75&quot; &quot;0.83&quot; &quot;0.92&quot;
+</code></pre>
+
+<pre><code class="r">ageGroup[1:7]
+</code></pre>
+
+<pre><code>[1] 0.17 0.33 0.42 0.67 0.75 0.83 0.92
+</code></pre>
+
+<p>Now we have numerical data and can fit a linear model (remember, if you have already numerical data, you do not have to do the casting!)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-141" style="background:;">
+  <hgroup>
+    <h2>Apply a linear model</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">titanicLM &lt;- lm(survRatio~ageGroup)
+titanicLM
+</code></pre>
+
+<pre><code>
+Call:
+lm(formula = survRatio ~ ageGroup)
+
+Coefficients:
+(Intercept)     ageGroup  
+   0.503063    -0.003841  
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-142" style="background:;">
+  <hgroup>
+    <h2>Visualize the linear model</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-122-1.png" alt="plot of chunk unnamed-chunk-122"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>First just plot the data as you know it already and then add a line with the <code>abline()</code>command:</p>
+
+<pre><code class="r">plot(survRatio~ageGroup)
+titanicLM &lt;- lm(survRatio~ageGroup)
+abline(titanicLM)
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-143" style="background:;">
+  <hgroup>
+    <h2>Non-linear fitting</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-124-1.png" alt="plot of chunk unnamed-chunk-124"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Without going into too many details, we want to see how easy one could switch from a linear regression to a non-linear LOESS.</p>
+
+<pre><code class="r">plot(survRatio~ageGroup)
+loessCurv &lt;- loess(survRatio~ageGroup)
+lines(predict(loessCurv), col=&quot;red&quot;, lwd=2)
+abline(titanicLM)
+</code></pre>
+
+<p>The option <code>col=</code> defines the color of a line/plot and <code>lwd=</code> the line width.</p>
+
+<p>For comparison reasons we also added here the linear model result via <code>abline()</code></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-144" style="background:;">
+  <hgroup>
+    <h2>Hands on: Run some own linear regression on the stress data</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-145" style="background:;">
+  <hgroup>
+    <h2>Solutions:</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-146" style="background:;">
+  <hgroup>
+    <h2>Export figures</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Exporting figures in R is extremely easy. All one needs to specify is the graphic type (e.g. <code>png</code>, <code>jpeg</code>, <code>pdf</code> or <code>eps</code>).</p>
+
+<p>When a plot command is executed, R opens a graphical device (like a canvas) and uses this device then to plot the requested things onto.</p>
+
+<p>The default device is the screen. If one wants to store a figure on the HDD, all one has to do is to define a non-standard graphical device and
+its dimensions, then plot into that device and eventually close the device so that it will be finalized. </p>
+
+<p>The following commands can be used to export figures.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-147" style="background:;">
+  <hgroup>
+    <h2>Export figures</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Here a table with commands:</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-148" style="background:;">
+  <hgroup>
+    <h2>Export data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>And then still how to save dataframes/workspaces.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -5255,8 +5777,128 @@ mean of x mean of y
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=128 title='What to do still:'>
+        data-slide=128 title='Solutions: Tests'>
          128
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=129 title='Solutions: Tests'>
+         129
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=130 title='Linear regression'>
+         130
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=131 title='Linear Regression: Generic functions'>
+         131
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=132 title='Example: Relation of age and survial on Titanic'>
+         132
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=133 title='Linear regression/Cross-tabulation'>
+         133
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=134 title='Crosstabulation age'>
+         134
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=135 title='Linear Regression on survival rate'>
+         135
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=136 title='Visualization of the survival rate in age:'>
+         136
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=137 title='Visualization of the survival rate in age:'>
+         137
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=138 title='Apply a linear regression'>
+         138
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=139 title='Casting'>
+         139
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=140 title='Casting <code>names(survRatio)</code>'>
+         140
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=141 title='Apply a linear model'>
+         141
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=142 title='Visualize the linear model'>
+         142
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=143 title='Non-linear fitting'>
+         143
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=144 title='Hands on: Run some own linear regression on the stress data'>
+         144
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=145 title='Solutions:'>
+         145
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=146 title='Export figures'>
+         146
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=147 title='Export figures'>
+         147
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=148 title='Export data'>
+         148
       </a>
     </li>
   </ul>
