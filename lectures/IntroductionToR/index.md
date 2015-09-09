@@ -11,7 +11,7 @@ mode        : selfcontained # {standalone, draft}
 license     : by-nc-sa
 github      :
   user      : fischuu
-  repo      : fischuu.github.io/presentations/RAndGoogleVisualization
+  repo      : fischuu.github.io/lectures/IntroductionToR
              
 --- .segue .dark
 
