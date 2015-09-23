@@ -83,7 +83,7 @@
   <article data-timings="">
     <ul>
 <li><p>R was started by Ross Ihaka and Robert Gentleman (the ”R &amp; R’s” of the University of Auckland) in 1992.</p></li>
-<li><p>R is an environment and language for data manipulation, calculation and graphical display.</p></li>
+<li><p>R is an environment and language for data manipulation, calculation, graphical display and statistical analysis.</p></li>
 <li><p>R is published under GNU licence. This means it is an open source program and is distributed for free.</p></li>
 <li><p>R can be seen as an implementation or dialect of the S language. S was developed by Becker and Chambers 1984.</p></li>
 <li><p>The origin of the name is not known anymore (although there are obvious possibilities...).</p></li>
@@ -103,6 +103,7 @@
 <li><p>It is <em>open source</em>. This means you can alter or check every piece of code (or hope at least that someone else does it...).</p></li>
 <li><p>It is <em>friendly</em>. Usually the mailing lists (”Rhelp”) or online discussion forums (e.g. &#39;StackOverflow&#39;) are fast, friendly and helpful.</p></li>
 <li><p>It is an <em>universal tool</em>. Usually there is a function in R for everything, or if there isn’t, soon there will be.</p></li>
+<li><p>Good environment for sharing yur analysis tools.</p></li>
 </ul>
 
   </article>
@@ -138,6 +139,8 @@
 <li><p>Linux user that use the apt package system, can include the CRAN server into it and receive those updates then automatically.</p></li>
 <li><p>On CRAN are also thousands of additional extensions (”packages”) available.</p></li>
 <li><p>The <a href="https://www.bioconductor.org/">Bioconductor</a> projects offers on top of that also hundreds of packages specialized for genomic data analysis.</p></li>
+<li><p>It should be possible for everyone (Windows users) in Luke to download R and RStudio from <a href="http://vancmss1/CMApplicationCatalog/#/SoftwareLibrary/AppListPageView.xaml">Application Catalog</a> which is also found under the star
+in the upper right corner of IE window</p></li>
 </ul>
 
   </article>
@@ -378,6 +381,20 @@ separators are usually given as they are.)</p>
 
 <slide class="" id="slide-20" style="background:;">
   <hgroup>
+    <h2>Import ASCII files IV</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The <code>read.table</code>command is a function that is very user-friendly and that handles most standard data formats.</p>
+
+<p>However, in situations when the data is not in an easy-to-access format, the command <code>scan()</code> might be usefull to
+read-in such data. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
     <h2>Import other files to R</h2>
   </hgroup>
   <article data-timings="">
@@ -394,11 +411,13 @@ and procede as above mentioned.</p>
 but this is above the scope of the course and will be discussed in an
 advanced course.</p>
 
+<p>Also, html pages can be access directly (e.g. data download directly from wikipedia and such things.)</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:;">
+<slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>Example data</h2>
   </hgroup>
@@ -417,7 +436,7 @@ advanced course.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>Titanic passenger information variables:</h2>
   </hgroup>
@@ -439,7 +458,7 @@ advanced course.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:;">
+<slide class="" id="slide-24" style="background:;">
   <hgroup>
     <h2>Titanic passenger information variables (continued):</h2>
   </hgroup>
@@ -455,7 +474,7 @@ advanced course.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <hgroup>
     <h2>Stress echo data</h2>
   </hgroup>
@@ -480,7 +499,7 @@ advanced course.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-25" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <hgroup>
     <h2>Stress echo data (continued)</h2>
   </hgroup>
@@ -505,7 +524,7 @@ advanced course.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-26" style="background:;">
+<slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h2>Stress echo data (continued)</h2>
   </hgroup>
@@ -522,7 +541,7 @@ advanced course.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-27" style="background:;">
+<slide class="" id="slide-28" style="background:;">
   <hgroup>
     <h2>Hands-on: Import the Example data</h2>
   </hgroup>
@@ -538,7 +557,7 @@ advanced course.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-28" style="background:;">
+<slide class="" id="slide-29" style="background:;">
   <hgroup>
     <h2>Hint</h2>
   </hgroup>
@@ -553,7 +572,7 @@ advanced course.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-29" style="background:;">
+<slide class="" id="slide-30" style="background:;">
   <hgroup>
     <h2>Solution: Import the Titanic data</h2>
   </hgroup>
@@ -567,7 +586,7 @@ stress &lt;- read.table(&quot;stressEcho.csv&quot;, sep=&quot;,&quot;, header=TR
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-30" style="background:;">
+<slide class="" id="slide-31" style="background:;">
   <hgroup>
     <h2>The R workspace I</h2>
   </hgroup>
@@ -599,7 +618,7 @@ remove it be typing</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-31" style="background:;">
+<slide class="" id="slide-32" style="background:;">
   <hgroup>
     <h2>The R workspace II</h2>
   </hgroup>
@@ -623,7 +642,7 @@ take a while and cannot be easily repeated.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-32" style="background:;">
+<slide class="" id="slide-33" style="background:;">
   <hgroup>
     <h2>How to continue</h2>
   </hgroup>
@@ -648,7 +667,7 @@ take a while and cannot be easily repeated.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:;">
+<slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h2>Standard data formats I</h2>
   </hgroup>
@@ -666,7 +685,7 @@ take a while and cannot be easily repeated.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-34" style="background:;">
+<slide class="" id="slide-35" style="background:;">
   <hgroup>
     <h2>Standard data formats II</h2>
   </hgroup>
@@ -691,7 +710,7 @@ take a while and cannot be easily repeated.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-35" style="background:;">
+<slide class="" id="slide-36" style="background:;">
   <hgroup>
     <h2>data structure: Vector</h2>
   </hgroup>
@@ -708,7 +727,7 @@ take a while and cannot be easily repeated.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-36" style="background:;">
+<slide class="" id="slide-37" style="background:;">
   <hgroup>
     <h2>Data structure: Vector II</h2>
   </hgroup>
@@ -733,7 +752,7 @@ take a while and cannot be easily repeated.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-37" style="background:;">
+<slide class="" id="slide-38" style="background:;">
   <hgroup>
     <h2>Data structures: Vector III</h2>
   </hgroup>
@@ -760,7 +779,7 @@ heights &lt;- c(190, 188, 179)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-38" style="background:;">
+<slide class="" id="slide-39" style="background:;">
   <hgroup>
     <h2>Data structures: Vector IV</h2>
   </hgroup>
@@ -785,7 +804,7 @@ heights &lt;- c(190, 188, 179)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-39" style="background:;">
+<slide class="" id="slide-40" style="background:;">
   <hgroup>
     <h2>Data structure: Vector V</h2>
   </hgroup>
@@ -819,7 +838,7 @@ addressed:</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-40" style="background:;">
+<slide class="" id="slide-41" style="background:;">
   <hgroup>
     <h1>Data structure: matrix I</h1>
   </hgroup>
@@ -836,7 +855,7 @@ addressed:</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-41" style="background:;">
+<slide class="" id="slide-42" style="background:;">
   <hgroup>
     <h2>Data structure: matrix II</h2>
   </hgroup>
@@ -867,7 +886,7 @@ addressed:</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-42" style="background:;">
+<slide class="" id="slide-43" style="background:;">
   <hgroup>
     <h2>Data structure: matrix III</h2>
   </hgroup>
@@ -898,7 +917,7 @@ addressed:</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-43" style="background:;">
+<slide class="" id="slide-44" style="background:;">
   <hgroup>
     <h2>Data structure: matrix IV</h2>
   </hgroup>
@@ -929,7 +948,7 @@ addressed:</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-44" style="background:;">
+<slide class="" id="slide-45" style="background:;">
   <hgroup>
     <h2>Data structure: matrix V</h2>
   </hgroup>
@@ -958,7 +977,7 @@ addressed:</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-45" style="background:;">
+<slide class="" id="slide-46" style="background:;">
   <hgroup>
     <h2>Data structure: matrix VI</h2>
   </hgroup>
@@ -978,7 +997,7 @@ addressed:</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-46" style="background:;">
+<slide class="" id="slide-47" style="background:;">
   <hgroup>
     <h2>Interruption</h2>
   </hgroup>
@@ -1006,7 +1025,7 @@ the future!</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-47" style="background:;">
+<slide class="" id="slide-48" style="background:;">
   <hgroup>
     <h2>Hands-On: Assigning values</h2>
   </hgroup>
@@ -1033,7 +1052,7 @@ the future!</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-48" style="background:;">
+<slide class="" id="slide-49" style="background:;">
   <hgroup>
     <h2>Hands-On: Solutions 1&amp;2</h2>
   </hgroup>
@@ -1064,7 +1083,7 @@ the future!</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-49" style="background:;">
+<slide class="" id="slide-50" style="background:;">
   <hgroup>
     <h2>Hands-On: Solutions 3&amp;4</h2>
   </hgroup>
@@ -1096,7 +1115,7 @@ the future!</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-50" style="background:;">
+<slide class="" id="slide-51" style="background:;">
   <hgroup>
     <h2>Different data types in a vector</h2>
   </hgroup>
@@ -1128,7 +1147,7 @@ myNewString
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-51" style="background:;">
+<slide class="" id="slide-52" style="background:;">
   <hgroup>
     <h2>Data structure: data.frame I</h2>
   </hgroup>
@@ -1151,7 +1170,7 @@ be of the same class is the data.frame:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-52" style="background:;">
+<slide class="" id="slide-53" style="background:;">
   <hgroup>
     <h2>Data structure: data.frame II</h2>
   </hgroup>
@@ -1175,7 +1194,7 @@ Levels: Kati Paul Peter
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-53" style="background:;">
+<slide class="" id="slide-54" style="background:;">
   <hgroup>
     <h2>Data structure: factor I</h2>
   </hgroup>
@@ -1204,7 +1223,7 @@ But - how can we avoid that R uses factors here?!</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-54" style="background:;">
+<slide class="" id="slide-55" style="background:;">
   <hgroup>
     <h2>Data structure: factor II</h2>
   </hgroup>
@@ -1228,7 +1247,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-55" style="background:;">
+<slide class="" id="slide-56" style="background:;">
   <hgroup>
     <h2>Data structure: factor II</h2>
   </hgroup>
@@ -1249,7 +1268,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-56" style="background:;">
+<slide class="" id="slide-57" style="background:;">
   <hgroup>
     <h2>Our data example</h2>
   </hgroup>
@@ -1276,7 +1295,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-57" style="background:;">
+<slide class="" id="slide-58" style="background:;">
   <hgroup>
     <h2>Our data example</h2>
   </hgroup>
@@ -1323,7 +1342,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-58" style="background:;">
+<slide class="" id="slide-59" style="background:;">
   <hgroup>
     <h2>Naming of element</h2>
   </hgroup>
@@ -1346,7 +1365,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-59" style="background:;">
+<slide class="" id="slide-60" style="background:;">
   <hgroup>
     <h2>Getting the column names of a data.frame</h2>
   </hgroup>
@@ -1372,7 +1391,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-60" style="background:;">
+<slide class="" id="slide-61" style="background:;">
   <hgroup>
     <h2>Summary break</h2>
   </hgroup>
@@ -1399,7 +1418,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-61" style="background:;">
+<slide class="" id="slide-62" style="background:;">
   <hgroup>
     <h2>Hands-On: Titanic data</h2>
   </hgroup>
@@ -1413,7 +1432,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-62" style="background:;">
+<slide class="" id="slide-63" style="background:;">
   <hgroup>
     <h2>Hints: Titanic data</h2>
   </hgroup>
@@ -1427,7 +1446,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-63" style="background:;">
+<slide class="" id="slide-64" style="background:;">
   <hgroup>
     <h2>Solutions: Titanic data</h2>
   </hgroup>
@@ -1460,7 +1479,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-64" style="background:;">
+<slide class="" id="slide-65" style="background:;">
   <hgroup>
     <h2>Solutions: Titanic data II</h2>
   </hgroup>
@@ -2788,7 +2807,7 @@ using the additional option stringsAsFactors:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-65" style="background:;">
+<slide class="" id="slide-66" style="background:;">
   <hgroup>
     <h2>data structure: list I</h2>
   </hgroup>
@@ -2806,7 +2825,7 @@ hanging in between. All this is also possible by using lists.</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-66" style="background:;">
+<slide class="" id="slide-67" style="background:;">
   <hgroup>
     <h2>Data structure: list II</h2>
   </hgroup>
@@ -2823,7 +2842,7 @@ hanging in between. All this is also possible by using lists.</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-67" style="background:;">
+<slide class="" id="slide-68" style="background:;">
   <hgroup>
     <h2>Data structure : list III</h2>
   </hgroup>
@@ -2847,7 +2866,7 @@ hanging in between. All this is also possible by using lists.</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-68" style="background:;">
+<slide class="" id="slide-69" style="background:;">
   <hgroup>
     <h2>Data structure : list IV</h2>
   </hgroup>
@@ -2872,7 +2891,7 @@ hanging in between. All this is also possible by using lists.</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-69" style="background:;">
+<slide class="" id="slide-70" style="background:;">
   <hgroup>
     <h2>Named elements in the list</h2>
   </hgroup>
@@ -2892,7 +2911,7 @@ hanging in between. All this is also possible by using lists.</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-70" style="background:;">
+<slide class="" id="slide-71" style="background:;">
   <hgroup>
     <h2>Data structure : list III</h2>
   </hgroup>
@@ -2916,7 +2935,7 @@ $data
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-71" style="background:;">
+<slide class="" id="slide-72" style="background:;">
   <hgroup>
     <h2>Data structure : list IV</h2>
   </hgroup>
@@ -2941,7 +2960,7 @@ $data
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-72" style="background:;">
+<slide class="" id="slide-73" style="background:;">
   <hgroup>
     <h2>Data structure: list V</h2>
   </hgroup>
@@ -2993,7 +3012,7 @@ $data
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-73" style="background:;">
+<slide class="" id="slide-74" style="background:;">
   <hgroup>
     <h2>R as pocket calculator II</h2>
   </hgroup>
@@ -3032,7 +3051,7 @@ $data
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-74" style="background:;">
+<slide class="" id="slide-75" style="background:;">
   <hgroup>
     <h2>R as pocket calculator II</h2>
   </hgroup>
@@ -3083,7 +3102,7 @@ $data
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-75" style="background:;">
+<slide class="" id="slide-76" style="background:;">
   <hgroup>
     <h2>Perform basic calculations</h2>
   </hgroup>
@@ -3116,7 +3135,7 @@ x*c(2,2,2,2,2,2,2,2,2,2)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-76" style="background:;">
+<slide class="" id="slide-77" style="background:;">
   <hgroup>
     <h2>Perform basic calculations II</h2>
   </hgroup>
@@ -3155,7 +3174,7 @@ x*c(2,2,2,2,2,2,2,2,2,2)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-77" style="background:;">
+<slide class="" id="slide-78" style="background:;">
   <hgroup>
     <h2>Handling missing data</h2>
   </hgroup>
@@ -3183,7 +3202,7 @@ mean(x)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-78" style="background:;">
+<slide class="" id="slide-79" style="background:;">
   <hgroup>
     <h2>Hands-On Pocket Calculator</h2>
   </hgroup>
@@ -3203,7 +3222,7 @@ mean(x)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-79" style="background:;">
+<slide class="" id="slide-80" style="background:;">
   <hgroup>
     <h2>Solutions: Pocket Calculator 1-3</h2>
   </hgroup>
@@ -3242,7 +3261,7 @@ mean(x)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-80" style="background:;">
+<slide class="" id="slide-81" style="background:;">
   <hgroup>
     <h2>Solutions: Pocket Calculator 4-6</h2>
   </hgroup>
@@ -3281,7 +3300,7 @@ mean(x)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-81" style="background:;">
+<slide class="" id="slide-82" style="background:;">
   <hgroup>
     <h2>Hands-On: Example data</h2>
   </hgroup>
@@ -3297,7 +3316,7 @@ mean(x)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-82" style="background:;">
+<slide class="" id="slide-83" style="background:;">
   <hgroup>
     <h2>Hints: Example data</h2>
   </hgroup>
@@ -3313,7 +3332,7 @@ mean(x)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-83" style="background:;">
+<slide class="" id="slide-84" style="background:;">
   <hgroup>
     <h2>Solutions: Example data I</h2>
   </hgroup>
@@ -3342,7 +3361,7 @@ mean(x)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-84" style="background:;">
+<slide class="" id="slide-85" style="background:;">
   <hgroup>
     <h2>Solutions: Example data II</h2>
   </hgroup>
@@ -3371,7 +3390,7 @@ mean(x)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-85" style="background:;">
+<slide class="" id="slide-86" style="background:;">
   <hgroup>
     <h2>Sequences and repetitions I</h2>
   </hgroup>
@@ -3398,7 +3417,7 @@ x
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-86" style="background:;">
+<slide class="" id="slide-87" style="background:;">
   <hgroup>
     <h2>Sequences and repetitions II</h2>
   </hgroup>
@@ -3425,7 +3444,7 @@ x
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-87" style="background:;">
+<slide class="" id="slide-88" style="background:;">
   <hgroup>
     <h2>Sequences and repetitions III</h2>
   </hgroup>
@@ -3450,7 +3469,7 @@ x
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-88" style="background:;">
+<slide class="" id="slide-89" style="background:;">
   <hgroup>
     <h2>Recycling of vectors</h2>
   </hgroup>
@@ -3478,7 +3497,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-89" style="background:;">
+<slide class="" id="slide-90" style="background:;">
   <hgroup>
     <h2>Logical operators in I</h2>
   </hgroup>
@@ -3541,7 +3560,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-90" style="background:;">
+<slide class="" id="slide-91" style="background:;">
   <hgroup>
     <h2>Logical operators in R - example</h2>
   </hgroup>
@@ -3568,7 +3587,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-91" style="background:;">
+<slide class="" id="slide-92" style="background:;">
   <hgroup>
     <h2>Combine logic operators</h2>
   </hgroup>
@@ -3599,7 +3618,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-92" style="background:;">
+<slide class="" id="slide-93" style="background:;">
   <hgroup>
     <h2>Hands on: Sequences, Recycling and Logic</h2>
   </hgroup>
@@ -3616,7 +3635,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-93" style="background:;">
+<slide class="" id="slide-94" style="background:;">
   <hgroup>
     <h2>Hints: Sequences, Recycling and Logic</h2>
   </hgroup>
@@ -3633,7 +3652,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-94" style="background:;">
+<slide class="" id="slide-95" style="background:;">
   <hgroup>
     <h2>Solutions: Sequences, Recycling and Logic I</h2>
   </hgroup>
@@ -3665,7 +3684,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-95" style="background:;">
+<slide class="" id="slide-96" style="background:;">
   <hgroup>
     <h2>Solutions: Sequences, Recycling and Logic II</h2>
   </hgroup>
@@ -3695,7 +3714,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-96" style="background:;">
+<slide class="" id="slide-97" style="background:;">
   <hgroup>
     <h2>Solutions: Sequences, Recycling and Logic III</h2>
   </hgroup>
@@ -3730,7 +3749,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-97" style="background:;">
+<slide class="" id="slide-98" style="background:;">
   <hgroup>
     <h2>Packages on Cran I</h2>
   </hgroup>
@@ -3748,7 +3767,7 @@ shorter object length
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-98" style="background:;">
+<slide class="" id="slide-99" style="background:;">
   <hgroup>
     <h2>Packages on Cran II</h2>
   </hgroup>
@@ -3769,7 +3788,7 @@ library(&quot;MASS&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-99" style="background:;">
+<slide class="" id="slide-100" style="background:;">
   <hgroup>
     <h2>Some useful R packages</h2>
   </hgroup>
@@ -3820,7 +3839,7 @@ library(&quot;MASS&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-100" style="background:;">
+<slide class="" id="slide-101" style="background:;">
   <hgroup>
     <h2>Hands on: Packages</h2>
   </hgroup>
@@ -3835,7 +3854,7 @@ library(&quot;MASS&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-101" style="background:;">
+<slide class="" id="slide-102" style="background:;">
   <hgroup>
     <h2>Solutions</h2>
   </hgroup>
@@ -3866,7 +3885,7 @@ library(&quot;randomForest&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-102" style="background:;">
+<slide class="" id="slide-103" style="background:;">
   <hgroup>
     <h2>Explorative data analysis</h2>
   </hgroup>
@@ -3884,7 +3903,7 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-103" style="background:;">
+<slide class="" id="slide-104" style="background:;">
   <hgroup>
     <h2><code>summary()</code> command</h2>
   </hgroup>
@@ -3906,7 +3925,7 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-104" style="background:;">
+<slide class="" id="slide-105" style="background:;">
   <hgroup>
     <h2>The <code>boxplot()</code> command I</h2>
   </hgroup>
@@ -3925,7 +3944,7 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-105" style="background:;">
+<slide class="" id="slide-106" style="background:;">
   <hgroup>
     <h2>The <code>boxplot()</code>command II</h2>
   </hgroup>
@@ -3939,7 +3958,7 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-106" style="background:;">
+<slide class="" id="slide-107" style="background:;">
   <hgroup>
     <h2>The <code>plot()</code> command I</h2>
   </hgroup>
@@ -3957,7 +3976,7 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-107" style="background:;">
+<slide class="" id="slide-108" style="background:;">
   <hgroup>
     <h2>The <code>plot()</code> command II</h2>
   </hgroup>
@@ -3981,7 +4000,7 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-108" style="background:;">
+<slide class="" id="slide-109" style="background:;">
   <hgroup>
     <h2>The <code>plot()</code> command II</h2>
   </hgroup>
@@ -4005,7 +4024,7 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-109" style="background:;">
+<slide class="" id="slide-110" style="background:;">
   <hgroup>
     <h2>Hands-On</h2>
   </hgroup>
@@ -4020,7 +4039,7 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-110" style="background:;">
+<slide class="" id="slide-111" style="background:;">
   <hgroup>
     <h2>Solutions:</h2>
   </hgroup>
@@ -4030,7 +4049,7 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-111" style="background:;">
+<slide class="" id="slide-112" style="background:;">
   <hgroup>
     <h2>Statistical models in R</h2>
   </hgroup>
@@ -4051,7 +4070,7 @@ defines the independent variables.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-112" style="background:;">
+<slide class="" id="slide-113" style="background:;">
   <hgroup>
     <h2>Statistical models in R</h2>
   </hgroup>
@@ -4079,7 +4098,7 @@ These two models are equivalent, both have an intercept:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-113" style="background:;">
+<slide class="" id="slide-114" style="background:;">
   <hgroup>
     <h2>Interaction and nested design</h2>
   </hgroup>
@@ -4101,7 +4120,7 @@ Several special operators are available for this. To name a few:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-114" style="background:;">
+<slide class="" id="slide-115" style="background:;">
   <hgroup>
     <h2>Variable transformation in formulae</h2>
   </hgroup>
@@ -4131,7 +4150,7 @@ and not the intercept. This is therefore different from <code>y ~ x1-1</code></p
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-115" style="background:;">
+<slide class="" id="slide-116" style="background:;">
   <hgroup>
     <h2>Functions for tests and modelling</h2>
   </hgroup>
@@ -4148,7 +4167,7 @@ regression models.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-116" style="background:;">
+<slide class="" id="slide-117" style="background:;">
   <hgroup>
     <h2>Tests for numeric data in R</h2>
   </hgroup>
@@ -4199,7 +4218,7 @@ regression models.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-117" style="background:;">
+<slide class="" id="slide-118" style="background:;">
   <hgroup>
     <h2>Tests for non-numeric data in R</h2>
   </hgroup>
@@ -4238,7 +4257,7 @@ regression models.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-118" style="background:;">
+<slide class="" id="slide-119" style="background:;">
   <hgroup>
     <h2>Student&#39;s t-test in R I</h2>
   </hgroup>
@@ -4263,7 +4282,7 @@ in the function call.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-119" style="background:;">
+<slide class="" id="slide-120" style="background:;">
   <hgroup>
     <h2>Student&#39;s t-test - examples</h2>
   </hgroup>
@@ -4290,7 +4309,7 @@ in the function call.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-120" style="background:;">
+<slide class="" id="slide-121" style="background:;">
   <hgroup>
     <h2>Student&#39;s t-test - examples</h2>
   </hgroup>
@@ -4315,7 +4334,7 @@ mean of x
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-121" style="background:;">
+<slide class="" id="slide-122" style="background:;">
   <hgroup>
     <h2>Student&#39;s t-test - examples</h2>
   </hgroup>
@@ -4340,7 +4359,7 @@ mean of x
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-122" style="background:;">
+<slide class="" id="slide-123" style="background:;">
   <hgroup>
     <h2>Wilcox test - examples</h2>
   </hgroup>
@@ -4360,7 +4379,7 @@ alternative hypothesis: true location is not equal to 65
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-123" style="background:;">
+<slide class="" id="slide-124" style="background:;">
   <hgroup>
     <h2>Wilcox test - examples</h2>
   </hgroup>
@@ -4380,7 +4399,7 @@ alternative hypothesis: true location is not equal to 67
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-124" style="background:;">
+<slide class="" id="slide-125" style="background:;">
   <hgroup>
     <h2>Two-sided t-test</h2>
   </hgroup>
@@ -4408,7 +4427,7 @@ mean in group female   mean in group male
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-125" style="background:;">
+<slide class="" id="slide-126" style="background:;">
   <hgroup>
     <h2>Two-sided Wilcoxon test</h2>
   </hgroup>
@@ -4431,7 +4450,7 @@ alternative hypothesis: true location shift is not equal to 0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-126" style="background:;">
+<slide class="" id="slide-127" style="background:;">
   <hgroup>
     <h2>Student&#39;s t test examples</h2>
   </hgroup>
@@ -4462,7 +4481,7 @@ mean of x mean of y
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-127" style="background:;">
+<slide class="" id="slide-128" style="background:;">
   <hgroup>
     <h2>Hands-On : Tests</h2>
   </hgroup>
@@ -4476,7 +4495,7 @@ mean of x mean of y
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-128" style="background:;">
+<slide class="" id="slide-129" style="background:;">
   <hgroup>
     <h2>Solutions: Tests</h2>
   </hgroup>
@@ -4505,7 +4524,7 @@ mean of x mean of y
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-129" style="background:;">
+<slide class="" id="slide-130" style="background:;">
   <hgroup>
     <h2>Solutions: Tests</h2>
   </hgroup>
@@ -4532,7 +4551,7 @@ mean of x mean of y
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-130" style="background:;">
+<slide class="" id="slide-131" style="background:;">
   <hgroup>
     <h2>Linear regression</h2>
   </hgroup>
@@ -4584,7 +4603,7 @@ different regression models.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-131" style="background:;">
+<slide class="" id="slide-132" style="background:;">
   <hgroup>
     <h2>Linear Regression: Generic functions</h2>
   </hgroup>
@@ -4631,7 +4650,7 @@ different regression models.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-132" style="background:;">
+<slide class="" id="slide-133" style="background:;">
   <hgroup>
     <h2>Example: Relation of age and survial on Titanic</h2>
   </hgroup>
@@ -4655,7 +4674,7 @@ different regression models.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-133" style="background:;">
+<slide class="" id="slide-134" style="background:;">
   <hgroup>
     <h2>Linear regression/Cross-tabulation</h2>
   </hgroup>
@@ -4677,7 +4696,7 @@ of survival. The easiest way to get it is the crosstabulation. The command <code
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-134" style="background:;">
+<slide class="" id="slide-135" style="background:;">
   <hgroup>
     <h2>Crosstabulation age</h2>
   </hgroup>
@@ -4706,7 +4725,7 @@ ageSurvTab[1:10,]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-135" style="background:;">
+<slide class="" id="slide-136" style="background:;">
   <hgroup>
     <h2>Linear Regression on survival rate</h2>
   </hgroup>
@@ -4732,7 +4751,7 @@ survRatio[1:7]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-136" style="background:;">
+<slide class="" id="slide-137" style="background:;">
   <hgroup>
     <h2>Visualization of the survival rate in age:</h2>
   </hgroup>
@@ -4757,7 +4776,7 @@ plot the correct image, but we assume that each value represents one year- and t
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-137" style="background:;">
+<slide class="" id="slide-138" style="background:;">
   <hgroup>
     <h2>Visualization of the survival rate in age:</h2>
   </hgroup>
@@ -4782,7 +4801,7 @@ with respect to the class and where the user has to take care of this alone.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-138" style="background:;">
+<slide class="" id="slide-139" style="background:;">
   <hgroup>
     <h2>Apply a linear regression</h2>
   </hgroup>
@@ -4814,7 +4833,7 @@ with respect to the class and where the user has to take care of this alone.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-139" style="background:;">
+<slide class="" id="slide-140" style="background:;">
   <hgroup>
     <h2>Casting</h2>
   </hgroup>
@@ -4846,7 +4865,7 @@ cannot calculate with them:</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-140" style="background:;">
+<slide class="" id="slide-141" style="background:;">
   <hgroup>
     <h2>Casting <code>names(survRatio)</code></h2>
   </hgroup>
@@ -4876,7 +4895,7 @@ class(ageGroup)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-141" style="background:;">
+<slide class="" id="slide-142" style="background:;">
   <hgroup>
     <h2>Apply a linear model</h2>
   </hgroup>
@@ -4898,7 +4917,7 @@ Coefficients:
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-142" style="background:;">
+<slide class="" id="slide-143" style="background:;">
   <hgroup>
     <h2>Visualize the linear model</h2>
   </hgroup>
@@ -4921,7 +4940,7 @@ abline(titanicLM)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-143" style="background:;">
+<slide class="" id="slide-144" style="background:;">
   <hgroup>
     <h2>Non-linear fitting</h2>
   </hgroup>
@@ -4949,7 +4968,7 @@ abline(titanicLM)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-144" style="background:;">
+<slide class="" id="slide-145" style="background:;">
   <hgroup>
     <h2>Hands on: Run some own linear regression on the stress data</h2>
   </hgroup>
@@ -4959,7 +4978,7 @@ abline(titanicLM)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-145" style="background:;">
+<slide class="" id="slide-146" style="background:;">
   <hgroup>
     <h2>Solutions:</h2>
   </hgroup>
@@ -4969,7 +4988,7 @@ abline(titanicLM)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-146" style="background:;">
+<slide class="" id="slide-147" style="background:;">
   <hgroup>
     <h2>Export figures</h2>
   </hgroup>
@@ -4987,7 +5006,7 @@ its dimensions, then plot into that device and eventually close the device so th
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-147" style="background:;">
+<slide class="" id="slide-148" style="background:;">
   <hgroup>
     <h2>Export figures</h2>
   </hgroup>
@@ -4998,7 +5017,7 @@ its dimensions, then plot into that device and eventually close the device so th
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-148" style="background:;">
+<slide class="" id="slide-149" style="background:;">
   <hgroup>
     <h2>Export data</h2>
   </hgroup>
@@ -5129,37 +5148,37 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Import other files to R'>
+        data-slide=20 title='Import ASCII files IV'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Example data'>
+        data-slide=21 title='Import other files to R'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Titanic passenger information variables:'>
+        data-slide=22 title='Example data'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Titanic passenger information variables (continued):'>
+        data-slide=23 title='Titanic passenger information variables:'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Stress echo data'>
+        data-slide=24 title='Titanic passenger information variables (continued):'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Stress echo data (continued)'>
+        data-slide=25 title='Stress echo data'>
          25
       </a>
     </li>
@@ -5171,169 +5190,169 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Hands-on: Import the Example data'>
+        data-slide=27 title='Stress echo data (continued)'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Hint'>
+        data-slide=28 title='Hands-on: Import the Example data'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Solution: Import the Titanic data'>
+        data-slide=29 title='Hint'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='The R workspace I'>
+        data-slide=30 title='Solution: Import the Titanic data'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='The R workspace II'>
+        data-slide=31 title='The R workspace I'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='How to continue'>
+        data-slide=32 title='The R workspace II'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Standard data formats I'>
+        data-slide=33 title='How to continue'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Standard data formats II'>
+        data-slide=34 title='Standard data formats I'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='data structure: Vector'>
+        data-slide=35 title='Standard data formats II'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Data structure: Vector II'>
+        data-slide=36 title='data structure: Vector'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Data structures: Vector III'>
+        data-slide=37 title='Data structure: Vector II'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Data structures: Vector IV'>
+        data-slide=38 title='Data structures: Vector III'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Data structure: Vector V'>
+        data-slide=39 title='Data structures: Vector IV'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Data structure: matrix I'>
+        data-slide=40 title='Data structure: Vector V'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Data structure: matrix II'>
+        data-slide=41 title='Data structure: matrix I'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Data structure: matrix III'>
+        data-slide=42 title='Data structure: matrix II'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Data structure: matrix IV'>
+        data-slide=43 title='Data structure: matrix III'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Data structure: matrix V'>
+        data-slide=44 title='Data structure: matrix IV'>
          44
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Data structure: matrix VI'>
+        data-slide=45 title='Data structure: matrix V'>
          45
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Interruption'>
+        data-slide=46 title='Data structure: matrix VI'>
          46
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Hands-On: Assigning values'>
+        data-slide=47 title='Interruption'>
          47
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Hands-On: Solutions 1&amp;2'>
+        data-slide=48 title='Hands-On: Assigning values'>
          48
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Hands-On: Solutions 3&amp;4'>
+        data-slide=49 title='Hands-On: Solutions 1&amp;2'>
          49
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='Different data types in a vector'>
+        data-slide=50 title='Hands-On: Solutions 3&amp;4'>
          50
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='Data structure: data.frame I'>
+        data-slide=51 title='Different data types in a vector'>
          51
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=52 title='Data structure: data.frame II'>
+        data-slide=52 title='Data structure: data.frame I'>
          52
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='Data structure: factor I'>
+        data-slide=53 title='Data structure: data.frame II'>
          53
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=54 title='Data structure: factor II'>
+        data-slide=54 title='Data structure: factor I'>
          54
       </a>
     </li>
@@ -5345,7 +5364,7 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=56 title='Our data example'>
+        data-slide=56 title='Data structure: factor II'>
          56
       </a>
     </li>
@@ -5357,97 +5376,97 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=58 title='Naming of element'>
+        data-slide=58 title='Our data example'>
          58
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=59 title='Getting the column names of a data.frame'>
+        data-slide=59 title='Naming of element'>
          59
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=60 title='Summary break'>
+        data-slide=60 title='Getting the column names of a data.frame'>
          60
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=61 title='Hands-On: Titanic data'>
+        data-slide=61 title='Summary break'>
          61
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=62 title='Hints: Titanic data'>
+        data-slide=62 title='Hands-On: Titanic data'>
          62
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=63 title='Solutions: Titanic data'>
+        data-slide=63 title='Hints: Titanic data'>
          63
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=64 title='Solutions: Titanic data II'>
+        data-slide=64 title='Solutions: Titanic data'>
          64
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=65 title='data structure: list I'>
+        data-slide=65 title='Solutions: Titanic data II'>
          65
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=66 title='Data structure: list II'>
+        data-slide=66 title='data structure: list I'>
          66
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=67 title='Data structure : list III'>
+        data-slide=67 title='Data structure: list II'>
          67
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=68 title='Data structure : list IV'>
+        data-slide=68 title='Data structure : list III'>
          68
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=69 title='Named elements in the list'>
+        data-slide=69 title='Data structure : list IV'>
          69
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=70 title='Data structure : list III'>
+        data-slide=70 title='Named elements in the list'>
          70
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=71 title='Data structure : list IV'>
+        data-slide=71 title='Data structure : list III'>
          71
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=72 title='Data structure: list V'>
+        data-slide=72 title='Data structure : list IV'>
          72
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=73 title='R as pocket calculator II'>
+        data-slide=73 title='Data structure: list V'>
          73
       </a>
     </li>
@@ -5459,199 +5478,199 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=75 title='Perform basic calculations'>
+        data-slide=75 title='R as pocket calculator II'>
          75
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=76 title='Perform basic calculations II'>
+        data-slide=76 title='Perform basic calculations'>
          76
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=77 title='Handling missing data'>
+        data-slide=77 title='Perform basic calculations II'>
          77
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=78 title='Hands-On Pocket Calculator'>
+        data-slide=78 title='Handling missing data'>
          78
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=79 title='Solutions: Pocket Calculator 1-3'>
+        data-slide=79 title='Hands-On Pocket Calculator'>
          79
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=80 title='Solutions: Pocket Calculator 4-6'>
+        data-slide=80 title='Solutions: Pocket Calculator 1-3'>
          80
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=81 title='Hands-On: Example data'>
+        data-slide=81 title='Solutions: Pocket Calculator 4-6'>
          81
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=82 title='Hints: Example data'>
+        data-slide=82 title='Hands-On: Example data'>
          82
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=83 title='Solutions: Example data I'>
+        data-slide=83 title='Hints: Example data'>
          83
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=84 title='Solutions: Example data II'>
+        data-slide=84 title='Solutions: Example data I'>
          84
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=85 title='Sequences and repetitions I'>
+        data-slide=85 title='Solutions: Example data II'>
          85
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=86 title='Sequences and repetitions II'>
+        data-slide=86 title='Sequences and repetitions I'>
          86
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=87 title='Sequences and repetitions III'>
+        data-slide=87 title='Sequences and repetitions II'>
          87
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=88 title='Recycling of vectors'>
+        data-slide=88 title='Sequences and repetitions III'>
          88
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=89 title='Logical operators in I'>
+        data-slide=89 title='Recycling of vectors'>
          89
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=90 title='Logical operators in R - example'>
+        data-slide=90 title='Logical operators in I'>
          90
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=91 title='Combine logic operators'>
+        data-slide=91 title='Logical operators in R - example'>
          91
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=92 title='Hands on: Sequences, Recycling and Logic'>
+        data-slide=92 title='Combine logic operators'>
          92
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=93 title='Hints: Sequences, Recycling and Logic'>
+        data-slide=93 title='Hands on: Sequences, Recycling and Logic'>
          93
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=94 title='Solutions: Sequences, Recycling and Logic I'>
+        data-slide=94 title='Hints: Sequences, Recycling and Logic'>
          94
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=95 title='Solutions: Sequences, Recycling and Logic II'>
+        data-slide=95 title='Solutions: Sequences, Recycling and Logic I'>
          95
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=96 title='Solutions: Sequences, Recycling and Logic III'>
+        data-slide=96 title='Solutions: Sequences, Recycling and Logic II'>
          96
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=97 title='Packages on Cran I'>
+        data-slide=97 title='Solutions: Sequences, Recycling and Logic III'>
          97
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=98 title='Packages on Cran II'>
+        data-slide=98 title='Packages on Cran I'>
          98
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=99 title='Some useful R packages'>
+        data-slide=99 title='Packages on Cran II'>
          99
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=100 title='Hands on: Packages'>
+        data-slide=100 title='Some useful R packages'>
          100
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=101 title='Solutions'>
+        data-slide=101 title='Hands on: Packages'>
          101
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=102 title='Explorative data analysis'>
+        data-slide=102 title='Solutions'>
          102
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=103 title='<code>summary()</code> command'>
+        data-slide=103 title='Explorative data analysis'>
          103
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=104 title='The <code>boxplot()</code> command I'>
+        data-slide=104 title='<code>summary()</code> command'>
          104
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=105 title='The <code>boxplot()</code>command II'>
+        data-slide=105 title='The <code>boxplot()</code> command I'>
          105
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=106 title='The <code>plot()</code> command I'>
+        data-slide=106 title='The <code>boxplot()</code>command II'>
          106
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=107 title='The <code>plot()</code> command II'>
+        data-slide=107 title='The <code>plot()</code> command I'>
          107
       </a>
     </li>
@@ -5663,19 +5682,19 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=109 title='Hands-On'>
+        data-slide=109 title='The <code>plot()</code> command II'>
          109
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=110 title='Solutions:'>
+        data-slide=110 title='Hands-On'>
          110
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=111 title='Statistical models in R'>
+        data-slide=111 title='Solutions:'>
          111
       </a>
     </li>
@@ -5687,43 +5706,43 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=113 title='Interaction and nested design'>
+        data-slide=113 title='Statistical models in R'>
          113
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=114 title='Variable transformation in formulae'>
+        data-slide=114 title='Interaction and nested design'>
          114
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=115 title='Functions for tests and modelling'>
+        data-slide=115 title='Variable transformation in formulae'>
          115
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=116 title='Tests for numeric data in R'>
+        data-slide=116 title='Functions for tests and modelling'>
          116
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=117 title='Tests for non-numeric data in R'>
+        data-slide=117 title='Tests for numeric data in R'>
          117
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=118 title='Student&#39;s t-test in R I'>
+        data-slide=118 title='Tests for non-numeric data in R'>
          118
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=119 title='Student&#39;s t-test - examples'>
+        data-slide=119 title='Student&#39;s t-test in R I'>
          119
       </a>
     </li>
@@ -5741,7 +5760,7 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=122 title='Wilcox test - examples'>
+        data-slide=122 title='Student&#39;s t-test - examples'>
          122
       </a>
     </li>
@@ -5753,31 +5772,31 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=124 title='Two-sided t-test'>
+        data-slide=124 title='Wilcox test - examples'>
          124
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=125 title='Two-sided Wilcoxon test'>
+        data-slide=125 title='Two-sided t-test'>
          125
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=126 title='Student&#39;s t test examples'>
+        data-slide=126 title='Two-sided Wilcoxon test'>
          126
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=127 title='Hands-On : Tests'>
+        data-slide=127 title='Student&#39;s t test examples'>
          127
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=128 title='Solutions: Tests'>
+        data-slide=128 title='Hands-On : Tests'>
          128
       </a>
     </li>
@@ -5789,43 +5808,43 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=130 title='Linear regression'>
+        data-slide=130 title='Solutions: Tests'>
          130
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=131 title='Linear Regression: Generic functions'>
+        data-slide=131 title='Linear regression'>
          131
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=132 title='Example: Relation of age and survial on Titanic'>
+        data-slide=132 title='Linear Regression: Generic functions'>
          132
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=133 title='Linear regression/Cross-tabulation'>
+        data-slide=133 title='Example: Relation of age and survial on Titanic'>
          133
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=134 title='Crosstabulation age'>
+        data-slide=134 title='Linear regression/Cross-tabulation'>
          134
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=135 title='Linear Regression on survival rate'>
+        data-slide=135 title='Crosstabulation age'>
          135
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=136 title='Visualization of the survival rate in age:'>
+        data-slide=136 title='Linear Regression on survival rate'>
          136
       </a>
     </li>
@@ -5837,55 +5856,55 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=138 title='Apply a linear regression'>
+        data-slide=138 title='Visualization of the survival rate in age:'>
          138
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=139 title='Casting'>
+        data-slide=139 title='Apply a linear regression'>
          139
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=140 title='Casting <code>names(survRatio)</code>'>
+        data-slide=140 title='Casting'>
          140
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=141 title='Apply a linear model'>
+        data-slide=141 title='Casting <code>names(survRatio)</code>'>
          141
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=142 title='Visualize the linear model'>
+        data-slide=142 title='Apply a linear model'>
          142
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=143 title='Non-linear fitting'>
+        data-slide=143 title='Visualize the linear model'>
          143
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=144 title='Hands on: Run some own linear regression on the stress data'>
+        data-slide=144 title='Non-linear fitting'>
          144
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=145 title='Solutions:'>
+        data-slide=145 title='Hands on: Run some own linear regression on the stress data'>
          145
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=146 title='Export figures'>
+        data-slide=146 title='Solutions:'>
          146
       </a>
     </li>
@@ -5897,8 +5916,14 @@ its dimensions, then plot into that device and eventually close the device so th
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=148 title='Export data'>
+        data-slide=148 title='Export figures'>
          148
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=149 title='Export data'>
+         149
       </a>
     </li>
   </ul>
