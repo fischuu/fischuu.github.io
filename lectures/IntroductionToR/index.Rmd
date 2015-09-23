@@ -36,7 +36,7 @@ rm(list=ls())
 
 * R was started by Ross Ihaka and Robert Gentleman (the ”R & R’s” of the University of Auckland) in 1992.
 
-* R is an environment and language for data manipulation, calculation and graphical display.
+* R is an environment and language for data manipulation, calculation, graphical display and statistical analysis.
 
 * R is published under GNU licence. This means it is an open source program and is distributed for free.
 
@@ -55,6 +55,8 @@ rm(list=ls())
 * It is _friendly_. Usually the mailing lists (”Rhelp”) or online discussion forums (e.g. 'StackOverflow') are fast, friendly and helpful.
 
 * It is an _universal tool_. Usually there is a function in R for everything, or if there isn’t, soon there will be.
+
+* Good environment for sharing yur analysis tools.
 
 ---
 
@@ -85,6 +87,10 @@ rm(list=ls())
 * On CRAN are also thousands of additional extensions (”packages”) available.
 
 * The [Bioconductor] (https://www.bioconductor.org/) projects offers on top of that also hundreds of packages specialized for genomic data analysis.
+
+* It should be possible for everyone (Windows users) in Luke to download R and RStudio from [Application Catalog]
+(http://vancmss1/CMApplicationCatalog/#/SoftwareLibrary/AppListPageView.xaml) which is also found under the star
+in the upper right corner of IE window
 
 
 ---
@@ -269,6 +275,16 @@ Overview of important import options in `read.table()`:
 
 ---
 
+## Import ASCII files IV
+
+The `read.table`command is a function that is very user-friendly and that handles most standard data formats.
+
+However, in situations when the data is not in an easy-to-access format, the command `scan()` might be usefull to
+read-in such data. 
+
+
+---
+
 ## Import other files to R
 
 Other file formats can also be imported to R, but it usually requires more
@@ -283,6 +299,8 @@ and procede as above mentioned.
 Another way to import data is to connect directly to a MySQL database,
 but this is above the scope of the course and will be discussed in an
 advanced course.
+
+Also, html pages can be access directly (e.g. data download directly from wikipedia and such things.)
 
 ---
 
