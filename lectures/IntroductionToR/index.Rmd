@@ -145,6 +145,14 @@ in the upper right corner of IE window
 
 ---
 
+## Demonstration of a typical R-Session
+
+* Load some R code, etc.
+
+TO BE ADDED!!!
+
+---
+
 ## Where to get help?
 
 * For each function in R exists a help file, that can be accessed with `?`
@@ -263,7 +271,8 @@ Overview of important import options in `read.table()`:
 
 * `header` Logical, contains the first row variable names or not? Possible values:`TRUE`, `FALSE`
 
-* `na.string` How are missing values encoded? Typical values: `NA`, `"."`
+* `na.string` How are missing values encoded in the ASCII file? Typical values: `NA`, `"."`
+  Internally in R, they are always encoded as `NA`.
 
 * `dec` What is used as decimal symbol?
 
@@ -293,8 +302,8 @@ efforts.
 There are functions that read, e.g. Excel tables, but it is not very
 advisable to use them, as those data formats are usually proprietary and
 hence developers cannot provide full functionality. The easiest way to
-import an excel sheet to R is it to open it with Excel, save it as ASCII file
-and procede as above mentioned.
+import an Excel sheet to R is it to open it with Excel, save it as csv file
+and proceed as above mentioned.
 
 Another way to import data is to connect directly to a MySQL database,
 but this is above the scope of the course and will be discussed in an
@@ -315,6 +324,8 @@ Also, html pages can be access directly (e.g. data download directly from wikipe
 * These datasets we will use throughout the whole course to learn the different methods.
 
 "Data obtained from [http://biostat.mc.vanderbilt.edu/DataSets] (http://biostat.mc.vanderbilt.edu/DataSets)".
+
+* the Datasets contain plenty of variables, we won't use all of them.
 
 ---
 
@@ -405,7 +416,7 @@ Also, html pages can be access directly (e.g. data download directly from wikipe
 
 ## Hint
 
-1. Open the file in a text editor (NOT Word)
+1. Open the file in a text editor (if you use Word, DON'T save it). I suggest to install Notepad++ and use this as a text editor instead of Notepad ord Wordpad
 
 2. Check the first line, is a header present or not?
 
@@ -444,7 +455,7 @@ remove it be typing
 ```{r eval=FALSE}
 rm(foo)
 ```
-and all objects of a workspace can removed by
+and all objects of a workspace can removed by (DANGEROUS!!!)
 ```{r eval=FALSE}
 rm(list=ls())
 ```
@@ -460,6 +471,8 @@ If one want to save a workspace the command is
 save.image(file="myRsession.RData")
 ```
 
+Note that RStudio usually saves the workspace when quitting the session.
+
 and one can load it via
 
 ```{r eval=FALSE}
@@ -468,6 +481,12 @@ load(file="myRsession.RData")
 
 This is especially then usful when one works on different projects where the calculations
 take a while and cannot be easily repeated.
+
+---
+
+## `summary()` demonstration
+
+TO BE ADDED, `summary(titanic)`
 
 ---
 
@@ -619,7 +638,7 @@ length(heights)
 
 ---
 
-## Data structure: matrix II
+## Data structure: matrix II (create matrices)
 
 * Matrices are filled using vectors:
 
@@ -633,14 +652,13 @@ length(heights)
 
 ---
 
-## Data structure: matrix III
-
-* And also here, we can get the certain dimensions
+## Data structure: matrix III (get dimensions)
 
 ```{r comment=NA}
  nrow(myMatrix)
  ncol(myMatrix)
  length(myMatrix)
+ dim(myMatrix)
 ```
 
 ---
@@ -798,7 +816,7 @@ data.frame are practically vectors of same length that are organized in a matrix
 
 ## Data structure: factor I
 
-Here we saw already the next type of data structure / type: the factor
+We saw already the next type of data structure / type: the factor
 type. It is especially used for categorical data or status information like
 male / female, placebo / drug. etc.
 Possible values are called here levels. All levels from such a data
@@ -809,12 +827,12 @@ structure can then be shown via
 ```
 
 One has to be very careful with factors, as they might behave not in such
-a way as one would always assume! In the beginning it might be a good
-advise to use factors only in those situation, where you really know what
-you are doing. Later on we will see examples of situations, where the use
-of factors might lead to undesired results. For now we don’t go into the
-details.
-But - how can we avoid that R uses factors here?!
+a way as one would always assume! They are highly controversial, some R-users
+love them, some hate them, and some accept them.
+
+Depending on your tasks, `factors` can be extremly helpful or be the source of
+error. By default, R imports all `strings` as `factor`. It is adviceable to
+make your own experciences, if you like them or not.
 
 ---
 
@@ -855,16 +873,23 @@ using the additional option stringsAsFactors:
 
 ---
 
-## Our data example
+## Our data example: (structure)
 ```{r, comment=NA}
  str(stress)
 ```
 
---- 
-## Naming of element
-* We just saw, list items can have names that can be accessed with the $ sign.
+---
 
-* Names were assigned in the definition of the list by using the `=` symbol.
+## Our data example (summary)
+```{r, comment=NA}
+ summary(stress)
+```
+
+
+## Naming of element
+* Columns of data.frames can have names that can be accessed with the $ sign.
+
+* Names were taken from the `header`line in the data import step via `read.table`.
 
 * We did the same already earlier, when we had the data.frame. It works there the same way:
 
@@ -1187,7 +1212,7 @@ Calculate:
 ## Hints: Example data
 
 1. Use the `mean()` function. Columns you can access with `$` or with `[]`.
-2. People how survived are encoded as 1. A sum over the corresponding column gives the total amount.
+2. People who survived are encoded as 1. A sum over the corresponding column gives the total amount.
 3. You could use either `min()`/`max()` or `range()` on the column `bhr`.
 4. The required function is called `sd()`.
 
