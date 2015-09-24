@@ -18,7 +18,7 @@ github      :
 ## Introduction
 
 ```{r, echo=FALSE}
-setwd("/home/ejo138/Projects/fischuu.github.io/lectures/IntroductionToR")
+setwd("/home/fischuu/git/fischuu.github.io/lectures/IntroductionToR")
 rm(list=ls())
 ```
 
@@ -27,8 +27,13 @@ rm(list=ls())
 ## Overview
 
 1. Introduction
-
-2.
+2. Import Data to R
+3. Data Structures
+4. R as Pocket Calculator and basics
+5. Packages ("Add-Ons")
+6. Plots
+7. Statistical Models and Tests
+8. Export Data and Figures
 
 ---
 
@@ -56,7 +61,7 @@ rm(list=ls())
 
 * It is an _universal tool_. Usually there is a function in R for everything, or if there isn’t, soon there will be.
 
-* Good environment for sharing yur analysis tools.
+* Good environment for sharing your analysis tools.
 
 ---
 
@@ -147,9 +152,16 @@ in the upper right corner of IE window
 
 ## Demonstration of a typical R-Session
 
-* Load some R code, etc.
+* Lets have a look on how a R session typically goes.
 
-TO BE ADDED!!!
+* The example situation is that we received from a colleague an R script that performs a certain
+     analysis and we want to run it on our computer
+     
+* We will run into an error and fix it
+
+* We run the analysis, save the results and end the session.
+
+* (I'll add here later a YouTube Video that we demonstrate the same steps.)
 
 ---
 
