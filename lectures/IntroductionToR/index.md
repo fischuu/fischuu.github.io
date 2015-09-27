@@ -158,7 +158,7 @@ in the upper right corner of IE window
 
 * We run the analysis, save the results and end the session.
 
-* (I'll add here later a YouTube Video that we demonstrate the same steps.)
+* (I'll add here later a YouTube Video that will demonstrate the same steps.)
 
 ---
 
@@ -297,10 +297,12 @@ Overview of important import options in `read.table()`:
 
 ## Import ASCII files IV
 
-The `read.table`command is a function that is very user-friendly and that handles most standard data formats.
+The `read.table` command is a function that is very user-friendly and that handles most standard data formats.
 
 However, in situations when the data is not in an easy-to-access format, the command `scan()` might be usefull to
-read-in such data. 
+read-in such data.
+
+Another useful command is `readLines()` that reads in Line-by-Line.
 
 
 ---
@@ -313,7 +315,7 @@ efforts.
 There are functions that read, e.g. Excel tables, but it is not very
 advisable to use them, as those data formats are usually proprietary and
 hence developers cannot provide full functionality. The easiest way to
-import an Excel sheet to R is it to open it with Excel, save it as csv file
+import an Excel sheet to R is to open it with Excel, save it as csv file
 and proceed as above mentioned.
 
 Another way to import data is to connect directly to a MySQL database,
@@ -336,7 +338,7 @@ Also, html pages can be access directly (e.g. data download directly from wikipe
 
 "Data obtained from [http://biostat.mc.vanderbilt.edu/DataSets] (http://biostat.mc.vanderbilt.edu/DataSets)".
 
-* the Datasets contain plenty of variables, we won't use all of them.
+* The Datasets contain plenty of variables, we won't use all of them.
 
 ---
 
@@ -386,7 +388,7 @@ Also, html pages can be access directly (e.g. data download directly from wikipe
 
 ## Stress echo data (continued)
 
-14. gender 2 integer
+14. gender 2 character
 15. baseEF	Baseline cardiac ejection fraction	%	integer
 16. dobEF	Ejection fraction on dobutamine	%	integer
 17. chestpain	Chest pain		integer
@@ -421,7 +423,7 @@ Also, html pages can be access directly (e.g. data download directly from wikipe
 
 
 
-(If you have your own data, )
+(If you have your own data, try it to import it to R and give it a reasonable name)
 
 ---
 
@@ -490,7 +492,7 @@ save.image(file="myRsession.RData")
 
 Note that RStudio usually saves the workspace when quitting the session.
 
-and one can load it via
+One can load the workspace via
 
 
 ```r
@@ -499,12 +501,6 @@ load(file="myRsession.RData")
 
 This is especially then usful when one works on different projects where the calculations
 take a while and cannot be easily repeated.
-
----
-
-## `summary()` demonstration
-
-TO BE ADDED, `summary(titanic)`
 
 ---
 
@@ -525,6 +521,10 @@ TO BE ADDED, `summary(titanic)`
 3. Real values. Example: `3.13` or `4`. Name: numeric.
 4. Complex values. Example: `5.22+1i`. Name: complex.
 5. Letters and strings. Example: `"Hei hei"`. Name: character.
+
+--- .segue .dark
+
+## Data structures
 
 ---
 
@@ -561,7 +561,7 @@ The standard data objects for numbers (numeric) and strings (character) are
 
 ---
 
-## data structure: Vector
+## Data structure: Vector
 
 * The vector structure is similar to vectors known from mathematics.
 
@@ -675,7 +675,7 @@ length(heights)
 
 ---
 
-# Data structure: matrix I
+## Data structure: matrix I
 
 * The matrix structure is also similar to matrices known from mathematics.
 
@@ -685,7 +685,7 @@ length(heights)
 
 * Each cell has it’s clear position that can be addressed.
 
-* The only difference is also here all elements have to be the same type and it can be rectangular, with arbitrary sizes.
+* The only difference (to a chessboard...) is also here all elements have to be the same type and it can be rectangular, with arbitrary sizes.
 
 ---
 
@@ -1266,7 +1266,7 @@ using the additional option stringsAsFactors:
 1. We can write values into variables (using <-).
 2. We can access values from variables (using [,]).
 3. We know that there are different data types (numerical and strings).
-4. We can give names to columns and list items.
+4. We can give names to columns.
 
 ---
 ## Hands-On: Titanic data
@@ -2780,8 +2780,13 @@ myList2$build
   1. Value of the test statistic ($statistic)
   2. P-value ($p.value)
   3. Confidence intervall ($conf.int)
-  4.  . . . .
-  
+  4. etc
+
+
+--- .segue .dark
+
+## R as pocket calculator  
+
 ---
 
 ## R as pocket calculator
@@ -2829,7 +2834,7 @@ Table 1: Basic arithmetic functions in R
 Command       |  Explanation
 --------------|---------------------------
 `^` or `**`   |  Power
-`*`, `/`      |  Multiplication, Divisin
+`*`, `/`      |  Multiplication, Division
 `+`, `-`      |  Addition, Subtraction
 `%/%`         |  Integer Division
 `%%`          |  Modulo Division
@@ -3177,7 +3182,7 @@ shorter object length
 
 ---
 
-## Logical operators in I 
+## Logical operators in R I 
 
 Table 5: Logical Operators in R
 
@@ -3191,7 +3196,7 @@ Command       |  Explanation
 `>=`          |  larger or equal
 `!`           |  NOT
 `&`           |  AND
-\|            |  OR
+`\|`            |  OR
 `TRUE`        |  true 
 `FALSE`       |  false
 
@@ -3253,6 +3258,110 @@ stress[(stress$basebp>190) & (stress$gender=="male"), c(1:7,15,16)]
 
 ---
 
+## Working on data.frames (`subset()`)
+
+
+```r
+small <- subset(stress,select=c(bhr,age,gender,ecg))
+small[1:4,]
+```
+
+```
+  bhr age gender       ecg
+1  92  85   male    normal
+2  62  73   male equivocal
+3  62  73   male equivocal
+4  93  57 female    normal
+```
+
+---
+
+## Working on data.frames
+
+```r
+# aggregate numeric to (ordered) factor
+small$agegrp <- NA
+small$agegrp[small$age<=40] <- 'young'
+small$agegrp[small$age>40 & small$age<=60] <- 'medium'
+small$agegrp[small$age>60] <- 'old'
+small[1:8,]
+```
+
+```
+  bhr age gender       ecg agegrp
+1  92  85   male    normal    old
+2  62  73   male equivocal    old
+3  62  73   male equivocal    old
+4  93  57 female    normal medium
+5  89  34   male equivocal  young
+6  58  71   male    normal    old
+7  63  81 female equivocal    old
+8  86  90 female equivocal    old
+```
+
+---
+
+## Working on data.frames
+
+
+```r
+small$agegrp <- ordered(small$agegrp,levels=c('young','medium','old'))
+table(small$gender,small$agegrp)
+```
+
+```
+        
+         young medium old
+  female    10     85 243
+  male       7     42 171
+```
+
+---
+
+
+```r
+# means or sums of all variables (in purely numeric data frame)
+numdata <- stress[, 1:3]
+colMeans(numdata)
+```
+
+```
+        X       bhr    basebp 
+279.50000  75.29032 135.32437 
+```
+
+```r
+# sorting of data frame
+small.ordered <- small[order(small$age,small$bhr),]
+head(small.ordered,20)
+```
+
+```
+    bhr age gender       ecg agegrp
+30   50  26 female    normal  young
+116  94  28 female    normal  young
+14   81  29 female    normal  young
+259 104  29 female equivocal  young
+304  69  30   male    normal  young
+350  75  33 female    normal  young
+422  71  34 female    normal  young
+5    89  34   male equivocal  young
+339  92  34 female equivocal  young
+188  71  38   male    normal  young
+349  80  38   male    normal  young
+430  99  38   male    normal  young
+237 104  39 female        MI  young
+476 107  39 female    normal  young
+465  75  40   male    normal  young
+449  91  40   male        MI  young
+164  98  40 female    normal  young
+51   95  41 female    normal medium
+35   97  42 female    normal medium
+415  62  43 female equivocal medium
+```
+
+---
+
 ## Hands on: Sequences, Recycling and Logic
 
 1. Create a vector with elements `2,4,6,8,...,100` and calculate the mean of it.
@@ -3268,7 +3377,7 @@ stress[(stress$basebp>190) & (stress$gender=="male"), c(1:7,15,16)]
 1. Use the `seq()`command with `from`, `to` and `by` options
 2. Use the logic operator with the square brackets `[]` to access the right elements.
 3. Create first the required sequence with `seq()` and then plug it into the square brackets `[]`
-4. Use the logic operator on the `age` column and then make use of thefact that `TRUE`counts as 1 and `FALSE`counts as 0.
+4. Use the logic operator on the `age` column and then make use of thefact that `TRUE` counts as 1 and `FALSE` counts as 0.
 5. Use the logic operator on the `sex` column and plug this into the `survivor` column - then proceed as in the earlier Hands on exercise
 
 ---
@@ -3355,6 +3464,10 @@ sum(titanic$survived[titanic$sex=="male"])
 [1] 161
 ```
 
+--- .segue .dark
+
+## R-Packages
+
 ---
 
 ## Packages on Cran I
@@ -3371,7 +3484,7 @@ sum(titanic$survived[titanic$sex=="male"])
 ## Packages on Cran II
 
 * In order to use packages they first have to be installed. 
-* In most R editors there is a graphical menu to do that, otherwise there is a command `install.library()` available.
+* In most R editors there is a graphical menu to do that, otherwise there is a command `install.packages()` available.
 * Once a package is installed the functionality can be loaded with the `library` command.
 * Many packages contain besides functions also dataset that can be used to test the functions of it.
 
@@ -3382,6 +3495,8 @@ sum(titanic$survived[titanic$sex=="male"])
 install.packages("MASS")
 library("MASS")
 ```
+
+* `library(help="MASS")` provides some additional package information
 
 ---
 
@@ -3431,6 +3546,10 @@ library("foreign")
 library("randomForest")
 ```
 
+--- .segue .dark
+
+## EDA and Plots
+
 ---
   
 ## Explorative data analysis
@@ -3470,9 +3589,9 @@ summary(stress$bhr)
 
 The boxplot is more or less a graphical representation of the 5 point summary (only the whiskers are not neccessary part of the 5 points summary)
 
-In a boxplot the thick inter line represents the _median_.
+In a boxplot the thick inner line represents the _median_.
 
-The boundaries of the box represent the upper and lower quartile / 25% quantile. Consequently, the box represents the 'inner 50% of the data'.
+The boundaries of the box represent the upper and lower quartile / 25% and 75% quantile. Consequently, the box represents the 'inner 50% of the data'.
 
 The whiskers mark those two values that differ at most 1.5 times the inner quartile range (IQR) from the median.
 
@@ -3487,7 +3606,7 @@ All values that are further away are marked individually with circles
 boxplot(stress$bhr)
 ```
 
-![plot of chunk unnamed-chunk-86](assets/fig/unnamed-chunk-86-1.png) 
+![plot of chunk unnamed-chunk-90](assets/fig/unnamed-chunk-90-1.png) 
 
 ---
 
@@ -3516,7 +3635,7 @@ plot(stress$bhr)
 
 *** =left
 
-![plot of chunk unnamed-chunk-88](assets/fig/unnamed-chunk-88-1.png) 
+![plot of chunk unnamed-chunk-92](assets/fig/unnamed-chunk-92-1.png) 
 
 
 ***=right
@@ -3539,7 +3658,7 @@ plot(stress$maxhr,stress$bhr)
 
 *** =left
 
-![plot of chunk unnamed-chunk-90](assets/fig/unnamed-chunk-90-1.png) 
+![plot of chunk unnamed-chunk-94](assets/fig/unnamed-chunk-94-1.png) 
 
 
 ***=right
@@ -3549,6 +3668,32 @@ Now two vectors are provided.
 They need to be of the same length, as pairs $(x_i,y_i)$ are formed.
 
 The first vector represents the x-axis values, the second one the y-axis.
+
+---  &twocol w1:50% w2:50%
+
+## The `plot()` command III
+
+
+```r
+plot(bhr~maxhr, data=stress)
+```
+
+*** =left
+
+![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
+
+
+***=right
+
+Using formula notation and the `data` argument
+
+---
+
+## Further reading on R graphics
+
+* You find on Paul Murrells page [here](https://www.stat.auckland.ac.nz/~paul/RG2e/) a nice online resource for R graphics
+
+* A very popular R package for graphics is the `ggplot2` package, but it goes over the scope of this course to explain its functionality 
 
 ---
 
@@ -3564,6 +3709,43 @@ The first vector represents the x-axis values, the second one the y-axis.
 
 ## Solutions:
 
+1. Prepare the 5 Point summary for the fares in the `titanic` data
+
+
+```r
+summary(titanic$fare)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##   0.000   7.896  14.450  33.300  31.280 512.300       1
+```
+
+---
+
+2. Create the boxplot of the age of the Titanic passangers
+
+
+```r
+boxplot(titanic$age)
+```
+
+![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
+
+---
+
+3. Plot the ticket price versus the age of the passanger.
+
+
+```r
+plot(titanic$fare, titanic$age)
+```
+
+![plot of chunk unnamed-chunk-99](assets/fig/unnamed-chunk-99-1.png) 
+
+--- .segue .dark
+
+## Statistical models in R
 
 ---
 
@@ -3820,7 +4002,7 @@ alternative hypothesis: true location is not equal to 67
 
 ## Two-sided t-test
 
-Now, after we tested the one-sided hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
+Now, we are interested if there is a difference in the Age between the two gender. For this we use
 the formulae notation:
 
 
@@ -3846,8 +4028,7 @@ mean in group female   mean in group male
 
 ## Two-sided Wilcoxon test
 
-Now, after we tested the one-sample hypothesis, we are interested if there is a difference in the Age between the two gender. For this we use
-the formulae notation:
+Again, we could do the same test also with a non-parametrical test
 
 
 ```r
@@ -3901,6 +4082,12 @@ mean of x mean of y
 
 --- 
 
+## Hands-On: Hints:
+
+1. The formula notation doesn't work here, as there is also class 2 passangers on board. Create first vectors that contain the values of interest
+
+---
+
 ## Solutions: Tests
 
 Test if the ticket prices differed between class 1 and 3 passangers on Titanic.
@@ -3932,21 +4119,21 @@ mean of x mean of y
 Test if the average age on Titanic was larger than 30
 
 ```r
-t.test(class1,class3)
+t.test(titanic$age, mu=30, alternative="greater")
 ```
 
 ```
 
-	Welch Two Sample t-test
+	One Sample t-test
 
-data:  class1 and class3
-t = 16.5013, df = 328.013, p-value < 2.2e-16
-alternative hypothesis: true difference in means is not equal to 0
+data:  titanic$age
+t = -0.2667, df = 1045, p-value = 0.6051
+alternative hypothesis: true mean is greater than 30
 95 percent confidence interval:
- 65.35951 83.05270
+ 29.14744      Inf
 sample estimates:
-mean of x mean of y 
- 87.50899  13.30289 
+mean of x 
+ 29.88114 
 ```
 
 ---
@@ -4002,7 +4189,7 @@ boxplot(age~survived, data=titanic)
 
 *** =left
 
-![plot of chunk unnamed-chunk-110](assets/fig/unnamed-chunk-110-1.png) 
+![plot of chunk unnamed-chunk-119](assets/fig/unnamed-chunk-119-1.png) 
 
 *** =right
 First have a look at the function call, boxplots can use also the formula notation, to plot grouped boxplot next to each other!
@@ -4090,7 +4277,7 @@ plot(survRatio)
 ```
 
 *** =left
-![plot of chunk unnamed-chunk-115](assets/fig/unnamed-chunk-115-1.png) 
+![plot of chunk unnamed-chunk-124](assets/fig/unnamed-chunk-124-1.png) 
 
 *** =right
 Just a basic plot of the age groups. 
@@ -4109,7 +4296,7 @@ plot(names(survRatio), survRatio)
 ```
 
 *** =left
-![plot of chunk unnamed-chunk-117](assets/fig/unnamed-chunk-117-1.png) 
+![plot of chunk unnamed-chunk-126](assets/fig/unnamed-chunk-126-1.png) 
 
 *** =right
 
@@ -4246,7 +4433,7 @@ Coefficients:
 ## Visualize the linear model 
 
 *** =left
-![plot of chunk unnamed-chunk-123](assets/fig/unnamed-chunk-123-1.png) 
+![plot of chunk unnamed-chunk-132](assets/fig/unnamed-chunk-132-1.png) 
 
 *** =right 
 
@@ -4264,7 +4451,7 @@ abline(titanicLM)
 ## Non-linear fitting 
 
 *** =left
-![plot of chunk unnamed-chunk-125](assets/fig/unnamed-chunk-125-1.png) 
+![plot of chunk unnamed-chunk-134](assets/fig/unnamed-chunk-134-1.png) 
 *** =right
 
 Without going into too many details, we want to see how easy one could switch from a linear regression to a non-linear LOESS.
