@@ -24,8 +24,13 @@ github      :
 ## Overview
 
 1. Introduction
-
-2.
+2. Import Data to R
+3. Data Structures
+4. R as Pocket Calculator and basics
+5. Packages ("Add-Ons")
+6. Plots
+7. Statistical Models and Tests
+8. Export Data and Figures
 
 ---
 
@@ -53,7 +58,7 @@ github      :
 
 * It is an _universal tool_. Usually there is a function in R for everything, or if there isn’t, soon there will be.
 
-* Good environment for sharing yur analysis tools.
+* Good environment for sharing your analysis tools.
 
 ---
 
@@ -139,6 +144,21 @@ in the upper right corner of IE window
 * It is easier to prepare the script and run it then as whole.
 
 * Copy+Paste for similar tasks
+
+---
+
+## Demonstration of a typical R-Session
+
+* Lets have a look on how a R session typically goes.
+
+* The example situation is that we received from a colleague an R script that performs a certain
+     analysis and we want to run it on our computer
+     
+* We will run into an error and fix it
+
+* We run the analysis, save the results and end the session.
+
+* (I'll add here later a YouTube Video that we demonstrate the same steps.)
 
 ---
 
@@ -262,7 +282,8 @@ Overview of important import options in `read.table()`:
 
 * `header` Logical, contains the first row variable names or not? Possible values:`TRUE`, `FALSE`
 
-* `na.string` How are missing values encoded? Typical values: `NA`, `"."`
+* `na.string` How are missing values encoded in the ASCII file? Typical values: `NA`, `"."`
+  Internally in R, they are always encoded as `NA`.
 
 * `dec` What is used as decimal symbol?
 
@@ -292,8 +313,8 @@ efforts.
 There are functions that read, e.g. Excel tables, but it is not very
 advisable to use them, as those data formats are usually proprietary and
 hence developers cannot provide full functionality. The easiest way to
-import an excel sheet to R is it to open it with Excel, save it as ASCII file
-and procede as above mentioned.
+import an Excel sheet to R is it to open it with Excel, save it as csv file
+and proceed as above mentioned.
 
 Another way to import data is to connect directly to a MySQL database,
 but this is above the scope of the course and will be discussed in an
@@ -314,6 +335,8 @@ Also, html pages can be access directly (e.g. data download directly from wikipe
 * These datasets we will use throughout the whole course to learn the different methods.
 
 "Data obtained from [http://biostat.mc.vanderbilt.edu/DataSets] (http://biostat.mc.vanderbilt.edu/DataSets)".
+
+* the Datasets contain plenty of variables, we won't use all of them.
 
 ---
 
@@ -404,7 +427,7 @@ Also, html pages can be access directly (e.g. data download directly from wikipe
 
 ## Hint
 
-1. Open the file in a text editor (NOT Word)
+1. Open the file in a text editor (if you use Word, DON'T save it). I suggest to install Notepad++ and use this as a text editor instead of Notepad ord Wordpad
 
 2. Check the first line, is a header present or not?
 
@@ -447,7 +470,7 @@ remove it be typing
 ```r
 rm(foo)
 ```
-and all objects of a workspace can removed by
+and all objects of a workspace can removed by (DANGEROUS!!!)
 
 ```r
 rm(list=ls())
@@ -465,6 +488,8 @@ If one want to save a workspace the command is
 save.image(file="myRsession.RData")
 ```
 
+Note that RStudio usually saves the workspace when quitting the session.
+
 and one can load it via
 
 
@@ -474,6 +499,12 @@ load(file="myRsession.RData")
 
 This is especially then usful when one works on different projects where the calculations
 take a while and cannot be easily repeated.
+
+---
+
+## `summary()` demonstration
+
+TO BE ADDED, `summary(titanic)`
 
 ---
 
@@ -658,7 +689,7 @@ length(heights)
 
 ---
 
-## Data structure: matrix II
+## Data structure: matrix II (create matrices)
 
 * Matrices are filled using vectors:
 
@@ -687,9 +718,7 @@ length(heights)
 
 ---
 
-## Data structure: matrix III
-
-* And also here, we can get the certain dimensions
+## Data structure: matrix III (get dimensions)
 
 
 ```r
@@ -714,6 +743,14 @@ length(heights)
 
 ```
 [1] 6
+```
+
+```r
+ dim(myMatrix)
+```
+
+```
+[1] 2 3
 ```
 
 ---
@@ -972,7 +1009,7 @@ Levels: Kati Paul Peter
 
 ## Data structure: factor I
 
-Here we saw already the next type of data structure / type: the factor
+We saw already the next type of data structure / type: the factor
 type. It is especially used for categorical data or status information like
 male / female, placebo / drug. etc.
 Possible values are called here levels. All levels from such a data
@@ -988,12 +1025,12 @@ structure can then be shown via
 ```
 
 One has to be very careful with factors, as they might behave not in such
-a way as one would always assume! In the beginning it might be a good
-advise to use factors only in those situation, where you really know what
-you are doing. Later on we will see examples of situations, where the use
-of factors might lead to undesired results. For now we don’t go into the
-details.
-But - how can we avoid that R uses factors here?!
+a way as one would always assume! They are highly controversial, some R-users
+love them, some hate them, and some accept them.
+
+Depending on your tasks, `factors` can be extremly helpful or be the source of
+error. By default, R imports all `strings` as `factor`. It is adviceable to
+make your own experciences, if you like them or not.
 
 ---
 
@@ -1065,7 +1102,7 @@ using the additional option stringsAsFactors:
 
 ---
 
-## Our data example
+## Our data example: (structure)
 
 ```r
  str(stress)
@@ -1107,11 +1144,78 @@ using the additional option stringsAsFactors:
  $ ecg      : Factor w/ 3 levels "equivocal","MI",..: 3 1 1 3 1 3 1 1 3 3 ...
 ```
 
---- 
-## Naming of element
-* We just saw, list items can have names that can be accessed with the $ sign.
+---
 
-* Names were assigned in the definition of the list by using the `=` symbol.
+## Our data example (summary)
+
+```r
+ summary(stress)
+```
+
+```
+       X              bhr             basebp          basedp     
+ Min.   :  1.0   Min.   : 42.00   Min.   : 85.0   Min.   : 5000  
+ 1st Qu.:140.2   1st Qu.: 64.00   1st Qu.:120.0   1st Qu.: 8400  
+ Median :279.5   Median : 74.00   Median :133.0   Median : 9792  
+ Mean   :279.5   Mean   : 75.29   Mean   :135.3   Mean   :10181  
+ 3rd Qu.:418.8   3rd Qu.: 84.00   3rd Qu.:150.0   3rd Qu.:11663  
+ Max.   :558.0   Max.   :210.00   Max.   :203.0   Max.   :27300  
+      pkhr            sbp              dp             dose      
+ Min.   : 52.0   Min.   : 40.0   Min.   : 5100   Min.   :10.00  
+ 1st Qu.:106.2   1st Qu.:120.0   1st Qu.:14033   1st Qu.:30.00  
+ Median :122.0   Median :141.0   Median :17060   Median :40.00  
+ Mean   :120.6   Mean   :146.9   Mean   :17634   Mean   :33.75  
+ 3rd Qu.:135.0   3rd Qu.:170.0   3rd Qu.:20644   3rd Qu.:40.00  
+ Max.   :210.0   Max.   :309.0   Max.   :45114   Max.   :40.00  
+     maxhr          pctMphr            mbp           dpmaxdo     
+ Min.   : 58.0   Min.   : 38.00   Min.   : 84.0   Min.   : 7130  
+ 1st Qu.:104.2   1st Qu.: 69.00   1st Qu.:133.2   1st Qu.:15260  
+ Median :120.0   Median : 78.00   Median :150.0   Median :18118  
+ Mean   :119.4   Mean   : 78.57   Mean   :156.0   Mean   :18550  
+ 3rd Qu.:133.0   3rd Qu.: 88.00   3rd Qu.:175.8   3rd Qu.:21239  
+ Max.   :200.0   Max.   :133.00   Max.   :309.0   Max.   :45114  
+    dobdose           age           gender        baseEF    
+ Min.   : 5.00   Min.   :26.00   female:338   Min.   :20.0  
+ 1st Qu.:20.00   1st Qu.:60.00   male  :220   1st Qu.:52.0  
+ Median :30.00   Median :69.00                Median :57.0  
+ Mean   :30.24   Mean   :67.34                Mean   :55.6  
+ 3rd Qu.:40.00   3rd Qu.:75.00                3rd Qu.:62.0  
+ Max.   :40.00   Max.   :93.00                Max.   :83.0  
+     dobEF         chestpain         restwma           posSE       
+ Min.   :23.00   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:62.00   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
+ Median :67.00   Median :0.0000   Median :0.0000   Median :0.0000  
+ Mean   :65.24   Mean   :0.3082   Mean   :0.4606   Mean   :0.2437  
+ 3rd Qu.:73.00   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0.0000  
+ Max.   :94.00   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+     newMI            newPTCA           newCABG            death        
+ Min.   :0.00000   Min.   :0.00000   Min.   :0.00000   Min.   :0.00000  
+ 1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.00000  
+ Median :0.00000   Median :0.00000   Median :0.00000   Median :0.00000  
+ Mean   :0.05018   Mean   :0.04839   Mean   :0.05914   Mean   :0.04301  
+ 3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.00000  
+ Max.   :1.00000   Max.   :1.00000   Max.   :1.00000   Max.   :1.00000  
+     hxofHT           hxofDM             hxofCig        hxofMI     
+ Min.   :0.0000   Min.   :0.0000   heavy     :122   Min.   :0.000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   moderate  :138   1st Qu.:0.000  
+ Median :1.0000   Median :0.0000   non-smoker:298   Median :0.000  
+ Mean   :0.7043   Mean   :0.3692                    Mean   :0.276  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000                    3rd Qu.:1.000  
+ Max.   :1.0000   Max.   :1.0000                    Max.   :1.000  
+    hxofPTCA          hxofCABG        any.event             ecg     
+ Min.   :0.00000   Min.   :0.0000   Min.   :0.0000   equivocal:176  
+ 1st Qu.:0.00000   1st Qu.:0.0000   1st Qu.:0.0000   MI       : 71  
+ Median :0.00000   Median :0.0000   Median :0.0000   normal   :311  
+ Mean   :0.07348   Mean   :0.1577   Mean   :0.1595                  
+ 3rd Qu.:0.00000   3rd Qu.:0.0000   3rd Qu.:0.0000                  
+ Max.   :1.00000   Max.   :1.0000   Max.   :1.0000                  
+```
+
+
+## Naming of element
+* Columns of data.frames can have names that can be accessed with the $ sign.
+
+* Names were taken from the `header`line in the data import step via `read.table`.
 
 * We did the same already earlier, when we had the data.frame. It works there the same way:
 
@@ -2912,7 +3016,7 @@ Calculate:
 ## Hints: Example data
 
 1. Use the `mean()` function. Columns you can access with `$` or with `[]`.
-2. People how survived are encoded as 1. A sum over the corresponding column gives the total amount.
+2. People who survived are encoded as 1. A sum over the corresponding column gives the total amount.
 3. You could use either `min()`/`max()` or `range()` on the column `bhr`.
 4. The required function is called `sd()`.
 
@@ -3383,7 +3487,7 @@ All values that are further away are marked individually with circles
 boxplot(stress$bhr)
 ```
 
-![plot of chunk unnamed-chunk-85](assets/fig/unnamed-chunk-85-1.png) 
+![plot of chunk unnamed-chunk-86](assets/fig/unnamed-chunk-86-1.png) 
 
 ---
 
@@ -3412,7 +3516,7 @@ plot(stress$bhr)
 
 *** =left
 
-![plot of chunk unnamed-chunk-87](assets/fig/unnamed-chunk-87-1.png) 
+![plot of chunk unnamed-chunk-88](assets/fig/unnamed-chunk-88-1.png) 
 
 
 ***=right
@@ -3435,7 +3539,7 @@ plot(stress$maxhr,stress$bhr)
 
 *** =left
 
-![plot of chunk unnamed-chunk-89](assets/fig/unnamed-chunk-89-1.png) 
+![plot of chunk unnamed-chunk-90](assets/fig/unnamed-chunk-90-1.png) 
 
 
 ***=right
@@ -3667,7 +3771,7 @@ t.test(stress$age, mu=67)
 	One Sample t-test
 
 data:  stress$age
-t = 0.67456, df = 557, p-value = 0.5002
+t = 0.6746, df = 557, p-value = 0.5002
 alternative hypothesis: true mean is not equal to 67
 95 percent confidence interval:
  66.34215 68.34603
@@ -3708,7 +3812,7 @@ wilcox.test(stress$age, mu=67)
 	Wilcoxon signed rank test with continuity correction
 
 data:  stress$age
-V = 77140, p-value = 0.06536
+V = 77139.5, p-value = 0.06536
 alternative hypothesis: true location is not equal to 67
 ```
 
@@ -3729,7 +3833,7 @@ t.test(age~gender, data=stress)
 	Welch Two Sample t-test
 
 data:  age by gender
-t = -0.82379, df = 486.01, p-value = 0.4105
+t = -0.8238, df = 486.007, p-value = 0.4105
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -2.878105  1.177674
@@ -3779,7 +3883,7 @@ t.test(age.female, age.male)
 	Welch Two Sample t-test
 
 data:  age.female and age.male
-t = -0.82379, df = 486.01, p-value = 0.4105
+t = -0.8238, df = 486.007, p-value = 0.4105
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -2.878105  1.177674
@@ -3812,7 +3916,7 @@ t.test(class1,class3)
 	Welch Two Sample t-test
 
 data:  class1 and class3
-t = 16.501, df = 328.01, p-value < 2.2e-16
+t = 16.5013, df = 328.013, p-value < 2.2e-16
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  65.35951 83.05270
@@ -3836,7 +3940,7 @@ t.test(class1,class3)
 	Welch Two Sample t-test
 
 data:  class1 and class3
-t = 16.501, df = 328.01, p-value < 2.2e-16
+t = 16.5013, df = 328.013, p-value < 2.2e-16
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  65.35951 83.05270
@@ -3898,7 +4002,7 @@ boxplot(age~survived, data=titanic)
 
 *** =left
 
-![plot of chunk unnamed-chunk-109](assets/fig/unnamed-chunk-109-1.png) 
+![plot of chunk unnamed-chunk-110](assets/fig/unnamed-chunk-110-1.png) 
 
 *** =right
 First have a look at the function call, boxplots can use also the formula notation, to plot grouped boxplot next to each other!
@@ -3986,7 +4090,7 @@ plot(survRatio)
 ```
 
 *** =left
-![plot of chunk unnamed-chunk-114](assets/fig/unnamed-chunk-114-1.png) 
+![plot of chunk unnamed-chunk-115](assets/fig/unnamed-chunk-115-1.png) 
 
 *** =right
 Just a basic plot of the age groups. 
@@ -4005,7 +4109,7 @@ plot(names(survRatio), survRatio)
 ```
 
 *** =left
-![plot of chunk unnamed-chunk-116](assets/fig/unnamed-chunk-116-1.png) 
+![plot of chunk unnamed-chunk-117](assets/fig/unnamed-chunk-117-1.png) 
 
 *** =right
 
@@ -4142,7 +4246,7 @@ Coefficients:
 ## Visualize the linear model 
 
 *** =left
-![plot of chunk unnamed-chunk-122](assets/fig/unnamed-chunk-122-1.png) 
+![plot of chunk unnamed-chunk-123](assets/fig/unnamed-chunk-123-1.png) 
 
 *** =right 
 
@@ -4160,7 +4264,7 @@ abline(titanicLM)
 ## Non-linear fitting 
 
 *** =left
-![plot of chunk unnamed-chunk-124](assets/fig/unnamed-chunk-124-1.png) 
+![plot of chunk unnamed-chunk-125](assets/fig/unnamed-chunk-125-1.png) 
 *** =right
 
 Without going into too many details, we want to see how easy one could switch from a linear regression to a non-linear LOESS.
