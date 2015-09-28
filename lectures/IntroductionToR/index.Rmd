@@ -1613,9 +1613,9 @@ boxplot(stress$bhr)
 
 * We saw already, a numerical vector has a 5-points table as output of a `summary()`, but also this can be different for other objects.
 
-* The most basic usage of `plot()` is it to either feed one or two vectors in it.
+* The most basic usage of `plot()` is to either feed one or two vectors in it.
 
-* In these situations, the `plot()`function creates by default a scatterplot.
+* In these situations, the `plot()` function creates by default a scatterplot.
 
 ---  &twocol w1:50% w2:50%
 
@@ -1689,7 +1689,13 @@ Using formula notation and the `data` argument
 
 * You find on Paul Murrells page [here](https://www.stat.auckland.ac.nz/~paul/RG2e/) a nice online resource for R graphics
 
-* A very popular R package for graphics is the `ggplot2` package, but it goes over the scope of this course to explain its functionality 
+* A very popular R package for graphics is the `ggplot2` package, but it goes over the scope of this course to explain its functionality
+
+* [Here](http://r4stats.com/examples/graphics-ggplot2/) you can find some examples how ggplot2 works / looks like.
+
+---
+
+## Also, you can 
 
 ---
 
@@ -1697,9 +1703,9 @@ Using formula notation and the `data` argument
 
 1. Prepare the 5 Point summary for the fares in the `titanic` data
 
-2. Create the boxplot of the age of the Titanic passangers
+2. Create the boxplot of the age of the Titanic passengers
 
-3. Plot the ticket price versus the age of the passanger.
+3. Plot the ticket price versus the age of the passenger.
 
 ---
 
@@ -1713,7 +1719,7 @@ summary(titanic$fare)
 
 ---
 
-2. Create the boxplot of the age of the Titanic passangers
+2. Create the boxplot of the age of the Titanic passengers
 
 ```{r}
 boxplot(titanic$age)
@@ -1721,7 +1727,7 @@ boxplot(titanic$age)
 
 ---
 
-3. Plot the ticket price versus the age of the passanger.
+3. Plot the ticket price versus the age of the passenger.
 
 ```{r}
 plot(titanic$fare, titanic$age)
@@ -1959,20 +1965,20 @@ t.test(age.female, age.male)
 
 ## Hands-On : Tests 
 
-1. Test if the ticket prices differed between class 1 and 3 passangers on Titanic.
+1. Test if the ticket prices differed between class 1 and 3 passengers on Titanic.
 2. Test if the average age on Titanic was larger than 30 (check the help file of t.test in order to choose the right alternative!).
 
 --- 
 
 ## Hands-On: Hints:
 
-1. The formula notation doesn't work here, as there is also class 2 passangers on board. Create first vectors that contain the values of interest
+1. The formula notation doesn't work here, as there is also class 2 passengers on board. Create first vectors that contain the values of interest
 
 ---
 
 ## Solutions: Tests
 
-Test if the ticket prices differed between class 1 and 3 passangers on Titanic.
+Test if the ticket prices differed between class 1 and 3 passengers on Titanic.
 ```{r comment=NA}
 class1 <- titanic$fare[titanic$pclass=="1"]
 class3 <- titanic$fare[titanic$pclass=="3"]
