@@ -3620,9 +3620,9 @@ boxplot(stress$bhr)
 
 * We saw already, a numerical vector has a 5-points table as output of a `summary()`, but also this can be different for other objects.
 
-* The most basic usage of `plot()` is it to either feed one or two vectors in it.
+* The most basic usage of `plot()` is to either feed one or two vectors in it.
 
-* In these situations, the `plot()`function creates by default a scatterplot.
+* In these situations, the `plot()` function creates by default a scatterplot.
 
 ---  &twocol w1:50% w2:50%
 
@@ -3693,17 +3693,60 @@ Using formula notation and the `data` argument
 
 * You find on Paul Murrells page [here](https://www.stat.auckland.ac.nz/~paul/RG2e/) a nice online resource for R graphics
 
-* A very popular R package for graphics is the `ggplot2` package, but it goes over the scope of this course to explain its functionality 
+* A very popular R package for graphics is the `ggplot2` package, but it goes over the scope of this course to explain its functionality
 
+* [Here](http://r4stats.com/examples/graphics-ggplot2/) you can find some examples how ggplot2 works / looks like.
+
+---
+
+## Density estimators
+
+
+```r
+plot(density(titanic$fare, na.rm=TRUE))
+```
+
+*** =left
+
+![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
+
+
+***=right
+
+Visualizing the density estimator is also a good example for nested functions.
+
+First, the density estimator is calculated and then feeded into the plot function that visualizes it then.
+
+---
+
+## Empirical Cumulative Density function
+
+
+```r
+plot(ecdf(titanic$fare))
+```
+
+*** =left
+
+![plot of chunk unnamed-chunk-100](assets/fig/unnamed-chunk-100-1.png) 
+
+
+***=right
+
+Also the visualization of the empirical cumulative Density function can be written as a nested function.
 ---
 
 ## Hands-On
 
 1. Prepare the 5 Point summary for the fares in the `titanic` data
 
-2. Create the boxplot of the age of the Titanic passangers
+2. Create the boxplot of the age of the Titanic passengers
 
-3. Plot the ticket price versus the age of the passanger.
+3. Plot the ticket price versus the age of the passenger.
+
+4. Plot the density estimator for the age on the Titanic
+
+5. Plot the ecdf of the age on Titanic
 
 ---
 
@@ -3723,25 +3766,52 @@ summary(titanic$fare)
 
 ---
 
-2. Create the boxplot of the age of the Titanic passangers
+2. Create the boxplot of the age of the Titanic passengers
 
 
 ```r
 boxplot(titanic$age)
 ```
 
-![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
+![plot of chunk unnamed-chunk-102](assets/fig/unnamed-chunk-102-1.png) 
 
 ---
 
-3. Plot the ticket price versus the age of the passanger.
+3. Plot the ticket price versus the age of the passenger.
 
 
 ```r
 plot(titanic$fare, titanic$age)
 ```
 
-![plot of chunk unnamed-chunk-99](assets/fig/unnamed-chunk-99-1.png) 
+![plot of chunk unnamed-chunk-103](assets/fig/unnamed-chunk-103-1.png) 
+
+---
+
+4. Plot the density estimator for the age on titanic
+
+
+```r
+plot(density(titanic$age))
+```
+
+```
+## Error in density.default(titanic$age): 'x' contains missing values
+```
+
+---
+
+
+4. Plot the empirical cumulative density function for the age on titanic
+
+
+```r
+plot(ecdf(titanic$age))
+```
+
+![plot of chunk unnamed-chunk-105](assets/fig/unnamed-chunk-105-1.png) 
+
+---
 
 --- .segue .dark
 
@@ -4077,20 +4147,20 @@ mean of x mean of y
 
 ## Hands-On : Tests 
 
-1. Test if the ticket prices differed between class 1 and 3 passangers on Titanic.
+1. Test if the ticket prices differed between class 1 and 3 passengers on Titanic.
 2. Test if the average age on Titanic was larger than 30 (check the help file of t.test in order to choose the right alternative!).
 
 --- 
 
 ## Hands-On: Hints:
 
-1. The formula notation doesn't work here, as there is also class 2 passangers on board. Create first vectors that contain the values of interest
+1. The formula notation doesn't work here, as there is also class 2 passengers on board. Create first vectors that contain the values of interest
 
 ---
 
 ## Solutions: Tests
 
-Test if the ticket prices differed between class 1 and 3 passangers on Titanic.
+Test if the ticket prices differed between class 1 and 3 passengers on Titanic.
 
 ```r
 class1 <- titanic$fare[titanic$pclass=="1"]
@@ -4189,7 +4259,7 @@ boxplot(age~survived, data=titanic)
 
 *** =left
 
-![plot of chunk unnamed-chunk-119](assets/fig/unnamed-chunk-119-1.png) 
+![plot of chunk unnamed-chunk-125](assets/fig/unnamed-chunk-125-1.png) 
 
 *** =right
 First have a look at the function call, boxplots can use also the formula notation, to plot grouped boxplot next to each other!
@@ -4277,7 +4347,7 @@ plot(survRatio)
 ```
 
 *** =left
-![plot of chunk unnamed-chunk-124](assets/fig/unnamed-chunk-124-1.png) 
+![plot of chunk unnamed-chunk-130](assets/fig/unnamed-chunk-130-1.png) 
 
 *** =right
 Just a basic plot of the age groups. 
@@ -4296,7 +4366,7 @@ plot(names(survRatio), survRatio)
 ```
 
 *** =left
-![plot of chunk unnamed-chunk-126](assets/fig/unnamed-chunk-126-1.png) 
+![plot of chunk unnamed-chunk-132](assets/fig/unnamed-chunk-132-1.png) 
 
 *** =right
 
@@ -4433,7 +4503,7 @@ Coefficients:
 ## Visualize the linear model 
 
 *** =left
-![plot of chunk unnamed-chunk-132](assets/fig/unnamed-chunk-132-1.png) 
+![plot of chunk unnamed-chunk-138](assets/fig/unnamed-chunk-138-1.png) 
 
 *** =right 
 
@@ -4451,7 +4521,7 @@ abline(titanicLM)
 ## Non-linear fitting 
 
 *** =left
-![plot of chunk unnamed-chunk-134](assets/fig/unnamed-chunk-134-1.png) 
+![plot of chunk unnamed-chunk-140](assets/fig/unnamed-chunk-140-1.png) 
 *** =right
 
 Without going into too many details, we want to see how easy one could switch from a linear regression to a non-linear LOESS.
