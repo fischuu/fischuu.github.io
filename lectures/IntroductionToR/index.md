@@ -3710,7 +3710,6 @@ plot(density(titanic$fare, na.rm=TRUE))
 
 ![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
 
-
 ***=right
 
 Visualizing the density estimator is also a good example for nested functions.
@@ -3808,8 +3807,6 @@ plot(ecdf(titanic$age))
 ```
 
 ![plot of chunk unnamed-chunk-105](assets/fig/unnamed-chunk-105-1.png) 
-
----
 
 --- .segue .dark
 
@@ -4538,11 +4535,63 @@ For comparison reasons we also added here the linear model result via `abline()`
 
 ---
 
-## Hands on: Run some own linear regression on the stress data
+## Hands on: Linear regression on the stress data
+
+Easier example compared to the previous one:
+
+1. Plot the basic heart rate (bhr) versus the maximum heart rate (maxhr)
+
+2. Apply a linear regression to the data 
+
+3. Add the linear regression as a blue, thick line to the plot
 
 ---
 
 ## Solutions:
+
+1. Plot the basic heart rate (bhr) versus the maximum heart rate (maxhr)
+
+```r
+plot(stress$bhr,stress$maxhr)
+```
+
+![plot of chunk unnamed-chunk-142](assets/fig/unnamed-chunk-142-1.png) 
+
+---
+
+2. Apply a linear regression to the data
+
+
+```r
+myLM <- lm(maxhr~bhr, data=stress)
+myLM
+```
+
+```
+## 
+## Call:
+## lm(formula = maxhr ~ bhr, data = stress)
+## 
+## Coefficients:
+## (Intercept)          bhr  
+##      65.390        0.717
+```
+
+---
+
+3. Add a thick, blue line to the plot
+
+
+```r
+plot(stress$bhr,stress$maxhr)
+abline(myLM, col="blue",lwd=3)
+```
+
+![plot of chunk unnamed-chunk-144](assets/fig/unnamed-chunk-144-1.png) 
+
+--- .segue .dark
+
+## Export figures and data
 
 ---
 
@@ -4561,13 +4610,136 @@ The following commands can be used to export figures.
 
 ## Export figures
 
-Here a table with commands:
+Table 12: Graphic export functions
+
+Function  | Meaning
+----------|----------------
+`pdf()`  | Export as vector graphic, in pdf format
+`png()`  | Export as raster graphic, in png format
+`jpeg()`   | Jpeg raster graphic
+`postscript()` | ps respective eps vector graphic
+
+---
+
+## Workflow to export a Figure
+
+Store as pdf:
+
+
+```r
+pdf(file="myFigure.pdf", width=8, height=8)
+ plot(myData)
+# Other plotting commands, like abline, legend, axis, etc.
+dev.off()
+```
+
+Store as png
+
+
+```r
+png(file="myFigure.png", width=1000, height=1000)
+ plot(myData)
+# Other plotting commands, like abline, legend, axis, etc.
+dev.off()
+```
 
 ---
 
 ## Export data
 
-And then still how to save dataframes/workspaces.
+* Besides Figures it might happen that we also want to export our data to the harddrive.
+
+* We saw already that one can save the entire workspace using `save.image()`, but this contains then everything and is also stored in binary format.
+
+* Storing data frames againin ASCII format, we can use the `write.table()` command
+
+* For storing single objects in binary format, the command `save()` can be used
+
+---
+
+## Apply `write.table()`
+
+* All what the `write.table()` command requires is the name of the object to save, and the name under what you want to save it
 
 
+```r
+write.table(titanic, file="myTitanic.csv")
+```
+
+but often you want to adjust the details, how it will be stored. Important parameters are
+
+Function  | Meaning
+----------|----------------
+quote  | Strings in quotation? TRUE/FALSE
+sep  | What separator shall be used
+row.names   | Shall the rownames be exported
+col.names | Shall the column names be exported
+
+---
+
+## Hands On: Figure and Data export
+
+1. Store the figure from the Linear Model Hands-On excersise as pdf and as png
+
+2. Open the Figures and see if they have been exported properly. Redo 1 with different values for width/height and check the effect by opening it via Windows explorer.
+
+3. Create a data.frame titanic.small that contains only the first 5 columns of the original titanic and export it, using the file-name `titanicSmall.csv`
+
+4. Open titanicSmall.csv then with Excel (or something similar) and check if you exported it properly. If needed, redo Number 3, using the required arguments. `row.names` might be needed here. 
+
+---
+
+## Solutions
+
+1. Store the figure from the Linear Model Hands-On excersise as pdf
+
+
+```r
+myLM <- lm(maxhr~bhr, data=stress)
+pdf(file="myLM.pdf", width=10, height=10)
+plot(stress$bhr,stress$maxhr)
+abline(myLM, col="blue",lwd=3)
+dev.off()
+```
+
+---
+
+2. Store the figure from the Linear Model Hands-On excersise as png
+
+
+```r
+myLM <- lm(maxhr~bhr, data=stress)
+png(file="myLM.png", width=1000, height=1000)
+plot(stress$bhr,stress$maxhr)
+abline(myLM, col="blue",lwd=3)
+dev.off()
+```
+
+---
+
+3. Create a data.frame titanic.small that contains only the first 5 columns of the original titanic and export it, using the file-name `titanicSmall.csv`
+
+Basic export would look like this, but if you open it in excel, the column names/Data columns are shifted, because R added a row index 
+
+
+```r
+titanicSmall <- titanic[,1:5]
+write.table(titanicSmall, file="titanicSmall.csv")
+```
+
+---
+
+4. Redo 3 with the proper parameters
+
+Basic export would look like this, but if you open it in excel, the column names/Data columns are shifted, because R added a row index.
+
+Use the additional parameter
+
+
+```r
+titanicSmall <- titanic[,1:5]
+write.table(titanicSmall, file="titanicSmall.csv", row.names=FALSE)
+```
+
+---
 
