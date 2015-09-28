@@ -4689,7 +4689,7 @@ col.names | Shall the column names be exported
 
 ---
 
-## Solutions
+## Solutions I
 
 1. Store the figure from the Linear Model Hands-On excersise as pdf
 
@@ -4704,6 +4704,8 @@ dev.off()
 
 ---
 
+## Solutions II
+
 2. Store the figure from the Linear Model Hands-On excersise as png
 
 
@@ -4717,6 +4719,8 @@ dev.off()
 
 ---
 
+## Solutions III
+
 3. Create a data.frame titanic.small that contains only the first 5 columns of the original titanic and export it, using the file-name `titanicSmall.csv`
 
 Basic export would look like this, but if you open it in excel, the column names/Data columns are shifted, because R added a row index 
@@ -4728,6 +4732,8 @@ write.table(titanicSmall, file="titanicSmall.csv")
 ```
 
 ---
+
+## Solutions IV
 
 4. Redo 3 with the proper parameters
 
@@ -4741,5 +4747,6 @@ titanicSmall <- titanic[,1:5]
 write.table(titanicSmall, file="titanicSmall.csv", row.names=FALSE)
 ```
 
----
+--- .segue .dark
 
+## The End, for now
