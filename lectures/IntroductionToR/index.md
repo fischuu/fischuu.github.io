@@ -3730,10 +3730,10 @@ plot(ecdf(titanic$fare))
 
 ![plot of chunk unnamed-chunk-100](assets/fig/unnamed-chunk-100-1.png) 
 
-
 ***=right
 
 Also the visualization of the empirical cumulative Density function can be written as a nested function.
+
 ---
 
 ## Hands-On
