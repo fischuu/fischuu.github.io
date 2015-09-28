@@ -4323,6 +4323,16 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
     <pre><code class="r">plot(density(titanic$fare, na.rm=TRUE))
 </code></pre>
 
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-98-1.png" alt="plot of chunk unnamed-chunk-98"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Visualizing the density estimator is also a good example for nested functions.</p>
+
+<p>First, the density estimator is calculated and then feeded into the plot function that visualizes it then.</p>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -4335,6 +4345,24 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
     <pre><code class="r">plot(ecdf(titanic$fare))
 </code></pre>
 
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-100-1.png" alt="plot of chunk unnamed-chunk-100"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h2>Also the visualization of the empirical cumulative Density function can be written as a nested function.</h2>
+
+<h2>Hands-On</h2>
+
+<ol>
+<li><p>Prepare the 5 Point summary for the fares in the <code>titanic</code> data</p></li>
+<li><p>Create the boxplot of the age of the Titanic passengers</p></li>
+<li><p>Plot the ticket price versus the age of the passenger.</p></li>
+<li><p>Plot the density estimator for the age on the Titanic</p></li>
+<li><p>Plot the ecdf of the age on Titanic</p></li>
+</ol>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -4395,11 +4423,10 @@ to explore the dataset in order to get &#39;a feeling&#39; for it.</p>
 <li>Plot the density estimator for the age on titanic</li>
 </ol>
 
-<pre><code class="r">plot(density(titanic$age))
+<pre><code class="r">plot(density(titanic$age, na.rm=TRUE))
 </code></pre>
 
-<pre><code>## Error in density.default(titanic$age): &#39;x&#39; contains missing values
-</code></pre>
+<p><img src="assets/fig/unnamed-chunk-104-1.png" alt="plot of chunk unnamed-chunk-104"> </p>
 
   </article>
   <!-- Presenter Notes -->

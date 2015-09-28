@@ -3697,7 +3697,7 @@ Using formula notation and the `data` argument
 
 * [Here](http://r4stats.com/examples/graphics-ggplot2/) you can find some examples how ggplot2 works / looks like.
 
----
+--- &twocol w1:50% w2:50%
 
 ## Density estimators
 
@@ -3717,7 +3717,7 @@ Visualizing the density estimator is also a good example for nested functions.
 
 First, the density estimator is calculated and then feeded into the plot function that visualizes it then.
 
----
+--- &twocol w1:50% w2:50%
 
 ## Empirical Cumulative Density function
 
@@ -3792,12 +3792,10 @@ plot(titanic$fare, titanic$age)
 
 
 ```r
-plot(density(titanic$age))
+plot(density(titanic$age, na.rm=TRUE))
 ```
 
-```
-## Error in density.default(titanic$age): 'x' contains missing values
-```
+![plot of chunk unnamed-chunk-104](assets/fig/unnamed-chunk-104-1.png) 
 
 ---
 
