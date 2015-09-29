@@ -1983,7 +1983,7 @@ wilcox.test(stress$age, mu=67)
 
 ---
 
-## Two-sided t-test
+## Two-sample t-test
 
 Now, we are interested if there is a difference in the Age between the two gender. For this we use
 the formulae notation:

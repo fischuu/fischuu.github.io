@@ -4065,7 +4065,7 @@ alternative hypothesis: true location is not equal to 67
 
 ---
 
-## Two-sided t-test
+## Two-sample t-test
 
 Now, we are interested if there is a difference in the Age between the two gender. For this we use
 the formulae notation:
@@ -4749,4 +4749,4 @@ write.table(titanicSmall, file="titanicSmall.csv", row.names=FALSE)
 
 --- .segue .dark
 
-## The End, for now
+## The End
