@@ -3,24 +3,39 @@ title       : Bioinformatics at Luke
 subtitle    : A short overview of infrastructure, workflows and needs
 author      : Daniel Fischer
 job         : 
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+framework   : impressjs        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : arta      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
----
 
-## Read-And-Delete
+--- x:0 y:0 scale:100
+<font color="red">{</font>#<font color="red">}</font> Who am I?
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+--- x:-10000 y:30000 scale:200
 
---- .class #id 
+<font color="red">{</font>#<font color="red">}</font> IT Infrastructure at Luke
 
-## Slide 2
+--- x:-10000 y:80000 scale:300
+
+<font color="red">{</font>#<font color="red">}</font> Problems, Solutions and Workflows
+
+--- x:-80000 y:75000 z:10000 rotx:-90 roty:90 rotz:0 scale:10
+What are our Problems?!
+
+--- x:-90000 y:75000 z:10000 rotz:180 scale:10
+Statistical Problems are:
 
 
+--- x:-20000 y:75000 z:10000 rotx:-90 roty:90 rotz:0 scale:10
+What are our Solutions?!
 
+--- x:40000 y:75000 z:10000 rotx:-90 roty:90 rotz:0 scale:10
+What are our Workflows?!
+
+
+--- x:-10000 y:150000 scale:400
+
+<font color="red">{</font>#<font color="red">}</font> Future Needs
 
