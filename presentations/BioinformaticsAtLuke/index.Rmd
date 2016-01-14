@@ -24,7 +24,7 @@ knit        : slidify::knit2slides
 --- x:-80000 y:75000 z:10000 rotx:-90 roty:90 rotz:0 scale:10
 What are our Problems?!
 
---- x:-90000 y:75000 z:10000 rotx:-90 roty:90rotz:180 scale:10
+--- x:-80000 y:75000 z:10000 rotx:-80 roty:90 rotz:0 scale:10
 Statistical Problems are:
 
 
