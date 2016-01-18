@@ -27,6 +27,14 @@ What are our Problems?!
 --- x:-80000 y:75000 z:10000 rotx:-80 roty:90 rotz:0 scale:10
 Statistical Problems are:
 
+--- x:-90000 y:85000 z:10000 rotx:-80 roty:90 rotz:0 scale:10
+
+```r
+plot(runif(100))
+```
+
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png) 
+
 
 --- x:-20000 y:75000 z:10000 rotx:-90 roty:90 rotz:0 scale:10
 What are our Solutions?!
