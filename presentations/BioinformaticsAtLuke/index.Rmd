@@ -24,13 +24,8 @@ knit        : slidify::knit2slides
 --- x:-80000 y:75000 z:10000 rotx:-90 roty:90 rotz:0 scale:10
 What are our Problems?!
 
---- x:-80000 y:75000 z:10000 rotx:-80 roty:90 rotz:0 scale:10
-Statistical Problems are:
-
---- x:-90000 y:85000 z:10000 rotx:-80 roty:90 rotz:0 scale:10
-```{r}
-plot(runif(100))
-```
+--- x:-79800 y:75000 z:10000 rotx:0 roty:180 rotz:-90 scale:4
+Now we look to here!!!
 
 
 --- x:-20000 y:75000 z:10000 rotx:-90 roty:90 rotz:0 scale:10
@@ -43,4 +38,3 @@ What are our Workflows?!
 --- x:-10000 y:150000 scale:400
 
 <font color="red">{</font>#<font color="red">}</font> Future Needs
-

@@ -86,9 +86,14 @@ body {
     /*font-family: 'PT Sans', sans-serif;*/
     min-height: 940px;
     /*background:         radial-gradient(rgb(255, 255, 255), rgb(0, 181, 226) 150%);*/
-   /* background: url("http://www.luke.fi/wp-content/uploads/logo_luke_116px.png");*/
-    background-image: url("./figures/358129.png");
- /*   background:         radial-gradient(ellipse, rgb(255, 255, 255), rgb(120, 190, 32) 150%);*/
+  /*  background:         radial-gradient(ellipse, rgb(255, 255, 255), rgb(120, 190, 32) 150%);*/
+    background-size: 15% auto; 
+/*    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right bottom;*/
+    background: url("http://fischuu.github.io/presentations/BioinformaticsAtLuke/figures/358129.png") 100% 100% / 15% no-repeat ,
+                radial-gradient(ellipse, rgb(255, 255, 255), rgb(120, 190, 32) 150%);
+    
    /* background: rgb(255, 255, 204);
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
     background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
