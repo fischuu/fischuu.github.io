@@ -10,7 +10,7 @@ widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 
---- x:0 y:0 scale:100
+---x:0 y:0 scale:100
 <font color="red">{</font>#<font color="red">}</font> Who am I?
 
 --- x:-10000 y:30000 scale:200
