@@ -10,8 +10,21 @@ widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 
+--- .slide x:-2000 y:-20000 scale:10
+<q>Bioinformatics at Luke</q>
+
+The current state, problems and thoughts about the future.
+
+<center><br><br><br>Daniel Fischer<br>Jokioinen, 27th January 2016</center>
+
 ---x:0 y:0 scale:100
 <font color="red">{</font>#<font color="red">}</font> Who am I?
+
+--- x:0 y:-2000 rotx:0 roty:45 rotz:0 scale:5
+My name is Daniel Fischer
+
+--- x:0 y:10000 rotx:0 roty:45 rotz:0 scale:5
+Member of the Animal Genetics team
 
 --- x:-10000 y:30000 scale:200
 
@@ -38,3 +51,4 @@ What are our Workflows?!
 --- x:-10000 y:150000 scale:400
 
 <font color="red">{</font>#<font color="red">}</font> Future Needs
+
