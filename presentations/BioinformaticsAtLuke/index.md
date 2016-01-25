@@ -20,19 +20,44 @@ The current state, problems and thoughts about the future.
 ---x:0 y:0 scale:100
 <font color="red">{</font>#<font color="red">}</font> Who am I?
 
---- x:0 y:-2000 rotx:0 roty:45 rotz:0 scale:5
-My name is Daniel Fischer
-
---- x:0 y:10000 rotx:0 roty:45 rotz:0 scale:5
-Member of the Animal Genetics team
+--- x:-400 y:-1000 rotx:0 roty:45 rotz:0 scale:4
+My name is Daniel Fischer and I am since 2 years member of the animal genetics team here in Jokioinen.
+<br><br>
+From background I am statistician, but my research interests move constantly towards Bioinformatics.
 
 --- x:-10000 y:30000 scale:200
+<font color="red">{</font>#<font color="red">}</font> The current state of Bioinformatics
 
-<font color="red">{</font>#<font color="red">}</font> IT Infrastructure at Luke
+--- x:-10000 y:30000 roty:-45 scale:10
+Genetic Data is a challange for modern computer architectures with respect to
+
+--- x:-9000 y:32000 roty:-45 scale:8
+CPU power
+
+--- x:-9000 y:31900 roty:-45 scale:1
+Many tasks are easy to run parallel
+
+--- x:-9000 y:32000 roty:-45 scale:8
+
+--- x:-8000 y:34000 roty:-45 scale:5
+Storage space
+
+--- x:-8000 y:33900 roty:-45 scale:1
+Thinking in Terabytes is rather common!
+
+--- x:-8000 y:34000 roty:-45 scale:5
+
+--- x:-7000 y:36000 roty:-45 scale:2
+Transfer Speed
+
+--- x:-7000 y:35900 roty:-45 scale: -2
+Ethernet with 100 Mbit/sec feels horrible!
+
+
 
 --- x:-10000 y:80000 scale:300
 
-<font color="red">{</font>#<font color="red">}</font> Problems, Solutions and Workflows
+<font color="red">{</font>#<font color="red">}</font> IT Infrastructure at Luke
 
 --- x:-80000 y:75000 z:10000 rotx:-90 roty:90 rotz:0 scale:10
 What are our Problems?!

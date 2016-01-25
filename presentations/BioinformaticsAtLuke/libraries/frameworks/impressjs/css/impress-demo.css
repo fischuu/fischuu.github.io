@@ -86,8 +86,8 @@ body {
     /*font-family: 'PT Sans', sans-serif;*/
     min-height: 940px;
     /*background:         radial-gradient(rgb(255, 255, 255), rgb(0, 181, 226) 150%);*/
-  /*  background:         radial-gradient(ellipse, rgb(255, 255, 255), rgb(120, 190, 32) 150%);*/
-    background-size: 15% auto; 
+   /* background:         radial-gradient(ellipse, rgb(255, 255, 255), rgb(120, 190, 32) 150%);*/
+    /*background-size: 15% auto; */
 /*    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: right bottom;*/
