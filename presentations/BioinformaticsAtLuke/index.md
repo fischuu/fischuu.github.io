@@ -34,25 +34,49 @@ Genetic Data is a challange for modern computer architectures with respect to
 --- x:-9000 y:32000 roty:-45 scale:8
 CPU power
 
---- x:-9000 y:31900 roty:-45 scale:1
+--- x:-9000 y:32000 rotx:-90 roty:-45 scale:4
 Many tasks are easy to run parallel
 
---- x:-9000 y:32000 roty:-45 scale:8
-
---- x:-8000 y:34000 roty:-45 scale:5
+--- x:-8000 y:34000 roty:-45 scale:8
 Storage space
 
---- x:-8000 y:33900 roty:-45 scale:1
+--- x:-8000 y:33900 rotx:-90 roty:-45 scale:4
 Thinking in Terabytes is rather common!
 
---- x:-8000 y:34000 roty:-45 scale:5
-
---- x:-7000 y:36000 roty:-45 scale:2
+--- x:-7000 y:36000 roty:-45 scale:8
 Transfer Speed
 
---- x:-7000 y:35900 roty:-45 scale: -2
+--- x:-7000 y:35900 rotx:-90 roty:-45 scale: 4
 Ethernet with 100 Mbit/sec feels horrible!
 
+--- x:-10000 y:30000 roty:-45 scale:10
+
+--- x:-12000 y:28000 roty:-130 scale:10
+Genetic data analysis is a challange in itself
+
+--- x:-14000 y:30000 roty:-130 rotx:45 scale:2
+We operate here usually with n<p
+
+--- x:-16000 y:32000 roty:-130 rotx:45 scale:1
+Because of that dimension reduction methods like PCA are popular
+
+--- x:200000 y:50000 roty:45 scale:100
+However, genetic data also opens a window to a couple of interesting research areas!
+
+--- .slide x:250000 y:50000 roty:45 scale:10
+Gene expression quantification
+
+--- .slide x:300000 y:50000 roty:45 scale:10
+SNP variant detection
+
+--- .slide x:350000 y:50000 roty:45 scale:10
+Regulator analysis (e.g. miRNA target genes)
+
+--- .slide x:400000 y:50000 roty:45 scale:10
+e(QTL) analysis
+
+--- .slide x:450000 y:50000 roty:45 scale:10
+Novel gene detection
 
 
 --- x:-10000 y:80000 scale:300
