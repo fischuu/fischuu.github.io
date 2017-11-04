@@ -4,7 +4,7 @@
   <title>Annotation of lncRNA in farm animals - a community effort</title>
   <meta charset="utf-8">
   <meta name="description" content="Annotation of lncRNA in farm animals - a community effort">
-  <meta name="author" content="Daniel Fischer (and many others, please see the Acknowledgement)">
+  <meta name="author" content="Daniel Fischer (together with the FAANG lncRNA group)">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -34,8 +34,8 @@
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
     <h1>Annotation of lncRNA in farm animals - a community effort</h1>
-    <h2>RNACentral, Hinxton, 6 November 2017</h2>
-    <p>Daniel Fischer (and many others, please see the Acknowledgement)<br/>Natural Resources Institute Finland, Green Technology</p>
+    <h2>RNACentral Meeting, Hinxton, 6 November 2017</h2>
+    <p>Daniel Fischer (together with the FAANG lncRNA group)<br/>Natural Resources Institute Finland, Green Technology</p>
   </hgroup>
     <a href="https://github.com/fischuu/fischuu.github.io/presentations/RAndGoogleVisualization/zipball/gh-pages" class="example">
      Download
@@ -73,7 +73,7 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>The European Nucleotide Archive was used to collect public available datasets</p></li>
+<li><p>Datasets were collected from the European Nucleotide Archive (ENA)</p></li>
 <li><p>In addition team members made own datasets available to the group</p></li>
 <li><p>Criterias to include data into the collection were</p>
 
@@ -91,7 +91,7 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Quality control and Data description</h2>
+    <h2>Quality control and Data curation</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -117,36 +117,24 @@
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Used Genome Versions:</h2>
+    <h2>Pipelines established</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Cow
+    <p>We established two different pipelines to annotate lncRNA:</p>
 
-<ul>
-<li>sdf</li>
-</ul></li>
-<li>Pig
+<p>The &quot;HS&quot;&quot; pipeline:</p>
 
-<ul>
-<li>dsgffg</li>
-</ul></li>
-<li>Horse
+<pre><code>* HISAT2
+* StringTie
+* FEELnc
+</code></pre>
 
-<ul>
-<li>sdf</li>
-</ul></li>
-<li>Chicken
+<p>The &quot;SC&quot; pipeline:</p>
 
-<ul>
-<li>dsgffg</li>
-</ul></li>
-<li>Sheep
-
-<ul>
-<li>sdf</li>
-</ul></li>
-</ul>
+<pre><code>* STAR
+* Cufflinks
+* FEELnc
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -154,30 +142,424 @@
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
+    <h2>Used Genome Versions and available samples</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Species</th>
+<th align="center">Genome</th>
+<th align="right">Avail. Samples</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Chicken</td>
+<td align="center">Gallus_gallus-5.0</td>
+<td align="right">171</td>
+</tr>
+<tr>
+<td>Cow</td>
+<td align="center">UMD_3.1.1</td>
+<td align="right">447</td>
+</tr>
+<tr>
+<td>Horse</td>
+<td align="center">EquCab2.0</td>
+<td align="right">62</td>
+</tr>
+<tr>
+<td>Pig</td>
+<td align="center">Sscrofa11.1</td>
+<td align="right">149</td>
+</tr>
+<tr>
+<td>Sheep</td>
+<td align="center">Oar_v4.0</td>
+<td align="right">195</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Collected tissues per samples</h2>
+  </hgroup>
+  <article data-timings="">
+    <div style="text-align:center">
+<img src="./2017.09.14-data_collected_tissue_21_07_2017_RNAonly.jpg" alt="Drawing" style="width: 700px;"/>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Pipeline comparison</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Sarah Djebali performed an extensive comparison on the two different pipelines for cow and chicken</p></li>
+<li><p>For that, we tried to run both pipelines with and without gene annotations</p></li>
+<li><p>Tissues were considered individually and also merged (1,2 and all)</p></li>
+<li><p>Total number of transcript sets to evaluate:</p>
+
+<ul>
+<li>1 gene annotation + 24 predictions for chicken</li>
+<li>1 gene annotation + 32 predictions for cattle</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Summary of the comparison</h2>
+  </hgroup>
+  <article data-timings="">
+    <div style="text-align:center">
+<img src="./compSummary.png" alt="Drawing" style="width: 800px;"/>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Impacts of the comparisons</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Stringtie has improved a lot between version 1.3.2 and 1.3.3
+
+<ul>
+<li>Many less unstranded transcripts</li>
+<li>Length of exons of different types better</li>
+<li>Less impacted by not having an annotation</li>
+<li>More similar results on both species</li>
+</ul></li>
+<li>Stringtie becomes a tool that can be envisionned for FAANG,
+although its results are more dependent on the annotation
+quality and this one can be very variable for livestock species</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>FEELnc performance</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Each pipeline produced one gtf as inoput for FEELnc</p></li>
+<li><p>The coverage for lncRNA annotation is also crucial and at least 70 Mio reads are desired</p></li>
+<li><p>Most of the available datasets couldn&#39;t fulfil this criteria</p></li>
+<li><p>Consequently, we chose 30 Mio as threshold for a high-coverage set</p></li>
+<li><p>That means: 4 different input gtfs per species.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>FEELnc results I</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Species</th>
+<th align="center">Input</th>
+<th align="right"># of lncRNA</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Chicken</td>
+<td align="center">HS</td>
+<td align="right">31.208</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">HS30</td>
+<td align="right">10.225</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">SC</td>
+<td align="right">46.288</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">SC30</td>
+<td align="right">29.310</td>
+</tr>
+<tr>
+<td>Cow</td>
+<td align="center">HS</td>
+<td align="right">26.231</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">HS30</td>
+<td align="right">8.219</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">SC</td>
+<td align="right">141.036</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">SC30</td>
+<td align="right">41.980</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>FEELnc results II</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Species</th>
+<th align="center">Input</th>
+<th align="right"># of lncRNA</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Horse</td>
+<td align="center">HS</td>
+<td align="right">12.848</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">HS30</td>
+<td align="right">9.159</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">SC</td>
+<td align="right">77.668</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">SC30</td>
+<td align="right">53.932</td>
+</tr>
+<tr>
+<td>Sheep</td>
+<td align="center">HS</td>
+<td align="right">27.713</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">HS30</td>
+<td align="right">6.270</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">SC</td>
+<td align="right">49.724</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">SC30</td>
+<td align="right">31.172</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Upcoming tasks</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>ADD HERE STILL SOME TO-DO THINGS</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Vision for the FAANG non-coding and structured RNA (ncRNA) database I</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Compilation of small, long and structured RNA</p></li>
+<li><p>For multiple animal genomes</p>
+
+<ul>
+<li>Syntenic ncRNAs</li>
+<li>Tissue expression</li>
+<li>QTL</li>
+<li>Conservation of features</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Vision for the FAANG non-coding and structured RNA (ncRNA) database II</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Integration with ENSEMBL will feed into external resources e.g.:
+
+<ul>
+<li>The tissues database[*]</li>
+<li>RAIN for RNA and protein interactions/associations [#]</li>
+</ul></li>
+</ul>
+
+<p>[*] <a href="https://tissues.jensenlab.org">https://tissues.jensenlab.org</a></p>
+
+<p>[#] <a href="https://rth.dk/resources/rain">https://rth.dk/resources/rain</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
     <h2>Acknowledgement</h2>
   </hgroup>
   <article data-timings="">
-    <p>The lncRNA groups consists of the following members</p>
+    <p>The FAANG lncRNA group consists of the following members</p>
 
-<p>Daniel Fischer
-Frank Panitz
-Konstantinos Billis
-Thomas Derrien
-Lel Eory
-Alicja Pacholewska
-Nadezhda Doncheva
-Magda Mielczarek
-Sarah Djebali
-Christa Kühn
-Oana Palasca</p>
+<table><thead>
+<tr>
+<th>lncRNA group</th>
+<th>ncDB efforts</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Daniel Fischer</td>
+<td>Jan Gorodkin</td>
+</tr>
+<tr>
+<td>Frank Panitz</td>
+<td>Christian Anton</td>
+</tr>
+<tr>
+<td>Konstantinos Billis</td>
+<td>Andreia Maral</td>
+</tr>
+<tr>
+<td>Thomas Derrien</td>
+<td></td>
+</tr>
+<tr>
+<td>Lel Eory</td>
+<td>Genomic group</td>
+</tr>
+<tr>
+<td>Alicja Pacholewska</td>
+<td>sncRNA group</td>
+</tr>
+<tr>
+<td>Nadezhda Doncheva</td>
+<td></td>
+</tr>
+<tr>
+<td>Magda Mielczarek</td>
+<td></td>
+</tr>
+<tr>
+<td>Sarah Djebali</td>
+<td></td>
+</tr>
+<tr>
+<td>Christa Kühn</td>
+<td></td>
+</tr>
+<tr>
+<td>Oana Palasca</td>
+<td></td>
+</tr>
+</tbody></table>
 
-<p>Further:
-Jan Gorodkin
-Christian Anton
-Andreia Maral</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<p>And many more in the other subgroups related to the ncRNA database</p>
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Appendix: Chicken summary - individual</h2>
+  </hgroup>
+  <article data-timings="">
+    <div style="text-align:center">
+<img src="./chickenSummary_ind.png" alt="Drawing" style="width: 700px;"/>
+</div>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Appendix: Chicken summary - merged</h2>
+  </hgroup>
+  <article data-timings="">
+    <div style="text-align:center">
+<img src="./chickenSummary_merged.png" alt="Drawing" style="width: 700px;"/>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Appendix: Cow summary - individual</h2>
+  </hgroup>
+  <article data-timings="">
+    <div style="text-align:center">
+<img src="./cowSummary_ind.png" alt="Drawing" style="width: 700px;"/>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Appendix: Cow summary - merged</h2>
+  </hgroup>
+  <article data-timings="">
+    <div style="text-align:center">
+<img src="./cowSummary_merged.png" alt="Drawing" style="width: 700px;"/>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <article data-timings="">
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -200,20 +582,116 @@ Andreia Maral</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Quality control and Data description'>
+        data-slide=3 title='Quality control and Data curation'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Used Genome Versions:'>
+        data-slide=4 title='Pipelines established'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Acknowledgement'>
+        data-slide=5 title='Used Genome Versions and available samples'>
          5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Collected tissues per samples'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Pipeline comparison'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Summary of the comparison'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Impacts of the comparisons'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='FEELnc performance'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='FEELnc results I'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='FEELnc results II'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Upcoming tasks'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Vision for the FAANG non-coding and structured RNA (ncRNA) database I'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Vision for the FAANG non-coding and structured RNA (ncRNA) database II'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Acknowledgement'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Appendix: Chicken summary - individual'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Appendix: Chicken summary - merged'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Appendix: Cow summary - individual'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Appendix: Cow summary - merged'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='NA'>
+         21
       </a>
     </li>
   </ul>
