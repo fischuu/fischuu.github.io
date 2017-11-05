@@ -37,7 +37,7 @@ widgets:
 
 * In total 12 persons are working at the moment in that subgroub and 25 in total for all different subgroups together
 
-* The focus is currently on 5 different species:
+* The focus of the lncRNA group is currently on 5 different species:
       * cow
       * pig
       * horse
@@ -243,22 +243,25 @@ The "SC" pipeline:
 
 ## Acknowledgement
 
-This FAANG RNA group consists of the following members
+|                   |             |   
+|-------------------|---------------------|
+|Jan Gorodkin       | Overall coordination and supervsion   |
+|Alicja Pacholewska | lncRNA coordination    |
+|Daniel Fischer     | lncRNA coordination       |
+|Andreia Amaral     | sncRNA coordination   |
+|Christian Anton    | structured RNA coordination    |
 
-| lncRNA group        | sncRNA            | structured RNA    |
+| lncRNA              | sncRNA            | structured RNA    |
 |---------------------|-------------------|-------------------|
-|Jan Gorodkin         | Jan Gorodkin      | Jan Gorodkin      |
-|Alicja Pacholewska   | Andreia Amaral    | Christian Anton   |
-|Daniel Fischer       | Kisun Pokharel    | Jakob Havgaard    |
+|Sarah Djebali        | Kisun Pokharel    | Jakob Havgaard    |
 |Konstantinos Billis  | Ole Madsen        | Stefan Seemann    |
 |Thomas Derrien       | Anne Hoffmann     | Mark Thomas       |
 |Lel Eory             | Fiete Haack       | Ted Kalbfleisch   |
 |Frank Panitz         | Jacques Lagnel    | Jose Gonzalez     |
 |Nadezhda Doncheva    | Sylvain Marthey   |                   |
 |Magda Mielczarek     |                   |                   |
-|Sarah Djebali        |                   |                   |
-|Christa Kühn         |                   |                   | 
-|Oana Palasca         |                   |                   |
+|Christa Kühn        |                   |                   |
+|Oana Palasca         |                   |                   | 
 
 ---
 
