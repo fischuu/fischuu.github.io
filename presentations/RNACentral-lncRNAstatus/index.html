@@ -4,7 +4,7 @@
   <title>Annotation of lncRNA in farm animals - a community effort</title>
   <meta charset="utf-8">
   <meta name="description" content="Annotation of lncRNA in farm animals - a community effort">
-  <meta name="author" content="Daniel Fischer (together with the FAANG lncRNA group)">
+  <meta name="author" content="Daniel Fischer (as part of the FAANG lncRNA group)">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -35,7 +35,7 @@
   <hgroup class="auto-fadein">
     <h1>Annotation of lncRNA in farm animals - a community effort</h1>
     <h2>RNACentral Meeting, Hinxton, 6 November 2017</h2>
-    <p>Daniel Fischer (together with the FAANG lncRNA group)<br/>Natural Resources Institute Finland, Green Technology</p>
+    <p>Daniel Fischer (as part of the FAANG lncRNA group)<br/>Natural Resources Institute Finland, Green Technology</p>
   </hgroup>
     <a href="https://github.com/fischuu/fischuu.github.io/presentations/RAndGoogleVisualization/zipball/gh-pages" class="example">
      Download
@@ -58,9 +58,9 @@
     <ul>
 <li><p>Jan Gorodkin organized a FAANG-COST hackathon in Copenhagen from 24.-25.11.2016</p></li>
 <li><p>The purpose was to initiate a community effort to establish a ncRNA database for farm animals</p></li>
-<li><p>I present here current state of the lncRNA subpart of it</p></li>
-<li><p>In total 11 persons are working at the moment in that subgroub</p></li>
-<li><p>The focus is currently on 5 (cow, pig, horse, chicken, sheep) animals</p></li>
+<li><p>I present here the current state of the lncRNA subpart of it</p></li>
+<li><p>In total 11 persons are working at the moment in that subgroub and XXX in total for all different subgroups together</p></li>
+<li><p>The focus is currently on 5 different species (cow, pig, horse, chicken, sheep)</p></li>
 </ul>
 
   </article>
@@ -73,12 +73,12 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>Datasets were collected from the European Nucleotide Archive (ENA)</p></li>
+<li><p>RNA-seq datasets were collected from the European Nucleotide Archive (ENA)</p></li>
 <li><p>In addition team members made own datasets available to the group</p></li>
-<li><p>Criterias to include data into the collection were</p>
+<li><p>Any experiment that met the following criteria was included into the collection</p>
 
 <ul>
-<li>Illumina</li>
+<li>Illumina output only</li>
 <li>Paired-end reads</li>
 <li>At least 100bp</li>
 <li>Strand specific libraries</li>
@@ -105,7 +105,7 @@
 <li><p>For all files, among others, the following meta-data were archived:</p>
 
 <ul>
-<li>Tissue (Brenda Ontology terms)</li>
+<li>Tissue type (Brenda Ontology terms)</li>
 <li>Corresponding references</li>
 <li>ENA accession number</li>
 </ul></li>
@@ -122,7 +122,7 @@
   <article data-timings="">
     <p>We established two different pipelines to annotate lncRNA:</p>
 
-<p>The &quot;HS&quot;&quot; pipeline:</p>
+<p>The &quot;HS&quot; pipeline:</p>
 
 <pre><code>* HISAT2
 * StringTie
@@ -149,7 +149,7 @@
 <tr>
 <th>Species</th>
 <th align="center">Genome</th>
-<th align="right">Avail. Samples</th>
+<th align="right">Avail. Samples from ENA</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -203,7 +203,7 @@
   <article data-timings="">
     <ul>
 <li><p>Sarah Djebali performed an extensive comparison on the two different pipelines for cow and chicken</p></li>
-<li><p>For that, we tried to run both pipelines with and without gene annotations</p></li>
+<li><p>For that, we ran both pipelines with and without gene annotations</p></li>
 <li><p>Tissues were considered individually and also merged (1,2 and all)</p></li>
 <li><p>Total number of transcript sets to evaluate:</p>
 
@@ -236,17 +236,14 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Stringtie has improved a lot between version 1.3.2 and 1.3.3
-
-<ul>
-<li>Many less unstranded transcripts</li>
-<li>Length of exons of different types better</li>
-<li>Less impacted by not having an annotation</li>
-<li>More similar results on both species</li>
-</ul></li>
-<li>Stringtie becomes a tool that can be envisionned for FAANG,
+<li><p>Stringtie has improved a lot between version 1.3.2 and 1.3.3</p></li>
+<li><p>Many less unstranded transcripts</p></li>
+<li><p>Length of exons of different types better</p></li>
+<li><p>Less impacted by not having an annotation</p></li>
+<li><p>More similar results on both species</p></li>
+<li><p>Stringtie becomes a tool that can be envisionned for FAANG,
 although its results are more dependent on the annotation
-quality and this one can be very variable for livestock species</li>
+quality and this one can be very variable for livestock species</p></li>
 </ul>
 
   </article>
@@ -255,13 +252,13 @@ quality and this one can be very variable for livestock species</li>
 
 <slide class="" id="slide-10" style="background:;">
   <hgroup>
-    <h2>FEELnc performance</h2>
+    <h2>FEELnc performance for our data</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>Each pipeline produced one gtf as inoput for FEELnc</p></li>
-<li><p>The coverage for lncRNA annotation is also crucial and at least 70 Mio reads are desired</p></li>
-<li><p>Most of the available datasets couldn&#39;t fulfil this criteria</p></li>
+<li><p>Each pipeline produced one gtf as input for FEELnc</p></li>
+<li><p>The numer of reads to do lncRNA annotation is also crucial and should be at least 70 Mio reads</p></li>
+<li><p>Most of the available datasets had less</p></li>
 <li><p>Consequently, we chose 30 Mio as threshold for a high-coverage set</p></li>
 <li><p>That means: 4 different input gtfs per species.</p></li>
 </ul>
@@ -392,7 +389,11 @@ quality and this one can be very variable for livestock species</li>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>ADD HERE STILL SOME TO-DO THINGS</li>
+<li><p>Between tissue comparison for lncRNA expressions</p></li>
+<li><p>Between species comparison for lncRNA expressions</p></li>
+<li><p>Trace the reasons for differences in pipelines</p></li>
+<li><p>If possible, function interpretation of the lncRNA</p></li>
+<li><p>Agree on publication strategy</p></li>
 </ul>
 
   </article>
@@ -401,48 +402,38 @@ quality and this one can be very variable for livestock species</li>
 
 <slide class="" id="slide-14" style="background:;">
   <hgroup>
-    <h2>Vision for the FAANG non-coding and structured RNA (ncRNA) database I</h2>
+    <h2>Vision for the FAANG non-coding and structured RNA (ncRNA) database</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li><p>Compilation of small, long and structured RNA</p></li>
-<li><p>For multiple animal genomes</p>
-
+    <div style="font-size=20pt;">
 <ul>
-<li>Syntenic ncRNAs</li>
-<li>Tissue expression</li>
-<li>QTL</li>
-<li>Conservation of features</li>
-</ul></li>
+<li> Compilation of small, long and structured RNA
+
+<li> For multiple animal genomes
+  <ul>
+   <li> Syntenic ncRNAs
+   <li> Tissue expression
+   <li> QTL
+   <li> Conservation of features
+  </ul>
+<li> Integration with ENSEMBL will feed into external resources e.g.:
+  <ul>
+   <li> The tissues database[*]
+   <li> RAIN for RNA and protein interactions/associations [#]
+  </ul>
 </ul>
+
+[*] https://tissues.jensenlab.org
+
+[#] https://rth.dk/resources/rain
+
+</div>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-15" style="background:;">
-  <hgroup>
-    <h2>Vision for the FAANG non-coding and structured RNA (ncRNA) database II</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Integration with ENSEMBL will feed into external resources e.g.:
-
-<ul>
-<li>The tissues database[*]</li>
-<li>RAIN for RNA and protein interactions/associations [#]</li>
-</ul></li>
-</ul>
-
-<p>[*] <a href="https://tissues.jensenlab.org">https://tissues.jensenlab.org</a></p>
-
-<p>[#] <a href="https://rth.dk/resources/rain">https://rth.dk/resources/rain</a></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>Acknowledgement</h2>
   </hgroup>
@@ -505,7 +496,7 @@ quality and this one can be very variable for livestock species</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>Appendix: Chicken summary - individual</h2>
   </hgroup>
@@ -518,7 +509,7 @@ quality and this one can be very variable for livestock species</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>Appendix: Chicken summary - merged</h2>
   </hgroup>
@@ -531,7 +522,7 @@ quality and this one can be very variable for livestock species</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h2>Appendix: Cow summary - individual</h2>
   </hgroup>
@@ -544,7 +535,7 @@ quality and this one can be very variable for livestock species</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h2>Appendix: Cow summary - merged</h2>
   </hgroup>
@@ -557,7 +548,7 @@ quality and this one can be very variable for livestock species</li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <article data-timings="">
     
   </article>
@@ -624,7 +615,7 @@ quality and this one can be very variable for livestock species</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='FEELnc performance'>
+        data-slide=10 title='FEELnc performance for our data'>
          10
       </a>
     </li>
@@ -648,50 +639,44 @@ quality and this one can be very variable for livestock species</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Vision for the FAANG non-coding and structured RNA (ncRNA) database I'>
+        data-slide=14 title='Vision for the FAANG non-coding and structured RNA (ncRNA) database'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Vision for the FAANG non-coding and structured RNA (ncRNA) database II'>
+        data-slide=15 title='Acknowledgement'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Acknowledgement'>
+        data-slide=16 title='Appendix: Chicken summary - individual'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Appendix: Chicken summary - individual'>
+        data-slide=17 title='Appendix: Chicken summary - merged'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Appendix: Chicken summary - merged'>
+        data-slide=18 title='Appendix: Cow summary - individual'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Appendix: Cow summary - individual'>
+        data-slide=19 title='Appendix: Cow summary - merged'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Appendix: Cow summary - merged'>
+        data-slide=20 title='NA'>
          20
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='NA'>
-         21
       </a>
     </li>
   </ul>

@@ -1,7 +1,7 @@
 ---
 title: Annotation of lncRNA in farm animals - a community effort
 subtitle: "RNACentral Meeting, Hinxton, 6 November 2017"
-author: "Daniel Fischer (together with the FAANG lncRNA group)"
+author: "Daniel Fischer (as part of the FAANG lncRNA group)"
 github:
   repo: fischuu.github.io/presentations/RAndGoogleVisualization
   user: fischuu
@@ -23,26 +23,26 @@ widgets:
 
 * The purpose was to initiate a community effort to establish a ncRNA database for farm animals
 
-* I present here current state of the lncRNA subpart of it
+* I present here the current state of the lncRNA subpart of it
 
-* In total 11 persons are working at the moment in that subgroub
+* In total 11 persons are working at the moment in that subgroub and XXX in total for all different subgroups together
 
-* The focus is currently on 5 (cow, pig, horse, chicken, sheep) animals
+* The focus is currently on 5 different species (cow, pig, horse, chicken, sheep)
 
 ---
 
 ## Data collection and filtering
 
-* Datasets were collected from the European Nucleotide Archive (ENA)
+* RNA-seq datasets were collected from the European Nucleotide Archive (ENA)
 
 * In addition team members made own datasets available to the group
 
-* Criterias to include data into the collection were
+* Any experiment that met the following criteria was included into the collection
 
-   * Illumina
-   * Paired-end reads
-   * At least 100bp
-   * Strand specific libraries
+      * Illumina output only
+      * Paired-end reads
+      * At least 100bp
+      * Strand specific libraries
 
 ---
 
@@ -56,7 +56,7 @@ widgets:
 
 * For all files, among others, the following meta-data were archived:
     
-    * Tissue (Brenda Ontology terms)
+    * Tissue type (Brenda Ontology terms)
     * Corresponding references
     * ENA accession number
     
@@ -67,7 +67,7 @@ widgets:
 
 We established two different pipelines to annotate lncRNA:
 
-The "HS"" pipeline:
+The "HS" pipeline:
 
     * HISAT2
     * StringTie
@@ -83,7 +83,7 @@ The "SC" pipeline:
 
 ## Used Genome Versions and available samples
 
-| Species   |      Genome        |  Avail. Samples |
+| Species   |      Genome        |  Avail. Samples from ENA|
 |-----------|:------------------:|----------------:|
 | Chicken   |  Gallus_gallus-5.0 |   171           |
 | Cow       |  UMD_3.1.1         |   447           |
@@ -104,7 +104,7 @@ The "SC" pipeline:
 
 * Sarah Djebali performed an extensive comparison on the two different pipelines for cow and chicken
 
-* For that, we tried to run both pipelines with and without gene annotations
+* For that, we ran both pipelines with and without gene annotations
 
 * Tissues were considered individually and also merged (1,2 and all)
 
@@ -126,23 +126,28 @@ The "SC" pipeline:
 ## Impacts of the comparisons
 
 * Stringtie has improved a lot between version 1.3.2 and 1.3.3
-  * Many less unstranded transcripts
-  * Length of exons of different types better
-  * Less impacted by not having an annotation
-  * More similar results on both species
+  
+* Many less unstranded transcripts
+  
+* Length of exons of different types better
+  
+* Less impacted by not having an annotation
+  
+* More similar results on both species
+
 * Stringtie becomes a tool that can be envisionned for FAANG,
    although its results are more dependent on the annotation
    quality and this one can be very variable for livestock species
 
 ---
 
-## FEELnc performance
+## FEELnc performance for our data
 
-* Each pipeline produced one gtf as inoput for FEELnc
+* Each pipeline produced one gtf as input for FEELnc
 
-* The coverage for lncRNA annotation is also crucial and at least 70 Mio reads are desired
+* The numer of reads to do lncRNA annotation is also crucial and should be at least 70 Mio reads
 
-* Most of the available datasets couldn't fulfil this criteria
+* Most of the available datasets had less
 
 * Consequently, we chose 30 Mio as threshold for a high-coverage set
 
@@ -182,35 +187,43 @@ The "SC" pipeline:
 
 ## Upcoming tasks
 
-* ADD HERE STILL SOME TO-DO THINGS
+* Between tissue comparison for lncRNA expressions
+
+* Between species comparison for lncRNA expressions
+
+* Trace the reasons for differences in pipelines
+
+* If possible, function interpretation of the lncRNA
+
+* Agree on publication strategy
 
 ---
 
-## Vision for the FAANG non-coding and structured RNA (ncRNA) database I
+## Vision for the FAANG non-coding and structured RNA (ncRNA) database
 
-* Compilation of small, long and structured RNA
+<div style="font-size=20pt;">
+<ul>
+<li> Compilation of small, long and structured RNA
 
-* For multiple animal genomes
-   - Syntenic ncRNAs
-   - Tissue expression
-   - QTL
-   - Conservation of features
-
----
-
-## Vision for the FAANG non-coding and structured RNA (ncRNA) database II
-
-* Integration with ENSEMBL will feed into external resources e.g.:
-   - The tissues database[*]
-   - RAIN for RNA and protein interactions/associations [#]
-
-
+<li> For multiple animal genomes
+  <ul>
+   <li> Syntenic ncRNAs
+   <li> Tissue expression
+   <li> QTL
+   <li> Conservation of features
+  </ul>
+<li> Integration with ENSEMBL will feed into external resources e.g.:
+  <ul>
+   <li> The tissues database[*]
+   <li> RAIN for RNA and protein interactions/associations [#]
+  </ul>
+</ul>
 
 [*] https://tissues.jensenlab.org
 
 [#] https://rth.dk/resources/rain
 
-
+</div>
 
 ---
 
