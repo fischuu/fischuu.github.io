@@ -15,19 +15,34 @@ widgets:
 - mathjax
 - bootstrap
 - quiz
+
 ---
 
-## FAANG-COST Hackathon 
+## FAANG-COST Hackathon I
 
 * Jan Gorodkin organized a FAANG-COST hackathon in Copenhagen from 24.-25.11.2016
 
 * The purpose was to initiate a community effort to establish a ncRNA database for farm animals
 
+<div style="text-align:center">
+<img src="./faangRNA.png" alt="Drawing" style="width: 300px;"/>
+</div>
+
+---
+
+## FAANG-COST Hackathon II
+
+
 * I present here the current state of the lncRNA subpart of it
 
-* In total 11 persons are working at the moment in that subgroub and XXX in total for all different subgroups together
+* In total 12 persons are working at the moment in that subgroub and 25 in total for all different subgroups together
 
-* The focus is currently on 5 different species (cow, pig, horse, chicken, sheep)
+* The focus is currently on 5 different species:
+      * cow
+      * pig
+      * horse
+      * chicken
+      * sheep
 
 ---
 
@@ -35,7 +50,7 @@ widgets:
 
 * RNA-seq datasets were collected from the European Nucleotide Archive (ENA)
 
-* In addition team members made own datasets available to the group
+* Team members also made own datasets available to the group
 
 * Any experiment that met the following criteria was included into the collection
 
@@ -69,16 +84,15 @@ We established two different pipelines to annotate lncRNA:
 
 The "HS" pipeline:
 
-    * HISAT2
-    * StringTie
-    * FEELnc
-    
+<div style="text-align:center">
+<img src="./pipeHS.png" alt="Drawing" style="width: 700px;"/>
+</div>
+
 The "SC" pipeline:
     
-    * STAR
-    * Cufflinks
-    * FEELnc
-
+<div style="text-align:center">
+<img src="./pipeSC.png" alt="Drawing" style="width: 700px;"/>
+</div>
 ---
 
 ## Used Genome Versions and available samples
@@ -193,15 +207,15 @@ The "SC" pipeline:
 
 * Trace the reasons for differences in pipelines
 
-* If possible, function interpretation of the lncRNA
+* If possible, functional interpretation of the lncRNA
 
 * Agree on publication strategy
 
----
+--- .ninety
 
 ## Vision for the FAANG non-coding and structured RNA (ncRNA) database
 
-<div style="font-size=20pt;">
+<div style="font-size: 20px;">
 <ul>
 <li> Compilation of small, long and structured RNA
 
@@ -229,22 +243,22 @@ The "SC" pipeline:
 
 ## Acknowledgement
 
-The FAANG lncRNA group consists of the following members
+This FAANG RNA group consists of the following members
 
-| lncRNA group        | ncDB efforts    |
-|---------------------|-----------------|
-|Daniel Fischer       | Jan Gorodkin    |
-|Frank Panitz         | Christian Anton |
-|Konstantinos Billis  | Andreia Maral   |
-|Thomas Derrien       |                 |
-|Lel Eory             | Genomic group   |
-|Alicja Pacholewska   | sncRNA group    |
-|Nadezhda Doncheva    |                 |
-|Magda Mielczarek     |                 |
-|Sarah Djebali        |                 |
-|Christa Kühn         |                 |
-|Oana Palasca         |                 |
-
+| lncRNA group        | sncRNA            | structured RNA    |
+|---------------------|-------------------|-------------------|
+|Jan Gorodkin         | Jan Gorodkin      | Jan Gorodkin      |
+|Alicja Pacholewska   | Andreia Amaral    | Christian Anton   |
+|Daniel Fischer       | Kisun Pokharel    | Jakob Havgaard    |
+|Konstantinos Billis  | Ole Madsen        | Stefan Seemann    |
+|Thomas Derrien       | Anne Hoffmann     | Mark Thomas       |
+|Lel Eory             | Fiete Haack       | Ted Kalbfleisch   |
+|Frank Panitz         | Jacques Lagnel    | Jose Gonzalez     |
+|Nadezhda Doncheva    | Sylvain Marthey   |                   |
+|Magda Mielczarek     |                   |                   |
+|Sarah Djebali        |                   |                   |
+|Christa Kühn         |                   |                   | 
+|Oana Palasca         |                   |                   |
 
 ---
 

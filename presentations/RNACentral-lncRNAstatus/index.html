@@ -52,16 +52,17 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>FAANG-COST Hackathon</h2>
+    <h2>FAANG-COST Hackathon I</h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li><p>Jan Gorodkin organized a FAANG-COST hackathon in Copenhagen from 24.-25.11.2016</p></li>
 <li><p>The purpose was to initiate a community effort to establish a ncRNA database for farm animals</p></li>
-<li><p>I present here the current state of the lncRNA subpart of it</p></li>
-<li><p>In total 11 persons are working at the moment in that subgroub and XXX in total for all different subgroups together</p></li>
-<li><p>The focus is currently on 5 different species (cow, pig, horse, chicken, sheep)</p></li>
 </ul>
+
+<div style="text-align:center">
+<img src="./faangRNA.png" alt="Drawing" style="width: 300px;"/>
+</div>
 
   </article>
   <!-- Presenter Notes -->
@@ -69,12 +70,35 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
+    <h2>FAANG-COST Hackathon II</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>I present here the current state of the lncRNA subpart of it</p></li>
+<li><p>In total 12 persons are working at the moment in that subgroub and 25 in total for all different subgroups together</p></li>
+<li><p>The focus is currently on 5 different species:</p>
+
+<ul>
+<li>cow</li>
+<li>pig</li>
+<li>horse</li>
+<li>chicken</li>
+<li>sheep</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
     <h2>Data collection and filtering</h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li><p>RNA-seq datasets were collected from the European Nucleotide Archive (ENA)</p></li>
-<li><p>In addition team members made own datasets available to the group</p></li>
+<li><p>Team members also made own datasets available to the group</p></li>
 <li><p>Any experiment that met the following criteria was included into the collection</p>
 
 <ul>
@@ -89,7 +113,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-4" style="background:;">
   <hgroup>
     <h2>Quality control and Data curation</h2>
   </hgroup>
@@ -115,7 +139,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+<slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>Pipelines established</h2>
   </hgroup>
@@ -124,28 +148,21 @@
 
 <p>The &quot;HS&quot; pipeline:</p>
 
-<pre><code>* HISAT2
-* StringTie
-* FEELnc
-</code></pre>
+<div style="text-align:center">
+<img src="./pipeHS.png" alt="Drawing" style="width: 700px;"/>
+</div>
 
 <p>The &quot;SC&quot; pipeline:</p>
 
-<pre><code>* STAR
-* Cufflinks
-* FEELnc
-</code></pre>
+<div style="text-align:center">
+<img src="./pipeSC.png" alt="Drawing" style="width: 700px;"/>
+</div>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+<hr>
 
-<slide class="" id="slide-5" style="background:;">
-  <hgroup>
-    <h2>Used Genome Versions and available samples</h2>
-  </hgroup>
-  <article data-timings="">
-    <table><thead>
+<h2>Used Genome Versions and available samples</h2>
+
+<table><thead>
 <tr>
 <th>Species</th>
 <th align="center">Genome</th>
@@ -392,7 +409,7 @@ quality and this one can be very variable for livestock species</p></li>
 <li><p>Between tissue comparison for lncRNA expressions</p></li>
 <li><p>Between species comparison for lncRNA expressions</p></li>
 <li><p>Trace the reasons for differences in pipelines</p></li>
-<li><p>If possible, function interpretation of the lncRNA</p></li>
+<li><p>If possible, functional interpretation of the lncRNA</p></li>
 <li><p>Agree on publication strategy</p></li>
 </ul>
 
@@ -400,12 +417,12 @@ quality and this one can be very variable for livestock species</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="ninety" id="slide-14" style="background:;">
   <hgroup>
     <h2>Vision for the FAANG non-coding and structured RNA (ncRNA) database</h2>
   </hgroup>
   <article data-timings="">
-    <div style="font-size=20pt;">
+    <div style="font-size: 20px;">
 <ul>
 <li> Compilation of small, long and structured RNA
 
@@ -438,56 +455,73 @@ quality and this one can be very variable for livestock species</p></li>
     <h2>Acknowledgement</h2>
   </hgroup>
   <article data-timings="">
-    <p>The FAANG lncRNA group consists of the following members</p>
+    <p>This FAANG RNA group consists of the following members</p>
 
 <table><thead>
 <tr>
 <th>lncRNA group</th>
-<th>ncDB efforts</th>
+<th>sncRNA</th>
+<th>structured RNA</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>Daniel Fischer</td>
+<td>Jan Gorodkin</td>
+<td>Jan Gorodkin</td>
 <td>Jan Gorodkin</td>
 </tr>
 <tr>
-<td>Frank Panitz</td>
+<td>Alicja Pacholewska</td>
+<td>Andreia Amaral</td>
 <td>Christian Anton</td>
 </tr>
 <tr>
+<td>Daniel Fischer</td>
+<td>Kisun Pokharel</td>
+<td>Jakob Havgaard</td>
+</tr>
+<tr>
 <td>Konstantinos Billis</td>
-<td>Andreia Maral</td>
+<td>Ole Madsen</td>
+<td>Stefan Seemann</td>
 </tr>
 <tr>
 <td>Thomas Derrien</td>
-<td></td>
+<td>Anne Hoffmann</td>
+<td>Mark Thomas</td>
 </tr>
 <tr>
 <td>Lel Eory</td>
-<td>Genomic group</td>
+<td>Fiete Haack</td>
+<td>Ted Kalbfleisch</td>
 </tr>
 <tr>
-<td>Alicja Pacholewska</td>
-<td>sncRNA group</td>
+<td>Frank Panitz</td>
+<td>Jacques Lagnel</td>
+<td>Jose Gonzalez</td>
 </tr>
 <tr>
 <td>Nadezhda Doncheva</td>
+<td>Sylvain Marthey</td>
 <td></td>
 </tr>
 <tr>
 <td>Magda Mielczarek</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Sarah Djebali</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td>Christa Kühn</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Oana Palasca</td>
+<td></td>
 <td></td>
 </tr>
 </tbody></table>
@@ -561,31 +595,31 @@ quality and this one can be very variable for livestock species</p></li>
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='FAANG-COST Hackathon'>
+        data-slide=1 title='FAANG-COST Hackathon I'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Data collection and filtering'>
+        data-slide=2 title='FAANG-COST Hackathon II'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Quality control and Data curation'>
+        data-slide=3 title='Data collection and filtering'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Pipelines established'>
+        data-slide=4 title='Quality control and Data curation'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Used Genome Versions and available samples'>
+        data-slide=5 title='Pipelines established'>
          5
       </a>
     </li>
