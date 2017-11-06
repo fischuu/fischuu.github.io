@@ -212,6 +212,8 @@ The "SC" pipeline:
 
 * Agree on publication strategy (Which ones? Similarity of lncRNA!)
 
+* Perform a homolog analysis with existing and reported lncRNA
+
 --- .ninety
 
 ## Vision for the FAANG non-coding and structured RNA (ncRNA) database
