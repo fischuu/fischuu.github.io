@@ -209,7 +209,7 @@ The "SC" pipeline:
 
 * If possible, functional interpretation of the lncRNA
 
-* Agree on publication strategy
+* Agree on publication strategy (Which ones? Similarity of lncRNA!)
 
 --- .ninety
 
