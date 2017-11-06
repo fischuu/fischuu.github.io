@@ -48,7 +48,7 @@ widgets:
 
 ## Data collection and filtering
 
-* RNA-seq datasets were collected from the European Nucleotide Archive (ENA)
+* RNA-seq raw datasets were collected from the European Nucleotide Archive (ENA)
 
 * Team members also made own datasets available to the group
 
@@ -74,6 +74,7 @@ widgets:
     * Tissue type (Brenda Ontology terms)
     * Corresponding references
     * ENA accession number
+    * Experimental design
     
 
 ---
