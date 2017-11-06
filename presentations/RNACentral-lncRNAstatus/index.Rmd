@@ -160,7 +160,7 @@ The "SC" pipeline:
 
 * Each pipeline produced one gtf as input for FEELnc
 
-* The numer of reads to do lncRNA annotation is also crucial and should be at least 70 Mio reads
+* The number of reads to do lncRNA annotation is also crucial and should be at least 70 Mio reads
 
 * Most of the available datasets had less
 
